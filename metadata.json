@@ -1,0 +1,6 @@
+{
+  "name": "Surbhi Coaching Academy",
+  "description": "A premier academic coaching academy delivering excellence in school foundations, board exams, and competitive preparation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

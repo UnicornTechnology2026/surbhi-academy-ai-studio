@@ -1,0 +1,275 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  ArrowUpRight,
+  Award,
+  ShieldCheck,
+  Instagram,
+  Facebook,
+  Youtube,
+  Linkedin,
+  Sparkles,
+  Lock
+} from 'lucide-react';
+import { useAcademy } from '../context/AcademyContext';
+
+interface FooterProps {
+  onOpenPrivacy: () => void;
+  onOpenTerms: () => void;
+  onOpenEnquiry: (slug?: string) => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({
+  onOpenPrivacy,
+  onOpenTerms,
+  onOpenEnquiry
+}) => {
+  const { courses, siteSettings } = useAcademy();
+
+  return (
+    <footer className="bg-[#0F172A] text-white border-t border-slate-800">
+      {/* Upper Newsletter / Action strip */}
+      <div className="border-b border-slate-800/80 bg-slate-900/60 py-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4 text-center md:text-left">
+            <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0 mx-auto md:mx-0">
+              <Award className="w-6 h-6" />
+            </div>
+            <div>
+              <div className="flex items-center justify-center md:justify-start gap-2">
+                <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold">
+                  Excellence in Coaching
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                <span className="text-xs text-slate-400">15+ Years Legacy</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-serif font-bold text-white mt-0.5">
+                Ready to Ignite Your Academic Potential?
+              </h3>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 w-full sm:w-auto">
+            <button
+              onClick={() => onOpenEnquiry()}
+              className="flex-1 sm:flex-initial bg-amber-500 hover:bg-amber-400 text-slate-950 px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all shadow-lg hover:shadow-amber-500/20 flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <span>Book Free 2-Day Trial Pass</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </button>
+            <a
+              href={`tel:${siteSettings.primaryPhone.replace(/\s+/g, '')}`}
+              className="hidden sm:inline-flex bg-white/10 hover:bg-white/20 border border-white/20 text-white px-5 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all items-center gap-2"
+            >
+              <Phone className="w-4 h-4 text-amber-400" />
+              <span>Call Helpline</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Footer Grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
+          {/* Col 1 & 2: Brand Info */}
+          <div className="lg:col-span-2 space-y-5">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-amber-500 flex items-center justify-center rounded-xl shadow-md">
+                <span className="text-slate-950 font-serif font-bold text-2xl">S</span>
+              </div>
+              <div>
+                <span className="font-bold text-xl tracking-tight text-white uppercase block leading-none">
+                  SURBHI <span className="font-serif italic font-normal text-amber-400 capitalize">Academy</span>
+                </span>
+                <span className="text-[10px] tracking-widest text-slate-400 uppercase font-semibold">
+                  Teaching Beyond Examination
+                </span>
+              </div>
+            </div>
+
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-md">
+              Nagpur’s premier coaching academy dedicated to deep conceptual clarity, disciplined study habits, small batch sizes, and proven board toppers across Classes 8 to 12.
+            </p>
+
+            {/* Trust badges */}
+            <div className="flex items-center gap-4 text-xs text-slate-300 pt-2">
+              <div className="flex items-center gap-1.5 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <span>Verified Faculty</span>
+              </div>
+              <div className="flex items-center gap-1.5 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700">
+                <Sparkles className="w-4 h-4 text-amber-400" />
+                <span>Max 25-30 / Batch</span>
+              </div>
+            </div>
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-2 pt-2">
+              <a
+                href={siteSettings.socials.facebook}
+                target="_blank"
+                rel="noreferrer"
+                className="w-8 h-8 rounded-full bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-300 flex items-center justify-center transition-all"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a
+                href={siteSettings.socials.instagram}
+                target="https://www.instagram.com/surabhiacademy154/?hl=en"
+                rel="noreferrer"
+                className="w-8 h-8 rounded-full bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-300 flex items-center justify-center transition-all"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a
+                href={siteSettings.socials.youtube}
+                target="_blank"
+                rel="noreferrer"
+                className="w-8 h-8 rounded-full bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-300 flex items-center justify-center transition-all"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-4 h-4" />
+              </a>
+              <a
+                href={siteSettings.socials.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="w-8 h-8 rounded-full bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-300 flex items-center justify-center transition-all"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+
+          {/* Col 2: Academic Programs */}
+          <div className="space-y-4">
+            <h4 className="text-xs uppercase tracking-widest text-amber-400 font-bold">
+              Academic Programs
+            </h4>
+            <ul className="space-y-2 text-xs text-slate-300">
+              {courses.slice(0, 6).map((c) => (
+                <li key={c.id}>
+                  <Link
+                    to={`/courses/${c.slug}`}
+                    className="hover:text-amber-400 transition-colors flex items-center gap-1.5 py-0.5 line-clamp-1"
+                  >
+                    <span className="w-1 h-1 rounded-full bg-amber-500" />
+                    <span>{c.title}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 3: Quick Links */}
+          <div className="space-y-4">
+            <h4 className="text-xs uppercase tracking-widest text-amber-400 font-bold">
+              Quick Links
+            </h4>
+            <ul className="space-y-2 text-xs text-slate-300">
+              <li>
+                <Link to="/about" className="hover:text-amber-400 transition-colors">
+                  About Our Academy
+                </Link>
+              </li>
+              <li>
+                <Link to="/results" className="hover:text-amber-400 transition-colors">
+                  Toppers & Rankers Wall
+                </Link>
+              </li>
+              <li>
+                <Link to="/gallery" className="hover:text-amber-400 transition-colors">
+                  Campus & Life Gallery
+                </Link>
+              </li>
+              <li>
+                <Link to="/testimonials" className="hover:text-amber-400 transition-colors">
+                  Student & Parent Reviews
+                </Link>
+              </li>
+              <li>
+                <Link to="/admissions" className="hover:text-amber-400 transition-colors">
+                  Admissions 2026-27
+                </Link>
+              </li>
+              <li>
+                <Link to="/faqs" className="hover:text-amber-400 transition-colors">
+                  Frequently Asked Questions
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 4: Campus Locations & Hours */}
+          <div className="space-y-4">
+            <h4 className="text-xs uppercase tracking-widest text-amber-400 font-bold">
+              Campus & Timings
+            </h4>
+            <div className="space-y-3 text-xs text-slate-300">
+              <div className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                <span className="leading-snug text-slate-300">
+                  {siteSettings.mainCampusAddress}
+                </span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 text-amber-400 shrink-0" />
+                <a href={`tel:${siteSettings.primaryPhone.replace(/\s+/g, '')}`} className="hover:text-white">
+                  {siteSettings.primaryPhone}
+                </a>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 text-amber-400 shrink-0" />
+                <a href={`mailto:${siteSettings.email}`} className="hover:text-white">
+                  {siteSettings.email}
+                </a>
+              </div>
+              <div className="flex items-start gap-2.5 pt-1 border-t border-slate-800">
+                <Clock className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-[11px] text-slate-400">{siteSettings.workingHoursWeekdays}</div>
+                  <div className="text-[11px] text-amber-400/80">{siteSettings.workingHoursSunday}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-14 pt-6 border-t border-slate-800 text-xs text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p>© {new Date().getFullYear()} {siteSettings.name}. All rights reserved.</p>
+
+          <div className="flex flex-wrap items-center gap-4 text-slate-400">
+            <button
+              onClick={onOpenPrivacy}
+              className="hover:text-amber-400 transition-colors cursor-pointer"
+            >
+              Privacy Policy
+            </button>
+            <span>•</span>
+            <button
+              onClick={onOpenTerms}
+              className="hover:text-amber-400 transition-colors cursor-pointer"
+            >
+              Terms of Admission
+            </button>
+            <span>•</span>
+            <Link
+              to="/admin/login"
+              className="hover:text-white transition-colors inline-flex items-center gap-1 text-slate-500 hover:text-amber-400"
+            >
+              <Lock className="w-3 h-3" />
+              <span>Admin Portal</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
