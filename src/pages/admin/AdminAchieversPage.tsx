@@ -106,14 +106,15 @@ export const AdminAchieversPage: React.FC = () => {
         form.category === 'class10'
           ? 'Class 10 Board Toppers'
           : form.category === 'class12'
-          ? 'Class 12 Board Toppers'
-          : 'Competitive Olympiads',
+            ? 'Class 12 Board Toppers'
+            : 'Competitive Olympiads',
       school: form.school || undefined,
       testimonial: form.testimonial || undefined,
       image: form.image || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
       badgeType: form.badgeType || 'gold',
       featured: form.featured ?? true,
-      status: form.status || 'active'
+      status: form.status || 'active',
+      gradeLevel: ''
     };
 
     if (editingAchiever) {
@@ -166,19 +167,18 @@ export const AdminAchieversPage: React.FC = () => {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                selectedCategory === cat
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${selectedCategory === cat
                   ? 'bg-amber-500 text-slate-950 font-bold'
                   : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-              }`}
+                }`}
             >
               {cat === 'all'
                 ? 'All Rankers'
                 : cat === 'class10'
-                ? 'Class 10 Toppers'
-                : cat === 'class12'
-                ? 'Class 12 Toppers'
-                : 'Olympiad Rankers'}
+                  ? 'Class 10 Toppers'
+                  : cat === 'class12'
+                    ? 'Class 12 Toppers'
+                    : 'Olympiad Rankers'}
             </button>
           ))}
         </div>
@@ -241,11 +241,10 @@ export const AdminAchieversPage: React.FC = () => {
                   <td className="py-4 px-4">
                     <button
                       onClick={() => toggleAchieverFeatured(a.id)}
-                      className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider cursor-pointer transition-colors flex items-center gap-1 ${
-                        a.featured
+                      className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider cursor-pointer transition-colors flex items-center gap-1 ${a.featured
                           ? 'bg-amber-500/20 text-amber-400 border border-amber-500/40'
                           : 'bg-slate-800 text-slate-400'
-                      }`}
+                        }`}
                     >
                       <Star className={`w-3 h-3 ${a.featured ? 'fill-amber-400 text-amber-400' : ''}`} />
                       <span>{a.featured ? 'Featured' : 'Standard'}</span>

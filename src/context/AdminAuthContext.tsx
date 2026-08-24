@@ -15,10 +15,10 @@ const AUTH_STORAGE_KEY = 'surbhi_admin_session';
 
 const DEFAULT_ADMIN: AdminUser = {
   id: 'adm-01',
-  name: 'Dr. Rahul Sharma',
+  name: 'Mr. Sandeep Panchabhai',
   email: 'admin@surbhicoaching.edu',
   role: 'Super Admin',
-  avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80'
+
 };
 
 export const AdminAuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {

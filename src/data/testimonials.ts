@@ -23,7 +23,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     achievement: 'District Rank 2 (98.8%) & JEE Main 99.78%ile',
     rating: 5,
     image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80',
-    content: 'The faculty at Surbhi never let us settle for rote learning. Dr. Rahul Sir and Sandhya Ma’am taught us how to derive every concept from basic principles. The test series feedback helped me fix recurring mistakes before the board exams.',
+    content: 'The faculty at Surbhi never let us settle for rote learning. Mr. Sandeep Panchabhai Sir taught us how to derive every concept from basic principles. The test series feedback helped me fix recurring mistakes before the board exams.',
     status: 'active',
     featured: true
   },

@@ -38,12 +38,6 @@ export const AdminLayout: React.FC = () => {
     { name: 'Enquiries & CRM', path: '/admin/enquiries', icon: Inbox, badge: newEnquiriesCount > 0 ? newEnquiriesCount : undefined },
     { name: 'Course Management', path: '/admin/courses', icon: BookOpen },
     { name: 'Toppers & Rankers', path: '/admin/achievers', icon: Trophy },
-    { name: 'Faculty Mentors', path: '/admin/faculty', icon: Users },
-    { name: 'Photo Gallery', path: '/admin/gallery', icon: ImageIcon },
-    { name: 'Testimonials', path: '/admin/testimonials', icon: MessageSquareQuote },
-    { name: 'Notice Board', path: '/admin/notices', icon: Bell },
-    { name: 'FAQ Management', path: '/admin/faqs', icon: HelpCircle },
-    { name: 'Website Content', path: '/admin/cms', icon: FileEdit },
     { name: 'Academy Settings', path: '/admin/settings', icon: Settings }
   ];
 
@@ -94,9 +88,8 @@ export const AdminLayout: React.FC = () => {
 
       {/* Main Admin Sidebar */}
       <aside
-        className={`fixed md:static inset-y-0 left-0 z-50 w-64 bg-slate-900 border-r border-slate-800 flex flex-col justify-between transition-transform duration-300 ${
-          sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
-        }`}
+        className={`fixed md:static inset-y-0 left-0 z-50 w-64 bg-slate-900 border-r border-slate-800 flex flex-col justify-between transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
+          }`}
       >
         {/* Brand Header */}
         <div>
@@ -130,10 +123,9 @@ export const AdminLayout: React.FC = () => {
                   to={item.path}
                   onClick={() => setSidebarOpen(false)}
                   className={({ isActive }) =>
-                    `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition-all ${
-                      isActive
-                        ? 'bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/10'
-                        : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition-all ${isActive
+                      ? 'bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/10'
+                      : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`
                   }
                 >
@@ -155,13 +147,13 @@ export const AdminLayout: React.FC = () => {
         {/* User profile & Logout Footer */}
         <div className="p-4 border-t border-slate-800 bg-slate-900/80 space-y-3">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl overflow-hidden border border-amber-500/40 bg-slate-800 shrink-0">
+            {/* <div className="w-9 h-9 rounded-xl overflow-hidden border border-amber-500/40 bg-slate-800 shrink-0">
               {adminUser?.avatar ? (
                 <img src={adminUser.avatar} alt={adminUser.name} className="w-full h-full object-cover" />
               ) : (
                 <User className="w-5 h-5 text-slate-400 m-2" />
               )}
-            </div>
+            </div> */}
             <div className="overflow-hidden flex-1">
               <div className="text-xs font-bold text-white truncate">{adminUser?.name || 'Administrator'}</div>
               <div className="text-[10px] text-amber-400 font-medium truncate">{adminUser?.role || 'Super Admin'}</div>

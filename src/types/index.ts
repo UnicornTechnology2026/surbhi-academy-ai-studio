@@ -263,5 +263,4 @@ export interface AdminUser {
   name: string;
   email: string;
   role: 'Super Admin' | 'Academic Counselor' | 'Editor';
-  avatar: string;
 }

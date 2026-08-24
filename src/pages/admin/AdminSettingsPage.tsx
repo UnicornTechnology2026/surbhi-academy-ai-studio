@@ -15,7 +15,7 @@ import { useAcademy } from '../../context/AcademyContext';
 import { ConfirmModal } from '../../components/ConfirmModal';
 
 export const AdminSettingsPage: React.FC = () => {
-  const { siteSettings, updateSiteSettings, resetToDefaults } = useAcademy();
+  const { siteSettings, updateSiteSettings, resetToDefaultData } = useAcademy();
 
   const [form, setForm] = useState({
     academyName: siteSettings.academyName,
@@ -45,7 +45,7 @@ export const AdminSettingsPage: React.FC = () => {
   };
 
   const handleConfirmReset = () => {
-    resetToDefaults();
+    resetToDefaultData();
     setResetConfirmOpen(false);
     window.location.reload();
   };

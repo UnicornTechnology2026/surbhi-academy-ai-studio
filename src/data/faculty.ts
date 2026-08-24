@@ -3,7 +3,7 @@ import { FacultyMember } from '../types';
 export const FACULTY_DATA: FacultyMember[] = [
   {
     id: 'f1',
-    name: 'Dr. Rahul Sharma',
+    name: 'Mr. Sandeep Panchabhai',
     role: 'Founder & Head of Mathematics',
     department: 'Mathematics',
     qualifications: 'Ph.D. in Applied Mathematics, M.Sc. (Gold Medalist), B.Ed.',

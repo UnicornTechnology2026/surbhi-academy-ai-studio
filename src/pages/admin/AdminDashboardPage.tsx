@@ -77,7 +77,7 @@ export const AdminDashboardPage: React.FC = () => {
       </div>
 
       {/* 2. Key Metrics Grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
         <Link
           to="/admin/enquiries"
           className="bg-slate-900 border border-slate-800 hover:border-amber-500/50 p-5 rounded-2xl transition-all group shadow-md"
@@ -128,22 +128,6 @@ export const AdminDashboardPage: React.FC = () => {
             {achievers.length}
           </div>
           <div className="text-xs text-slate-400 font-medium mt-0.5">Hall of Fame Rankers</div>
-        </Link>
-
-        <Link
-          to="/admin/faculty"
-          className="bg-slate-900 border border-slate-800 hover:border-emerald-500/50 p-5 rounded-2xl transition-all group shadow-md"
-        >
-          <div className="flex items-center justify-between mb-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
-              <Users className="w-5 h-5" />
-            </div>
-            <span className="text-xs text-slate-500 font-semibold">{activeFaculty.length} Active</span>
-          </div>
-          <div className="text-2xl font-serif font-extrabold text-white group-hover:text-emerald-400 transition-colors">
-            {faculty.length}
-          </div>
-          <div className="text-xs text-slate-400 font-medium mt-0.5">Faculty Mentors</div>
         </Link>
       </div>
 
@@ -255,17 +239,6 @@ export const AdminDashboardPage: React.FC = () => {
               </Link>
 
               <Link
-                to="/admin/notices"
-                className="w-full flex items-center justify-between p-3 rounded-xl bg-slate-800/70 hover:bg-slate-800 text-xs font-semibold text-slate-200 transition-colors border border-slate-700/50"
-              >
-                <div className="flex items-center gap-2.5">
-                  <Bell className="w-4 h-4 text-amber-400" />
-                  <span>Post Urgent Notice</span>
-                </div>
-                <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
-              </Link>
-
-              <Link
                 to="/admin/settings"
                 className="w-full flex items-center justify-between p-3 rounded-xl bg-slate-800/70 hover:bg-slate-800 text-xs font-semibold text-slate-200 transition-colors border border-slate-700/50"
               >
@@ -278,33 +251,7 @@ export const AdminDashboardPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Active Notices & Circulars */}
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
-            <div className="flex items-center justify-between">
-              <h3 className="text-base font-serif font-bold text-white flex items-center gap-2">
-                <Bell className="w-4 h-4 text-amber-400" />
-                <span>Live Notice Board</span>
-              </h3>
-              <Link to="/admin/notices" className="text-xs text-amber-400 hover:underline">
-                Manage
-              </Link>
-            </div>
 
-            <div className="space-y-3">
-              {notices.slice(0, 3).map((notice) => (
-                <div key={notice.id} className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider">
-                      {notice.category}
-                    </span>
-                    <span className="text-[10px] text-slate-500">{notice.publishDate}</span>
-                  </div>
-                  <div className="text-xs font-bold text-white line-clamp-1">{notice.title}</div>
-                  <div className="text-[11px] text-slate-400 line-clamp-2">{notice.summary}</div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </div>

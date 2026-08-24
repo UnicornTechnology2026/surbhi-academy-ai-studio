@@ -85,7 +85,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
               className="text-slate-400 hover:text-white transition-colors flex items-center gap-1 font-semibold text-[10px]"
             >
               <Lock className="w-3 h-3" />
-              <span>Staff Login</span>
+              <span>Admin Login</span>
             </Link>
           )}
         </div>
@@ -131,62 +131,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
               </span>
             </NavLink>
           ))}
-
-          {/* More Dropdown */}
-          <div className="relative" ref={moreMenuRef}>
-            <button
-              onClick={() => setMoreMenuOpen((prev) => !prev)}
-              aria-expanded={moreMenuOpen}
-              aria-haspopup="true"
-              className="text-xs font-semibold uppercase tracking-wider px-2.5 py-2 rounded-lg text-slate-700 hover:bg-slate-50 flex items-center gap-1 cursor-pointer"
-            >
-              <span>More</span>
-              <ChevronDown className={`w-3 h-3 transition-transform ${moreMenuOpen ? 'rotate-180' : ''}`} />
-            </button>
-            {moreMenuOpen && (
-              <div className="absolute right-0 top-full mt-1 w-44 bg-white rounded-xl shadow-xl border border-slate-100 py-2 animate-fadeIn">
-                <Link
-                  to="/testimonials"
-                  onClick={() => setMoreMenuOpen(false)}
-                  className="block px-4 py-2 text-xs font-medium text-slate-700 hover:bg-amber-50 hover:text-amber-700"
-                >
-                  ⭐ Testimonials
-                </Link>
-                <Link
-                  to="/faqs"
-                  onClick={() => setMoreMenuOpen(false)}
-                  className="block px-4 py-2 text-xs font-medium text-slate-700 hover:bg-amber-50 hover:text-amber-700"
-                >
-                  ❓ FAQs
-                </Link>
-                <Link
-                  to="/contact"
-                  onClick={() => setMoreMenuOpen(false)}
-                  className="block px-4 py-2 text-xs font-medium text-slate-700 hover:bg-amber-50 hover:text-amber-700"
-                >
-                  📍 Contact & Map
-                </Link>
-                <div className="border-t border-slate-100 my-1"></div>
-                {isAuthenticated ? (
-                  <Link
-                    to="/admin/dashboard"
-                    onClick={() => setMoreMenuOpen(false)}
-                    className="block px-4 py-2 text-xs font-bold text-amber-800 bg-amber-50/50"
-                  >
-                    ⚙️ Admin Dashboard
-                  </Link>
-                ) : (
-                  <Link
-                    to="/admin/login"
-                    onClick={() => setMoreMenuOpen(false)}
-                    className="block px-4 py-2 text-xs font-medium text-slate-500 hover:bg-slate-50"
-                  >
-                    🔒 Admin Login
-                  </Link>
-                )}
-              </div>
-            )}
-          </div>
         </nav>
 
         {/* Right CTA Button */}

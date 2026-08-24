@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Clock, 
-  Send, 
-  CheckCircle2, 
-  Sparkles, 
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Send,
+  CheckCircle2,
+  Sparkles,
   MessageSquare,
   Building,
   Navigation
@@ -104,9 +104,6 @@ export const ContactPage: React.FC = () => {
                 <a href={`mailto:${siteSettings.email}`} className="hover:text-blue-700">
                   {siteSettings.email}
                 </a>
-              </div>
-              <div className="text-xs text-slate-500 font-normal">
-                admissions@surbhicoaching.edu
               </div>
             </div>
           </div>
@@ -278,11 +275,8 @@ export const ContactPage: React.FC = () => {
                   <Building className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xs uppercase tracking-widest text-amber-700 font-bold">
-                    Nagpur Campuses
-                  </div>
                   <h3 className="text-xl font-serif font-bold text-[#0F172A]">
-                    Main Head Campus
+                    Visit Surbhi Academy
                   </h3>
                 </div>
               </div>
@@ -292,34 +286,28 @@ export const ContactPage: React.FC = () => {
                   <MapPin className="w-4 h-4 text-amber-600" />
                   <span>{siteSettings.mainCampusAddress}</span>
                 </div>
-                <p className="text-slate-600">
-                  Landmark: Opposite City Center Mall, Near Metro Pillar 142. Ample two-wheeler & four-wheeler parking available.
-                </p>
               </div>
 
               {/* Simulated Map Visual */}
               <div className="rounded-2xl overflow-hidden border border-slate-200 relative aspect-[16/9] bg-slate-900">
-                <img
-                  src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1000&q=80"
-                  alt="Academy Location Nagpur"
-                  className="w-full h-full object-cover opacity-80"
-                />
-                <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-[1px] flex flex-col items-center justify-center p-4 text-center text-white space-y-2">
-                  <div className="w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center font-bold shadow-lg animate-bounceSubtle">
-                    <MapPin className="w-6 h-6" />
-                  </div>
-                  <div className="font-serif font-bold text-base text-white">
-                    Surbhi Coaching Academy Head Campus
-                  </div>
-                  <div className="text-xs text-amber-300 font-medium">
-                    Nagpur, Maharashtra
-                  </div>
+                <div className="rounded-2xl overflow-hidden border border-slate-200 relative aspect-[16/9] bg-slate-900">
+                  <iframe
+                    title="Surbhi Coaching Academy Location Map"
+                    src={`https://maps.google.com/maps?q=${encodeURIComponent(siteSettings.mainCampusAddress)}&z=16&output=embed`}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="absolute inset-0 w-full h-full"
+                  />
                   <a
-                    href="https://maps.google.com"
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteSettings.mainCampusAddress)}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1 bg-white text-slate-900 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-amber-400 transition-colors shadow-md mt-2"
-                  >
+                    className="absolute bottom-3 right-3 inline-flex items-center gap-1 bg-white text-slate-900 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-amber-400 transition-colors shadow-md">
+
                     <Navigation className="w-3 h-3 text-amber-700" />
                     <span>Open in Google Maps</span>
                   </a>

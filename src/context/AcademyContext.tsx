@@ -28,7 +28,7 @@ const DEFAULT_HERO_CONTENT: HeroContent = {
   headlineMain: 'Empowering Young Minds For',
   headlineHighlight: 'Academic Brilliance',
   headlineEnd: '& Board Merit.',
-  description: 'Nagpur’s most trusted coaching academy for Class 8 to 10 Foundation, Class 11-12 (State & CBSE), and Competitive Olympiads. Backed by 29+ years of pedagogical excellence and verified state rank holders.',
+  description: 'Nagpur’s most trusted coaching academy for Class 8 to 10 Foundation, Class 11-12 (State & CBSE) and Competitive Exams. Backed by 29+ years of pedagogical excellence and verified state rank holders.',
   primaryButtonText: 'Explore Courses',
   secondaryButtonText: 'Enquire for Admission',
   badgeText: 'Rank 1 Record in Board Exams',
@@ -88,7 +88,7 @@ const DEFAULT_SITE_SETTINGS: SiteSettings = {
   whatsappNumber: '+91 98226 94137',
   email: 'surabhitutionclasses@rediffmail.com',
   infoEmail: 'surabhitution',
-  mainCampusAddress: 'Surbhi Academy,  N-42, Near Volleyball Ground, Reshimbag, Nagpur, Maharashtra 440009, India',
+  mainCampusAddress: 'Surbhi Academy,  N-42, Near Volleyball Ground, Reshimbag, Nagpur, Maharashtra, India',
   workingHoursWeekdays: 'Monday – Saturday: 8:00 AM – 8:30 PM',
   workingHoursSunday: 'Sunday: 9:00 AM – 2:00 PM (Counseling & Enquiry)',
   socials: {

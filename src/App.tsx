@@ -37,13 +37,7 @@ import { AdminLoginPage } from './pages/admin/AdminLoginPage';
 import { AdminDashboardPage } from './pages/admin/AdminDashboardPage';
 import { AdminCoursesPage } from './pages/admin/AdminCoursesPage';
 import { AdminAchieversPage } from './pages/admin/AdminAchieversPage';
-import { AdminFacultyPage } from './pages/admin/AdminFacultyPage';
-import { AdminGalleryPage } from './pages/admin/AdminGalleryPage';
-import { AdminTestimonialsPage } from './pages/admin/AdminTestimonialsPage';
-import { AdminNoticesPage } from './pages/admin/AdminNoticesPage';
 import { AdminEnquiriesPage } from './pages/admin/AdminEnquiriesPage';
-import { AdminFAQsPage } from './pages/admin/AdminFAQsPage';
-import { AdminCMSPage } from './pages/admin/AdminCMSPage';
 import { AdminSettingsPage } from './pages/admin/AdminSettingsPage';
 
 // Inner shell to conditionally render public layout vs admin layout
@@ -103,12 +97,6 @@ const AppShell: React.FC = () => {
               <Route path="enquiries" element={<AdminEnquiriesPage />} />
               <Route path="courses" element={<AdminCoursesPage />} />
               <Route path="achievers" element={<AdminAchieversPage />} />
-              <Route path="faculty" element={<AdminFacultyPage />} />
-              <Route path="gallery" element={<AdminGalleryPage />} />
-              <Route path="testimonials" element={<AdminTestimonialsPage />} />
-              <Route path="notices" element={<AdminNoticesPage />} />
-              <Route path="faqs" element={<AdminFAQsPage />} />
-              <Route path="cms" element={<AdminCMSPage />} />
               <Route path="settings" element={<AdminSettingsPage />} />
             </Route>
           </Route>

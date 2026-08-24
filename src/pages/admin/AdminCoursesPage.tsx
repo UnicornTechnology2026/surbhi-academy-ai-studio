@@ -204,11 +204,10 @@ export const AdminCoursesPage: React.FC = () => {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                selectedCategory === cat
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${selectedCategory === cat
                   ? 'bg-amber-500 text-slate-950 font-bold'
                   : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-              }`}
+                }`}
             >
               {cat === 'all' ? 'All Programs' : cat}
             </button>
@@ -300,11 +299,10 @@ export const AdminCoursesPage: React.FC = () => {
                   <td className="py-4 px-4">
                     <button
                       onClick={() => toggleCourseStatus(c.id)}
-                      className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider cursor-pointer transition-colors ${
-                        c.status === 'active'
+                      className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider cursor-pointer transition-colors ${c.status === 'active'
                           ? 'bg-emerald-950 text-emerald-400 border border-emerald-800'
                           : 'bg-slate-800 text-slate-400 border border-slate-700'
-                      }`}
+                        }`}
                     >
                       {c.status === 'active' ? (
                         <>
@@ -385,8 +383,7 @@ export const AdminCoursesPage: React.FC = () => {
                   >
                     <option value="foundation">Class 6–10 Foundation</option>
                     <option value="science">Class 11 & 12 Science</option>
-                    <option value="commerce">Class 11 & 12 Commerce</option>
-                    <option value="competitive">Competitive Olympiads</option>
+                    <option value="competitive">Competitive Exams</option>
                   </select>
                 </div>
               </div>
