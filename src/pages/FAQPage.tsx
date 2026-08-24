@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { 
-  HelpCircle, 
-  ChevronDown, 
-  Search, 
-  Sparkles, 
-  Phone, 
+import {
+  HelpCircle,
+  ChevronDown,
+  Search,
+  Sparkles,
+  Phone,
   MessageSquare,
   ArrowRight
 } from 'lucide-react';
@@ -61,40 +61,6 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onOpenEnquiry }) => {
         </div>
       </section>
 
-      {/* 2. Filter & Search */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="flex flex-wrap gap-2">
-              {categories.map((cat) => (
-                <button
-                  key={cat.key}
-                  onClick={() => setSelectedCategory(cat.key)}
-                  className={`px-3.5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                    selectedCategory === cat.key
-                      ? 'bg-[#0F172A] text-white shadow-xs'
-                      : 'bg-slate-50 text-slate-600 hover:bg-slate-100'
-                  }`}
-                >
-                  {cat.label}
-                </button>
-              ))}
-            </div>
-
-            <div className="relative w-full sm:w-64">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
-              <input
-                type="text"
-                placeholder="Search question keywords..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-amber-500 bg-white"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* 3. Accordion List */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {filteredFaqs.length === 0 ? (
@@ -120,9 +86,8 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onOpenEnquiry }) => {
                       {faq.question}
                     </span>
                     <div
-                      className={`w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 shrink-0 transition-transform duration-300 ${
-                        isOpen ? 'rotate-180 bg-amber-100 text-amber-900' : ''
-                      }`}
+                      className={`w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 bg-amber-100 text-amber-900' : ''
+                        }`}
                     >
                       <ChevronDown className="w-4 h-4" />
                     </div>

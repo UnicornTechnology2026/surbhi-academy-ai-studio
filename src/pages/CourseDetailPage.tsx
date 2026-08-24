@@ -57,7 +57,7 @@ export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({ onOpenEnquir
 
   // Relevant faculty teaching this program
   const relevantFaculty = faculty
-    .filter((f) => f.status === 'active' && f.classesTaught.some((cls) => course.gradeLevel.includes(cls)))
+    .filter((f) => f.status === 'active' && f.subjectsTaught.some((cls) => course.gradeLevel.includes(cls)))
     .slice(0, 3);
 
   return (

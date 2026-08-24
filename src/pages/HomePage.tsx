@@ -131,7 +131,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
                   {/* Floating badge inside image */}
                   <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
                     <span className="bg-[#0F172A]/90 backdrop-blur-md border border-amber-500/30 text-amber-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                      ★ 15+ Years Legacy
+                      ★ 29+ Years Legacy
                     </span>
                     <span className="bg-emerald-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">
                       98.4% Merit Rate
@@ -362,7 +362,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
               18+ Years Expert Faculty Leadership
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Taught directly by Ph.D. scholars, senior board evaluators, and Chartered Accountants who simplify complex topics with clarity.
+              Learn directly from expert teachers, experienced educators, senior board evaluators, and subject specialists who bring deep knowledge and simplify complex concepts with clarity.
             </p>
           </div>
 
@@ -439,7 +439,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
               The 4-Step Academic Mastery Cycle
             </h2>
             <p className="text-sm sm:text-base text-slate-300 mt-2">
-              Our proven educational framework engineered to eliminate fear, instill logical deduction, and maximize exam scores.
+              Our proven teaching approach makes learning easier, builds confidence, improves logical thinking, and helps students achieve better exam scores.
             </p>
           </div>
 

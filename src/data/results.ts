@@ -18,7 +18,8 @@ export const RESULTS_DATA: StudentResult[] = [
     badgeType: 'gold',
     featured: true,
     displayOrder: 1,
-    status: 'active'
+    status: 'active',
+    gradeLevel: '',
   },
   {
     id: 'r2',
@@ -37,7 +38,8 @@ export const RESULTS_DATA: StudentResult[] = [
     badgeType: 'silver',
     featured: true,
     displayOrder: 2,
-    status: 'active'
+    status: 'active',
+    gradeLevel: '',
   },
   {
     id: 'r3',
@@ -56,7 +58,8 @@ export const RESULTS_DATA: StudentResult[] = [
     badgeType: 'bronze',
     featured: true,
     displayOrder: 3,
-    status: 'active'
+    status: 'active',
+    gradeLevel: '',
   },
   {
     id: 'r4',
@@ -75,7 +78,8 @@ export const RESULTS_DATA: StudentResult[] = [
     badgeType: 'gold',
     featured: true,
     displayOrder: 4,
-    status: 'active'
+    status: 'active',
+    gradeLevel: '',
   },
   {
     id: 'r5',
@@ -94,7 +98,8 @@ export const RESULTS_DATA: StudentResult[] = [
     badgeType: 'gold',
     featured: true,
     displayOrder: 5,
-    status: 'active'
+    status: 'active',
+    gradeLevel: '',
   },
   {
     id: 'r6',
@@ -113,7 +118,8 @@ export const RESULTS_DATA: StudentResult[] = [
     badgeType: 'special',
     featured: true,
     displayOrder: 6,
-    status: 'active'
+    status: 'active',
+    gradeLevel: '',
   },
   {
     id: 'r7',
@@ -132,7 +138,8 @@ export const RESULTS_DATA: StudentResult[] = [
     badgeType: 'silver',
     featured: false,
     displayOrder: 7,
-    status: 'active'
+    status: 'active',
+    gradeLevel: '',
   },
   {
     id: 'r8',
@@ -151,6 +158,7 @@ export const RESULTS_DATA: StudentResult[] = [
     badgeType: 'bronze',
     featured: false,
     displayOrder: 8,
-    status: 'active'
+    status: 'active',
+    gradeLevel: '',
   }
 ];

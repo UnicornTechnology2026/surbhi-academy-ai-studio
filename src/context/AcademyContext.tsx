@@ -24,17 +24,18 @@ import { INITIAL_FAQS } from '../data/faqs';
 import { ACADEMY_INFO } from '../data/academyInfo';
 
 const DEFAULT_HERO_CONTENT: HeroContent = {
+  eyebrow: '',
   headlineMain: 'Empowering Young Minds For',
   headlineHighlight: 'Academic Brilliance',
   headlineEnd: '& Board Merit.',
-  description: 'Nagpur’s most trusted coaching academy for Class 8 to 10 Foundation, Class 11-12 (State & CBSE), and Competitive Olympiads. Backed by 15+ years of pedagogical excellence and verified state rank holders.',
+  description: 'Nagpur’s most trusted coaching academy for Class 8 to 10 Foundation, Class 11-12 (State & CBSE), and Competitive Olympiads. Backed by 29+ years of pedagogical excellence and verified state rank holders.',
   primaryButtonText: 'Explore Courses',
   secondaryButtonText: 'Enquire for Admission',
   badgeText: 'Rank 1 Record in Board Exams',
   stats: {
-    yearsOfExcellence: 15,
+    yearsOfExcellence: 29,
     successfulStudents: 12500,
-    expertFaculty: 28,
+    expertFaculty: 13,
     topAchievers: 520,
     boardMeritRate: '98.4%',
     cityRankHolders: 45
@@ -42,19 +43,19 @@ const DEFAULT_HERO_CONTENT: HeroContent = {
 };
 
 const DEFAULT_ABOUT_CONTENT: AboutContent = {
-  tagline: 'A legacy of academic integrity, conceptual clarity, and individual student mentorship since 2011.',
-  storyTitle: 'Over 15 Years of Crafting Leaders & Board Toppers',
+  tagline: 'A legacy of academic integrity, conceptual clarity, and individual student mentorship since 1997.',
+  storyTitle: 'Over 29 Years of Crafting Leaders & Board Toppers',
   storyParagraphs: [
-    'Founded in 2011 by Dr. Rahul Sharma, Surbhi Coaching Academy was born with a singular focus: to replace anxiety-driven rote memorization with deep conceptual clarity, disciplined study routines, and personalized mentorship.',
+    'Founded in 1997 by Mr.Sandeep Panchabhai, Surbhi Coaching Academy was born with a singular focus: to replace anxiety-driven rote memorization with deep conceptual clarity, disciplined study routines, and personalized mentorship.',
     'Over the last decade and a half, we have grown from a modest classroom into one of Central India’s most respected academic coaching institutions. Our student-centric philosophy ensures that no child is left behind in a crowded hall; our classes are strictly capped at 25 to 30 learners.',
     'Today, Surbhi alumni study at premier medical colleges, top engineering universities, top commerce institutions like SRCC, and hold prestigious administrative positions. We continue to innovate our teaching methods with modern smart technology while holding fast to classical academic rigor.'
   ],
   founderMessage: {
-    name: 'Dr. Rahul Sharma',
+    name: 'Mr.Sandeep Panchabhai',
     role: 'Founder & Academic Director',
-    photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80',
+    photo: '../../assets/director/director.png',
     message: 'Every student possesses boundless potential waiting for the right guidance. At Surbhi Academy, we do not simply prepare students for examinations; we cultivate the critical thinking, resilience, and curiosity that will guide their careers for life. We welcome you to join our family of achievers.',
-    signatureText: 'Dr. Rahul Sharma, Ph.D.'
+    signatureText: 'Mr.Sandeep Panchabhai.'
   },
   vision: 'To be the gold standard in foundational and secondary education, nurturing confident, intellectually capable, and ethically grounded achievers who lead their fields.',
   mission: 'To provide high-quality, concept-first education through experienced faculty, modern visual pedagogical tools, small batch sizes, and continuous diagnostic evaluation that eliminates fear and fosters genuine academic enthusiasm.',
@@ -80,15 +81,14 @@ const DEFAULT_ABOUT_CONTENT: AboutContent = {
 
 const DEFAULT_SITE_SETTINGS: SiteSettings = {
   name: 'Surbhi Coaching Academy',
-  tagline: 'Excellence in Academic Coaching & Board Merit',
+  tagline: 'Teaching Beyond Examination',
   logoUrl: '',
-  primaryPhone: '+91 98765 43210',
-  secondaryPhone: '+91 98765 43211',
-  whatsappNumber: '+919876543210',
-  email: 'admissions@surbhicoaching.edu',
-  infoEmail: 'info@surbhicoaching.edu',
-  mainCampusAddress: 'Surbhi Academy,  N- 152, opposite Volleyball Ground, Reshimbag, Nagpur, Maharashtra 440009, India',
-  branchAddress: 'West Wing Campus, 2nd Floor, Knowledge Plaza, VIP Road, Nagpur, Maharashtra - 440022',
+  primaryPhone: '+91 98226 94137',
+  secondaryPhone: '+91 88888 24388',
+  whatsappNumber: '+91 98226 94137',
+  email: 'surabhitutionclasses@rediffmail.com',
+  infoEmail: 'surabhitution',
+  mainCampusAddress: 'Surbhi Academy,  N-42, Near Volleyball Ground, Reshimbag, Nagpur, Maharashtra 440009, India',
   workingHoursWeekdays: 'Monday – Saturday: 8:00 AM – 8:30 PM',
   workingHoursSunday: 'Sunday: 9:00 AM – 2:00 PM (Counseling & Enquiry)',
   socials: {
@@ -98,9 +98,9 @@ const DEFAULT_SITE_SETTINGS: SiteSettings = {
     linkedin: 'https://linkedin.com'
   },
   seo: {
-    metaTitle: 'Surbhi Coaching Academy - Premier Coaching for Class 6-12 & Olympiads in Nagpur',
-    metaDescription: 'Best coaching classes in Nagpur for Class 6-10 Foundation, Class 11-12 Science (PCM/PCB) & Commerce. Small batches, top faculty, and 99%+ board results.',
-    keywords: 'Surbhi coaching academy, coaching classes in Nagpur, Class 10 board coaching, 11th 12th science commerce, Olympiad coaching'
+    metaTitle: 'Surbhi Coaching Academy - Premier Coaching for Class 8-12, Olympiads & JEE and NEET Coaching  in Nagpur',
+    metaDescription: 'Best coaching classes in Nagpur for Class 8-10 Foundation, Class 11-12 Science (PCM/PCB). Small batches, top faculty, and 99%+ board results.',
+    keywords: 'Surbhi coaching academy, coaching classes in Nagpur, Class 10 board coaching, 11th 12th science, Olympiad coaching and JEE and NEET Coaching.'
   }
 };
 

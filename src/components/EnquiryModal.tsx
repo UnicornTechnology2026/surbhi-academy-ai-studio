@@ -289,16 +289,14 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     onChange={(e) => setFormData({ ...formData, studentClass: e.target.value })}
                     className="w-full px-3 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:border-amber-500 bg-white"
                   >
-                    <option value="Class 6">Class 6 (Junior Foundation)</option>
-                    <option value="Class 7">Class 7 (Junior Foundation)</option>
                     <option value="Class 8">Class 8 (Junior Foundation)</option>
                     <option value="Class 9">Class 9 (Pre-Board Foundation)</option>
                     <option value="Class 10">Class 10 (Board Excellence & Merit)</option>
                     <option value="Class 11 Science">Class 11 Science (PCM / PCB)</option>
                     <option value="Class 12 Science">Class 12 Science (PCM / PCB)</option>
-                    <option value="Class 11 Commerce">Class 11 Commerce</option>
-                    <option value="Class 12 Commerce">Class 12 Commerce Pro</option>
                     <option value="Olympiad / NTSE">Olympiad / NTSE Edge</option>
+                    <option value="JEE">JEE</option>
+                    <option value="NEET">NEET</option>
                   </select>
                 </div>
 

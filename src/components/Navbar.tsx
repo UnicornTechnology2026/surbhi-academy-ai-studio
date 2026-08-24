@@ -51,10 +51,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
     { name: 'About Us', path: '/about' },
     { name: 'Courses', path: '/courses' },
     { name: 'Results', path: '/results' },
-    { name: 'Faculty', path: '/faculty' },
-    { name: 'Gallery', path: '/gallery' },
-    { name: 'Testimonials', path: '/testimonials' },
-    { name: 'Admissions', path: '/admissions' },
     { name: 'FAQs', path: '/faqs' },
     { name: 'Contact', path: '/contact' }
   ];

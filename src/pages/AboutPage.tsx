@@ -34,11 +34,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenEnquiry }) => {
             <span>Our Journey & Academic Philosophy</span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-serif font-bold text-[#0F172A] leading-tight">
-            Nurturing Curiosity, Building Strong Foundations
+            Building Strong Foundations, Inspiring Curiosity
           </h1>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
             {aboutContent.tagline}
           </p>
+
         </div>
       </section>
 
@@ -56,10 +57,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenEnquiry }) => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 text-white">
                 <span className="text-xs uppercase tracking-widest text-amber-400 font-bold">
-                  Since 2011
+                  Since 1997
                 </span>
                 <h3 className="text-xl font-serif font-bold text-white mt-1">
-                  15+ Years of Proven Excellence
+                  29+ Years of Proven Excellence
                 </h3>
               </div>
             </div>
@@ -120,9 +121,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenEnquiry }) => {
                 </h3>
                 <div className="text-xs font-bold text-amber-700 uppercase tracking-wider mt-0.5">
                   {aboutContent.founderMessage.role}
-                </div>
-                <div className="text-xs text-slate-500 mt-1">
-                  Ph.D. Applied Mathematics • 18+ Yrs Experience
                 </div>
               </div>
 

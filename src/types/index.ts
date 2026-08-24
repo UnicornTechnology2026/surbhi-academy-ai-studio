@@ -90,7 +90,6 @@ export interface FacultyMember {
   subjectsTaught: string[];
   /** @deprecated use subjectsTaught - kept for backward compatibility */
   subject?: string;
-  classesTaught: string[];
   displayOrder?: number;
   status?: 'active' | 'inactive';
 
@@ -200,7 +199,7 @@ export interface AcademyStats {
 }
 
 export interface HeroContent {
-
+  eyebrow?: ''
   headlineMain: string;
   headlineHighlight: string;
   headlineEnd: string;
@@ -236,7 +235,7 @@ export interface SiteSettings {
   secondaryPhone: string;
   whatsappNumber: string;
   email: string;
-  infoEmail: string;
+  infoEmail?: string;
   mainCampusAddress: string;
   branchAddress?: string;
   secondaryCampusAddress?: string;

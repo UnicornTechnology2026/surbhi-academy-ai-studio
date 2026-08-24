@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { 
-  Sparkles, 
-  Search, 
-  Filter, 
-  BookOpen, 
-  CheckCircle2, 
-  Clock, 
-  Users, 
-  Calendar, 
+import {
+  Sparkles,
+  Search,
+  Filter,
+  BookOpen,
+  CheckCircle2,
+  Clock,
+  Users,
+  Calendar,
   ArrowRight,
   ShieldCheck
 } from 'lucide-react';
@@ -29,10 +29,10 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({ onOpenEnquiry }) => {
 
   const categories: { key: 'all' | CourseCategory; label: string }[] = [
     { key: 'all', label: 'All Programs' },
-    { key: 'foundation', label: 'Class 6–10 Foundation' },
+    { key: 'foundation', label: 'Class 8–10 Foundation' },
     { key: 'science', label: '11–12 Science (PCM/PCB)' },
-    { key: 'commerce', label: '11–12 Commerce Pro' },
-    { key: 'competitive', label: 'Olympiad & NTSE Edge' }
+    { key: 'competitive', label: 'JEE/NEET' },
+
   ];
 
   const filteredCourses = courses.filter((course) => {
@@ -40,7 +40,7 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({ onOpenEnquiry }) => {
     const matchesCategory = selectedCategory === 'all' || course.category === selectedCategory;
     const matchesSearch =
       course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      course.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      course.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
       course.subjects.some((s) => s.toLowerCase().includes(searchQuery.toLowerCase()));
     const matchesGrade = selectedGrade === 'all' || course.gradeLevel.includes(selectedGrade);
     return matchesCategory && matchesSearch && matchesGrade;
@@ -73,11 +73,10 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({ onOpenEnquiry }) => {
               <button
                 key={cat.key}
                 onClick={() => setSelectedCategory(cat.key)}
-                className={`px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                  selectedCategory === cat.key
-                    ? 'bg-[#0F172A] text-white shadow-md'
-                    : 'bg-slate-50 text-slate-600 hover:bg-slate-100'
-                }`}
+                className={`px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${selectedCategory === cat.key
+                  ? 'bg-[#0F172A] text-white shadow-md'
+                  : 'bg-slate-50 text-slate-600 hover:bg-slate-100'
+                  }`}
               >
                 {cat.label}
               </button>
@@ -110,8 +109,6 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({ onOpenEnquiry }) => {
                 className="px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none focus:border-amber-500 bg-white"
               >
                 <option value="all">All Classes</option>
-                <option value="6">Class 6</option>
-                <option value="7">Class 7</option>
                 <option value="8">Class 8</option>
                 <option value="9">Class 9</option>
                 <option value="10">Class 10</option>

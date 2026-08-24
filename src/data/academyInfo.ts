@@ -11,13 +11,11 @@ export const ACADEMY_INFO = {
     cityRankHolders: 45
   },
   contact: {
-    primaryPhone: '+91 98765 43210',
-    secondaryPhone: '+91 98765 43211',
-    whatsappNumber: '+919876543210',
-    email: 'admissions@surbhicoaching.edu',
-    infoEmail: 'info@surbhicoaching.edu',
-    mainCampusAddress: 'Surbhi Academic Tower,  N- 152, opposite Volleyball Ground, Reshimbag, Nagpur, Maharashtra 440009, India',
-    branchAddress: 'West Wing Campus, 2nd Floor, Knowledge Plaza, VIP Road, Nagpur, Maharashtra - 440022',
+    primaryPhone: '+91 98226 94137',
+    secondaryPhone: '+91 88888 24388',
+    whatsappNumber: '+91 98226 94137',
+    email: 'surabhitutionclasses@rediffmail.com',
+    mainCampusAddress: 'Surbhi Academic, N-42, Near Volleyball Ground, Reshimbagh, Nagpur, Maharashtra, India',
     workingHours: {
       weekdays: 'Monday – Saturday: 8:00 AM – 8:30 PM',
       sunday: 'Sunday: 9:00 AM – 2:00 PM (Counseling & Enquiry)'
@@ -97,7 +95,7 @@ export const ACADEMY_INFO = {
     {
       stepNumber: 1,
       title: 'Choose Your Course',
-      description: 'Explore our specialized programs for Foundation (Class 6-10), Science (11-12), Commerce (11-12), or Competitive batches.'
+      description: 'Explore our specialized programs for Foundation (Class 8-10), Science (11-12), Commerce (11-12), or Competitive batches.'
     },
     {
       stepNumber: 2,

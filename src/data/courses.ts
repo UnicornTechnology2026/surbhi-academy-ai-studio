@@ -105,7 +105,7 @@ export const COURSES_DATA: Course[] = [
     duration: '1 Academic Year + Board Crash Course',
     badge: 'Flagship Program (99.2% Top Score)',
     shortDescription: 'Our premier Class 10 Board program designed to convert potential into 95%+ board toppers and state ranks.',
-    fullDescription: 'The Class 10 Board Excellence Batch is Surbhi Academy’s hallmark program. Built on over 15 years of proven board pedagogical experience, this program pairs rigorous conceptual training with structured answer-writing practice, continuous pre-board simulations, examiner rubric feedback, and personalized stress management.',
+    fullDescription: 'The Class 10 Board Excellence Batch is Surbhi Academy’s hallmark program. Built on over 29 years of proven board pedagogical experience, this program pairs rigorous conceptual training with structured answer-writing practice, continuous pre-board simulations, examiner rubric feedback, and personalized stress management.',
     subjects: ['Mathematics (Standard / Basic)', 'Science (Physics, Chem, Bio)', 'Social Science', 'English Language & Lit'],
     features: [
       'Comprehensive syllabus completion by October',

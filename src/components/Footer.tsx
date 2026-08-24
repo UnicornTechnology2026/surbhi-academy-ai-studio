@@ -32,44 +32,7 @@ export const Footer: React.FC<FooterProps> = ({
 
   return (
     <footer className="bg-[#0F172A] text-white border-t border-slate-800">
-      {/* Upper Newsletter / Action strip */}
-      <div className="border-b border-slate-800/80 bg-slate-900/60 py-10 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4 text-center md:text-left">
-            <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0 mx-auto md:mx-0">
-              <Award className="w-6 h-6" />
-            </div>
-            <div>
-              <div className="flex items-center justify-center md:justify-start gap-2">
-                <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold">
-                  Excellence in Coaching
-                </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-                <span className="text-xs text-slate-400">15+ Years Legacy</span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-serif font-bold text-white mt-0.5">
-                Ready to Ignite Your Academic Potential?
-              </h3>
-            </div>
-          </div>
-          <div className="flex items-center gap-3 w-full sm:w-auto">
-            <button
-              onClick={() => onOpenEnquiry()}
-              className="flex-1 sm:flex-initial bg-amber-500 hover:bg-amber-400 text-slate-950 px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all shadow-lg hover:shadow-amber-500/20 flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <span>Book Free 2-Day Trial Pass</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </button>
-            <a
-              href={`tel:${siteSettings.primaryPhone.replace(/\s+/g, '')}`}
-              className="hidden sm:inline-flex bg-white/10 hover:bg-white/20 border border-white/20 text-white px-5 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all items-center gap-2"
-            >
-              <Phone className="w-4 h-4 text-amber-400" />
-              <span>Call Helpline</span>
-            </a>
-          </div>
-        </div>
-      </div>
+
 
       {/* Main Footer Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
