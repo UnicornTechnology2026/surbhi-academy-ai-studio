@@ -84,8 +84,13 @@ export const AdminLoginPage: React.FC = () => {
       <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10">
         {/* Academy Brand Logo */}
         <div className="text-center space-y-2">
-          <div className="w-14 h-14 bg-amber-500 text-slate-950 rounded-2xl flex items-center justify-center font-serif font-extrabold text-3xl mx-auto shadow-xl">
-            S
+          <div className="w-[93px] h-[70px] bg-[#123B2A] text-slate-950 rounded-2xl flex items-center justify-center font-serif font-extrabold text-3xl mx-auto shadow-xl">
+            <img
+              src='../../assets/logo.png'
+              alt=''
+              className="w-[60px] h-[68px] object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
           </div>
           <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
             Surbhi Admin Portal

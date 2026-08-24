@@ -40,8 +40,13 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Col 1 & 2: Brand Info */}
           <div className="lg:col-span-2 space-y-5">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-amber-500 flex items-center justify-center rounded-xl shadow-md">
-                <span className="text-slate-950 font-serif font-bold text-2xl">S</span>
+              <div className="w-[93px] h-[70px] bg-[#123B2A] flex items-center justify-center rounded-xl shadow-md">
+                <img
+                  src='../../assets/logo.png'
+                  alt=''
+                  className="w-[60px] h-[68px] object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
               </div>
               <div>
                 <span className="font-bold text-xl tracking-tight text-white uppercase block leading-none">

@@ -95,8 +95,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[74px] flex items-center justify-between">
         {/* Brand Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 bg-[#0F172A] flex items-center justify-center rounded-xl shadow-md group-hover:bg-slate-800 transition-colors">
-            <span className="text-amber-400 font-serif font-bold text-2xl tracking-tighter">S</span>
+          <div className="w-[93px] h-[70px] bg-[#123B2A] flex items-center justify-center rounded-xl shadow-md group-hover:bg-slate-800 transition-colors">
+            <img
+              src='../../assets/logo.png'
+              alt=''
+              className="w-[60px] h-[68px] object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
           </div>
           <div className="flex flex-col">
             <span className="font-bold text-lg sm:text-xl tracking-tight text-[#0F172A] uppercase leading-none">
