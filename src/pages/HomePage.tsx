@@ -375,52 +375,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
               </div>
             </motion.div>
           </div>
-
-          {/* Statistics Bar - Animated */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-14 sm:mt-16 pt-8 border-t border-slate-200/80"
-          >
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
-              <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-xs">
-                <div className="text-3xl sm:text-4xl font-serif font-extrabold text-[#0F172A]">
-                  29+
-                </div>
-                <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mt-1">
-                  Years of Trust in Nagpur
-                </div>
-              </div>
-
-              <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-xs">
-                <div className="text-3xl sm:text-4xl font-serif font-extrabold text-amber-600">
-                  12,500+
-                </div>
-                <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mt-1">
-                  Students Mentored
-                </div>
-              </div>
-
-              <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-xs">
-                <div className="text-3xl sm:text-4xl font-serif font-extrabold text-[#0F172A]">
-                  100%
-                </div>
-                <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mt-1">
-                  Board Exam Pass Rate
-                </div>
-              </div>
-
-              <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-xs">
-                <div className="text-3xl sm:text-4xl font-serif font-extrabold text-amber-600">
-                  Max 25-30
-                </div>
-                <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mt-1">
-                  Students per Batch
-                </div>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
 
@@ -522,73 +476,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
           </div>
         </div>
       </section>
-
-      {/* 3. REAL SCORE TRANSFORMATION JOURNEYS (Before vs After) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          eyebrow="Proven Score Leap"
-          title="From Confusion to 95%+ Board Distinction"
-          subtitle="Real Nagpur students who struggled with concepts until personalized mentorship transformed their results."
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
-          {transformationStories.map((story, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              whileHover={{ y: -6 }}
-              className="bg-white rounded-3xl border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between relative overflow-hidden"
-            >
-              <div className="space-y-4">
-                {/* Student Avatar & Identity */}
-                <div className="flex items-center gap-3.5">
-                  <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-amber-400 shadow-sm shrink-0">
-                    <img src={story.photo} alt={story.name} className="w-full h-full object-cover" />
-                  </div>
-                  <div>
-                    <h3 className="font-serif font-bold text-lg text-[#0F172A] leading-snug">
-                      {story.name}
-                    </h3>
-                    <p className="text-xs text-slate-500">{story.grade} • {story.school}</p>
-                  </div>
-                </div>
-
-                {/* Before & After Score Transformation Badge */}
-                <div className="bg-slate-50 rounded-2xl p-3.5 border border-slate-100 flex items-center justify-between">
-                  <div className="text-center flex-1">
-                    <div className="text-[10px] text-slate-500 uppercase font-bold">{story.beforeLabel}</div>
-                    <div className="text-lg font-bold text-slate-500 line-through mt-0.5">{story.beforeScore}</div>
-                  </div>
-                  <div className="px-2 text-amber-500">
-                    <ArrowRight className="w-5 h-5" />
-                  </div>
-                  <div className="text-center flex-1 bg-amber-500/10 border border-amber-400/30 rounded-xl py-1.5">
-                    <div className="text-[10px] text-amber-900 uppercase font-bold">{story.afterLabel}</div>
-                    <div className="text-xl font-serif font-extrabold text-[#0F172A]">{story.afterScore}</div>
-                  </div>
-                </div>
-
-                {/* Feedback Quote */}
-                <p className="text-xs sm:text-sm text-slate-700 italic leading-relaxed">
-                  "{story.story}"
-                </p>
-              </div>
-
-              <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-emerald-700 font-semibold">
-                <span className="flex items-center gap-1">
-                  <BadgeCheck className="w-4 h-4 text-emerald-600" />
-                  <span>Verified Nagpur Board Ranker</span>
-                </span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-
 
       {/* 6. FEATURED ACADEMIC PROGRAMS GRID */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

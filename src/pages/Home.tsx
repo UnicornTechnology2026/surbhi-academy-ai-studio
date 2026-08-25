@@ -12,8 +12,6 @@ import {
   CheckCircle2,
   Award,
   ChevronRight,
-  Phone,
-  Clock
 } from 'lucide-react';
 import { SectionHeader } from '../components/SectionHeader';
 import { CourseCard } from '../components/CourseCard';

@@ -64,11 +64,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenEnquiry }) => {
                 </h3>
               </div>
             </div>
-            {/* Small stats pill */}
-            <div className="absolute -bottom-6 -right-6 bg-[#0F172A] text-white p-5 rounded-2xl shadow-xl border border-slate-800 hidden sm:block">
-              <div className="text-3xl font-serif font-bold text-amber-400">12,500+</div>
-              <div className="text-xs text-slate-300 font-medium mt-0.5">Successful Alumni</div>
-            </div>
           </div>
 
           {/* Right Text */}

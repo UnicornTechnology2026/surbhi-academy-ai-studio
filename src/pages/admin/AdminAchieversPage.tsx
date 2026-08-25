@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import {
-  Trophy,
   Plus,
   Edit2,
   Trash2,
   Star,
   Search,
-  Filter,
   X,
-  Award,
-  CheckCircle2
 } from 'lucide-react';
 import { useAcademy } from '../../context/AcademyContext';
 import { StudentResult, AchieverCategory } from '../../types';
 import { ConfirmModal } from '../../components/ConfirmModal';
+import { ImageUpload } from '../../components/admin/ImageUpload';
 
 export const AdminAchieversPage: React.FC = () => {
   const {
@@ -36,6 +33,7 @@ export const AdminAchieversPage: React.FC = () => {
   const [achieverToDelete, setAchieverToDelete] = useState<StudentResult | null>(null);
 
   // Form State
+  // Form State
   const [form, setForm] = useState<Partial<StudentResult>>({
     name: '',
     rankTitle: 'City Topper (Nagpur)',
@@ -45,9 +43,9 @@ export const AdminAchieversPage: React.FC = () => {
     year: '2025',
     category: 'class10',
     categoryLabel: 'Class 10 Board Toppers',
-    school: 'Bhavans Bhagwandas Purohit Vidya Mandir',
-    testimonial: 'Surabhi Academy provided the exact conceptual framework and test rigor I needed.',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+    school: '',
+    testimonial: '',
+    image: '', // <--- Changed to blank string
     badgeType: 'gold',
     featured: true,
     status: 'active'
@@ -67,16 +65,16 @@ export const AdminAchieversPage: React.FC = () => {
     setEditingAchiever(null);
     setForm({
       name: '',
-      rankTitle: 'State Rank 1',
+      rankTitle: '',
       exam: 'CBSE Class 10 Board Exam',
-      score: '99.0%',
-      percentile: '100th Percentile',
+      score: '',
+      percentile: '',
       year: '2025',
       category: 'class10',
       categoryLabel: 'Class 10 Board Toppers',
-      school: 'Centre Point School',
-      testimonial: 'The dedicated faculty and chapter-wise mock tests made all the difference.',
-      image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+      school: '',
+      testimonial: '',
+      image: '', // <--- Changed to blank string
       badgeType: 'gold',
       featured: true,
       status: 'active'
@@ -195,6 +193,7 @@ export const AdminAchieversPage: React.FC = () => {
         </div>
       </div>
 
+
       {/* Achievers Table */}
       <div className="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-xl">
         <div className="overflow-x-auto">
@@ -205,7 +204,7 @@ export const AdminAchieversPage: React.FC = () => {
                 <th className="py-4 px-4 font-semibold">Exam & Year</th>
                 <th className="py-4 px-4 font-semibold">Score / Rank</th>
                 <th className="py-4 px-4 font-semibold">School</th>
-                <th className="py-4 px-4 font-semibold">Featured</th>
+                {/* Featured column header removed */}
                 <th className="py-4 px-6 font-semibold text-right">Actions</th>
               </tr>
             </thead>
@@ -238,33 +237,24 @@ export const AdminAchieversPage: React.FC = () => {
                   <td className="py-4 px-4 text-slate-300 max-w-[160px] truncate">
                     {a.school || '—'}
                   </td>
-                  <td className="py-4 px-4">
-                    <button
-                      onClick={() => toggleAchieverFeatured(a.id)}
-                      className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider cursor-pointer transition-colors flex items-center gap-1 ${a.featured
-                        ? 'bg-amber-500/20 text-amber-400 border border-amber-500/40'
-                        : 'bg-slate-800 text-slate-400'
-                        }`}
-                    >
-                      <Star className={`w-3 h-3 ${a.featured ? 'fill-amber-400 text-amber-400' : ''}`} />
-                      <span>{a.featured ? 'Featured' : 'Standard'}</span>
-                    </button>
-                  </td>
-                  <td className="py-4 px-6 text-right space-x-2">
-                    <button
-                      onClick={() => handleOpenEdit(a)}
-                      className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
-                      title="Edit"
-                    >
-                      <Edit2 className="w-3.5 h-3.5" />
-                    </button>
-                    <button
-                      onClick={() => handleDeletePrompt(a)}
-                      className="p-2 rounded-lg bg-red-950/60 hover:bg-red-900 text-red-300 transition-colors cursor-pointer"
-                      title="Delete"
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                    </button>
+                  {/* Edit & Delete in ONE single line */}
+                  <td className="py-4 px-6 text-right whitespace-nowrap">
+                    <div className="inline-flex items-center justify-end gap-2">
+                      <button
+                        onClick={() => handleOpenEdit(a)}
+                        className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer inline-flex items-center justify-center"
+                        title="Edit"
+                      >
+                        <Edit2 className="w-3.5 h-3.5" />
+                      </button>
+                      <button
+                        onClick={() => handleDeletePrompt(a)}
+                        className="p-2 rounded-lg bg-red-950/60 hover:bg-red-900 text-red-300 transition-colors cursor-pointer inline-flex items-center justify-center"
+                        title="Delete"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -393,30 +383,16 @@ export const AdminAchieversPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-slate-300 uppercase font-bold mb-1">
-                  Photo URL
-                </label>
-                <input
-                  type="text"
-                  placeholder="https://images.unsplash.com/..."
+                <ImageUpload
+                  label="Student Photo (Drag & Drop or Select from Device)"
                   value={form.image}
-                  onChange={(e) => setForm({ ...form, image: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
+                  onChange={(img: string) => setForm({ ...form, image: img })}
+                  helperText="Upload student passport/portrait photo (PNG, JPG, WebP)"
+                  aspectRatio="portrait"
+                  theme="dark"
                 />
               </div>
 
-              <div>
-                <label className="block text-slate-300 uppercase font-bold mb-1">
-                  Student Testimonial / Quote
-                </label>
-                <textarea
-                  rows={2}
-                  placeholder="What the student said about Surabhi Coaching Academy..."
-                  value={form.testimonial || ''}
-                  onChange={(e) => setForm({ ...form, testimonial: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
-                />
-              </div>
 
               <div className="pt-4 border-t border-slate-800 flex items-center justify-end gap-3">
                 <button

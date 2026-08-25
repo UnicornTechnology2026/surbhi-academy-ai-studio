@@ -1,20 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import {
-  Trophy,
-  Sparkles,
-  Search,
-  Filter,
-  Award,
-  Star,
-  TrendingUp,
-  GraduationCap,
-  CheckCircle2,
-  ArrowRight
-} from 'lucide-react';
+import { Trophy } from 'lucide-react';
 import { useAcademy } from '../context/AcademyContext';
 import { RankCard } from '../components/RankCard';
-import { SectionHeader } from '../components/SectionHeader';
 import { CTASection } from '../components/CTASection';
 
 interface ResultsPageProps {
@@ -117,8 +105,8 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ onOpenEnquiry }) => {
                   key={cat.key}
                   onClick={() => setSelectedCategory(cat.key)}
                   className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${selectedCategory === cat.key
-                      ? 'bg-[#0F172A] text-white shadow-sm'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    ? 'bg-[#0F172A] text-white shadow-sm'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                     }`}
                 >
                   {cat.label}

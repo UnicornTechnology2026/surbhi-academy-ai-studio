@@ -173,24 +173,24 @@ export const AdminDashboardPage: React.FC = () => {
 
                   return (
                     <tr key={enq.id} className="hover:bg-slate-800/40 transition-colors">
-                      <td className="p-3">
+                      <td className="p-1">
                         <div className="font-bold text-white">{enq.studentName}</div>
                         <div className="text-[11px] text-slate-400">Parent: {enq.parentName || 'N/A'}</div>
                       </td>
-                      <td className="p-3">
+                      <td className="p-1">
                         <span className="font-semibold text-slate-200">{enq.studentClass}</span>
                         <div className="text-[10px] text-slate-400 truncate max-w-[140px]">{enq.courseInterested}</div>
                       </td>
-                      <td className="p-3">
+                      <td className="p-1">
                         <div className="text-slate-300 font-mono">{enq.mobileNumber}</div>
                         <div className="text-[10px] text-slate-400">{enq.emailAddress || 'No Email'}</div>
                       </td>
-                      <td className="p-3">
+                      <td className="p-1">
                         <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border ${statusBadge}`}>
                           {enq.status}
                         </span>
                       </td>
-                      <td className="p-3 text-right">
+                      <td className="p-1 text-right">
                         <Link
                           to="/admin/enquiries"
                           className="inline-flex items-center gap-1 text-amber-400 hover:text-amber-300 text-xs font-bold"

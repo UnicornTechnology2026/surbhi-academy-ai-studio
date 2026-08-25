@@ -198,8 +198,8 @@ export const AdminEnquiriesPage: React.FC = () => {
               key={status.key}
               onClick={() => setStatusFilter(status.key)}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${statusFilter === status.key
-                  ? 'bg-amber-500 text-slate-950 font-bold'
-                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                ? 'bg-amber-500 text-slate-950 font-bold'
+                : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
                 }`}
             >
               {status.label}
@@ -219,6 +219,7 @@ export const AdminEnquiriesPage: React.FC = () => {
         </div>
       </div>
 
+
       {/* Leads Table */}
       <div className="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-xl">
         <div className="overflow-x-auto">
@@ -228,7 +229,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                 <th className="py-4 px-6 font-semibold">Student & Parent</th>
                 <th className="py-4 px-4 font-semibold">Contact</th>
                 <th className="py-4 px-4 font-semibold">Class / Course</th>
-                <th className="py-4 px-4 font-semibold">Lead Source</th>
+                {/* ❌ Lead Source Column Header Removed */}
                 <th className="py-4 px-4 font-semibold">Status</th>
                 <th className="py-4 px-4 font-semibold">Date</th>
                 <th className="py-4 px-6 font-semibold text-right">Actions</th>
@@ -261,11 +262,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                       {e.courseInterested || 'General Enquiry'}
                     </div>
                   </td>
-                  <td className="py-4 px-4 text-slate-400 text-[11px]">
-                    <span className="bg-slate-800 px-2 py-0.5 rounded text-[10px] text-slate-300">
-                      {e.source || 'Website'}
-                    </span>
-                  </td>
+                  {/* ❌ Lead Source Table Cell <td> Removed */}
                   <td className="py-4 px-4">
                     <select
                       value={e.status}
@@ -288,21 +285,23 @@ export const AdminEnquiriesPage: React.FC = () => {
                   <td className="py-4 px-4 text-slate-400 text-[11px]">
                     {new Date(e.createdAt).toLocaleDateString()}
                   </td>
-                  <td className="py-4 px-6 text-right space-x-2">
-                    <button
-                      onClick={() => handleOpenDetail(e)}
-                      className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-400 hover:text-white transition-colors cursor-pointer"
-                      title="View Lead Details & Add Notes"
-                    >
-                      <Eye className="w-3.5 h-3.5" />
-                    </button>
-                    <button
-                      onClick={() => handleDeletePrompt(e)}
-                      className="p-2 rounded-lg bg-red-950/60 hover:bg-red-900 text-red-300 transition-colors cursor-pointer"
-                      title="Delete Lead"
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                    </button>
+                  <td className="py-4 px-6 text-right whitespace-nowrap">
+                    <div className="inline-flex items-center justify-end gap-2">
+                      <button
+                        onClick={() => handleOpenDetail(e)}
+                        className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-400 hover:text-white transition-colors cursor-pointer inline-flex items-center justify-center"
+                        title="View & Edit Lead Details / Notes"
+                      >
+                        <Eye className="w-3.5 h-3.5" />
+                      </button>
+                      <button
+                        onClick={() => handleDeletePrompt(e)}
+                        className="p-2 rounded-lg bg-red-950/60 hover:bg-red-900 text-red-300 hover:text-red-100 transition-colors cursor-pointer inline-flex items-center justify-center"
+                        title="Delete Lead"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -406,8 +405,8 @@ export const AdminEnquiriesPage: React.FC = () => {
                       type="button"
                       onClick={() => handleStatusChange(st)}
                       className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer transition-all ${selectedEnquiry.status === st
-                          ? 'bg-amber-500 text-slate-950 font-bold'
-                          : 'bg-slate-950 border border-slate-800 text-slate-400 hover:text-white'
+                        ? 'bg-amber-500 text-slate-950 font-bold'
+                        : 'bg-slate-950 border border-slate-800 text-slate-400 hover:text-white'
                         }`}
                     >
                       {st}
