@@ -46,9 +46,9 @@ const DEFAULT_ABOUT_CONTENT: AboutContent = {
   tagline: 'A legacy of academic integrity, conceptual clarity, and individual student mentorship since 1997.',
   storyTitle: 'Over 29 Years of Crafting Leaders & Board Toppers',
   storyParagraphs: [
-    'Founded in 1997 by Mr.Sandeep Panchabhai, Surabhi Coaching Academy was born with a singular focus: to replace anxiety-driven rote memorization with deep conceptual clarity, disciplined study routines, and personalized mentorship.',
-    'Over the last decade and a half, we have grown from a modest classroom into one of Central India’s most respected academic coaching institutions. Our student-centric philosophy ensures that no child is left behind in a crowded hall; our classes are strictly capped at 25 to 30 learners.',
-    'Today, Surabhi alumni study at premier medical colleges, top engineering universities, top commerce institutions like SRCC, and hold prestigious administrative positions. We continue to innovate our teaching methods with modern smart technology while holding fast to classical academic rigor.'
+    'Founded in 1997 by Mr. Sandeep Panchabhai, Surabhi Coaching Academy was established with a vision to provide quality education through strong conceptual learning, disciplined study, and personalized mentorship. With limited class sizes, we ensure that every student receives individual attention and guidance.',
+
+    'Over the years, Surabhi Coaching Academy has helped numerous students achieve success in medical, engineering, commerce, and other prestigious fields. By combining experienced teaching, modern technology, and strong academic values, we continue to empower students to achieve their full potential.'
   ],
   founderMessage: {
     name: 'Mr.Sandeep Panchabhai',

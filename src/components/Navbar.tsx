@@ -28,10 +28,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
     { name: 'Courses', path: '/courses' },
-    { name: 'Results & Ranks', path: '/results' },
-    { name: 'Faculty', path: '/faculty' },
-    { name: 'Admissions', path: '/admissions' },
-    { name: 'FAQs', path: '/faqs' },
+    { name: 'Results', path: '/results' },
     { name: 'Contact', path: '/contact' }
   ];
 
@@ -40,18 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
       {/* Top Announcement Bar */}
       <div className="bg-[#090E1A] text-slate-300 text-[11px] py-2 px-4 sm:px-8 border-b border-slate-800 flex items-center justify-between">
         {/* Left marquee / notification */}
-        <div className="flex items-center gap-2 overflow-hidden text-xs">
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 font-bold uppercase tracking-wider text-[10px] shrink-0">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
-            Admissions 2026–27
-          </span>
-          <span className="text-slate-300 hidden sm:inline truncate">
-            🔥 Free 2-Day Trial Batch Open • Max 25 Students/Batch • 100% Board Pass Record
-          </span>
-          <span className="text-slate-300 sm:hidden truncate text-[11px]">
-            Free 2-Day Trial Batches Open (Max 25 Seats)
-          </span>
-        </div>
+        <div className="flex items-center gap-2 overflow-hidden text-xs"> </div>
 
         {/* Right Quick Links */}
         <div className="flex items-center gap-4 shrink-0 text-xs">
@@ -62,16 +48,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
             <Phone className="w-3.5 h-3.5 text-amber-400" />
             <span className="hidden md:inline">Helpline:</span>
             <span>{siteSettings.primaryPhone}</span>
-          </a>
-
-          <a
-            href={`https://wa.me/${siteSettings.whatsappNumber.replace(/[^0-9]/g, '')}?text=Hello%20Surbhi%20Academy%2C%20I%20want%20to%20know%20more%20about%20admissions`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden lg:flex items-center gap-1 text-emerald-400 hover:text-emerald-300 font-semibold"
-          >
-            <MessageCircle className="w-3.5 h-3.5" />
-            <span>WhatsApp</span>
           </a>
 
           {isAuthenticated ? (
@@ -98,15 +74,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[74px] flex items-center justify-between">
         {/* Brand Logo & Tagline */}
         <Link to="/" className="flex items-center gap-3.5 group">
-          <div className="w-12 h-12 bg-[#090E1A] border-2 border-amber-500/40 flex items-center justify-center rounded-2xl shadow-md group-hover:border-amber-400 transition-all">
-            <GraduationCap className="w-6 h-6 text-amber-400 group-hover:scale-110 transition-transform" />
+          <div className="w-[93px] h-[70px] bg-[#123B2A] flex items-center justify-center rounded-xl shadow-md group-hover:bg-slate-800 transition-colors">
+            <img
+              src='../../assets/logo.png'
+              alt=''
+              className="w-[60px] h-[68px] object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
           </div>
           <div className="flex flex-col">
             <span className="font-bold text-lg sm:text-xl tracking-tight text-[#0F172A] uppercase leading-none flex items-center gap-1.5">
-              SURBHI <span className="font-serif italic font-normal text-amber-700 capitalize">Academy</span>
+              SURABHI <span className="font-serif italic font-normal text-amber-700 capitalize">Academy</span>
             </span>
             <span className="text-[10px] tracking-widest text-slate-500 uppercase font-semibold mt-1">
-              Nagpur's Premier Coaching • Est. 1997
+              Teaching Beyond Examination
             </span>
           </div>
         </Link>
@@ -130,25 +111,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
         </nav>
 
         {/* Right CTA Button */}
-        <div className="hidden sm:flex items-center gap-3">
-          <button
-            id="nav-enquire-btn"
-            onClick={() => onOpenEnquiry()}
-            className="bg-[#090E1A] hover:bg-amber-500 hover:text-slate-950 text-white font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full transition-all shadow-md hover:shadow-lg flex items-center gap-2 cursor-pointer border border-amber-500/30"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Book Free 2-Day Trial</span>
-          </button>
-        </div>
+        <div className="hidden sm:flex items-center gap-3"></div>
 
         {/* Mobile menu trigger */}
         <div className="flex items-center gap-2 xl:hidden">
-          <button
-            onClick={() => onOpenEnquiry()}
-            className="sm:hidden bg-[#090E1A] text-amber-400 border border-amber-500/40 text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full"
-          >
-            Free Trial
-          </button>
+
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors"

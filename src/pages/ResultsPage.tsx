@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { 
-  Trophy, 
-  Sparkles, 
-  Search, 
-  Filter, 
-  Award, 
-  Star, 
-  TrendingUp, 
-  GraduationCap, 
-  CheckCircle2, 
-  ArrowRight 
+import {
+  Trophy,
+  Sparkles,
+  Search,
+  Filter,
+  Award,
+  Star,
+  TrendingUp,
+  GraduationCap,
+  CheckCircle2,
+  ArrowRight
 } from 'lucide-react';
 import { useAcademy } from '../context/AcademyContext';
 import { RankCard } from '../components/RankCard';
@@ -44,8 +44,8 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ onOpenEnquiry }) => {
       student.gradeLevel.includes(selectedCategory);
     const matchesSearch =
       student.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      student.school.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      student.examName.toLowerCase().includes(searchQuery.toLowerCase());
+      student.school?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      student.examName?.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesYear && matchesCategory && matchesSearch;
   });
 
@@ -116,11 +116,10 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ onOpenEnquiry }) => {
                 <button
                   key={cat.key}
                   onClick={() => setSelectedCategory(cat.key)}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                    selectedCategory === cat.key
+                  className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${selectedCategory === cat.key
                       ? 'bg-[#0F172A] text-white shadow-sm'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                  }`}
+                    }`}
                 >
                   {cat.label}
                 </button>

@@ -22,11 +22,8 @@ import { AboutPage } from './pages/AboutPage';
 import { CoursesPage } from './pages/CoursesPage';
 import { CourseDetailPage } from './pages/CourseDetailPage';
 import { ResultsPage } from './pages/ResultsPage';
-import { FacultyPage } from './pages/FacultyPage';
-import { GalleryPage } from './pages/GalleryPage';
 import { TestimonialsPage } from './pages/TestimonialsPage';
 import { AdmissionsPage } from './pages/AdmissionsPage';
-import { FAQPage } from './pages/FAQPage';
 import { ContactPage } from './pages/ContactPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
@@ -78,12 +75,8 @@ const AppShell: React.FC = () => {
           <Route path="/courses" element={<CoursesPage onOpenEnquiry={handleOpenEnquiry} />} />
           <Route path="/courses/:slug" element={<CourseDetailPage onOpenEnquiry={handleOpenEnquiry} />} />
           <Route path="/results" element={<ResultsPage onOpenEnquiry={handleOpenEnquiry} />} />
-          <Route path="/faculty" element={<FacultyPage onOpenEnquiry={handleOpenEnquiry} />} />
-          <Route path="/gallery" element={<GalleryPage onOpenEnquiry={handleOpenEnquiry} />} />
           <Route path="/testimonials" element={<TestimonialsPage onOpenEnquiry={handleOpenEnquiry} />} />
           <Route path="/admissions" element={<AdmissionsPage onOpenEnquiry={handleOpenEnquiry} />} />
-          <Route path="/faq" element={<FAQPage onOpenEnquiry={handleOpenEnquiry} />} />
-          <Route path="/faqs" element={<FAQPage onOpenEnquiry={handleOpenEnquiry} />} />
           <Route path="/contact" element={<ContactPage />} />
 
           {/* Admin Login */}

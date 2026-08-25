@@ -29,18 +29,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
       />
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Eyebrow badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md mb-6"
-        >
-          <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-          <span className="text-xs uppercase tracking-widest text-amber-400 font-bold">
-            Admissions 2026–27 • Limited 25 Seats/Batch
-          </span>
-        </motion.div>
+
 
         {/* Title */}
         <motion.h2
@@ -88,8 +77,14 @@ export const CTASection: React.FC<CTASectionProps> = ({
             href={`tel:${ACADEMY_INFO.contact.primaryPhone.replace(/\s+/g, '')}`}
             className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-4 rounded-full text-xs font-semibold uppercase tracking-wider transition-all flex items-center justify-center gap-2"
           >
-            <Phone className="w-4 h-4 text-amber-400" />
-            <span>Call Us: {ACADEMY_INFO.contact.primaryPhone}</span>
+            <Phone className="w-4 h-4 text-amber-400 flex-shrink-0" />
+
+            <span className="flex flex-col items-center leading-relaxed">
+              <span>Call Us:</span>
+              <span className="whitespace-nowrap">
+                {ACADEMY_INFO.contact.primaryPhone}
+              </span>
+            </span>
           </motion.a>
         </motion.div>
       </div>

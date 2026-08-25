@@ -36,7 +36,7 @@ export const Footer: React.FC<FooterProps> = ({
 
       {/* Main Footer Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Col 1 & 2: Brand Info */}
           <div className="lg:col-span-2 space-y-5">
             <div className="flex items-center gap-3">
@@ -61,18 +61,6 @@ export const Footer: React.FC<FooterProps> = ({
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-md">
               Nagpur’s premier coaching academy dedicated to deep conceptual clarity, disciplined study habits, small batch sizes, and proven board toppers across Classes 8 to 12.
             </p>
-
-            {/* Trust badges */}
-            <div className="flex items-center gap-4 text-xs text-slate-300 pt-2">
-              <div className="flex items-center gap-1.5 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>Verified Faculty</span>
-              </div>
-              <div className="flex items-center gap-1.5 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700">
-                <Sparkles className="w-4 h-4 text-amber-400" />
-                <span>Max 25-30 / Batch</span>
-              </div>
-            </div>
 
             {/* Social Icons */}
             <div className="flex items-center gap-2 pt-2">
@@ -115,32 +103,12 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
           </div>
 
-          {/* Col 2: Academic Programs */}
-          <div className="space-y-4">
-            <h4 className="text-xs uppercase tracking-widest text-amber-400 font-bold">
-              Academic Programs
-            </h4>
-            <ul className="space-y-2 text-xs text-slate-300">
-              {courses.slice(0, 6).map((c) => (
-                <li key={c.id}>
-                  <Link
-                    to={`/courses/${c.slug}`}
-                    className="hover:text-amber-400 transition-colors flex items-center gap-1.5 py-0.5 line-clamp-1"
-                  >
-                    <span className="w-1 h-1 rounded-full bg-amber-500" />
-                    <span>{c.title}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Col 3: Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-xs uppercase tracking-widest text-amber-400 font-bold">
+            <h4 className="text-lg uppercase tracking-widest text-amber-400 font-bold">
               Quick Links
             </h4>
-            <ul className="space-y-2 text-xs text-slate-300">
+            <ul className="space-y-2 text-sm text-slate-300">
               <li>
                 <Link to="/about" className="hover:text-amber-400 transition-colors">
                   About Our Academy
@@ -152,23 +120,13 @@ export const Footer: React.FC<FooterProps> = ({
                 </Link>
               </li>
               <li>
-                <Link to="/gallery" className="hover:text-amber-400 transition-colors">
-                  Campus & Life Gallery
+                <Link to="/courses" className="hover:text-amber-400 transition-colors">
+                  Course
                 </Link>
               </li>
               <li>
-                <Link to="/testimonials" className="hover:text-amber-400 transition-colors">
-                  Student & Parent Reviews
-                </Link>
-              </li>
-              <li>
-                <Link to="/admissions" className="hover:text-amber-400 transition-colors">
-                  Admissions 2026-27
-                </Link>
-              </li>
-              <li>
-                <Link to="/faqs" className="hover:text-amber-400 transition-colors">
-                  Frequently Asked Questions
+                <Link to="/contact" className="hover:text-amber-400 transition-colors">
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -176,10 +134,10 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Col 4: Campus Locations & Hours */}
           <div className="space-y-4">
-            <h4 className="text-xs uppercase tracking-widest text-amber-400 font-bold">
+            <h4 className="text-lg uppercase tracking-widest text-amber-400 font-bold">
               Campus & Timings
             </h4>
-            <div className="space-y-3 text-xs text-slate-300">
+            <div className="space-y-3 text-sm text-slate-300">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                 <span className="leading-snug text-slate-300">
@@ -198,13 +156,7 @@ export const Footer: React.FC<FooterProps> = ({
                   {siteSettings.email}
                 </a>
               </div>
-              <div className="flex items-start gap-2.5 pt-1 border-t border-slate-800">
-                <Clock className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                <div>
-                  <div className="text-[11px] text-slate-400">{siteSettings.workingHoursWeekdays}</div>
-                  <div className="text-[11px] text-amber-400/80">{siteSettings.workingHoursSunday}</div>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
