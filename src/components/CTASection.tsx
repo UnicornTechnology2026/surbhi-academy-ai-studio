@@ -15,7 +15,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
   subtitle = 'Take a free 2-day classroom trial. No fees, zero pressure — just real teaching and instant clarity.'
 }) => {
   return (
-    <section className="relative bg-[#0F172A] text-white py-16 sm:py-20 overflow-hidden">
+    <section className="relative bg-[#0F172A] text-white py-16 pb-px  overflow-hidden">
       {/* Dynamic Animated background ambient lights */}
       <motion.div
         animate={{ scale: [1, 1.15, 1], opacity: [0.1, 0.2, 0.1] }}
@@ -91,28 +91,6 @@ export const CTASection: React.FC<CTASectionProps> = ({
             <Phone className="w-4 h-4 text-amber-400" />
             <span>Call Us: {ACADEMY_INFO.contact.primaryPhone}</span>
           </motion.a>
-        </motion.div>
-
-        {/* Trust Badges */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 pt-4 text-xs font-medium text-slate-400 border-t border-white/10"
-        >
-          <div className="flex items-center gap-2 text-slate-300">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-            <span>Zero Admission Fees For Trial</span>
-          </div>
-          <div className="flex items-center gap-2 text-slate-300">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-            <span>Personal Mentor Assigned</span>
-          </div>
-          <div className="flex items-center gap-2 text-slate-300">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-            <span>Daily Doubt Clearing Included</span>
-          </div>
         </motion.div>
       </div>
     </section>

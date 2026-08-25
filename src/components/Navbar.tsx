@@ -105,7 +105,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
           </div>
           <div className="flex flex-col">
             <span className="font-bold text-lg sm:text-xl tracking-tight text-[#0F172A] uppercase leading-none">
-              SURBHI <span className="font-serif italic font-normal text-amber-700 capitalize">Academy</span>
+              SURABHI <span className="font-serif italic font-normal text-amber-700 capitalize">Academy</span>
             </span>
             <span className="text-[10px] tracking-widest text-slate-500 uppercase font-semibold mt-0.5">
               Teaching Beyond Examination

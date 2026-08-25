@@ -58,7 +58,7 @@ export const ContactPage: React.FC = () => {
             <span>Connect with Our Academic Counselors</span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-serif font-bold text-[#0F172A] leading-tight">
-            Contact Surbhi Coaching Academy
+            Contact Surabhi Coaching Academy
           </h1>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
             Visit our state-of-the-art campus in Nagpur or send us a message. We are delighted to answer your questions regarding admissions, faculty, and batch schedules.
@@ -276,7 +276,7 @@ export const ContactPage: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-serif font-bold text-[#0F172A]">
-                    Visit Surbhi Academy
+                    Visit Surabhi Academy
                   </h3>
                 </div>
               </div>
@@ -292,7 +292,7 @@ export const ContactPage: React.FC = () => {
               <div className="rounded-2xl overflow-hidden border border-slate-200 relative aspect-[16/9] bg-slate-900">
                 <div className="rounded-2xl overflow-hidden border border-slate-200 relative aspect-[16/9] bg-slate-900">
                   <iframe
-                    title="Surbhi Coaching Academy Location Map"
+                    title="Surabhi Coaching Academy Location Map"
                     src={`https://maps.google.com/maps?q=${encodeURIComponent(siteSettings.mainCampusAddress)}&z=16&output=embed`}
                     width="100%"
                     height="100%"

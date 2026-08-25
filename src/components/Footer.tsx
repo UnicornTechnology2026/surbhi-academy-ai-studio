@@ -50,7 +50,7 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
               <div>
                 <span className="font-bold text-xl tracking-tight text-white uppercase block leading-none">
-                  SURBHI <span className="font-serif italic font-normal text-amber-400 capitalize">Academy</span>
+                  SURABHI <span className="font-serif italic font-normal text-amber-400 capitalize">Academy</span>
                 </span>
                 <span className="text-[10px] tracking-widest text-slate-400 uppercase font-semibold">
                   Teaching Beyond Examination

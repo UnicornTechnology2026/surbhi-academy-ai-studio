@@ -11,12 +11,12 @@ interface AdminAuthContextType {
 
 const AdminAuthContext = createContext<AdminAuthContextType | undefined>(undefined);
 
-const AUTH_STORAGE_KEY = 'surbhi_admin_session';
+const AUTH_STORAGE_KEY = 'surabhi_admin_session';
 
 const DEFAULT_ADMIN: AdminUser = {
   id: 'adm-01',
   name: 'Mr. Sandeep Panchabhai',
-  email: 'admin@surbhicoaching.edu',
+  email: 'admin@surabhicoaching.edu',
   role: 'Super Admin',
 
 };
@@ -48,13 +48,13 @@ export const AdminAuthProvider: React.FC<{ children: ReactNode }> = ({ children 
 
     // Default credentials or accepted administrator patterns
     if (
-      (normalizedEmail === 'admin@surbhicoaching.edu' && pass === 'admin123') ||
-      (normalizedEmail === 'director@surbhi.edu' && pass === 'director123') ||
+      (normalizedEmail === 'admin@surabhicoaching.edu' && pass === 'admin123') ||
+      (normalizedEmail === 'director@surabhi.edu' && pass === 'director123') ||
       (normalizedEmail === 'admin' && pass === 'admin')
     ) {
       const user: AdminUser = {
         ...DEFAULT_ADMIN,
-        email: normalizedEmail === 'admin' ? 'admin@surbhicoaching.edu' : normalizedEmail
+        email: normalizedEmail === 'admin' ? 'admin@surabhicoaching.edu' : normalizedEmail
       };
 
       setAdminUser(user);
@@ -68,7 +68,7 @@ export const AdminAuthProvider: React.FC<{ children: ReactNode }> = ({ children 
 
     return {
       success: false,
-      error: 'Invalid email or password. Use demo credentials: admin@surbhicoaching.edu / admin123'
+      error: 'Invalid email or password. Use demo credentials: admin@surabhicoaching.edu / admin123'
     };
   };
 

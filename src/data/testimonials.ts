@@ -10,7 +10,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     achievement: 'Daughter scored 99.2% in Class 10 Boards',
     rating: 5,
     image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80',
-    content: 'Enrolling Ananya in Surbhi Coaching Academy was the best academic decision we made. The teachers are exceptionally devoted. What impressed us most was how they tracked every weak area in Maths and guided her with infinite patience until she scored 100/100.',
+    content: 'Enrolling Ananya in Surabhi Coaching Academy was the best academic decision we made. The teachers are exceptionally devoted. What impressed us most was how they tracked every weak area in Maths and guided her with infinite patience until she scored 100/100.',
     status: 'active',
     featured: true
   },
@@ -23,7 +23,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     achievement: 'District Rank 2 (98.8%) & JEE Main 99.78%ile',
     rating: 5,
     image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80',
-    content: 'The faculty at Surbhi never let us settle for rote learning. Mr. Sandeep Panchabhai Sir taught us how to derive every concept from basic principles. The test series feedback helped me fix recurring mistakes before the board exams.',
+    content: 'The faculty at Surabhi never let us settle for rote learning. Mr. Sandeep Panchabhai Sir taught us how to derive every concept from basic principles. The test series feedback helped me fix recurring mistakes before the board exams.',
     status: 'active',
     featured: true
   },
@@ -36,7 +36,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     achievement: 'Son topped in State Board Science',
     rating: 5,
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
-    content: 'As a doctor, I appreciate systematic, disciplined rigor. Surbhi Academy’s Daily Practice Problem (DPP) system and quarterly parent reviews kept my son consistently focused without putting undue psychological stress on him.',
+    content: 'As a doctor, I appreciate systematic, disciplined rigor. Surabhi Academy’s Daily Practice Problem (DPP) system and quarterly parent reviews kept my son consistently focused without putting undue psychological stress on him.',
     status: 'active',
     featured: true
   },

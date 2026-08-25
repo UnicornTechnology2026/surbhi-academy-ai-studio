@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { 
-  Trophy, 
-  Award, 
-  Star, 
-  Sparkles, 
-  Filter, 
-  CheckCircle2, 
-  TrendingUp, 
-  GraduationCap 
+import {
+  Trophy,
+  Award,
+  Star,
+  Sparkles,
+  Filter,
+  CheckCircle2,
+  TrendingUp,
+  GraduationCap
 } from 'lucide-react';
 import { SectionHeader } from '../components/SectionHeader';
 import { RankCard } from '../components/RankCard';
@@ -101,11 +101,10 @@ export const Results: React.FC<ResultsProps> = ({ onOpenEnquiry }) => {
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
-                    selectedCategory === cat.id
+                  className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${selectedCategory === cat.id
                       ? 'bg-[#0F172A] text-amber-400 shadow-md'
                       : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
-                  }`}
+                    }`}
                 >
                   {cat.label}
                 </button>
@@ -122,11 +121,10 @@ export const Results: React.FC<ResultsProps> = ({ onOpenEnquiry }) => {
                   <button
                     key={yr}
                     onClick={() => setSelectedYear(yr)}
-                    className={`px-3 py-1 text-xs font-semibold rounded-full transition-all cursor-pointer ${
-                      selectedYear === yr
+                    className={`px-3 py-1 text-xs font-semibold rounded-full transition-all cursor-pointer ${selectedYear === yr
                         ? 'bg-[#0F172A] text-white shadow-xs'
                         : 'text-slate-600 hover:text-[#0F172A]'
-                    }`}
+                      }`}
                   >
                     {yr === 'all' ? 'All Years' : yr}
                   </button>
@@ -198,7 +196,7 @@ export const Results: React.FC<ResultsProps> = ({ onOpenEnquiry }) => {
             className="bg-amber-500 hover:bg-amber-400 text-slate-950 px-8 py-4 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-xl hover:shadow-amber-500/20 cursor-pointer inline-flex items-center gap-2"
           >
             <Sparkles className="w-4 h-4" />
-            <span>Join Surbhi Coaching Academy</span>
+            <span>Join Surabhi Coaching Academy</span>
           </button>
         </div>
       </section>

@@ -46,7 +46,7 @@ export const AdminAchieversPage: React.FC = () => {
     category: 'class10',
     categoryLabel: 'Class 10 Board Toppers',
     school: 'Bhavans Bhagwandas Purohit Vidya Mandir',
-    testimonial: 'Surbhi Academy provided the exact conceptual framework and test rigor I needed.',
+    testimonial: 'Surabhi Academy provided the exact conceptual framework and test rigor I needed.',
     image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
     badgeType: 'gold',
     featured: true,
@@ -168,8 +168,8 @@ export const AdminAchieversPage: React.FC = () => {
               key={cat}
               onClick={() => setSelectedCategory(cat)}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${selectedCategory === cat
-                  ? 'bg-amber-500 text-slate-950 font-bold'
-                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                ? 'bg-amber-500 text-slate-950 font-bold'
+                : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
                 }`}
             >
               {cat === 'all'
@@ -242,8 +242,8 @@ export const AdminAchieversPage: React.FC = () => {
                     <button
                       onClick={() => toggleAchieverFeatured(a.id)}
                       className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider cursor-pointer transition-colors flex items-center gap-1 ${a.featured
-                          ? 'bg-amber-500/20 text-amber-400 border border-amber-500/40'
-                          : 'bg-slate-800 text-slate-400'
+                        ? 'bg-amber-500/20 text-amber-400 border border-amber-500/40'
+                        : 'bg-slate-800 text-slate-400'
                         }`}
                     >
                       <Star className={`w-3 h-3 ${a.featured ? 'fill-amber-400 text-amber-400' : ''}`} />
@@ -411,7 +411,7 @@ export const AdminAchieversPage: React.FC = () => {
                 </label>
                 <textarea
                   rows={2}
-                  placeholder="What the student said about Surbhi Coaching Academy..."
+                  placeholder="What the student said about Surabhi Coaching Academy..."
                   value={form.testimonial || ''}
                   onChange={(e) => setForm({ ...form, testimonial: e.target.value })}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"

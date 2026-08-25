@@ -71,7 +71,7 @@ export const COURSES_DATA: Course[] = [
     classTiming: 'Morning: 6:30 AM – 8:30 AM or Evening: 4:30 PM – 7:30 PM',
     batchSize: '28 Students per batch',
     materialsIncluded: [
-      'Surbhi Class 9 Modular Study Guides (5 Volumes)',
+      'Surabhi Class 9 Modular Study Guides (5 Volumes)',
       'NCERT Exemplar Solutions & Graded Question Bank',
       'Formula Maps & Quick Revision Handouts'
     ],
@@ -105,7 +105,7 @@ export const COURSES_DATA: Course[] = [
     duration: '1 Academic Year + Board Crash Course',
     badge: 'Flagship Program (99.2% Top Score)',
     shortDescription: 'Our premier Class 10 Board program designed to convert potential into 95%+ board toppers and state ranks.',
-    fullDescription: 'The Class 10 Board Excellence Batch is Surbhi Academy’s hallmark program. Built on over 29 years of proven board pedagogical experience, this program pairs rigorous conceptual training with structured answer-writing practice, continuous pre-board simulations, examiner rubric feedback, and personalized stress management.',
+    fullDescription: 'The Class 10 Board Excellence Batch is Surabhi Academy’s hallmark program. Built on over 29 years of proven board pedagogical experience, this program pairs rigorous conceptual training with structured answer-writing practice, continuous pre-board simulations, examiner rubric feedback, and personalized stress management.',
     subjects: ['Mathematics (Standard / Basic)', 'Science (Physics, Chem, Bio)', 'Social Science', 'English Language & Lit'],
     features: [
       'Comprehensive syllabus completion by October',
@@ -118,7 +118,7 @@ export const COURSES_DATA: Course[] = [
     classTiming: 'Morning: 6:30 AM – 9:00 AM | Evening: 4:00 PM – 8:00 PM',
     batchSize: '30 Students Maximum',
     materialsIncluded: [
-      'Surbhi 10th Board Complete Question Bank (Last 10 Years Solved)',
+      'Surabhi 10th Board Complete Question Bank (Last 10 Years Solved)',
       'NCERT Line-by-Line Highlight Modules',
       'Board Master Formula Pocket Book',
       'Model Answer Keys with Step-by-Step Marking Breakdown'
@@ -165,7 +165,7 @@ export const COURSES_DATA: Course[] = [
     classTiming: 'Morning Batches: 7:00 AM – 11:30 AM | Evening: 3:30 PM – 8:00 PM',
     batchSize: '28 Students per batch',
     materialsIncluded: [
-      'Surbhi 6-Volume Senior Science Master Study Modules',
+      'Surabhi 6-Volume Senior Science Master Study Modules',
       'Previous 15 Years Board & Entrance Solved Compendium',
       'Quick Formula & Reaction Mechanism Handbook'
     ],
@@ -213,7 +213,7 @@ export const COURSES_DATA: Course[] = [
     classTiming: 'Morning Batches: 6:30 AM – 11:00 AM | Evening: 3:00 PM – 8:00 PM',
     batchSize: '25 Students per batch',
     materialsIncluded: [
-      'Surbhi JEE Master Modules (Physics, Chemistry & Maths)',
+      'Surabhi JEE Master Modules (Physics, Chemistry & Maths)',
       '15-Year Solved JEE Main & Advanced Question Bank',
       'Formula & Concept Revision Handbook',
       'AITS Performance Analytics Report Cards'
@@ -270,7 +270,7 @@ export const COURSES_DATA: Course[] = [
     classTiming: 'Morning Batches: 6:30 AM – 11:00 AM | Evening: 3:00 PM – 8:00 PM',
     batchSize: '25 Students per batch',
     materialsIncluded: [
-      'Surbhi NEET Master Modules (Biology, Physics & Chemistry)',
+      'Surabhi NEET Master Modules (Biology, Physics & Chemistry)',
       '15-Year Solved NEET UG Question Bank',
       'NCERT-Based Quick Revision & Diagram Handbook',
       'AITS Performance Analytics Report Cards'

@@ -55,11 +55,10 @@ export const Faculty: React.FC<FacultyProps> = ({ onOpenEnquiry }) => {
               <button
                 key={dept.id}
                 onClick={() => setSelectedDepartment(dept.id)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
-                  selectedDepartment === dept.id
+                className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${selectedDepartment === dept.id
                     ? 'bg-[#0F172A] text-amber-400 shadow-md'
                     : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
-                }`}
+                  }`}
               >
                 {dept.label}
               </button>
@@ -76,7 +75,7 @@ export const Faculty: React.FC<FacultyProps> = ({ onOpenEnquiry }) => {
               Distinguished Educators ({filteredFaculty.length} Faculty Members)
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 mt-1">
-              Every teacher at Surbhi Coaching Academy is a subject specialist committed to individual student understanding.
+              Every teacher at Surabhi Coaching Academy is a subject specialist committed to individual student understanding.
             </p>
           </div>
 
@@ -97,7 +96,7 @@ export const Faculty: React.FC<FacultyProps> = ({ onOpenEnquiry }) => {
           <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-sm grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
             <div className="lg:col-span-2 space-y-4">
               <span className="text-xs uppercase tracking-widest text-amber-600 font-bold">
-                The Surbhi Mentorship Culture
+                The Surabhi Mentorship Culture
               </span>
               <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#0F172A]">
                 Accessible, Approachable & Accountable Mentors

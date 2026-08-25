@@ -9,7 +9,7 @@ export const FACULTY_DATA: FacultyMember[] = [
     qualifications: 'Ph.D. in Applied Mathematics, M.Sc. (Gold Medalist), B.Ed.',
     experience: '18+ Years of Academic Mentorship',
     image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80',
-    bio: 'Founder of Surbhi Coaching Academy with a passionate mission to eliminate math phobia. Over 18 years, Dr. Sharma has personally mentored over 8,000 students, guiding 40+ city toppers to perfect 100/100 scores in Board & Competitive exams.',
+    bio: 'Founder of Surabhi Coaching Academy with a passionate mission to eliminate math phobia. Over 18 years, Dr. Sharma has personally mentored over 8,000 students, guiding 40+ city toppers to perfect 100/100 scores in Board & Competitive exams.',
     achievements: [
       'Authored 4 bestselling Board Mathematics preparation reference guidebooks',
       'Honored with the "Excellence in Pedagogy" State Teacher Award (2022)',
@@ -30,7 +30,7 @@ export const FACULTY_DATA: FacultyMember[] = [
     bio: 'Renowned for her dynamic, visual approach to complex mechanics and electrodynamics. Prof. Mehra breaks down abstract physics theories into relatable everyday phenomena, making physics intuitive and exciting.',
     achievements: [
       'Ex-Faculty at Premier National Institutes with 99.4 percentile physics students',
-      'Developed Surbhi Academy’s signature "Visual Derivations" physics compendium',
+      'Developed Surabhi Academy’s signature "Visual Derivations" physics compendium',
       'Specialist in board answer formatting and numerical accuracy'
     ],
     subjectsTaught: ['Class 11 Physics (Mechanics & Waves)', 'Class 12 Physics (Electromagnetism & Optics)', 'NEET/JEE Physics'],
@@ -84,7 +84,7 @@ export const FACULTY_DATA: FacultyMember[] = [
     bio: 'Dr. Neelam is acclaimed for her detailed biological illustrations, line-by-line NCERT decoding, and deep conceptual clarity in genetics, human physiology, and ecology.',
     achievements: [
       'Mentored 120+ students selected in prestigious Government Medical Colleges',
-      'Creator of Surbhi "Diagram Mastery" handbook for 10th & 12th Board exams',
+      'Creator of Surabhi "Diagram Mastery" handbook for 10th & 12th Board exams',
       'Specialist in scoring 350+ in NEET Biology and 98%+ in Board Biology'
     ],
     subjectsTaught: ['Class 10 Biology', 'Class 11-12 Botany & Zoology', 'NEET Pre-Medical Biology'],

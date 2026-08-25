@@ -1,5 +1,5 @@
 export const ACADEMY_INFO = {
-  name: 'Surbhi Coaching Academy',
+  name: 'Surabhi Coaching Academy',
   tagline: 'Empowering Students to Achieve Academic Excellence',
   foundedYear: 2011,
   stats: {
@@ -16,8 +16,8 @@ export const ACADEMY_INFO = {
     whatsappNumber: '+91 98226 94137',
     email: 'surabhitutionclasses@rediffmail.com',
     infoEmail: 'surabhitutionclasses@rediffmail.com',
-    mainCampusAddress: 'Surbhi Academic, N-42, Near Volleyball Ground, Reshimbagh, Nagpur, Maharashtra, India',
-    branchAddress: 'Surbhi Academy West Wing, VIP Road, Dharampeth, Nagpur, Maharashtra, India',
+    mainCampusAddress: 'Surabhi Academic, N-42, Near Volleyball Ground, Reshimbagh, Nagpur, Maharashtra, India',
+    branchAddress: 'Surabhi Academy West Wing, VIP Road, Dharampeth, Nagpur, Maharashtra, India',
     workingHours: {
       weekdays: 'Monday – Saturday: 8:00 AM – 8:30 PM',
       sunday: 'Sunday: 9:00 AM – 2:00 PM (Counseling & Enquiry)'
@@ -122,7 +122,7 @@ export const ACADEMY_INFO = {
   ],
   faqs: [
     {
-      question: 'What makes Surbhi Coaching Academy different from other coaching institutes?',
+      question: 'What makes Surabhi Coaching Academy different from other coaching institutes?',
       answer: 'We maintain strict batch limits (maximum 25–30 students) ensuring individual focus, concept-first visual pedagogy by seasoned faculty, structured 3-tier revision cycles, and dedicated 1-on-1 daily doubt clinics rather than mass-market lectures.'
     },
     {
@@ -135,7 +135,7 @@ export const ACADEMY_INFO = {
     },
     {
       question: 'Do you provide scholarships for meritorious students?',
-      answer: 'Yes, we offer merit-based scholarships up to 50% tuition waiver for students scoring 90%+ in their previous academic year or qualifying through our Surbhi Merit Talent Hunt screening.'
+      answer: 'Yes, we offer merit-based scholarships up to 50% tuition waiver for students scoring 90%+ in their previous academic year or qualifying through our Surabhi Merit Talent Hunt screening.'
     },
     {
       question: 'Can students join mid-session or attend trial classes?',

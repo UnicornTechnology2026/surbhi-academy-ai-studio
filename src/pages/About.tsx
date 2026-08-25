@@ -39,7 +39,7 @@ export const About: React.FC<AboutProps> = ({ onOpenEnquiry }) => {
             <span className="italic font-normal text-amber-400">Knowledge, Discipline & Integrity</span>
           </h1>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Surbhi Coaching Academy is dedicated to shaping confident, high-achieving scholars through conceptual clarity and compassionate mentorship.
+            Surabhi Coaching Academy is dedicated to shaping confident, high-achieving scholars through conceptual clarity and compassionate mentorship.
           </p>
         </div>
       </section>
@@ -61,7 +61,7 @@ export const About: React.FC<AboutProps> = ({ onOpenEnquiry }) => {
                 <span className="italic font-normal text-amber-600">Every Student Matters</span>
               </h2>
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                Founded over 15 years ago with just a handful of passionate educators, <strong>Surbhi Coaching Academy</strong> was created to counter the impersonal, mass-factory coaching models that leave struggling students behind.
+                Founded over 15 years ago with just a handful of passionate educators, <strong>Surabhi Coaching Academy</strong> was created to counter the impersonal, mass-factory coaching models that leave struggling students behind.
               </p>
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                 We believe that true academic excellence is not born from rote memorization or fear of failure, but from deeply understanding core principles, developing intellectual curiosity, and receiving individualized encouragement from teachers who care.
@@ -91,7 +91,7 @@ export const About: React.FC<AboutProps> = ({ onOpenEnquiry }) => {
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 aspect-[4/5] bg-slate-100">
                 <img
                   src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=80"
-                  alt="Surbhi Coaching Academy Campus Life"
+                  alt="Surabhi Coaching Academy Campus Life"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/90 via-transparent to-transparent" />
@@ -117,7 +117,7 @@ export const About: React.FC<AboutProps> = ({ onOpenEnquiry }) => {
       <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            eyebrow="The Surbhi Framework"
+            eyebrow="The Surabhi Framework"
             title="Our 4-Stage Pedagogical"
             highlightText="Approach"
             description="How we transform average academic performance into consistent top-tier board exam scores and competitive confidence."

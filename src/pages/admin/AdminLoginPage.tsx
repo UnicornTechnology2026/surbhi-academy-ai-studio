@@ -21,7 +21,7 @@ export const AdminLoginPage: React.FC = () => {
   const { login, isAuthenticated } = useAdminAuth();
   const { siteSettings } = useAcademy();
 
-  const [email, setEmail] = useState('admin@surbhicoaching.edu');
+  const [email, setEmail] = useState('admin@surabhicoaching.edu');
   const [password, setPassword] = useState('admin123');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
@@ -53,10 +53,10 @@ export const AdminLoginPage: React.FC = () => {
 
   const handleFillDemo = (role: 'admin' | 'director') => {
     if (role === 'admin') {
-      setEmail('admin@surbhicoaching.edu');
+      setEmail('admin@surabhicoaching.edu');
       setPassword('admin123');
     } else {
-      setEmail('director@surbhi.edu');
+      setEmail('director@surabhi.edu');
       setPassword('director123');
     }
     setError('');
@@ -93,7 +93,7 @@ export const AdminLoginPage: React.FC = () => {
             />
           </div>
           <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
-            Surbhi Admin Portal
+            Surabhi Admin Portal
           </h2>
           <p className="text-xs sm:text-sm text-slate-400">
             Sign in to manage courses, results & enquiries
@@ -119,7 +119,7 @@ export const AdminLoginPage: React.FC = () => {
                 <input
                   type="email"
                   required
-                  placeholder="admin@surbhicoaching.edu"
+                  placeholder="admin@surabhicoaching.edu"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-500 transition-colors"
@@ -192,7 +192,7 @@ export const AdminLoginPage: React.FC = () => {
                 className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium text-center transition-colors cursor-pointer border border-slate-700"
               >
                 <div className="font-bold text-amber-400">Super Admin</div>
-                <div className="text-[10px] text-slate-400">admin@surbhicoaching.edu</div>
+                <div className="text-[10px] text-slate-400">admin@surabhicoaching.edu</div>
               </button>
             </div>
           </div>

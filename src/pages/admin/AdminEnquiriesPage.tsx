@@ -146,7 +146,7 @@ export const AdminEnquiriesPage: React.FC = () => {
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
-    link.setAttribute('download', `surbhi_leads_${new Date().toISOString().slice(0, 10)}.csv`);
+    link.setAttribute('download', `surabhi_leads_${new Date().toISOString().slice(0, 10)}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -197,11 +197,10 @@ export const AdminEnquiriesPage: React.FC = () => {
             <button
               key={status.key}
               onClick={() => setStatusFilter(status.key)}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                statusFilter === status.key
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${statusFilter === status.key
                   ? 'bg-amber-500 text-slate-950 font-bold'
                   : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-              }`}
+                }`}
             >
               {status.label}
             </button>
@@ -271,15 +270,14 @@ export const AdminEnquiriesPage: React.FC = () => {
                     <select
                       value={e.status}
                       onChange={(ev) => updateEnquiryStatus(e.id, ev.target.value as any)}
-                      className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md border focus:outline-none cursor-pointer ${
-                        e.status === 'new'
+                      className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md border focus:outline-none cursor-pointer ${e.status === 'new'
                           ? 'bg-red-950 text-red-300 border-red-800'
                           : e.status === 'contacted'
-                          ? 'bg-amber-950 text-amber-300 border-amber-800'
-                          : e.status === 'enrolled'
-                          ? 'bg-emerald-950 text-emerald-300 border-emerald-800'
-                          : 'bg-slate-800 text-slate-400 border-slate-700'
-                      }`}
+                            ? 'bg-amber-950 text-amber-300 border-amber-800'
+                            : e.status === 'enrolled'
+                              ? 'bg-emerald-950 text-emerald-300 border-emerald-800'
+                              : 'bg-slate-800 text-slate-400 border-slate-700'
+                        }`}
                     >
                       <option value="new">🔴 New</option>
                       <option value="contacted">🟡 Contacted</option>
@@ -407,11 +405,10 @@ export const AdminEnquiriesPage: React.FC = () => {
                       key={st}
                       type="button"
                       onClick={() => handleStatusChange(st)}
-                      className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer transition-all ${
-                        selectedEnquiry.status === st
+                      className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer transition-all ${selectedEnquiry.status === st
                           ? 'bg-amber-500 text-slate-950 font-bold'
                           : 'bg-slate-950 border border-slate-800 text-slate-400 hover:text-white'
-                      }`}
+                        }`}
                     >
                       {st}
                     </button>
@@ -455,7 +452,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                 <a
                   href={`https://wa.me/91${selectedEnquiry.mobileNumber.replace(/\D/g, '')}?text=Hello%20${encodeURIComponent(
                     selectedEnquiry.studentName
-                  )},%20greetings%20from%20Surbhi%20Coaching%20Academy.`}
+                  )},%20greetings%20from%20Surabhi%20Coaching%20Academy.`}
                   target="_blank"
                   rel="noreferrer"
                   className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 uppercase tracking-wider text-xs shadow-md"

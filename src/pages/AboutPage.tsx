@@ -70,7 +70,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenEnquiry }) => {
             Teaching with heart, rigor, and genuine care.
           </h1>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            Since 1997, Surbhi Coaching Academy has helped over 12,500 students in Nagpur conquer their academic fear and achieve board exam distinction.
+            Since 1997, Surabhi Coaching Academy has helped over 12,500 students in Nagpur conquer their academic fear and achieve board exam distinction.
           </p>
         </motion.div>
       </section>
@@ -187,7 +187,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenEnquiry }) => {
       <CTASection
         onOpenEnquiry={onOpenEnquiry}
         title="Come meet our teachers in person"
-        subtitle="Book a free 2-day trial class for your child and experience the Surbhi difference firsthand."
+        subtitle="Book a free 2-day trial class for your child and experience the Surabhi difference firsthand."
       />
     </div>
   );

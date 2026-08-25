@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Sparkles, 
-  ArrowRight, 
-  Trophy, 
-  GraduationCap, 
-  UserCheck, 
-  BookOpen, 
-  TrendingUp, 
-  ShieldCheck, 
-  CheckCircle2, 
+import {
+  Sparkles,
+  ArrowRight,
+  Trophy,
+  GraduationCap,
+  UserCheck,
+  BookOpen,
+  TrendingUp,
+  ShieldCheck,
+  CheckCircle2,
   Award,
   ChevronRight,
   Phone,
@@ -140,7 +140,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenEnquiry }) => {
           <div className="lg:col-span-5 relative bg-[#0F172A] p-8 sm:p-12 flex flex-col justify-between overflow-hidden min-h-[380px]">
             {/* Ambient gold glow */}
             <div className="absolute inset-0 bg-gradient-to-br from-amber-500/15 via-transparent to-slate-900/60 pointer-events-none" />
-            
+
             {/* Concentric rings matching artistic design */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 border border-white/10 rounded-full flex items-center justify-center pointer-events-none">
               <div className="w-64 h-64 border border-white/15 rounded-full flex items-center justify-center">
@@ -241,11 +241,11 @@ export const Home: React.FC<HomeProps> = ({ onOpenEnquiry }) => {
         </div>
       </section>
 
-      {/* 2. WHY CHOOSE SURBHI COACHING ACADEMY */}
+      {/* 2. WHY CHOOSE SURABHI COACHING ACADEMY */}
       <section className="py-16 sm:py-20 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            eyebrow="Why Surbhi Academy"
+            eyebrow="Why Surabhi Academy"
             title="A Proven Foundation for"
             highlightText="Lifelong Success"
             description="Our student-centered methodology blends academic rigor with continuous encouragement and personal attention."
@@ -337,7 +337,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenEnquiry }) => {
             eyebrow="Hall of Fame"
             title="Our Top Performing"
             highlightText="Rank Holders"
-            description="Celebrating the relentless effort, discipline, and extraordinary scores of Surbhi Coaching Academy students."
+            description="Celebrating the relentless effort, discipline, and extraordinary scores of Surabhi Coaching Academy students."
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -364,11 +364,11 @@ export const Home: React.FC<HomeProps> = ({ onOpenEnquiry }) => {
       {/* 5. 4-STEP PEDAGOGICAL APPROACH */}
       <section className="py-16 sm:py-20 lg:py-24 bg-slate-900 text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <SectionHeader
             eyebrow="Our Teaching Methodology"
-            title="The Surbhi 4-Step"
+            title="The Surabhi 4-Step"
             highlightText="Learning Cycle"
             description="A proven academic framework designed to bridge the gap between understanding concepts and scoring top marks."
             dark
@@ -444,7 +444,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenEnquiry }) => {
             eyebrow="Student & Parent Voices"
             title="Stories of Trust and"
             highlightText="Transformation"
-            description="Read real experiences from families who entrusted Surbhi Coaching Academy with their child’s academic future."
+            description="Read real experiences from families who entrusted Surabhi Coaching Academy with their child’s academic future."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

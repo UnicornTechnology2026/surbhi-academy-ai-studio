@@ -55,7 +55,7 @@ export const PrivacyTermsModal: React.FC<PrivacyTermsModalProps> = ({ type, onCl
                   1. Information Collection & Usage
                 </h4>
                 <p>
-                  At <strong>Surbhi Coaching Academy</strong>, student and parent confidentiality is our top priority. We collect basic contact information (Student Name, Parent Name, Mobile Number, Email, and Academic Grade) solely for academic counselling, attendance tracking, and performance updates.
+                  At <strong>Surabhi Coaching Academy</strong>, student and parent confidentiality is our top priority. We collect basic contact information (Student Name, Parent Name, Mobile Number, Email, and Academic Grade) solely for academic counselling, attendance tracking, and performance updates.
                 </p>
               </div>
 
@@ -112,7 +112,7 @@ export const PrivacyTermsModal: React.FC<PrivacyTermsModalProps> = ({ type, onCl
                   3. Comprehensive Study Material Rights
                 </h4>
                 <p>
-                  All printed modules, question banks, and daily practice sets provided by Surbhi Coaching Academy are proprietary intellectual property. Duplication or commercial distribution without written consent is strictly prohibited.
+                  All printed modules, question banks, and daily practice sets provided by Surabhi Coaching Academy are proprietary intellectual property. Duplication or commercial distribution without written consent is strictly prohibited.
                 </p>
               </div>
 

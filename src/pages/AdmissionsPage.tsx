@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { 
-  Sparkles, 
-  CheckCircle2, 
-  Send, 
-  Phone, 
-  ShieldCheck, 
-  Calendar, 
-  Clock, 
+import {
+  Sparkles,
+  CheckCircle2,
+  Send,
+  Phone,
+  ShieldCheck,
+  Calendar,
+  Clock,
   ArrowRight,
   HelpCircle,
   Users
@@ -153,7 +153,7 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onOpenEnquiry })
                 Why Students Love the Trial
               </span>
               <h3 className="text-2xl font-serif font-bold text-white">
-                Experience the Surbhi classroom difference.
+                Experience the Surabhi classroom difference.
               </h3>
               <ul className="space-y-3 text-xs sm:text-sm text-slate-300">
                 <li className="flex items-center gap-2.5">

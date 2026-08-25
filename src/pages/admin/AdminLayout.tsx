@@ -55,7 +55,7 @@ export const AdminLayout: React.FC = () => {
             S
           </div>
           <span className="font-bold text-sm text-white uppercase tracking-wider">
-            Surbhi Admin
+            Surabhi Admin
           </span>
         </Link>
 
@@ -100,7 +100,7 @@ export const AdminLayout: React.FC = () => {
               </div>
               <div>
                 <span className="font-bold text-sm text-white uppercase tracking-wider block leading-none">
-                  SURBHI <span className="text-amber-400 font-serif lowercase italic">admin</span>
+                  SURABHI <span className="text-amber-400 font-serif lowercase italic">admin</span>
                 </span>
                 <span className="text-[10px] text-slate-400 uppercase tracking-widest font-semibold mt-0.5 block">
                   CMS Control Panel
@@ -186,7 +186,7 @@ export const AdminLayout: React.FC = () => {
         <header className="hidden md:flex h-16 border-b border-slate-800/80 bg-slate-900/50 backdrop-blur-md px-8 items-center justify-between sticky top-0 z-20">
           <div className="flex items-center gap-3">
             <div className="text-xs text-slate-400 font-medium">
-              Surbhi Academic Management System & CMS
+              Surabhi Academic Management System & CMS
             </div>
           </div>
 

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock, 
-  Send, 
-  CheckCircle2, 
-  Sparkles, 
-  MessageSquare, 
-  Compass, 
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Send,
+  CheckCircle2,
+  Sparkles,
+  MessageSquare,
+  Compass,
   ExternalLink,
   AlertCircle,
   Building2
@@ -175,7 +175,7 @@ export const Contact: React.FC = () => {
                     {ACADEMY_INFO.contact.mainCampusAddress}
                   </p>
                   <a
-                    href="https://maps.google.com/?q=Surbhi+Coaching+Academy"
+                    href="https://maps.google.com/?q=Surabhi+Coaching+Academy"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0F172A] hover:text-amber-700 uppercase tracking-wider transition-colors"
@@ -197,7 +197,7 @@ export const Contact: React.FC = () => {
                     {ACADEMY_INFO.contact.branchAddress}
                   </p>
                   <a
-                    href="https://maps.google.com/?q=Surbhi+Coaching+Academy+VIP+Road"
+                    href="https://maps.google.com/?q=Surabhi+Coaching+Academy+VIP+Road"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0F172A] hover:text-amber-700 uppercase tracking-wider transition-colors"
@@ -233,7 +233,7 @@ export const Contact: React.FC = () => {
                     Message Sent Successfully!
                   </h4>
                   <p className="text-slate-600 text-sm max-w-md mx-auto mb-6 leading-relaxed">
-                    Thank you for reaching out to Surbhi Coaching Academy. A counselor has received your message and will get in touch with you shortly.
+                    Thank you for reaching out to Surabhi Coaching Academy. A counselor has received your message and will get in touch with you shortly.
                   </p>
                   <button
                     onClick={() => {
@@ -263,9 +263,8 @@ export const Contact: React.FC = () => {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Ramesh Kulkarni"
-                      className={`w-full px-3 py-2.5 text-sm bg-white rounded-xl border ${
-                        errors.name ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
-                      } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
+                      className={`w-full px-3 py-2.5 text-sm bg-white rounded-xl border ${errors.name ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
+                        } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
                     />
                     {errors.name && (
                       <span className="text-[11px] text-red-500 flex items-center gap-1 mt-1">
@@ -285,9 +284,8 @@ export const Contact: React.FC = () => {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="10-digit mobile number"
-                        className={`w-full px-3 py-2.5 text-sm bg-white rounded-xl border ${
-                          errors.phone ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
-                        } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
+                        className={`w-full px-3 py-2.5 text-sm bg-white rounded-xl border ${errors.phone ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
+                          } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
                       />
                       {errors.phone && (
                         <span className="text-[11px] text-red-500 flex items-center gap-1 mt-1">
@@ -339,9 +337,8 @@ export const Contact: React.FC = () => {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Please describe what information you need regarding batches or enrollment..."
-                      className={`w-full px-3 py-2.5 text-sm bg-white rounded-xl border ${
-                        errors.message ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
-                      } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
+                      className={`w-full px-3 py-2.5 text-sm bg-white rounded-xl border ${errors.message ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
+                        } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
                     />
                     {errors.message && (
                       <span className="text-[11px] text-red-500 flex items-center gap-1 mt-1">

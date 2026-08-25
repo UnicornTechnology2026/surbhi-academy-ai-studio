@@ -7,7 +7,7 @@ export const FloatingWhatsApp: React.FC = () => {
   const [customMsg, setCustomMsg] = useState('');
 
   const sendWhatsApp = (msgText?: string) => {
-    const textToSend = msgText || customMsg || "Hello Surbhi Academy, I would like to inquire about admissions and course details.";
+    const textToSend = msgText || customMsg || "Hello Surabhi Academy, I would like to inquire about admissions and course details.";
     const cleanNumber = ACADEMY_INFO.contact.whatsappNumber.replace(/[^0-9]/g, '');
     const url = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(textToSend)}`;
     window.open(url, '_blank');
@@ -25,7 +25,7 @@ export const FloatingWhatsApp: React.FC = () => {
               </div>
               <div>
                 <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-                  Surbhi Academy Desk
+                  Surabhi Academy Desk
                 </h4>
                 <div className="text-[10px] text-emerald-400 flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -43,7 +43,7 @@ export const FloatingWhatsApp: React.FC = () => {
 
           <div className="p-4 bg-slate-50 space-y-3">
             <div className="bg-white p-3 rounded-xl border border-slate-100 shadow-xs text-xs text-slate-700 leading-relaxed">
-              👋 Hi there! Welcome to Surbhi Coaching Academy. How can our academic counselors assist you today?
+              👋 Hi there! Welcome to Surabhi Coaching Academy. How can our academic counselors assist you today?
             </div>
 
             <div className="space-y-1.5">

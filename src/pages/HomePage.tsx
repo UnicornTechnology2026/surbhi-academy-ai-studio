@@ -175,7 +175,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900 aspect-[4/5] group">
                   <img
                     src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80"
-                    alt="Surbhi Coaching Academy Classroom & Toppers"
+                    alt="Surabhi Coaching Academy Classroom & Toppers"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/20 to-transparent" />
@@ -322,11 +322,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
                   <button
                     key={tab}
                     onClick={() => setSelectedGradeTab(tab)}
-                    className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                      selectedGradeTab === tab
-                        ? 'bg-amber-500 text-slate-950 shadow-lg scale-105'
-                        : 'bg-white/10 text-slate-300 hover:bg-white/20'
-                    }`}
+                    className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${selectedGradeTab === tab
+                      ? 'bg-amber-500 text-slate-950 shadow-lg scale-105'
+                      : 'bg-white/10 text-slate-300 hover:bg-white/20'
+                      }`}
                   >
                     {tab === '8-9' ? 'Class 8 & 9' : `Class ${tab}`}
                   </button>
@@ -390,10 +389,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
         </div>
       </section>
 
-      {/* 3. THE SURBHI DIFFERENCE - Talkative Before/After Contrast */}
+      {/* 3. THE SURABHI DIFFERENCE - Talkative Before/After Contrast */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          eyebrow="The Surbhi Difference"
+          eyebrow="The Surabhi Difference"
           title="Why Nagpur Parents & Students Switch to Us"
           subtitle="Tired of crowded coaching classes where your child is just a roll number? Here is how we do things differently."
         />
@@ -433,7 +432,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
             </ul>
           </motion.div>
 
-          {/* The Surbhi Academy Way */}
+          {/* The Surabhi Academy Way */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -441,11 +440,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
             className="bg-white rounded-3xl p-8 border-2 border-amber-400/80 shadow-xl space-y-5 relative"
           >
             <div className="absolute top-4 right-4 bg-amber-500 text-slate-950 text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow-xs">
-              Surbhi Standard
+              Surabhi Standard
             </div>
             <div className="flex items-center gap-2 text-emerald-700 font-bold text-xs uppercase tracking-wider">
               <span className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 text-xs font-extrabold">✓</span>
-              <span>The Surbhi Academy Approach</span>
+              <span>The Surabhi Academy Approach</span>
             </div>
             <h3 className="text-xl font-serif font-bold text-[#0F172A]">
               Strict 25–30 student limit with daily personal mentor
@@ -491,31 +490,28 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setActiveCourseCategory('all')}
-              className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                activeCourseCategory === 'all'
-                  ? 'bg-[#0F172A] text-white shadow-md'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-              }`}
+              className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${activeCourseCategory === 'all'
+                ? 'bg-[#0F172A] text-white shadow-md'
+                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                }`}
             >
               All Batches
             </button>
             <button
               onClick={() => setActiveCourseCategory('foundation')}
-              className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                activeCourseCategory === 'foundation'
-                  ? 'bg-[#0F172A] text-white shadow-md'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-              }`}
+              className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${activeCourseCategory === 'foundation'
+                ? 'bg-[#0F172A] text-white shadow-md'
+                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                }`}
             >
               Class 8–10 Foundation
             </button>
             <button
               onClick={() => setActiveCourseCategory('science')}
-              className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                activeCourseCategory === 'science'
-                  ? 'bg-[#0F172A] text-white shadow-md'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-              }`}
+              className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${activeCourseCategory === 'science'
+                ? 'bg-[#0F172A] text-white shadow-md'
+                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                }`}
             >
               11–12 Science
             </button>
@@ -544,88 +540,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
         </div>
       </section>
 
-      {/* 5. 4-STEP TEACHING METHODOLOGY - Conversational & Animated */}
-      <section className="bg-[#0F172A] text-white py-16 sm:py-20 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="inline-block bg-white/10 text-amber-400 text-xs uppercase tracking-widest font-bold px-3 py-1 rounded-full mb-3">
-              How We Teach
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white">
-              The 4-Step Formula to Academic Confidence
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-300 mt-2">
-              No guesswork. Just a proven 4-stage system that takes students from confused to top rankers.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl space-y-3"
-            >
-              <div className="text-2xl font-serif font-extrabold text-amber-400">Step 1</div>
-              <h3 className="text-lg font-serif font-bold text-white">
-                Understand the "Why"
-              </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Visual smartboard demonstrations and practical analogies so you grasp the idea before touching formulas.
-              </p>
-            </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl space-y-3"
-            >
-              <div className="text-2xl font-serif font-extrabold text-amber-400">Step 2</div>
-              <h3 className="text-lg font-serif font-bold text-white">
-                Targeted Daily Practice
-              </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Solve graded 10-problem daily sheets (DPPs) directly matched to what was taught in class today.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl space-y-3"
-            >
-              <div className="text-2xl font-serif font-extrabold text-amber-400">Step 3</div>
-              <h3 className="text-lg font-serif font-bold text-white">
-                Daily 1-on-1 Doubt Desk
-              </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Stuck on a question? Sit with your subject teacher individually until you understand every single step.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl space-y-3"
-            >
-              <div className="text-2xl font-serif font-extrabold text-amber-400">Step 4</div>
-              <h3 className="text-lg font-serif font-bold text-white">
-                Pre-Board Exam Drills
-              </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Simulated 3-hour board exams on official answer sheets with examiners' step-by-step marking rubrics.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* 6. HALL OF FAME / TOP ACHIEVERS */}
       <section className="bg-slate-50 py-16 sm:py-20 border-y border-slate-200/80">
@@ -659,7 +575,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           eyebrow="Parent & Student Voices"
-          title="What Families Love About Surbhi"
+          title="What Families Love About Surabhi"
           subtitle="Direct, unfiltered feedback from students and parents across Nagpur."
         />
 

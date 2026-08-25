@@ -46,7 +46,7 @@ export const AdminDashboardPage: React.FC = () => {
         <div className="space-y-2 relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[11px] font-bold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Surbhi Management Dashboard</span>
+            <span>Surabhi Management Dashboard</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-serif font-bold text-white">
             Welcome back, {adminUser?.name || 'Administrator'}

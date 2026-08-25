@@ -110,14 +110,6 @@ export const RankCard: React.FC<RankCardProps> = ({ student, isFeatured = false 
             </div>
           )}
         </div>
-
-        {/* Student Quote / Feedback */}
-        {quote && (
-          <div className="relative bg-slate-50/80 p-3.5 rounded-xl text-xs text-slate-600 italic leading-relaxed border border-slate-100">
-            <Quote className="w-4 h-4 text-amber-500/40 absolute -top-2 left-2 fill-amber-500/20" />
-            <p className="line-clamp-3 pl-2">"{quote}"</p>
-          </div>
-        )}
       </div>
     </motion.div>
   );

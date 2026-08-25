@@ -46,15 +46,15 @@ const DEFAULT_ABOUT_CONTENT: AboutContent = {
   tagline: 'A legacy of academic integrity, conceptual clarity, and individual student mentorship since 1997.',
   storyTitle: 'Over 29 Years of Crafting Leaders & Board Toppers',
   storyParagraphs: [
-    'Founded in 1997 by Mr.Sandeep Panchabhai, Surbhi Coaching Academy was born with a singular focus: to replace anxiety-driven rote memorization with deep conceptual clarity, disciplined study routines, and personalized mentorship.',
+    'Founded in 1997 by Mr.Sandeep Panchabhai, Surabhi Coaching Academy was born with a singular focus: to replace anxiety-driven rote memorization with deep conceptual clarity, disciplined study routines, and personalized mentorship.',
     'Over the last decade and a half, we have grown from a modest classroom into one of Central India’s most respected academic coaching institutions. Our student-centric philosophy ensures that no child is left behind in a crowded hall; our classes are strictly capped at 25 to 30 learners.',
-    'Today, Surbhi alumni study at premier medical colleges, top engineering universities, top commerce institutions like SRCC, and hold prestigious administrative positions. We continue to innovate our teaching methods with modern smart technology while holding fast to classical academic rigor.'
+    'Today, Surabhi alumni study at premier medical colleges, top engineering universities, top commerce institutions like SRCC, and hold prestigious administrative positions. We continue to innovate our teaching methods with modern smart technology while holding fast to classical academic rigor.'
   ],
   founderMessage: {
     name: 'Mr.Sandeep Panchabhai',
     role: 'Founder & Academic Director',
     photo: '../../assets/director/director.png',
-    message: 'Every student possesses boundless potential waiting for the right guidance. At Surbhi Academy, we do not simply prepare students for examinations; we cultivate the critical thinking, resilience, and curiosity that will guide their careers for life. We welcome you to join our family of achievers.',
+    message: 'Every student possesses boundless potential waiting for the right guidance. At Surabhi Academy, we do not simply prepare students for examinations; we cultivate the critical thinking, resilience, and curiosity that will guide their careers for life. We welcome you to join our family of achievers.',
     signatureText: 'Mr.Sandeep Panchabhai.'
   },
   vision: 'To be the gold standard in foundational and secondary education, nurturing confident, intellectually capable, and ethically grounded achievers who lead their fields.',
@@ -80,7 +80,7 @@ const DEFAULT_ABOUT_CONTENT: AboutContent = {
 };
 
 const DEFAULT_SITE_SETTINGS: SiteSettings = {
-  name: 'Surbhi Coaching Academy',
+  name: 'Surabhi Coaching Academy',
   tagline: 'Teaching Beyond Examination',
   logoUrl: '',
   primaryPhone: '+91 98226 94137',
@@ -88,7 +88,7 @@ const DEFAULT_SITE_SETTINGS: SiteSettings = {
   whatsappNumber: '+91 98226 94137',
   email: 'surabhitutionclasses@rediffmail.com',
   infoEmail: 'surabhitution',
-  mainCampusAddress: 'Surbhi Academy,  N-42, Near Volleyball Ground, Reshimbag, Nagpur, Maharashtra, India',
+  mainCampusAddress: 'Surabhi Academy,  N-42, Near Volleyball Ground, Reshimbag, Nagpur, Maharashtra, India',
   workingHoursWeekdays: 'Monday – Saturday: 8:00 AM – 8:30 PM',
   workingHoursSunday: 'Sunday: 9:00 AM – 2:00 PM (Counseling & Enquiry)',
   socials: {
@@ -98,9 +98,9 @@ const DEFAULT_SITE_SETTINGS: SiteSettings = {
     linkedin: 'https://linkedin.com'
   },
   seo: {
-    metaTitle: 'Surbhi Coaching Academy - Premier Coaching for Class 8-12, Olympiads & JEE and NEET Coaching  in Nagpur',
+    metaTitle: 'Surabhi Coaching Academy - Premier Coaching for Class 8-12, Olympiads & JEE and NEET Coaching  in Nagpur',
     metaDescription: 'Best coaching classes in Nagpur for Class 8-10 Foundation, Class 11-12 Science (PCM/PCB). Small batches, top faculty, and 99%+ board results.',
-    keywords: 'Surbhi coaching academy, coaching classes in Nagpur, Class 10 board coaching, 11th 12th science, Olympiad coaching and JEE and NEET Coaching.'
+    keywords: 'Surabhi coaching academy, coaching classes in Nagpur, Class 10 board coaching, 11th 12th science, Olympiad coaching and JEE and NEET Coaching.'
   }
 };
 
@@ -246,7 +246,7 @@ interface AcademyContextType {
 
 const AcademyContext = createContext<AcademyContextType | undefined>(undefined);
 
-const LOCAL_STORAGE_PREFIX = 'surbhi_academy_';
+const LOCAL_STORAGE_PREFIX = 'surabhi_academy_';
 
 export const AcademyProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // Helper to load or fallback

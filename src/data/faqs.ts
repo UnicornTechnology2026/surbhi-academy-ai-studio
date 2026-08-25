@@ -3,7 +3,7 @@ import { FAQ } from '../types';
 export const INITIAL_FAQS: FAQ[] = [
   {
     id: 'f1',
-    question: 'How do I enroll my child at Surbhi Coaching Academy?',
+    question: 'How do I enroll my child at Surabhi Coaching Academy?',
     answer: 'Enrolling is simple: 1) Fill out our online Enquiry Form or visit either of our campus in Nagpur. 2) Schedule an academic diagnostic & counseling session. 3) Avail our complimentary 2-day classroom trial pass. 4) Complete the admission form and collect your course kit.',
     category: 'admissions',
     displayOrder: 1,
@@ -19,7 +19,7 @@ export const INITIAL_FAQS: FAQ[] = [
   },
   {
     id: 'f3',
-    question: 'What courses and subjects are offered at Surbhi Coaching Academy?',
+    question: 'What courses and subjects are offered at Surabhi Coaching Academy?',
     answer: 'We offer comprehensive coaching for Class 8 to 10 (Foundation in Science, Maths, English, Social Science), Class 11-12 Science (Physics, Chemistry, Maths, Biology) and competitive foundation programs.',
     category: 'academics',
     displayOrder: 3,
@@ -36,7 +36,7 @@ export const INITIAL_FAQS: FAQ[] = [
   {
     id: 'f6',
     question: 'How are parents kept informed about student attendance and academic progress?',
-    answer: 'Parents receive daily attendance updates. Detailed academic progress cards, chapter-wise test evaluations, and teacher feedback reports are shared directly through the surbhi academy app.',
+    answer: 'Parents receive daily attendance updates. Detailed academic progress cards, chapter-wise test evaluations, and teacher feedback reports are shared directly through the surabhi academy app.',
     category: 'facilities',
     displayOrder: 5,
     status: 'active'

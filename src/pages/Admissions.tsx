@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { 
-  CheckCircle2, 
-  Send, 
-  Phone, 
-  Mail, 
-  User, 
-  BookOpen, 
-  AlertCircle, 
-  Sparkles, 
-  Award, 
-  HelpCircle, 
-  ChevronDown, 
+import {
+  CheckCircle2,
+  Send,
+  Phone,
+  Mail,
+  User,
+  BookOpen,
+  AlertCircle,
+  Sparkles,
+  Award,
+  HelpCircle,
+  ChevronDown,
   ChevronUp,
   Clock,
   ShieldCheck
@@ -191,9 +191,8 @@ export const Admissions: React.FC = () => {
                           value={formData.studentName}
                           onChange={(e) => setFormData({ ...formData, studentName: e.target.value })}
                           placeholder="e.g. Priyanshu Roy"
-                          className={`w-full pl-9 pr-3 py-2.5 text-sm bg-white rounded-xl border ${
-                            errors.studentName ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
-                          } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
+                          className={`w-full pl-9 pr-3 py-2.5 text-sm bg-white rounded-xl border ${errors.studentName ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
+                            } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
                         />
                       </div>
                       {errors.studentName && (
@@ -215,9 +214,8 @@ export const Admissions: React.FC = () => {
                           value={formData.parentName}
                           onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
                           placeholder="e.g. Sandeep Roy"
-                          className={`w-full pl-9 pr-3 py-2.5 text-sm bg-white rounded-xl border ${
-                            errors.parentName ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
-                          } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
+                          className={`w-full pl-9 pr-3 py-2.5 text-sm bg-white rounded-xl border ${errors.parentName ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
+                            } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
                         />
                       </div>
                       {errors.parentName && (
@@ -241,9 +239,8 @@ export const Admissions: React.FC = () => {
                           value={formData.mobileNumber}
                           onChange={(e) => setFormData({ ...formData, mobileNumber: e.target.value })}
                           placeholder="10-digit mobile number"
-                          className={`w-full pl-9 pr-3 py-2.5 text-sm bg-white rounded-xl border ${
-                            errors.mobileNumber ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
-                          } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
+                          className={`w-full pl-9 pr-3 py-2.5 text-sm bg-white rounded-xl border ${errors.mobileNumber ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
+                            } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
                         />
                       </div>
                       {errors.mobileNumber && (
@@ -265,9 +262,8 @@ export const Admissions: React.FC = () => {
                           value={formData.emailAddress}
                           onChange={(e) => setFormData({ ...formData, emailAddress: e.target.value })}
                           placeholder="parent@example.com"
-                          className={`w-full pl-9 pr-3 py-2.5 text-sm bg-white rounded-xl border ${
-                            errors.emailAddress ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
-                          } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
+                          className={`w-full pl-9 pr-3 py-2.5 text-sm bg-white rounded-xl border ${errors.emailAddress ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
+                            } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
                         />
                       </div>
                     </div>
@@ -374,7 +370,7 @@ export const Admissions: React.FC = () => {
                   <Award className="w-6 h-6" />
                 </div>
                 <h4 className="text-xl font-serif font-bold text-white mb-2">
-                  Surbhi Merit Scholarship Scheme
+                  Surabhi Merit Scholarship Scheme
                 </h4>
                 <p className="text-xs text-slate-300 leading-relaxed mb-4">
                   We believe financial constraints should never stand between a bright mind and world-class education.
