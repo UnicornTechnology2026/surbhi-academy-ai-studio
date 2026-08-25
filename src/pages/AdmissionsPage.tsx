@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { 
   Sparkles, 
   CheckCircle2, 
-  FileText, 
-  Calendar, 
-  Award, 
-  Users, 
-  Clock, 
+  Send, 
   Phone, 
-  ShieldCheck,
-  Send,
+  ShieldCheck, 
+  Calendar, 
+  Clock, 
+  ArrowRight,
   HelpCircle,
-  ArrowRight
+  Users
 } from 'lucide-react';
 import { useAcademy } from '../context/AcademyContext';
 import { SectionHeader } from '../components/SectionHeader';
@@ -22,7 +21,7 @@ interface AdmissionsPageProps {
 }
 
 export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onOpenEnquiry }) => {
-  const { courses, siteSettings, submitEnquiry } = useAcademy();
+  const { courses, submitEnquiry } = useAcademy();
 
   const [form, setForm] = useState({
     studentName: '',
@@ -59,269 +58,238 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onOpenEnquiry })
     <div className="space-y-16 sm:space-y-20 py-6 sm:py-10">
       {/* 1. Header Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center max-w-3xl mx-auto space-y-4"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs uppercase tracking-widest font-bold">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Academic Session 2026–27</span>
+            <span>Admissions 2026–27 • Limited 25 Seats/Batch</span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-serif font-bold text-[#0F172A] leading-tight">
-            Admissions & 2-Day Complimentary Trial Passes
+            Try 2 Days of Classes Completely Free
           </h1>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            Experience our interactive teaching and meet senior faculty before taking admission. Seats are strictly limited to 25–30 students per batch.
+            No upfront fees, no pressure. Experience our classroom teaching, meet the faculty, and see your child's confidence grow before making any commitment.
           </p>
-        </div>
+        </motion.div>
       </section>
 
-      {/* 2. Four-Step Admission Timeline */}
+      {/* 2. 3-Step Simple Roadmap */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          eyebrow="Simple & Transparent"
-          title="Our 4-Step Admission Journey"
-          subtitle="A clear, zero-pressure admission process focused on aligning the student’s needs with the right batch."
+          eyebrow="Zero Friction"
+          title="How to Get Started in 3 Steps"
+          subtitle="A completely transparent, zero-stress trial experience."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm space-y-3 relative">
-            <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 font-serif font-bold text-base flex items-center justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -5 }}
+            className="bg-white p-7 rounded-2xl border border-slate-200/90 shadow-sm space-y-3"
+          >
+            <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-900 font-serif font-bold text-lg flex items-center justify-center">
               01
             </div>
-            <h3 className="text-base font-serif font-bold text-[#0F172A]">
-              Enquiry & Diagnostic Review
+            <h3 className="text-lg font-serif font-bold text-[#0F172A]">
+              Fill the 30-Sec Form
             </h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Submit your enquiry online or visit the campus to discuss academic goals and evaluate baseline strengths.
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Tell us your child's current grade and subjects. We'll assign the right batch and date for their trial.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm space-y-3 relative">
-            <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 font-serif font-bold text-base flex items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            whileHover={{ y: -5 }}
+            className="bg-white p-7 rounded-2xl border border-slate-200/90 shadow-sm space-y-3"
+          >
+            <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-900 font-serif font-bold text-lg flex items-center justify-center">
               02
             </div>
-            <h3 className="text-base font-serif font-bold text-[#0F172A]">
-              Free 2-Day Trial Classes
+            <h3 className="text-lg font-serif font-bold text-[#0F172A]">
+              Attend 2 Free Lectures
             </h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              The student attends two live lectures in their target batch to experience teaching depth and peer focus.
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Your child sits in the real classroom, participates in discussions, and tries our daily doubt desk.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm space-y-3 relative">
-            <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 font-serif font-bold text-base flex items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            whileHover={{ y: -5 }}
+            className="bg-white p-7 rounded-2xl border border-slate-200/90 shadow-sm space-y-3"
+          >
+            <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-900 font-serif font-bold text-lg flex items-center justify-center">
               03
             </div>
-            <h3 className="text-base font-serif font-bold text-[#0F172A]">
-              Parent-Mentor Consultation
+            <h3 className="text-lg font-serif font-bold text-[#0F172A]">
+              Decide with Confidence
             </h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Meet the department head to review the trial feedback, study roadmap, and available installment/scholarship tiers.
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              If your child loved the learning style, confirm the seat. If not, no questions asked.
             </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm space-y-3 relative">
-            <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 font-serif font-bold text-base flex items-center justify-center">
-              04
-            </div>
-            <h3 className="text-base font-serif font-bold text-[#0F172A]">
-              Seat Confirmation & Kit Issue
-            </h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Formalize admission, receive printed study booklets, student ID badge, and welcome orientation schedule.
-            </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* 3. Scholarships & Documents Grid */}
+      {/* 3. Direct Interactive Trial Booking Form */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left: Scholarships & Perks */}
-          <div className="lg:col-span-7 space-y-6">
-            <div className="bg-[#0F172A] text-white rounded-3xl p-8 sm:p-10 shadow-xl space-y-6">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center">
-                  <Award className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-xs uppercase tracking-widest text-amber-400 font-bold">
-                    Surbhi Talent Rewards
-                  </div>
-                  <h3 className="text-2xl font-serif font-bold text-white">
-                    Merit Scholarships & Fee Concessions
-                  </h3>
-                </div>
-              </div>
-
-              <div className="space-y-3 text-xs sm:text-sm text-slate-300">
-                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-white/5 border border-white/10">
-                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                  <span><strong>90%+ in Previous Class:</strong> Up to 25% Merit Scholarship on course fees.</span>
-                </div>
-
-                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-white/5 border border-white/10">
-                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                  <span><strong>95%+ in Previous Class / School Topper:</strong> Up to 50% Merit Scholarship.</span>
-                </div>
-
-                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-white/5 border border-white/10">
-                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                  <span><strong>Sibling Concession:</strong> 10% fee reduction for real brothers/sisters enrolled concurrently.</span>
-                </div>
-
-                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-white/5 border border-white/10">
-                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                  <span><strong>Early Bird Advantage:</strong> Complimentary foundation bridge module & test kit.</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Documents Required */}
-            <div className="bg-slate-50 rounded-3xl p-8 border border-slate-200/80 space-y-4">
-              <h3 className="text-lg font-serif font-bold text-[#0F172A] flex items-center gap-2">
-                <FileText className="w-5 h-5 text-amber-700" />
-                <span>Documents Required for Admission</span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          {/* Left: Quick Perks */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="bg-[#0F172A] text-white rounded-3xl p-8 shadow-xl space-y-5">
+              <span className="text-xs uppercase tracking-widest text-amber-400 font-bold">
+                Why Students Love the Trial
+              </span>
+              <h3 className="text-2xl font-serif font-bold text-white">
+                Experience the Surbhi classroom difference.
               </h3>
-              <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                  <span>Photocopy of previous academic year’s report card / marksheet</span>
+              <ul className="space-y-3 text-xs sm:text-sm text-slate-300">
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Meet senior subject teachers directly</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                  <span>Two recent passport-sized photographs of the student</span>
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Receive complimentary chapter practice booklet</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                  <span>Student & Parent Aadhar Card photocopy (identity verification)</span>
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Experience small batch interaction (max 25-30)</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Zero registration charges or credit card needed</span>
                 </li>
               </ul>
             </div>
           </div>
 
-          {/* Right: Direct Admissions Form */}
-          <div className="lg:col-span-5 bg-white rounded-3xl p-8 border border-slate-200/80 shadow-xl space-y-5">
-            <div>
-              <div className="text-xs uppercase tracking-widest text-amber-700 font-bold">
-                Online Seat Pre-Booking
-              </div>
-              <h3 className="text-xl font-serif font-bold text-[#0F172A] mt-0.5">
-                Apply for Admission / Trial Pass
-              </h3>
-            </div>
-
+          {/* Right: Clean Talkative Form */}
+          <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border-2 border-slate-200 shadow-xl">
             {submitted ? (
-              <div className="py-8 text-center space-y-3">
-                <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
-                  <CheckCircle2 className="w-7 h-7" />
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center py-10 space-y-4"
+              >
+                <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+                  <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h4 className="text-xl font-serif font-bold text-slate-900">Application Submitted!</h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Thank you. Our counselor desk will reach out to schedule your 2-day trial class.
+                <h3 className="text-2xl font-serif font-bold text-[#0F172A]">
+                  Trial Pass Confirmed!
+                </h3>
+                <p className="text-sm text-slate-600 max-w-md mx-auto">
+                  Thank you! Our academic counselor will call you within 2 business hours on <strong>{form.mobileNumber}</strong> with batch timings and classroom details.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
-                  className="text-xs font-bold text-amber-800 underline"
+                  className="mt-4 bg-[#0F172A] text-white px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-slate-800"
                 >
-                  Submit Another Form
+                  Book Another Pass
                 </button>
-              </div>
+              </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-3.5">
-                <div>
-                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
-                    Student Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="e.g. Atharva Joshi"
-                    value={form.studentName}
-                    onChange={(e) => setForm({ ...form, studentName: e.target.value })}
-                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-amber-500"
-                  />
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <h3 className="text-2xl font-serif font-bold text-[#0F172A] mb-2">
+                  Claim Your 2-Day Trial Pass
+                </h3>
+                <p className="text-xs text-slate-500 mb-4">
+                  Takes under 30 seconds. No credit card or paperwork required.
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                      Student Name *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Rahul Sharma"
+                      value={form.studentName}
+                      onChange={(e) => setForm({ ...form, studentName: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-amber-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                      Parent Mobile / WhatsApp *
+                    </label>
+                    <input
+                      type="tel"
+                      required
+                      placeholder="e.g. 9876543210"
+                      value={form.mobileNumber}
+                      onChange={(e) => setForm({ ...form, mobileNumber: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-amber-500"
+                    />
+                  </div>
                 </div>
 
-                <div>
-                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
-                    Parent / Guardian Name
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Mr. Sanjay Joshi"
-                    value={form.parentName}
-                    onChange={(e) => setForm({ ...form, parentName: e.target.value })}
-                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-amber-500"
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                      Current Grade
+                    </label>
+                    <select
+                      value={form.studentClass}
+                      onChange={(e) => setForm({ ...form, studentClass: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-amber-500 bg-white"
+                    >
+                      <option value="Class 8">Class 8</option>
+                      <option value="Class 9">Class 9</option>
+                      <option value="Class 10">Class 10 (Board Batch)</option>
+                      <option value="Class 11 Science">Class 11 Science (PCM/PCB)</option>
+                      <option value="Class 12 Science">Class 12 Science (Boards + Entrance)</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                      Interested Program
+                    </label>
+                    <select
+                      value={form.courseInterested}
+                      onChange={(e) => setForm({ ...form, courseInterested: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-amber-500 bg-white"
+                    >
+                      {courses.map((c) => (
+                        <option key={c.id} value={c.title}>
+                          {c.title}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
 
-                <div>
-                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
-                    Contact Mobile Number *
-                  </label>
-                  <input
-                    type="tel"
-                    required
-                    placeholder="10-digit mobile number"
-                    value={form.mobileNumber}
-                    onChange={(e) => setForm({ ...form, mobileNumber: e.target.value })}
-                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-amber-500"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
-                    Target Class & Stream *
-                  </label>
-                  <select
-                    value={form.studentClass}
-                    onChange={(e) => setForm({ ...form, studentClass: e.target.value })}
-                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-amber-500 bg-white"
-                  >
-                    <option value="Class 6">Class 6 (Junior Foundation)</option>
-                    <option value="Class 7">Class 7 (Junior Foundation)</option>
-                    <option value="Class 8">Class 8 (Junior Foundation)</option>
-                    <option value="Class 9">Class 9 (Pre-Board Foundation)</option>
-                    <option value="Class 10">Class 10 (Board Excellence)</option>
-                    <option value="Class 11 Science">Class 11 Science (PCM/PCB)</option>
-                    <option value="Class 12 Science">Class 12 Science (PCM/PCB)</option>
-                    <option value="Class 11 Commerce">Class 11 Commerce</option>
-                    <option value="Class 12 Commerce">Class 12 Commerce</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
-                    Specific Questions
-                  </label>
-                  <textarea
-                    rows={2}
-                    placeholder="Preferred batch time, scholarship queries..."
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-amber-500"
-                  />
-                </div>
-
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   type="submit"
                   disabled={submitting}
-                  className="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider py-3.5 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  className="w-full mt-2 bg-[#0F172A] hover:bg-amber-500 hover:text-slate-950 text-white font-bold text-xs uppercase tracking-wider py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Send className="w-4 h-4" />
-                  <span>{submitting ? 'Submitting...' : 'Apply & Reserve Trial Class'}</span>
-                </button>
+                  <span>{submitting ? 'Confirming...' : 'Claim 2-Day Free Trial Pass'}</span>
+                </motion.button>
               </form>
             )}
           </div>
         </div>
       </section>
-
-      {/* 4. CTA */}
-      <CTASection
-        onOpenEnquiry={() => onOpenEnquiry()}
-        title="Need Immediate Admission Assistance?"
-        subtitle={`Speak directly with our senior counselor desk at ${siteSettings.primaryPhone}.`}
-      />
     </div>
   );
 };

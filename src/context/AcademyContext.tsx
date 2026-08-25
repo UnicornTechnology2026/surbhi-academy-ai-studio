@@ -215,12 +215,16 @@ interface AcademyContextType {
   addFAQ: (faq: Omit<FAQ, 'id'>) => void;
   updateFAQ: (id: string, updated: Partial<FAQ>) => void;
   deleteFAQ: (id: string) => void;
+  addFaq: (faq: Omit<FAQ, 'id'>) => void;
+  updateFaq: (id: string, updated: Partial<FAQ>) => void;
+  deleteFaq: (id: string) => void;
 
   // Enquiries
   enquiries: AdmissionEnquiryData[];
   submitEnquiry: (data: Omit<AdmissionEnquiryData, 'id' | 'status' | 'createdAt'>) => Promise<boolean>;
   updateEnquiryStatus: (id: string, status: EnquiryStatus) => void;
   updateEnquiryNotes: (id: string, notes: string) => void;
+  addCounselorNote: (id: string, notes: string) => void;
   deleteEnquiry: (id: string) => void;
 
   // Content & Settings
@@ -671,11 +675,15 @@ export const AcademyProvider: React.FC<{ children: ReactNode }> = ({ children })
         addFAQ,
         updateFAQ,
         deleteFAQ,
+        addFaq: addFAQ,
+        updateFaq: updateFAQ,
+        deleteFaq: deleteFAQ,
 
         enquiries,
         submitEnquiry,
         updateEnquiryStatus,
         updateEnquiryNotes,
+        addCounselorNote: updateEnquiryNotes,
         deleteEnquiry,
 
         heroContent,

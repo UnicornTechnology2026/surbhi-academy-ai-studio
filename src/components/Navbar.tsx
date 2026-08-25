@@ -143,10 +143,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
           <button
             id="nav-enquire-btn"
             onClick={() => onOpenEnquiry()}
-            className="bg-[#0F172A] hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full transition-all shadow-md hover:shadow-lg flex items-center gap-1.5 cursor-pointer"
+            className="bg-[#0F172A] hover:bg-amber-500 hover:text-slate-950 text-white font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full transition-all shadow-md hover:shadow-lg flex items-center gap-1.5 cursor-pointer"
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Enquire Now</span>
+            <span>Book Free Trial</span>
           </button>
         </div>
 

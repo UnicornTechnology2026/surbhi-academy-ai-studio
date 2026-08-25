@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'motion/react';
 import {
   Sparkles,
   Award,
@@ -11,7 +12,8 @@ import {
   GraduationCap,
   ShieldCheck,
   Compass,
-  ArrowRight
+  ArrowRight,
+  Quote
 } from 'lucide-react';
 import { useAcademy } from '../context/AcademyContext';
 import { SectionHeader } from '../components/SectionHeader';
@@ -24,222 +26,168 @@ interface AboutPageProps {
 export const AboutPage: React.FC<AboutPageProps> = ({ onOpenEnquiry }) => {
   const { aboutContent, siteSettings } = useAcademy();
 
+  const corePillars = [
+    {
+      title: "No Factory Batches",
+      desc: "We strictly cap every batch at 25-30 students so every learner gets noticed and encouraged.",
+      icon: Users,
+      color: "text-blue-600 bg-blue-50 border-blue-200"
+    },
+    {
+      title: "Daily Doubt Desk",
+      desc: "Teachers stay back every evening for 1-on-1 problem-solving sessions with students.",
+      icon: Target,
+      color: "text-amber-700 bg-amber-50 border-amber-200"
+    },
+    {
+      title: "Concept Over Cramming",
+      desc: "We use physical demonstrations, diagrams, and real-life analogies before formulas.",
+      icon: BookOpen,
+      color: "text-emerald-700 bg-emerald-50 border-emerald-200"
+    },
+    {
+      title: "Honest Parent Updates",
+      desc: "Weekly WhatsApp reports and direct teacher calls so there are no year-end surprises.",
+      icon: ShieldCheck,
+      color: "text-purple-700 bg-purple-50 border-purple-200"
+    }
+  ];
+
   return (
-    <div className="space-y-16 sm:space-y-24 py-6 sm:py-10">
+    <div className="space-y-16 sm:space-y-20 py-6 sm:py-10">
       {/* 1. Header Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center max-w-3xl mx-auto space-y-4"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs uppercase tracking-widest font-bold">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Our Journey & Academic Philosophy</span>
+            <span>Our Story & Philosophy</span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-serif font-bold text-[#0F172A] leading-tight">
-            Building Strong Foundations, Inspiring Curiosity
+            Teaching with heart, rigor, and genuine care.
           </h1>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            {aboutContent.tagline}
+            Since 1997, Surbhi Coaching Academy has helped over 12,500 students in Nagpur conquer their academic fear and achieve board exam distinction.
           </p>
-
-        </div>
+        </motion.div>
       </section>
 
-      {/* 2. Academy Story Section */}
+      {/* 2. Founder / Director Note (Conversational) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Image grid */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] bg-slate-900">
-              <img
-                src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1000&q=80"
-                alt="Classroom at Surbhi Academy"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 text-white">
-                <span className="text-xs uppercase tracking-widest text-amber-400 font-bold">
-                  Since 1997
-                </span>
-                <h3 className="text-xl font-serif font-bold text-white mt-1">
-                  29+ Years of Proven Excellence
-                </h3>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-3xl border-2 border-slate-200/90 shadow-xl p-8 sm:p-12 relative overflow-hidden"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Director Photo */}
+            <div className="lg:col-span-4 text-center lg:text-left">
+              <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-2xl overflow-hidden border-4 border-amber-400/40 shadow-lg mx-auto lg:mx-0">
+                <img
+                  src={aboutContent.founderMessage.photo}
+                  alt={aboutContent.founderMessage.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
-            </div>
-            {/* Small stats pill */}
-            <div className="absolute -bottom-6 -right-6 bg-[#0F172A] text-white p-5 rounded-2xl shadow-xl border border-slate-800 hidden sm:block">
-              <div className="text-3xl font-serif font-bold text-amber-400">12,500+</div>
-              <div className="text-xs text-slate-300 font-medium mt-0.5">Successful Alumni</div>
-            </div>
-          </div>
-
-          {/* Right Text */}
-          <div className="lg:col-span-7 space-y-6">
-            <div className="text-xs uppercase tracking-widest text-amber-700 font-bold">
-              About Surbhi Academy
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0F172A]">
-              {aboutContent.storyTitle}
-            </h2>
-            <div className="space-y-4 text-sm sm:text-base text-slate-600 leading-relaxed">
-              {aboutContent.storyParagraphs.map((para, i) => (
-                <p key={i}>{para}</p>
-              ))}
+              <h3 className="text-xl font-serif font-bold text-[#0F172A] mt-4">
+                {aboutContent.founderMessage.name}
+              </h3>
+              <div className="text-xs font-bold text-amber-700 uppercase tracking-wider mt-0.5">
+                {aboutContent.founderMessage.role}
+              </div>
             </div>
 
-            <div className="pt-4 flex flex-wrap gap-4">
-              <div className="flex items-center gap-2 bg-slate-50 border border-slate-200/80 px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-800">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>Small Batches (25-30 Max)</span>
-              </div>
-              <div className="flex items-center gap-2 bg-slate-50 border border-slate-200/80 px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-800">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>Zero Rote Learning</span>
-              </div>
-              <div className="flex items-center gap-2 bg-slate-50 border border-slate-200/80 px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-800">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>Daily 1-on-1 Doubts</span>
+            {/* Conversational Quote */}
+            <div className="lg:col-span-8 space-y-4 border-t lg:border-t-0 lg:border-l border-slate-200 pt-6 lg:pt-0 lg:pl-10">
+              <Quote className="w-10 h-10 text-amber-500/30" />
+              <p className="text-base sm:text-xl text-slate-800 leading-relaxed font-serif italic">
+                "When I started teaching 29 years ago, I realized children don't dislike Math or Science — they only dislike feeling confused. When you break a concept down step-by-step with warmth and patience, any student can score 90%+. That remains our only promise."
+              </p>
+              <div className="pt-2 text-xs font-bold uppercase tracking-wider text-slate-500">
+                — {aboutContent.founderMessage.name}, Founder & Academic Mentor
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* 3. Director / Founder Message */}
-      <section className="bg-slate-50 py-16 sm:py-20 border-y border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-3xl border border-slate-100 shadow-xl p-8 sm:p-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-4 text-center lg:text-left">
-                <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden border-4 border-amber-500/20 shadow-md mx-auto lg:mx-0">
-                  <img
-                    src={aboutContent.founderMessage.photo}
-                    alt={aboutContent.founderMessage.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-serif font-bold text-[#0F172A] mt-4">
-                  {aboutContent.founderMessage.name}
-                </h3>
-                <div className="text-xs font-bold text-amber-700 uppercase tracking-wider mt-0.5">
-                  {aboutContent.founderMessage.role}
-                </div>
-              </div>
-
-              <div className="lg:col-span-8 space-y-4 border-t lg:border-t-0 lg:border-l border-slate-100 pt-6 lg:pt-0 lg:pl-10">
-                <div className="text-xs uppercase tracking-widest text-amber-700 font-bold flex items-center gap-1.5">
-                  <Award className="w-4 h-4" />
-                  <span>Director's Message to Students & Parents</span>
-                </div>
-                <p className="text-base sm:text-lg text-slate-700 italic leading-relaxed font-serif">
-                  "{aboutContent.founderMessage.message}"
-                </p>
-                <div className="pt-2 text-xs text-slate-500 font-semibold tracking-wider uppercase">
-                  — {aboutContent.founderMessage.signatureText}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Core Values Grid */}
+      {/* 3. 4 Core Pillars (Talkative Cards) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          eyebrow="Core Values"
-          title="The Pillars That Guide Our Teaching"
+          eyebrow="What Guides Us"
+          title="The 4 Rules We Never Compromise On"
+          subtitle="Simple values that keep our classrooms friendly, focused, and high-achieving."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-          {aboutContent.coreValues.map((val, idx) => (
-            <div
-              key={idx}
-              className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all space-y-3"
-            >
-              <div className="w-10 h-10 rounded-xl bg-slate-100 text-[#0F172A] flex items-center justify-center font-serif font-bold text-sm">
-                0{idx + 1}
-              </div>
-              <h4 className="text-base font-serif font-bold text-[#0F172A]">
-                {val.title}
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                {val.desc}
-              </p>
-            </div>
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+          {corePillars.map((pillar, idx) => {
+            const Icon = pillar.icon;
+            return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                whileHover={{ y: -5 }}
+                className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-lg transition-all space-y-3"
+              >
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center border ${pillar.color}`}>
+                  <Icon className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-serif font-bold text-[#0F172A]">
+                  {pillar.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {pillar.desc}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 
-      {/* 6. Infrastructure & Campus Highlights */}
-      <section className="bg-slate-50 py-16 sm:py-20 border-y border-slate-200/80">
+      {/* 4. Academy Journey in Numbers */}
+      <section className="bg-slate-50 py-16 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            eyebrow="Campus Environment"
-            title="Modern Infrastructure Built for Focus"
-            subtitle="Explore our air-conditioned smart lecture rooms, reference library, and peaceful student study zones."
+            eyebrow="Our Journey"
+            title="29 Years in 4 Numbers"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <div className="rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-sm">
-              <div className="h-48 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80"
-                  alt="Smart Classrooms"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-6 space-y-2">
-                <h4 className="text-base font-serif font-bold text-[#0F172A]">
-                  Smart Interactive Classrooms
-                </h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Equipped with 4K digital smart interactive panels for visual derivations, 3D biological models, and audio clarity.
-                </p>
-              </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center mt-10">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs">
+              <div className="text-3xl sm:text-4xl font-serif font-bold text-[#0F172A]">1997</div>
+              <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mt-1">Year Established</div>
             </div>
 
-            <div className="rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-sm">
-              <div className="h-48 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800&q=80"
-                  alt="Reference Library"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-6 space-y-2">
-                <h4 className="text-base font-serif font-bold text-[#0F172A]">
-                  Dedicated Reference Library
-                </h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Over 2,500 reference titles, NCERT exemplars, past 20-year papers, and quiet individual study carrels.
-                </p>
-              </div>
+            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs">
+              <div className="text-3xl sm:text-4xl font-serif font-bold text-amber-600">12,500+</div>
+              <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mt-1">Students Coached</div>
             </div>
 
-            <div className="rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-sm">
-              <div className="h-48 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80"
-                  alt="Doubt Clearing Cabins"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-6 space-y-2">
-                <h4 className="text-base font-serif font-bold text-[#0F172A]">
-                  1-on-1 Doubt Clearing Pods
-                </h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Private discussion pods where students sit directly with subject heads to review homework and resolve conceptual hurdles.
-                </p>
-              </div>
+            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs">
+              <div className="text-3xl sm:text-4xl font-serif font-bold text-[#0F172A]">100%</div>
+              <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mt-1">Board Pass Track Record</div>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs">
+              <div className="text-3xl sm:text-4xl font-serif font-bold text-amber-600">25-30</div>
+              <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mt-1">Strict Batch Limit</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 7. CTA */}
+      {/* 5. CTA */}
       <CTASection
-        onOpenEnquiry={() => onOpenEnquiry()}
-        title="Experience the Surbhi Difference"
-        subtitle="Visit our campus or book a 2-day complimentary classroom pass for your child."
+        onOpenEnquiry={onOpenEnquiry}
+        title="Come meet our teachers in person"
+        subtitle="Book a free 2-day trial class for your child and experience the Surbhi difference firsthand."
       />
     </div>
   );

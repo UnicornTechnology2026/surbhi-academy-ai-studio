@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { 
   Trophy, 
   Sparkles, 
@@ -21,7 +22,7 @@ interface ResultsPageProps {
 }
 
 export const ResultsPage: React.FC<ResultsPageProps> = ({ onOpenEnquiry }) => {
-  const { achievers, siteSettings } = useAcademy();
+  const { achievers } = useAcademy();
   const [selectedYear, setSelectedYear] = useState<string>('all');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -31,8 +32,7 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ onOpenEnquiry }) => {
     { key: 'all', label: 'All Streams' },
     { key: 'Class 10', label: 'Class 10 Boards' },
     { key: 'science', label: 'Class 12 Science' },
-    { key: 'commerce', label: 'Class 12 Commerce' },
-    { key: 'competitive', label: 'Olympiads & NTSE' }
+    { key: 'competitive', label: 'Entrance & Olympiads' }
   ];
 
   const filteredAchievers = achievers.filter((student) => {
@@ -53,18 +53,22 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ onOpenEnquiry }) => {
     <div className="space-y-16 sm:space-y-20 py-6 sm:py-10">
       {/* 1. Header Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center max-w-3xl mx-auto space-y-4"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs uppercase tracking-widest font-bold">
-            <Trophy className="w-3.5 h-3.5" />
+            <Trophy className="w-3.5 h-3.5 text-amber-700" />
             <span>Hall of Fame & Academic Benchmarks</span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-serif font-bold text-[#0F172A] leading-tight">
-            Celebrating Our Board Toppers & Rank Holders
+            Meet the Rankers Who Made Nagpur Proud
           </h1>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            Consistently setting city and state records in CBSE, State Board, and competitive foundations through rigorous preparation and personalized mentorship.
+            Consistent city and state ranks achieved through small batches, zero rote learning, and daily 1-on-1 mentor guidance.
           </p>
-        </div>
+        </motion.div>
       </section>
 
       {/* 2. Merit Statistics Summary Bar */}
@@ -74,14 +78,14 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ onOpenEnquiry }) => {
             <div className="space-y-1 pt-4 md:pt-0">
               <div className="text-3xl sm:text-4xl font-serif font-bold text-amber-400">100%</div>
               <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold">
-                Overall Board Pass Rate
+                Board Pass Rate
               </div>
             </div>
 
             <div className="space-y-1 pt-4 md:pt-0">
               <div className="text-3xl sm:text-4xl font-serif font-bold text-amber-400">84.6%</div>
               <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold">
-                Students in Distinction Bracket
+                Students in Distinction (75%+)
               </div>
             </div>
 
@@ -95,102 +99,67 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ onOpenEnquiry }) => {
             <div className="space-y-1 pt-4 md:pt-0">
               <div className="text-3xl sm:text-4xl font-serif font-bold text-amber-400">14</div>
               <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold">
-                Perfect 100/100 Subject Scores
+                Perfect 100/100 Scores
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. Filters Toolbar */}
+      {/* 3. Filter Toolbar */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            {/* Year Filters */}
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">
-                Academic Year:
-              </span>
-              <div className="flex gap-1.5">
-                {years.map((yr) => (
-                  <button
-                    key={yr}
-                    onClick={() => setSelectedYear(yr)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                      selectedYear === yr
-                        ? 'bg-amber-500 text-slate-950 shadow-xs'
-                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                    }`}
-                  >
-                    {yr === 'all' ? 'All Years' : yr}
-                  </button>
-                ))}
-              </div>
+        <div className="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm space-y-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            {/* Stream Category Tabs */}
+            <div className="flex flex-wrap gap-2">
+              {categories.map((cat) => (
+                <button
+                  key={cat.key}
+                  onClick={() => setSelectedCategory(cat.key)}
+                  className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                    selectedCategory === cat.key
+                      ? 'bg-[#0F172A] text-white shadow-sm'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              ))}
             </div>
 
-            {/* Stream Category filter */}
+            {/* Year Selector */}
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">
-                Stream:
-              </span>
+              <span className="text-xs font-bold uppercase text-slate-600">Year:</span>
               <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none focus:border-amber-500 bg-white"
+                value={selectedYear}
+                onChange={(e) => setSelectedYear(e.target.value)}
+                className="px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-semibold bg-white"
               >
-                {categories.map((c) => (
-                  <option key={c.key} value={c.key}>
-                    {c.label}
+                {years.map((yr) => (
+                  <option key={yr} value={yr}>
+                    {yr === 'all' ? 'All Years' : yr}
                   </option>
                 ))}
               </select>
             </div>
-
-            {/* Search Box */}
-            <div className="relative w-full sm:w-64">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
-              <input
-                type="text"
-                placeholder="Search student or school..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-amber-500 bg-white"
-              />
-            </div>
           </div>
         </div>
       </section>
 
-      {/* 4. Achievers Wall Grid */}
+      {/* 4. Ranker Cards Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {filteredAchievers.length === 0 ? (
-          <div className="text-center py-16 bg-slate-50 rounded-2xl border border-dashed border-slate-200 space-y-3">
-            <Trophy className="w-10 h-10 text-slate-300 mx-auto" />
-            <h3 className="text-lg font-serif font-bold text-slate-700">
-              No results found matching your criteria
-            </h3>
-            <p className="text-xs text-slate-500">
-              Try adjusting the year or stream filter.
-            </p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredAchievers.map((student) => (
-              <RankCard
-                key={student.id}
-                student={student}
-                isFeatured={student.featured}
-              />
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {filteredAchievers.map((student) => (
+            <RankCard key={student.id} student={student} />
+          ))}
+        </div>
       </section>
 
       {/* 5. CTA */}
       <CTASection
-        onOpenEnquiry={() => onOpenEnquiry()}
-        title="Be on Nagpur’s Next Merit List"
-        subtitle="Join Surbhi Coaching Academy for the 2026–27 session and learn from faculty who produce city toppers."
+        onOpenEnquiry={onOpenEnquiry}
+        title="Want your child to be our next top ranker?"
+        subtitle="Claim a 2-day free trial class and experience our personal mentorship approach firsthand."
       />
     </div>
   );

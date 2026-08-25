@@ -15,7 +15,9 @@ export const ACADEMY_INFO = {
     secondaryPhone: '+91 88888 24388',
     whatsappNumber: '+91 98226 94137',
     email: 'surabhitutionclasses@rediffmail.com',
+    infoEmail: 'surabhitutionclasses@rediffmail.com',
     mainCampusAddress: 'Surbhi Academic, N-42, Near Volleyball Ground, Reshimbagh, Nagpur, Maharashtra, India',
+    branchAddress: 'Surbhi Academy West Wing, VIP Road, Dharampeth, Nagpur, Maharashtra, India',
     workingHours: {
       weekdays: 'Monday – Saturday: 8:00 AM – 8:30 PM',
       sunday: 'Sunday: 9:00 AM – 2:00 PM (Counseling & Enquiry)'

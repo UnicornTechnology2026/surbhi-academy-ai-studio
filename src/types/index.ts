@@ -149,7 +149,7 @@ export interface FAQ {
   id: string;
   question: string;
   answer: string;
-  category: 'admissions' | 'academics' | 'facilities' | 'general';
+  category: 'admissions' | 'academics' | 'facilities' | 'general' | 'Admissions' | 'Academics' | 'Fees' | 'Batches' | 'General' | string;
   displayOrder?: number;
   order?: number;
   status: 'active' | 'inactive';
@@ -159,13 +159,13 @@ export interface FAQ {
 export type FAQItem = FAQ;
 
 export interface AdmissionEnquiryData {
-  id?: string;
+  id: string;
   studentName: string;
-  parentName: string;
+  parentName?: string;
   mobileNumber: string;
-  emailAddress: string;
+  emailAddress?: string;
   studentClass: string;
-  courseInterested: string;
+  courseInterested?: string;
   message?: string;
   notes?: string;
   status: EnquiryStatus;
