@@ -80,12 +80,12 @@ export const ContactPage: React.FC = () => {
             <div className="space-y-1.5 text-sm font-semibold text-slate-800">
               <div>
                 <a href={`tel:${siteSettings.primaryPhone.replace(/\s+/g, '')}`} className="hover:text-amber-700">
-                  {siteSettings.primaryPhone} (Main Helpline)
+                  {siteSettings.primaryPhone}
                 </a>
               </div>
               <div>
                 <a href={`tel:${siteSettings.secondaryPhone.replace(/\s+/g, '')}`} className="hover:text-amber-700">
-                  {siteSettings.secondaryPhone} (Desk)
+                  {siteSettings.secondaryPhone}
                 </a>
               </div>
             </div>

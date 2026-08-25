@@ -206,7 +206,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenEnquiry }) => {
       {/* 7. CTA */}
       <CTASection
         onOpenEnquiry={() => onOpenEnquiry()}
-        title="Experience the Surbhi Difference"
+        title="Experience the Surabhi Difference"
         subtitle="Visit our campus or book a 2-day complimentary classroom pass for your child."
       />
     </div>

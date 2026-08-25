@@ -34,23 +34,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onEnquire }) => 
           <span className="bg-[#0F172A]/90 backdrop-blur-md text-amber-400 text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-amber-500/30">
             {course.categoryLabel}
           </span>
-          {course.badge && (
-            <span className="bg-amber-500 text-slate-950 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm flex items-center gap-1">
-              <Sparkles className="w-3 h-3" />
-              {course.badge}
-            </span>
-          )}
-        </div>
 
-        {/* Grade & Batch Size on image bottom */}
-        <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs">
-          <span className="font-bold bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/20">
-            {course.gradeLevel}
-          </span>
-          <span className="flex items-center gap-1.5 bg-slate-950/60 backdrop-blur-md px-2.5 py-1 rounded-lg text-amber-300 font-medium">
-            <Users className="w-3.5 h-3.5" />
-            <span>Max 25-30 Students</span>
-          </span>
         </div>
       </div>
 

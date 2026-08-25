@@ -244,22 +244,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
                 No 100-student crowded auditoriums. Just 25 curious minds per batch, master teachers who know your child's name, and daily 1-on-1 doubt clearing until every problem makes sense.
               </p>
 
-              {/* 3 Core Value Pillars */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 text-xs font-bold text-slate-800 pt-1">
-                <div className="flex items-center gap-2 bg-white border border-slate-200 px-3.5 py-2 rounded-xl shadow-xs">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Max 25-30 Per Batch</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white border border-slate-200 px-3.5 py-2 rounded-xl shadow-xs">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Daily 1-on-1 Doubt Desk</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white border border-slate-200 px-3.5 py-2 rounded-xl shadow-xs">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Free 2-Day Trial Pass</span>
-                </div>
-              </div>
-
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
                 <motion.button
@@ -303,15 +287,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/30 to-transparent" />
 
-                  {/* Top Badges */}
-                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-                    <span className="bg-[#0F172A]/90 backdrop-blur-md border border-amber-500/40 text-amber-400 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
-                      ★ 29+ Years in Nagpur
-                    </span>
-                    <span className="bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
-                      100% Board Pass
-                    </span>
-                  </div>
 
                   {/* Bottom Text Inside Image */}
                   <div className="absolute bottom-6 left-6 right-6 text-white space-y-2">
@@ -342,7 +317,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
                       "Daily Doubt Sessions"
                     </div>
                     <div className="text-[11px] text-slate-500 font-medium">
-                      Sit 1-on-1 with teachers everyday
+                      Sit 1-on-1 with teachers
                     </div>
                   </div>
                 </motion.div>
@@ -374,105 +349,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
                 </motion.div>
               </div>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. INTERACTIVE "FIND YOUR IDEAL BATCH" & TRIAL PASS EXPLORER */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#090E1A] text-white rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden border border-slate-800">
-          {/* Subtle background gradient glow */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="relative z-10">
-            <div className="text-center max-w-2xl mx-auto mb-8">
-              <span className="inline-block bg-white/10 text-amber-400 text-xs font-bold uppercase tracking-widest px-3.5 py-1 rounded-full mb-3 border border-white/10">
-                Interactive Batch Matching
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white">
-                Which Class is Your Child in?
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-300 mt-2">
-                Click a class below to check our batch focus, timetable options, seats remaining, and reserve your 2-day free trial.
-              </p>
-
-              {/* Grade Selector Tabs */}
-              <div className="flex flex-wrap justify-center gap-2 mt-6">
-                {(['8-9', '10', '11', '12'] as const).map((tab) => (
-                  <button
-                    key={tab}
-                    onClick={() => setSelectedGradeTab(tab)}
-                    className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${selectedGradeTab === tab
-                      ? 'bg-amber-500 text-slate-950 shadow-lg scale-105 font-extrabold'
-                      : 'bg-white/10 text-slate-300 hover:bg-white/20'
-                      }`}
-                  >
-                    {tab === '8-9' ? 'Class 8 & 9' : `Class ${tab}`}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Dynamic Card for Selected Grade */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={selectedGradeTab}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.3 }}
-                className="bg-slate-900/90 border border-slate-700/80 rounded-2xl p-6 sm:p-8 max-w-4xl mx-auto backdrop-blur-sm"
-              >
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                  <div className="md:col-span-8 space-y-3.5">
-                    <div className="flex items-center gap-3">
-                      <div className="text-amber-400 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
-                        <Zap className="w-3.5 h-3.5 text-amber-400" />
-                        <span>{gradeFinderData[selectedGradeTab].title}</span>
-                      </div>
-                      <span className="text-[11px] bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2.5 py-0.5 rounded-full font-semibold">
-                        🔥 Only {gradeFinderData[selectedGradeTab].seatsLeft} trial seats left
-                      </span>
-                    </div>
-
-                    <h3 className="text-xl sm:text-2xl font-serif font-bold text-white">
-                      {gradeFinderData[selectedGradeTab].tagline}
-                    </h3>
-
-                    <div className="space-y-2 pt-1">
-                      {gradeFinderData[selectedGradeTab].perks.map((perk, i) => (
-                        <div key={i} className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-200">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                          <span>{perk}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="text-xs text-amber-300/90 flex items-center gap-2 pt-2">
-                      <Clock className="w-4 h-4 text-amber-400" />
-                      <span><strong>Batch Timing:</strong> {gradeFinderData[selectedGradeTab].timing}</span>
-                    </div>
-                  </div>
-
-                  <div className="md:col-span-4 flex flex-col gap-3 justify-center">
-                    <button
-                      onClick={() => onOpenEnquiry(gradeFinderData[selectedGradeTab].slug)}
-                      className="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider py-4 px-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"
-                    >
-                      <Sparkles className="w-4 h-4" />
-                      <span>Claim Free 2-Day Trial</span>
-                    </button>
-                    <Link
-                      to={`/courses/${gradeFinderData[selectedGradeTab].slug}`}
-                      className="w-full bg-white/10 hover:bg-white/20 text-white font-semibold text-xs uppercase tracking-wider py-3 px-4 rounded-xl transition-all text-center flex items-center justify-center gap-1.5"
-                    >
-                      <span>View Full Syllabus</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
           </div>
         </div>
       </section>
@@ -579,7 +455,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
         <SectionHeader
           eyebrow="Parent & Student Voices"
           title="What Nagpur Families Say About Surbhi"
-          subtitle="Direct, unfiltered feedback from students and parents across Sitabuldi, Ramdaspeth, and Wardha Road."
+          subtitle="Direct, unfiltered feedback from students and parents across Nagpur."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
