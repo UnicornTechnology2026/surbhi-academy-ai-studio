@@ -36,8 +36,12 @@ export const AdminLayout: React.FC = () => {
   const navItems = [
     { name: 'Dashboard', path: '/admin/dashboard', icon: LayoutDashboard },
     { name: 'Enquiries & CRM', path: '/admin/enquiries', icon: Inbox, badge: newEnquiriesCount > 0 ? newEnquiriesCount : undefined },
-    { name: 'Course Management', path: '/admin/courses', icon: BookOpen },
-    { name: 'Toppers & Rankers', path: '/admin/achievers', icon: Trophy },
+    { name: 'Course Programs', path: '/admin/courses', icon: BookOpen },
+    { name: 'Achievers & Ranks', path: '/admin/achievers', icon: Trophy },
+    { name: 'Faculty & Mentors', path: '/admin/faculty', icon: Users },
+    { name: 'Testimonials & Reviews', path: '/admin/testimonials', icon: MessageSquareQuote },
+    { name: 'FAQs & Doubts', path: '/admin/faqs', icon: HelpCircle },
+    { name: 'Notices & Ticker', path: '/admin/notices', icon: Bell },
     { name: 'Academy Settings', path: '/admin/settings', icon: Settings }
   ];
 
