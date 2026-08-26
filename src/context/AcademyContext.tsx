@@ -19,8 +19,6 @@ import {
   SiteSettings,
   EnquiryStatus,
 } from "../types";
-import { GALLERY_DATA } from "../data/gallery";
-import { INITIAL_NOTICES } from "../data/notices";
 import { supabase } from "../lib/supabaseClient";
 import {
   courseFromRow,
@@ -144,19 +142,6 @@ interface AcademyContextType {
   deleteAchiever: (id: string) => void;
   toggleAchieverFeatured: (id: string) => void;
 
-  // Gallery
-  gallery: GalleryItem[];
-  addGalleryItem: (item: Omit<GalleryItem, "id">) => void;
-  updateGalleryItem: (id: string, updated: Partial<GalleryItem>) => void;
-  deleteGalleryItem: (id: string) => void;
-
-  // Notices
-  notices: Notice[];
-  addNotice: (notice: Omit<Notice, "id">) => void;
-  updateNotice: (id: string, updated: Partial<Notice>) => void;
-  deleteNotice: (id: string) => void;
-  toggleNoticeStatus: (id: string) => void;
-
   // Enquiries
   enquiries: AdmissionEnquiryData[];
   submitEnquiry: (
@@ -174,9 +159,6 @@ interface AcademyContextType {
   updateAboutContent: (content: Partial<AboutContent>) => void;
   siteSettings: SiteSettings;
   updateSiteSettings: (settings: Partial<SiteSettings>) => void;
-
-  // Reset to demo
-  resetToDefaultData: () => void;
 
   // Notification Toasts
   toasts: ToastMessage[];
@@ -217,15 +199,6 @@ export const AcademyProvider: React.FC<{ children: ReactNode }> = ({
     DEFAULT_SITE_SETTINGS,
   );
 
-  // Faculty, gallery, testimonials, notices and FAQs don't have Supabase
-  // tables in the current schema yet, so they still live in localStorage.
-
-  const [gallery, setGallery] = useState<GalleryItem[]>(() =>
-    getStored("gallery", GALLERY_DATA),
-  );
-  const [notices, setNotices] = useState<Notice[]>(() =>
-    getStored("notices", INITIAL_NOTICES),
-  );
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
 
   // Initial fetch from Supabase
@@ -295,28 +268,6 @@ export const AcademyProvider: React.FC<{ children: ReactNode }> = ({
   // Sync to local storage (faculty/gallery/testimonials/notices/faqs only —
   // courses/achievers/enquiries/content-settings sync directly to Supabase
   // inside their own handlers instead of via a generic effect).
-
-  useEffect(() => {
-    try {
-      localStorage.setItem(
-        LOCAL_STORAGE_PREFIX + "gallery",
-        JSON.stringify(gallery),
-      );
-    } catch (e) {
-      console.error(e);
-    }
-  }, [gallery]);
-
-  useEffect(() => {
-    try {
-      localStorage.setItem(
-        LOCAL_STORAGE_PREFIX + "notices",
-        JSON.stringify(notices),
-      );
-    } catch (e) {
-      console.error(e);
-    }
-  }, [notices]);
 
   // Toast notifications helper
   const addToast = (
@@ -475,63 +426,6 @@ export const AcademyProvider: React.FC<{ children: ReactNode }> = ({
     addToast("Achiever featured status changed.");
   };
 
-  // Gallery handlers
-  const addGalleryItem = (itemData: Omit<GalleryItem, "id">) => {
-    const newItem: GalleryItem = {
-      ...itemData,
-      id: "g_" + Date.now(),
-      status: "active",
-    };
-    setGallery((prev) => [newItem, ...prev]);
-    addToast("Gallery photo added.");
-  };
-
-  const updateGalleryItem = (id: string, updated: Partial<GalleryItem>) => {
-    setGallery((prev) =>
-      prev.map((g) => (g.id === id ? { ...g, ...updated } : g)),
-    );
-    addToast("Gallery item updated.");
-  };
-
-  const deleteGalleryItem = (id: string) => {
-    setGallery((prev) => prev.filter((g) => g.id !== id));
-    addToast("Gallery item deleted.", "info");
-  };
-
-  // Notices handlers
-  const addNotice = (noticeData: Omit<Notice, "id">) => {
-    const newNotice: Notice = {
-      ...noticeData,
-      id: "n_" + Date.now(),
-      isNew: true,
-    };
-    setNotices((prev) => [newNotice, ...prev]);
-    addToast("New announcement posted.");
-  };
-
-  const updateNotice = (id: string, updated: Partial<Notice>) => {
-    setNotices((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, ...updated } : n)),
-    );
-    addToast("Announcement updated.");
-  };
-
-  const deleteNotice = (id: string) => {
-    setNotices((prev) => prev.filter((n) => n.id !== id));
-    addToast("Announcement deleted.", "info");
-  };
-
-  const toggleNoticeStatus = (id: string) => {
-    setNotices((prev) =>
-      prev.map((n) =>
-        n.id === id
-          ? { ...n, status: n.status === "published" ? "draft" : "published" }
-          : n,
-      ),
-    );
-    addToast("Notice publication status changed.");
-  };
-
   // Enquiry handlers (Supabase-backed)
   const submitEnquiry = async (
     data: Omit<AdmissionEnquiryData, "id" | "status" | "createdAt">,
@@ -641,24 +535,6 @@ export const AcademyProvider: React.FC<{ children: ReactNode }> = ({
     addToast("Academy settings and contact details saved.");
   };
 
-  const resetToDefaultData = () => {
-    // Only resets the tables that are still localStorage-backed. Courses,
-    // achievers, enquiries, and site content/settings live in Supabase now,
-    // so resetting them here would silently wipe real production data —
-    // do that from the database directly if you actually need to.
-    setGallery(GALLERY_DATA);
-    setNotices(INITIAL_NOTICES);
-
-    [, "gallery", "notices", "faqs"].forEach((k) => {
-      localStorage.removeItem(LOCAL_STORAGE_PREFIX + k);
-    });
-
-    addToast(
-      "Local demo data ( gallery, notices, FAQs) reset to factory defaults.",
-      "info",
-    );
-  };
-
   return (
     <AcademyContext.Provider
       value={{
@@ -674,17 +550,6 @@ export const AcademyProvider: React.FC<{ children: ReactNode }> = ({
         deleteAchiever,
         toggleAchieverFeatured,
 
-        gallery,
-        addGalleryItem,
-        updateGalleryItem,
-        deleteGalleryItem,
-
-        notices,
-        addNotice,
-        updateNotice,
-        deleteNotice,
-        toggleNoticeStatus,
-
         enquiries,
         submitEnquiry,
         updateEnquiryStatus,
@@ -698,8 +563,6 @@ export const AcademyProvider: React.FC<{ children: ReactNode }> = ({
         updateAboutContent,
         siteSettings,
         updateSiteSettings,
-
-        resetToDefaultData,
 
         toasts,
         addToast,
