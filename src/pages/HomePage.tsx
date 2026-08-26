@@ -15,7 +15,7 @@ interface HomePageProps {
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
-  const { courses, achievers, testimonials, submitEnquiry } = useAcademy();
+  const { courses, achievers, submitEnquiry } = useAcademy();
   const [activeCourseCategory, setActiveCourseCategory] = useState<
     "all" | CourseCategory
   >("all");
@@ -287,15 +287,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
           title="What Nagpur Families Say About Surbhi"
           subtitle="Direct, unfiltered feedback from students and parents across Nagpur."
         />
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
-          {testimonials
-            .filter((t) => t.status === "active")
-            .slice(0, 3)
-            .map((test) => (
-              <TestimonialCard key={test.id} testimonial={test} />
-            ))}
-        </div>
       </section>
 
       {/* 9. CALL TO ACTION - 2-Day Free Trial Banner */}
