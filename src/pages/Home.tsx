@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import {
   Sparkles,
   ArrowRight,
@@ -12,18 +12,16 @@ import {
   CheckCircle2,
   Award,
   ChevronRight,
-} from 'lucide-react';
-import { SectionHeader } from '../components/SectionHeader';
-import { CourseCard } from '../components/CourseCard';
-import { RankCard } from '../components/RankCard';
-import { FacultyCard } from '../components/FacultyCard';
-import { TestimonialCard } from '../components/TestimonialCard';
-import { CTASection } from '../components/CTASection';
-import { COURSES_DATA } from '../data/courses';
-import { RESULTS_DATA } from '../data/results';
-import { FACULTY_DATA } from '../data/faculty';
-import { TESTIMONIALS_DATA } from '../data/testimonials';
-import { ACADEMY_INFO } from '../data/academyInfo';
+} from "lucide-react";
+import { SectionHeader } from "../components/SectionHeader";
+import { CourseCard } from "../components/CourseCard";
+import { RankCard } from "../components/RankCard";
+import { FacultyCard } from "../components/FacultyCard";
+import { TestimonialCard } from "../components/TestimonialCard";
+import { CTASection } from "../components/CTASection";
+import { COURSES_DATA } from "../data/courses";
+import { RESULTS_DATA } from "../data/results";
+import { ACADEMY_INFO } from "../data/academyInfo";
 
 interface HomeProps {
   onOpenEnquiry: (courseSlug?: string) => void;
@@ -35,18 +33,24 @@ export const Home: React.FC<HomeProps> = ({ onOpenEnquiry }) => {
   // Top 4 results for home hall of fame
   const topRankers = RESULTS_DATA.slice(0, 4);
   // Top 3 faculty members
-  const featuredFaculty = FACULTY_DATA.slice(0, 3);
 
   // Icon mapping for Why Choose Us
   const getWhyIcon = (iconName: string) => {
     switch (iconName) {
-      case 'GraduationCap': return <GraduationCap className="w-6 h-6 text-amber-600" />;
-      case 'UserCheck': return <UserCheck className="w-6 h-6 text-amber-600" />;
-      case 'BookOpen': return <BookOpen className="w-6 h-6 text-amber-600" />;
-      case 'Trophy': return <Trophy className="w-6 h-6 text-amber-600" />;
-      case 'TrendingUp': return <TrendingUp className="w-6 h-6 text-amber-600" />;
-      case 'ShieldCheck': return <ShieldCheck className="w-6 h-6 text-amber-600" />;
-      default: return <Award className="w-6 h-6 text-amber-600" />;
+      case "GraduationCap":
+        return <GraduationCap className="w-6 h-6 text-amber-600" />;
+      case "UserCheck":
+        return <UserCheck className="w-6 h-6 text-amber-600" />;
+      case "BookOpen":
+        return <BookOpen className="w-6 h-6 text-amber-600" />;
+      case "Trophy":
+        return <Trophy className="w-6 h-6 text-amber-600" />;
+      case "TrendingUp":
+        return <TrendingUp className="w-6 h-6 text-amber-600" />;
+      case "ShieldCheck":
+        return <ShieldCheck className="w-6 h-6 text-amber-600" />;
+      default:
+        return <Award className="w-6 h-6 text-amber-600" />;
     }
   };
 
@@ -67,16 +71,18 @@ export const Home: React.FC<HomeProps> = ({ onOpenEnquiry }) => {
 
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-[1.12] text-[#0F172A] mb-6">
-              Empowering Students to Achieve{' '}
+              Empowering Students to Achieve{" "}
               <span className="italic font-normal text-amber-600">
                 Academic
-              </span>{' '}
+              </span>{" "}
               Brilliance
             </h1>
 
             {/* Supporting Copy */}
             <p className="text-slate-600 text-base sm:text-lg max-w-xl mb-8 leading-relaxed">
-              Expert guidance, structured learning, dedicated faculty, and a proven approach to help students achieve their academic goals in Board Exams and Competitive Foundations.
+              Expert guidance, structured learning, dedicated faculty, and a
+              proven approach to help students achieve their academic goals in
+              Board Exams and Competitive Foundations.
             </p>
 
             {/* CTA Buttons */}
@@ -135,9 +141,9 @@ export const Home: React.FC<HomeProps> = ({ onOpenEnquiry }) => {
           </div>
 
           {/* Right Column: Premium Visual & Artistic Geometric Backdrop */}
-          <div className="lg:col-span-5 relative bg-[#0F172A] p-8 sm:p-12 flex flex-col justify-between overflow-hidden min-h-[380px]">
+          <div className="lg:col-span-5 relative bg-[#0F172A] p-8 sm:p-12 flex flex-col justify-between overflow-hidden min-h-95">
             {/* Ambient gold glow */}
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/15 via-transparent to-slate-900/60 pointer-events-none" />
+            <div className="absolute inset-0 bg-linear-to-br from-amber-500/15 via-transparent to-slate-900/60 pointer-events-none" />
 
             {/* Concentric rings matching artistic design */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 border border-white/10 rounded-full flex items-center justify-center pointer-events-none">
@@ -184,8 +190,12 @@ export const Home: React.FC<HomeProps> = ({ onOpenEnquiry }) => {
                   99.2%
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-white">City Rank 1 Topper in Class 10</div>
-                  <div className="text-[11px] text-slate-400">Ananya Deshmukh • 100/100 in Math & Science</div>
+                  <div className="text-xs font-bold text-white">
+                    City Rank 1 Topper in Class 10
+                  </div>
+                  <div className="text-[11px] text-slate-400">
+                    Ananya Deshmukh • 100/100 in Math & Science
+                  </div>
                 </div>
               </div>
             </div>
@@ -195,45 +205,57 @@ export const Home: React.FC<HomeProps> = ({ onOpenEnquiry }) => {
         {/* 4-Column Quick Navigation Ribbon from Artistic Flair Spec */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-slate-200/80 bg-white">
           <div className="p-6 lg:p-8 border-b sm:border-b-0 sm:border-r border-slate-200/80 hover:bg-slate-50 transition-colors group">
-            <div className="text-amber-600 font-serif text-3xl mb-2 font-bold">01</div>
+            <div className="text-amber-600 font-serif text-3xl mb-2 font-bold">
+              01
+            </div>
             <h3 className="font-bold text-[#0F172A] uppercase text-xs tracking-widest mb-2 flex items-center justify-between">
               <span>Junior Foundation</span>
               <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:translate-x-1 transition-transform" />
             </h3>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Class 6–8 rigorous training focusing on fundamental clarity, geometry concepts, and mental logic.
+              Class 6–8 rigorous training focusing on fundamental clarity,
+              geometry concepts, and mental logic.
             </p>
           </div>
 
           <div className="p-6 lg:p-8 border-b sm:border-b-0 sm:border-r border-slate-200/80 hover:bg-slate-50 transition-colors group">
-            <div className="text-amber-600 font-serif text-3xl mb-2 font-bold">02</div>
+            <div className="text-amber-600 font-serif text-3xl mb-2 font-bold">
+              02
+            </div>
             <h3 className="font-bold text-[#0F172A] uppercase text-xs tracking-widest mb-2 flex items-center justify-between">
               <span>Secondary & Boards</span>
               <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:translate-x-1 transition-transform" />
             </h3>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Class 9 & 10 intensive curriculum with 3-tier revision system and board answer writing drills.
+              Class 9 & 10 intensive curriculum with 3-tier revision system and
+              board answer writing drills.
             </p>
           </div>
 
           <div className="p-6 lg:p-8 border-b lg:border-b-0 sm:border-r border-slate-200/80 hover:bg-slate-50 transition-colors group">
-            <div className="text-amber-600 font-serif text-3xl mb-2 font-bold">03</div>
+            <div className="text-amber-600 font-serif text-3xl mb-2 font-bold">
+              03
+            </div>
             <h3 className="font-bold text-[#0F172A] uppercase text-xs tracking-widest mb-2 flex items-center justify-between">
               <span>Senior Secondary</span>
               <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:translate-x-1 transition-transform" />
             </h3>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Class 11 & 12 Science (PCM/PCB) and Commerce Pro with CA & Ph.D. faculty mentorship.
+              Class 11 & 12 Science (PCM/PCB) and Commerce Pro with CA & Ph.D.
+              faculty mentorship.
             </p>
           </div>
 
           <div className="p-6 lg:p-8 bg-slate-50/80 relative hover:bg-slate-100/80 transition-colors">
-            <div className="text-amber-600 font-serif text-3xl mb-2 font-bold">04</div>
+            <div className="text-amber-600 font-serif text-3xl mb-2 font-bold">
+              04
+            </div>
             <h3 className="font-bold text-[#0F172A] uppercase text-xs tracking-widest mb-2">
               <span>Competitive Edge</span>
             </h3>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Specialized coaching for Olympiads, NTSE, and entrance fundamentals with national percentile benchmarks.
+              Specialized coaching for Olympiads, NTSE, and entrance
+              fundamentals with national percentile benchmarks.
             </p>
           </div>
         </div>
@@ -294,7 +316,10 @@ export const Home: React.FC<HomeProps> = ({ onOpenEnquiry }) => {
                 </span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0F172A]">
-                Featured Academic <span className="italic font-normal text-amber-600">Programs</span>
+                Featured Academic{" "}
+                <span className="italic font-normal text-amber-600">
+                  Programs
+                </span>
               </h2>
             </div>
             <Link
@@ -340,10 +365,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenEnquiry }) => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {topRankers.map((student) => (
-              <RankCard
-                key={student.id}
-                student={student}
-              />
+              <RankCard key={student.id} student={student} />
             ))}
           </div>
 
@@ -412,7 +434,10 @@ export const Home: React.FC<HomeProps> = ({ onOpenEnquiry }) => {
                 </span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0F172A]">
-                Learn from Renowned <span className="italic font-normal text-amber-600">Educators</span>
+                Learn from Renowned{" "}
+                <span className="italic font-normal text-amber-600">
+                  Educators
+                </span>
               </h2>
             </div>
             <Link
@@ -422,15 +447,6 @@ export const Home: React.FC<HomeProps> = ({ onOpenEnquiry }) => {
               <span>Meet All Department Heads</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featuredFaculty.map((fac) => (
-              <FacultyCard
-                key={fac.id}
-                faculty={fac}
-              />
-            ))}
           </div>
         </div>
       </section>
@@ -444,15 +460,6 @@ export const Home: React.FC<HomeProps> = ({ onOpenEnquiry }) => {
             highlightText="Transformation"
             description="Read real experiences from families who entrusted Surabhi Coaching Academy with their child’s academic future."
           />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {TESTIMONIALS_DATA.slice(0, 3).map((test) => (
-              <TestimonialCard
-                key={test.id}
-                testimonial={test}
-              />
-            ))}
-          </div>
         </div>
       </section>
 

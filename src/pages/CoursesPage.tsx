@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import {
   Sparkles,
   Search,
@@ -10,13 +10,13 @@ import {
   Users,
   Calendar,
   ArrowRight,
-  ShieldCheck
-} from 'lucide-react';
-import { useAcademy } from '../context/AcademyContext';
-import { CourseCard } from '../components/CourseCard';
-import { SectionHeader } from '../components/SectionHeader';
-import { CTASection } from '../components/CTASection';
-import { CourseCategory } from '../types';
+  ShieldCheck,
+} from "lucide-react";
+import { useAcademy } from "../context/AcademyContext";
+import { CourseCard } from "../components/CourseCard";
+import { SectionHeader } from "../components/SectionHeader";
+import { CTASection } from "../components/CTASection";
+import { CourseCategory } from "../types";
 
 interface CoursesPageProps {
   onOpenEnquiry: (courseSlug?: string) => void;
@@ -24,25 +24,31 @@ interface CoursesPageProps {
 
 export const CoursesPage: React.FC<CoursesPageProps> = ({ onOpenEnquiry }) => {
   const { courses } = useAcademy();
-  const [selectedCategory, setSelectedCategory] = useState<'all' | CourseCategory>('all');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedGrade, setSelectedGrade] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<
+    "all" | CourseCategory
+  >("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedGrade, setSelectedGrade] = useState<string>("all");
 
-  const categories: { key: 'all' | CourseCategory; label: string }[] = [
-    { key: 'all', label: 'All Batches' },
-    { key: 'foundation', label: 'Class 8–10 Foundation' },
-    { key: 'science', label: '11–12 Science (PCM/PCB)' },
-    { key: 'competitive', label: 'JEE / NEET Prep' }
+  const categories: { key: "all" | CourseCategory; label: string }[] = [
+    { key: "all", label: "All Batches" },
+    { key: "foundation", label: "Class 8–10 Foundation" },
+    { key: "science", label: "11–12 Science (PCM/PCB)" },
+    { key: "competitive", label: "JEE / NEET Prep" },
   ];
 
   const filteredCourses = courses.filter((course) => {
-    if (course.status !== 'active') return false;
-    const matchesCategory = selectedCategory === 'all' || course.category === selectedCategory;
+    if (course.status !== "active") return false;
+    const matchesCategory =
+      selectedCategory === "all" || course.category === selectedCategory;
     const matchesSearch =
       course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       course.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      course.subjects.some((s) => s.toLowerCase().includes(searchQuery.toLowerCase()));
-    const matchesGrade = selectedGrade === 'all' || course.gradeLevel.includes(selectedGrade);
+      course.subjects.some((s) =>
+        s.toLowerCase().includes(searchQuery.toLowerCase()),
+      );
+    const matchesGrade =
+      selectedGrade === "all" || course.gradeLevel.includes(selectedGrade);
     return matchesCategory && matchesSearch && matchesGrade;
   });
 
@@ -59,7 +65,9 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({ onOpenEnquiry }) => {
             Focused Batches for Every Academic Goal
           </h1>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            Every batch is capped at 25-30 students with daily 1-on-1 doubt clearing, modular theory booklets, and simulated mock exams.
+            Focused learning, personalized doubt clearing, comprehensive theory
+            booklets, and simulated mock exams—designed to help every student
+            perform at their best.
           </p>
         </motion.div>
       </section>
@@ -73,10 +81,11 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({ onOpenEnquiry }) => {
               <button
                 key={cat.key}
                 onClick={() => setSelectedCategory(cat.key)}
-                className={`px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${selectedCategory === cat.key
-                  ? 'bg-[#0F172A] text-white shadow-md'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                  }`}
+                className={`px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                  selectedCategory === cat.key
+                    ? "bg-[#0F172A] text-white shadow-md"
+                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                }`}
               >
                 {cat.label}
               </button>
@@ -133,9 +142,9 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({ onOpenEnquiry }) => {
             </p>
             <button
               onClick={() => {
-                setSelectedCategory('all');
-                setSearchQuery('');
-                setSelectedGrade('all');
+                setSelectedCategory("all");
+                setSearchQuery("");
+                setSelectedGrade("all");
               }}
               className="mt-2 text-xs font-bold text-amber-700 underline"
             >

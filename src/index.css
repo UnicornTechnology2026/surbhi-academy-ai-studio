@@ -72,6 +72,13 @@ body {
   box-shadow: 0 18px 45px rgba(15, 23, 42, 0.13);
 }
 
+/* The CMS stays calm and functional: no decorative CSS animation in admin. */
+.admin-shell .animate-fadeIn,
+.admin-shell .animate-pulse,
+.admin-shell .animate-spin {
+  animation: none !important;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

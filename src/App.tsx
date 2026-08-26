@@ -65,8 +65,61 @@ const AppShell: React.FC = () => {
     setEnquiryCourseSlug(undefined);
   };
 
+  const routeContent = (
+    <Routes>
+      {/* Public Academic Website Routes */}
+      <Route
+        path="/"
+        element={<HomePage onOpenEnquiry={handleOpenEnquiry} />}
+      />
+      <Route
+        path="/about"
+        element={<AboutPage onOpenEnquiry={handleOpenEnquiry} />}
+      />
+      <Route
+        path="/courses"
+        element={<CoursesPage onOpenEnquiry={handleOpenEnquiry} />}
+      />
+      <Route
+        path="/courses/:slug"
+        element={<CourseDetailPage onOpenEnquiry={handleOpenEnquiry} />}
+      />
+      <Route
+        path="/results"
+        element={<ResultsPage onOpenEnquiry={handleOpenEnquiry} />}
+      />
+      <Route
+        path="/admissions"
+        element={<AdmissionsPage onOpenEnquiry={handleOpenEnquiry} />}
+      />
+      <Route path="/contact" element={<ContactPage />} />
+
+      {/* Admin Login */}
+      <Route path="/admin/login" element={<AdminLoginPage />} />
+
+      {/* Protected Admin CMS Dashboard */}
+      <Route path="/admin" element={<ProtectedRoute />}>
+        <Route element={<AdminLayout />}>
+          <Route index element={<Navigate to="/admin/dashboard" replace />} />
+          <Route path="dashboard" element={<AdminDashboardPage />} />
+          <Route path="enquiries" element={<AdminEnquiriesPage />} />
+          <Route path="courses" element={<AdminCoursesPage />} />
+          <Route path="achievers" element={<AdminAchieversPage />} />
+          <Route path="settings" element={<AdminSettingsPage />} />
+        </Route>
+      </Route>
+
+      {/* 404 Fallback */}
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+  );
+
   return (
-    <div className="min-h-screen flex flex-col bg-white text-slate-900 font-sans selection:bg-amber-500 selection:text-slate-950">
+    <div
+      className={`min-h-screen flex flex-col bg-white text-slate-900 font-sans selection:bg-amber-500 selection:text-slate-950 ${
+        isAdminRoute ? "admin-shell" : ""
+      }`}
+    >
       <ScrollToTop />
       <ToastContainer />
 
@@ -75,65 +128,21 @@ const AppShell: React.FC = () => {
 
       {/* Main Content Viewport */}
       <div className="flex-1">
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={location.pathname}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-            className="min-h-full"
-          >
-            <Routes>
-              {/* Public Academic Website Routes */}
-              <Route
-                path="/"
-                element={<HomePage onOpenEnquiry={handleOpenEnquiry} />}
-              />
-              <Route
-                path="/about"
-                element={<AboutPage onOpenEnquiry={handleOpenEnquiry} />}
-              />
-              <Route
-                path="/courses"
-                element={<CoursesPage onOpenEnquiry={handleOpenEnquiry} />}
-              />
-              <Route
-                path="/courses/:slug"
-                element={<CourseDetailPage onOpenEnquiry={handleOpenEnquiry} />}
-              />
-              <Route
-                path="/results"
-                element={<ResultsPage onOpenEnquiry={handleOpenEnquiry} />}
-              />
-              <Route
-                path="/admissions"
-                element={<AdmissionsPage onOpenEnquiry={handleOpenEnquiry} />}
-              />
-              <Route path="/contact" element={<ContactPage />} />
-
-              {/* Admin Login */}
-              <Route path="/admin/login" element={<AdminLoginPage />} />
-
-              {/* Protected Admin CMS Dashboard */}
-              <Route path="/admin" element={<ProtectedRoute />}>
-                <Route element={<AdminLayout />}>
-                  <Route
-                    index
-                    element={<Navigate to="/admin/dashboard" replace />}
-                  />
-                  <Route path="dashboard" element={<AdminDashboardPage />} />
-                  <Route path="enquiries" element={<AdminEnquiriesPage />} />
-                  <Route path="courses" element={<AdminCoursesPage />} />
-                  <Route path="achievers" element={<AdminAchieversPage />} />
-                  <Route path="settings" element={<AdminSettingsPage />} />
-                </Route>
-              </Route>
-
-              {/* 404 Fallback */}
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </motion.div>
-        </AnimatePresence>
+        {isAdminRoute ? (
+          routeContent
+        ) : (
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={location.pathname}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="min-h-full"
+            >
+              {routeContent}
+            </motion.div>
+          </AnimatePresence>
+        )}
       </div>
 
       {/* Public Footer (Hidden on Admin portal) */}

@@ -18,18 +18,33 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ onOpenEnquiry }) => {
   const years = ["all", "2025", "2024", "2023"];
   const categories = [
     { key: "all", label: "All Streams" },
-    { key: "Class 10", label: "Class 10 Boards" },
-    { key: "science", label: "Class 12 Science" },
+    { key: "class10", label: "Class 10 Boards" },
+    { key: "class12", label: "Class 12 Science" },
     { key: "competitive", label: "Entrance & Olympiads" },
   ];
 
   const filteredAchievers = achievers.filter((student) => {
     if (student.status !== "active") return false;
     const matchesYear = selectedYear === "all" || student.year === selectedYear;
+    const searchableCategoryText = [
+      student.category,
+      student.categoryLabel,
+      student.gradeLevel,
+      student.exam,
+      student.examName,
+    ]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
     const matchesCategory =
       selectedCategory === "all" ||
       student.category === selectedCategory ||
-      student.gradeLevel.includes(selectedCategory);
+      (selectedCategory === "class10" &&
+        /\bclass\s*10\b|\b10th\b|\b10\b/.test(searchableCategoryText)) ||
+      (selectedCategory === "class12" &&
+        /\bclass\s*12\b|\b12th\b|\b12\b/.test(searchableCategoryText)) ||
+      (selectedCategory === "competitive" &&
+        /competitive|olympiad|entrance|jee|neet/.test(searchableCategoryText));
     const matchesSearch =
       student.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       student.school?.toLowerCase().includes(searchQuery.toLowerCase()) ||

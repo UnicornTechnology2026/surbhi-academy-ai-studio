@@ -8,13 +8,15 @@ import {
   CheckCircle2,
   Clock3,
   Users,
+  Quote,
 } from "lucide-react";
 import { useAcademy } from "../context/AcademyContext";
 import { CourseCard } from "../components/CourseCard";
 import { RankCard } from "../components/RankCard";
+import { TestimonialCard } from "../components/TestimonialCard";
 import { CTASection } from "../components/CTASection";
 import { SectionHeader } from "../components/SectionHeader";
-import { CourseCategory } from "../types";
+import { CourseCategory, Testimonial } from "../types";
 
 interface HomePageProps {
   onOpenEnquiry: (courseSlug?: string) => void;
@@ -38,6 +40,48 @@ const revealItem = {
     transition: { duration: 0.5, ease: "easeOut" as const },
   },
 };
+
+const HOME_TESTIMONIALS: Testimonial[] = [
+  {
+    id: "home-testimonial-1",
+    name: "Mrs. Neha Kulkarni",
+    role: "Parent",
+    course: "Class 10 Foundation",
+    year: "2025",
+    achievement: "Parent-verified experience",
+    rating: 5,
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&q=80",
+    content:
+      "The regular progress updates and daily doubt support gave my daughter the confidence to ask questions without hesitation. Her concepts are much clearer now.",
+  },
+  {
+    id: "home-testimonial-2",
+    name: "Aarav Deshmukh",
+    role: "Student",
+    course: "Class 12 Science",
+    year: "2025",
+    achievement: "Student-verified experience",
+    rating: 5,
+    image:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80",
+    content:
+      "What helped me most was learning the why behind every formula. The teachers break difficult chapters into steps that actually make sense.",
+  },
+  {
+    id: "home-testimonial-3",
+    name: "Riya Borkar",
+    role: "Alumni",
+    course: "Science & Competitive Prep",
+    year: "2024",
+    achievement: "Alumni-verified experience",
+    rating: 5,
+    image:
+      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=160&q=80",
+    content:
+      "Surabhi gave me structure, discipline, and the courage to aim higher. The small batches made every class feel personal instead of overwhelming.",
+  },
+];
 
 export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
   const { courses, achievers } = useAcademy();
@@ -296,6 +340,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
               { id: "all" as const, label: "All Batches" },
               { id: "foundation" as const, label: "Class 8–10 Foundation" },
               { id: "science" as const, label: "11–12 Science" },
+              { id: "competitive" as const, label: "Competitive Exam" },
             ].map((filter) => (
               <motion.button
                 key={filter.id}
@@ -388,12 +433,30 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
       </section>
 
       {/* 8. TALKATIVE PARENT & STUDENT TESTIMONIALS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Quote className="absolute -top-8 right-10 hidden w-24 h-24 rotate-12 text-amber-100/80 lg:block" />
         <SectionHeader
           eyebrow="Parent & Student Voices"
           title="What Nagpur Families Say About Surbhi"
           subtitle="Direct, unfiltered feedback from students and parents across Nagpur."
         />
+        <motion.div
+          variants={staggerChildren}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="relative grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
+        >
+          {HOME_TESTIMONIALS.map((testimonial, index) => (
+            <motion.div
+              key={testimonial.id}
+              variants={revealItem}
+              className={`h-full ${index === 1 ? "md:-translate-y-3" : ""}`}
+            >
+              <TestimonialCard testimonial={testimonial} />
+            </motion.div>
+          ))}
+        </motion.div>
       </section>
 
       {/* 9. CALL TO ACTION - 2-Day Free Trial Banner */}

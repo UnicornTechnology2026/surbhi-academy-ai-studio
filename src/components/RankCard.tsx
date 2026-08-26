@@ -114,7 +114,9 @@ export const RankCard: React.FC<RankCardProps> = ({
               Score Achieved
             </div>
             <div className="text-2xl font-serif font-extrabold text-[#0F172A] mt-0.5">
-              {student.score}
+              {String(student.score).includes("%")
+                ? student.score
+                : `${student.score}%`}
             </div>
           </div>
           {student.percentile && (

@@ -95,7 +95,7 @@ export const AdminAchieversPage: React.FC = () => {
           ? "Class 10 Board Toppers"
           : form.category === "class12"
             ? "Class 12 Board Toppers"
-            : "Competitive Olympiads",
+            : "Competitive Exams",
       school: form.school || undefined,
       testimonial: form.testimonial || undefined,
       image:
@@ -370,7 +370,7 @@ export const AdminAchieversPage: React.FC = () => {
                   >
                     <option value="class10">Class 10 Board Toppers</option>
                     <option value="class12">Class 12 Board Toppers</option>
-                    <option value="competitive">Competitive Olympiads</option>
+                    <option value="competitive">Competitive Exam</option>
                   </select>
                 </div>
               </div>

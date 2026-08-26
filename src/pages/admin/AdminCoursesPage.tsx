@@ -203,7 +203,7 @@ export const AdminCoursesPage: React.FC = () => {
   };
 
   const CATEGORY_LABELS: Record<CourseCategory, string> = {
-    foundation: "Class 6–10 Foundation",
+    foundation: "Class 8 – 10 Foundation",
     science: "Class 11 & 12 Science",
     commerce: "Class 11 & 12 Commerce",
     competitive: "Competitive Exams",
@@ -395,7 +395,7 @@ export const AdminCoursesPage: React.FC = () => {
               onSubmit={handleSaveCourse}
               className="p-6 overflow-y-auto space-y-5 flex-1 text-xs"
             >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-slate-300 uppercase font-bold mb-1">
                     Course Title *
@@ -428,14 +428,12 @@ export const AdminCoursesPage: React.FC = () => {
                     }}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
                   >
-                    <option value="foundation">Class 6–10 Foundation</option>
+                    <option value="foundation">Class 8 – 10 Foundation</option>
                     <option value="science">Class 11 & 12 Science</option>
                     <option value="competitive">Competitive Exams</option>
                   </select>
                 </div>
-              </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-slate-300 uppercase font-bold mb-1">
                     Target Grade / Class
@@ -450,52 +448,24 @@ export const AdminCoursesPage: React.FC = () => {
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
-
-                <div>
-                  <label className="block text-slate-300 uppercase font-bold mb-1">
-                    Program Duration
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="e.g. 1 Year Academic Session"
-                    value={form.duration}
-                    onChange={(e) =>
-                      setForm({ ...form, duration: e.target.value })
-                    }
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-slate-300 uppercase font-bold mb-1">
-                    Badge / Tag (Optional)
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Popular, Admissions Open"
-                    value={form.badge || ""}
-                    onChange={(e) =>
-                      setForm({ ...form, badge: e.target.value })
-                    }
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
-                  />
-                </div>
               </div>
 
-              <div>
-                <label className="block text-slate-300 uppercase font-bold mb-1">
-                  Short Overview / Subtitle *
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="One sentence summary for course cards..."
-                  value={form.shortDescription}
-                  onChange={(e) =>
-                    setForm({ ...form, shortDescription: e.target.value })
-                  }
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-1 gap-4">
+                <div>
+                  <label className="block text-slate-300 uppercase font-bold mb-1">
+                    Short Overview / Subtitle *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="One sentence summary for course cards..."
+                    value={form.shortDescription}
+                    onChange={(e) =>
+                      setForm({ ...form, shortDescription: e.target.value })
+                    }
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
+                  />
+                </div>
               </div>
 
               <div>
@@ -542,21 +512,6 @@ export const AdminCoursesPage: React.FC = () => {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-slate-300 uppercase font-bold mb-1">
-                    Fee Structure Info
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Installment options available / Scholarships Available"
-                    value={form.feesInfo || ""}
-                    onChange={(e) =>
-                      setForm({ ...form, feesInfo: e.target.value })
-                    }
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
-                  />
-                </div>
-
                 {/* Cover Image Uploader (Drag, Drop, or Select from Device) */}
                 <div>
                   <ImageUpload
