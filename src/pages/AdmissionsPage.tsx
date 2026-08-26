@@ -1,36 +1,26 @@
-import React, { useState } from 'react';
-import { motion } from 'motion/react';
-import {
-  Sparkles,
-  CheckCircle2,
-  Send,
-  Phone,
-  ShieldCheck,
-  Calendar,
-  Clock,
-  ArrowRight,
-  HelpCircle,
-  Users
-} from 'lucide-react';
-import { useAcademy } from '../context/AcademyContext';
-import { SectionHeader } from '../components/SectionHeader';
-import { CTASection } from '../components/CTASection';
+import React, { useState } from "react";
+import { motion } from "motion/react";
+import { Sparkles, CheckCircle2, Send } from "lucide-react";
+import { useAcademy } from "../context/AcademyContext";
+import { SectionHeader } from "../components/SectionHeader";
 
 interface AdmissionsPageProps {
   onOpenEnquiry: (courseSlug?: string) => void;
 }
 
-export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onOpenEnquiry }) => {
+export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({
+  onOpenEnquiry,
+}) => {
   const { courses, submitEnquiry } = useAcademy();
 
   const [form, setForm] = useState({
-    studentName: '',
-    parentName: '',
-    mobileNumber: '',
-    emailAddress: '',
-    studentClass: 'Class 10',
-    courseInterested: courses[0]?.title || 'Class 10 Board Excellence',
-    message: ''
+    studentName: "",
+    parentName: "",
+    mobileNumber: "",
+    emailAddress: "",
+    studentClass: "Class 10",
+    courseInterested: courses[0]?.title || "Class 10 Board Excellence",
+    message: "",
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -48,7 +38,7 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onOpenEnquiry })
       studentClass: form.studentClass,
       courseInterested: form.courseInterested,
       message: form.message,
-      source: 'Admissions Page Form'
+      source: "Admissions Page Form",
     });
     setSubmitting(false);
     setSubmitted(true);
@@ -71,7 +61,9 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onOpenEnquiry })
             Try 2 Days of Classes Completely Free
           </h1>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            No upfront fees, no pressure. Experience our classroom teaching, meet the faculty, and see your child's confidence grow before making any commitment.
+            No upfront fees, no pressure. Experience our classroom teaching,
+            meet the faculty, and see your child's confidence grow before making
+            any commitment.
           </p>
         </motion.div>
       </section>
@@ -99,7 +91,8 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onOpenEnquiry })
               Fill the 30-Sec Form
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Tell us your child's current grade and subjects. We'll assign the right batch and date for their trial.
+              Tell us your child's current grade and subjects. We'll assign the
+              right batch and date for their trial.
             </p>
           </motion.div>
 
@@ -118,7 +111,8 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onOpenEnquiry })
               Attend 2 Free Lectures
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Your child sits in the real classroom, participates in discussions, and tries our daily doubt desk.
+              Your child sits in the real classroom, participates in
+              discussions, and tries our daily doubt desk.
             </p>
           </motion.div>
 
@@ -137,7 +131,8 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onOpenEnquiry })
               Decide with Confidence
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              If your child loved the learning style, confirm the seat. If not, no questions asked.
+              If your child loved the learning style, confirm the seat. If not,
+              no questions asked.
             </p>
           </motion.div>
         </div>
@@ -191,7 +186,9 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onOpenEnquiry })
                   Trial Pass Confirmed!
                 </h3>
                 <p className="text-sm text-slate-600 max-w-md mx-auto">
-                  Thank you! Our academic counselor will call you within 2 business hours on <strong>{form.mobileNumber}</strong> with batch timings and classroom details.
+                  Thank you! Our academic counselor will call you within 2
+                  business hours on <strong>{form.mobileNumber}</strong> with
+                  batch timings and classroom details.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
@@ -219,7 +216,9 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onOpenEnquiry })
                       required
                       placeholder="e.g. Rahul Sharma"
                       value={form.studentName}
-                      onChange={(e) => setForm({ ...form, studentName: e.target.value })}
+                      onChange={(e) =>
+                        setForm({ ...form, studentName: e.target.value })
+                      }
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-amber-500"
                     />
                   </div>
@@ -233,7 +232,9 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onOpenEnquiry })
                       required
                       placeholder="e.g. 9876543210"
                       value={form.mobileNumber}
-                      onChange={(e) => setForm({ ...form, mobileNumber: e.target.value })}
+                      onChange={(e) =>
+                        setForm({ ...form, mobileNumber: e.target.value })
+                      }
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-amber-500"
                     />
                   </div>
@@ -246,14 +247,20 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onOpenEnquiry })
                     </label>
                     <select
                       value={form.studentClass}
-                      onChange={(e) => setForm({ ...form, studentClass: e.target.value })}
+                      onChange={(e) =>
+                        setForm({ ...form, studentClass: e.target.value })
+                      }
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-amber-500 bg-white"
                     >
                       <option value="Class 8">Class 8</option>
                       <option value="Class 9">Class 9</option>
                       <option value="Class 10">Class 10 (Board Batch)</option>
-                      <option value="Class 11 Science">Class 11 Science (PCM/PCB)</option>
-                      <option value="Class 12 Science">Class 12 Science (Boards + Entrance)</option>
+                      <option value="Class 11 Science">
+                        Class 11 Science (PCM/PCB)
+                      </option>
+                      <option value="Class 12 Science">
+                        Class 12 Science (Boards + Entrance)
+                      </option>
                     </select>
                   </div>
 
@@ -263,7 +270,9 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onOpenEnquiry })
                     </label>
                     <select
                       value={form.courseInterested}
-                      onChange={(e) => setForm({ ...form, courseInterested: e.target.value })}
+                      onChange={(e) =>
+                        setForm({ ...form, courseInterested: e.target.value })
+                      }
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-amber-500 bg-white"
                     >
                       {courses.map((c) => (
@@ -283,7 +292,11 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onOpenEnquiry })
                   className="w-full mt-2 bg-[#0F172A] hover:bg-amber-500 hover:text-slate-950 text-white font-bold text-xs uppercase tracking-wider py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Send className="w-4 h-4" />
-                  <span>{submitting ? 'Confirming...' : 'Claim 2-Day Free Trial Pass'}</span>
+                  <span>
+                    {submitting
+                      ? "Confirming..."
+                      : "Claim 2-Day Free Trial Pass"}
+                  </span>
                 </motion.button>
               </form>
             )}

@@ -1,28 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import {
-  Sparkles,
-  Award,
-  Target,
-  Heart,
-  CheckCircle2,
-  BookOpen,
-  Users,
-  GraduationCap,
-  ShieldCheck,
-  Compass,
-  ArrowRight
-} from 'lucide-react';
-import { useAcademy } from '../context/AcademyContext';
-import { SectionHeader } from '../components/SectionHeader';
-import { CTASection } from '../components/CTASection';
+import React from "react";
+import { Sparkles, Award, CheckCircle2 } from "lucide-react";
+import { useAcademy } from "../context/AcademyContext";
+import { SectionHeader } from "../components/SectionHeader";
+import { CTASection } from "../components/CTASection";
 
 interface AboutPageProps {
   onOpenEnquiry: () => void;
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onOpenEnquiry }) => {
-  const { aboutContent, siteSettings } = useAcademy();
+  const { aboutContent } = useAcademy();
 
   return (
     <div className="space-y-16 sm:space-y-24 py-6 sm:py-10">
@@ -39,7 +26,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenEnquiry }) => {
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
             {aboutContent.tagline}
           </p>
-
         </div>
       </section>
 
@@ -48,13 +34,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenEnquiry }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Image grid */}
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] bg-slate-900">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-4/5 bg-slate-900">
               <img
                 src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1000&q=80"
                 alt="Classroom at Surbhi Academy"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-[#0F172A] via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 text-white">
                 <span className="text-xs uppercase tracking-widest text-amber-400 font-bold">
                   Since 1997
@@ -159,7 +145,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenEnquiry }) => {
                   Smart Interactive Classrooms
                 </h4>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Equipped with 4K digital smart interactive panels for visual derivations, 3D biological models, and audio clarity.
+                  Equipped with 4K digital smart interactive panels for visual
+                  derivations, 3D biological models, and audio clarity.
                 </p>
               </div>
             </div>
@@ -177,7 +164,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenEnquiry }) => {
                   Dedicated Reference Library
                 </h4>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Over 2,500 reference titles, NCERT exemplars, past 20-year papers, and quiet individual study carrels.
+                  Over 2,500 reference titles, NCERT exemplars, past 20-year
+                  papers, and quiet individual study carrels.
                 </p>
               </div>
             </div>
@@ -195,7 +183,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenEnquiry }) => {
                   1-on-1 Doubt Clearing Pods
                 </h4>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Private discussion pods where students sit directly with subject heads to review homework and resolve conceptual hurdles.
+                  Private discussion pods where students sit directly with
+                  subject heads to review homework and resolve conceptual
+                  hurdles.
                 </p>
               </div>
             </div>

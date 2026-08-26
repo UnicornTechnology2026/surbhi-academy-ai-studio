@@ -1,21 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import {
   Phone,
   Mail,
   MapPin,
-  Clock,
-  ArrowUpRight,
-  Award,
-  ShieldCheck,
   Instagram,
   Facebook,
   Youtube,
   Linkedin,
   Sparkles,
-  Lock
-} from 'lucide-react';
-import { useAcademy } from '../context/AcademyContext';
+  Lock,
+} from "lucide-react";
+import { useAcademy } from "../context/AcademyContext";
 
 interface FooterProps {
   onOpenPrivacy: () => void;
@@ -26,31 +22,32 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({
   onOpenPrivacy,
   onOpenTerms,
-  onOpenEnquiry
+  onOpenEnquiry,
 }) => {
   const { courses, siteSettings } = useAcademy();
 
   return (
     <footer className="bg-[#0F172A] text-white border-t border-slate-800">
-
-
       {/* Main Footer Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Col 1 & 2: Brand Info */}
           <div className="lg:col-span-2 space-y-5">
             <div className="flex items-center gap-3">
-              <div className="w-[93px] h-[70px] bg-[#123B2A] flex items-center justify-center rounded-xl shadow-md">
+              <div className="w-23.25 h-17.5 bg-[#123B2A] flex items-center justify-center rounded-xl shadow-md">
                 <img
-                  src='../../assets/logo.png'
-                  alt=''
-                  className="w-[60px] h-[68px] object-cover group-hover:scale-105 transition-transform duration-500"
+                  src="../../assets/logo.png"
+                  alt=""
+                  className="w-15 h-17 object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
               </div>
               <div>
                 <span className="font-bold text-xl tracking-tight text-white uppercase block leading-none">
-                  SURABHI <span className="font-serif italic font-normal text-amber-400 capitalize">Academy</span>
+                  SURABHI{" "}
+                  <span className="font-serif italic font-normal text-amber-400 capitalize">
+                    Academy
+                  </span>
                 </span>
                 <span className="text-[10px] tracking-widest text-slate-400 uppercase font-semibold">
                   Teaching Beyond Examination
@@ -59,7 +56,9 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
 
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-md">
-              Nagpur’s premier coaching academy dedicated to deep conceptual clarity, disciplined study habits, small batch sizes, and proven board toppers across Classes 8 to 12.
+              Nagpur’s premier coaching academy dedicated to deep conceptual
+              clarity, disciplined study habits, small batch sizes, and proven
+              board toppers across Classes 8 to 12.
             </p>
 
             {/* Social Icons */}
@@ -110,22 +109,34 @@ export const Footer: React.FC<FooterProps> = ({
             </h4>
             <ul className="space-y-2 text-sm text-slate-300">
               <li>
-                <Link to="/about" className="hover:text-amber-400 transition-colors">
+                <Link
+                  to="/about"
+                  className="hover:text-amber-400 transition-colors"
+                >
                   About Our Academy
                 </Link>
               </li>
               <li>
-                <Link to="/results" className="hover:text-amber-400 transition-colors">
+                <Link
+                  to="/results"
+                  className="hover:text-amber-400 transition-colors"
+                >
                   Toppers & Rankers Wall
                 </Link>
               </li>
               <li>
-                <Link to="/courses" className="hover:text-amber-400 transition-colors">
+                <Link
+                  to="/courses"
+                  className="hover:text-amber-400 transition-colors"
+                >
                   Course
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="hover:text-amber-400 transition-colors">
+                <Link
+                  to="/contact"
+                  className="hover:text-amber-400 transition-colors"
+                >
                   Contact
                 </Link>
               </li>
@@ -146,24 +157,32 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-amber-400 shrink-0" />
-                <a href={`tel:${siteSettings.primaryPhone.replace(/\s+/g, '')}`} className="hover:text-white">
+                <a
+                  href={`tel:${siteSettings.primaryPhone.replace(/\s+/g, "")}`}
+                  className="hover:text-white"
+                >
                   {siteSettings.primaryPhone}
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-amber-400 shrink-0" />
-                <a href={`mailto:${siteSettings.email}`} className="hover:text-white">
+                <a
+                  href={`mailto:${siteSettings.email}`}
+                  className="hover:text-white"
+                >
                   {siteSettings.email}
                 </a>
               </div>
-
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="mt-14 pt-6 border-t border-slate-800 text-xs text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© {new Date().getFullYear()} {siteSettings.name}. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} {siteSettings.name}. All rights
+            reserved.
+          </p>
 
           <div className="flex flex-wrap items-center gap-4 text-slate-400">
             <button

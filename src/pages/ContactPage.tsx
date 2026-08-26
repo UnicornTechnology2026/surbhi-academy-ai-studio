@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   MapPin,
   Phone,
@@ -6,25 +6,21 @@ import {
   Clock,
   Send,
   CheckCircle2,
-  Sparkles,
-  MessageSquare,
   Building,
-  Navigation
-} from 'lucide-react';
-import { useAcademy } from '../context/AcademyContext';
-import { SectionHeader } from '../components/SectionHeader';
-import { CTASection } from '../components/CTASection';
+  Navigation,
+} from "lucide-react";
+import { useAcademy } from "../context/AcademyContext";
 
 export const ContactPage: React.FC = () => {
   const { siteSettings, submitEnquiry, courses } = useAcademy();
 
   const [form, setForm] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    targetClass: 'Class 10',
-    subject: 'General Enquiry',
-    message: ''
+    name: "",
+    phone: "",
+    email: "",
+    targetClass: "Class 10",
+    subject: "General Enquiry",
+    message: "",
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -42,7 +38,7 @@ export const ContactPage: React.FC = () => {
       studentClass: form.targetClass,
       courseInterested: form.subject,
       message: form.message,
-      source: 'Contact Page Form'
+      source: "Contact Page Form",
     });
     setSubmitting(false);
     setSubmitted(true);
@@ -61,7 +57,9 @@ export const ContactPage: React.FC = () => {
             Contact Surabhi Coaching Academy
           </h1>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            Visit our state-of-the-art campus in Nagpur or send us a message. We are delighted to answer your questions regarding admissions, faculty, and batch schedules.
+            Visit our state-of-the-art campus in Nagpur or send us a message. We
+            are delighted to answer your questions regarding admissions,
+            faculty, and batch schedules.
           </p>
         </div>
       </section>
@@ -74,17 +72,27 @@ export const ContactPage: React.FC = () => {
               <Phone className="w-6 h-6" />
             </div>
             <div>
-              <h3 className="text-lg font-serif font-bold text-[#0F172A]">Telephone Helplines</h3>
-              <p className="text-xs text-slate-500 mt-1">Direct admission & counseling support</p>
+              <h3 className="text-lg font-serif font-bold text-[#0F172A]">
+                Telephone Helplines
+              </h3>
+              <p className="text-xs text-slate-500 mt-1">
+                Direct admission & counseling support
+              </p>
             </div>
             <div className="space-y-1.5 text-sm font-semibold text-slate-800">
               <div>
-                <a href={`tel:${siteSettings.primaryPhone.replace(/\s+/g, '')}`} className="hover:text-amber-700">
+                <a
+                  href={`tel:${siteSettings.primaryPhone.replace(/\s+/g, "")}`}
+                  className="hover:text-amber-700"
+                >
                   {siteSettings.primaryPhone}
                 </a>
               </div>
               <div>
-                <a href={`tel:${siteSettings.secondaryPhone.replace(/\s+/g, '')}`} className="hover:text-amber-700">
+                <a
+                  href={`tel:${siteSettings.secondaryPhone.replace(/\s+/g, "")}`}
+                  className="hover:text-amber-700"
+                >
                   {siteSettings.secondaryPhone}
                 </a>
               </div>
@@ -96,12 +104,19 @@ export const ContactPage: React.FC = () => {
               <Mail className="w-6 h-6" />
             </div>
             <div>
-              <h3 className="text-lg font-serif font-bold text-[#0F172A]">Email Correspondence</h3>
-              <p className="text-xs text-slate-500 mt-1">Official circulars & enquiries</p>
+              <h3 className="text-lg font-serif font-bold text-[#0F172A]">
+                Email Correspondence
+              </h3>
+              <p className="text-xs text-slate-500 mt-1">
+                Official circulars & enquiries
+              </p>
             </div>
             <div className="space-y-1.5 text-sm font-semibold text-slate-800">
               <div>
-                <a href={`mailto:${siteSettings.email}`} className="hover:text-blue-700">
+                <a
+                  href={`mailto:${siteSettings.email}`}
+                  className="hover:text-blue-700"
+                >
                   {siteSettings.email}
                 </a>
               </div>
@@ -113,12 +128,21 @@ export const ContactPage: React.FC = () => {
               <Clock className="w-6 h-6" />
             </div>
             <div>
-              <h3 className="text-lg font-serif font-bold text-[#0F172A]">Counseling Hours</h3>
-              <p className="text-xs text-slate-500 mt-1">Academy front desk timings</p>
+              <h3 className="text-lg font-serif font-bold text-[#0F172A]">
+                Counseling Hours
+              </h3>
+              <p className="text-xs text-slate-500 mt-1">
+                Academy front desk timings
+              </p>
             </div>
             <div className="space-y-1 text-xs sm:text-sm text-slate-800 font-medium">
-              <div>📅 <strong>Mon – Sat:</strong> {siteSettings.workingHoursWeekdays}</div>
-              <div>🌞 <strong>Sunday:</strong> {siteSettings.workingHoursSunday}</div>
+              <div>
+                📅 <strong>Mon – Sat:</strong>{" "}
+                {siteSettings.workingHoursWeekdays}
+              </div>
+              <div>
+                🌞 <strong>Sunday:</strong> {siteSettings.workingHoursSunday}
+              </div>
             </div>
           </div>
         </div>
@@ -137,7 +161,8 @@ export const ContactPage: React.FC = () => {
                 Send Us a Message
               </h2>
               <p className="text-xs sm:text-sm text-slate-600 mt-1">
-                Fill out this quick form and our academic team will get back to you within 24 hours.
+                Fill out this quick form and our academic team will get back to
+                you within 24 hours.
               </p>
             </div>
 
@@ -146,9 +171,12 @@ export const ContactPage: React.FC = () => {
                 <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-7 h-7" />
                 </div>
-                <h4 className="text-xl font-serif font-bold text-slate-900">Message Sent!</h4>
+                <h4 className="text-xl font-serif font-bold text-slate-900">
+                  Message Sent!
+                </h4>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Thank you, {form.name}. Our academic counselor will call on {form.phone} soon.
+                  Thank you, {form.name}. Our academic counselor will call on{" "}
+                  {form.phone} soon.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
@@ -183,7 +211,9 @@ export const ContactPage: React.FC = () => {
                       required
                       placeholder="10-digit mobile"
                       value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      onChange={(e) =>
+                        setForm({ ...form, phone: e.target.value })
+                      }
                       className="w-full px-4 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-amber-500"
                     />
                   </div>
@@ -196,7 +226,9 @@ export const ContactPage: React.FC = () => {
                       type="email"
                       placeholder="e.g. name@example.com"
                       value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      onChange={(e) =>
+                        setForm({ ...form, email: e.target.value })
+                      }
                       className="w-full px-4 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-amber-500"
                     />
                   </div>
@@ -209,7 +241,9 @@ export const ContactPage: React.FC = () => {
                     </label>
                     <select
                       value={form.targetClass}
-                      onChange={(e) => setForm({ ...form, targetClass: e.target.value })}
+                      onChange={(e) =>
+                        setForm({ ...form, targetClass: e.target.value })
+                      }
                       className="w-full px-4 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-amber-500 bg-white"
                     >
                       <option value="Class 6">Class 6</option>
@@ -219,8 +253,12 @@ export const ContactPage: React.FC = () => {
                       <option value="Class 10">Class 10</option>
                       <option value="Class 11 Science">Class 11 Science</option>
                       <option value="Class 12 Science">Class 12 Science</option>
-                      <option value="Class 11 Commerce">Class 11 Commerce</option>
-                      <option value="Class 12 Commerce">Class 12 Commerce</option>
+                      <option value="Class 11 Commerce">
+                        Class 11 Commerce
+                      </option>
+                      <option value="Class 12 Commerce">
+                        Class 12 Commerce
+                      </option>
                     </select>
                   </div>
 
@@ -230,13 +268,23 @@ export const ContactPage: React.FC = () => {
                     </label>
                     <select
                       value={form.subject}
-                      onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                      onChange={(e) =>
+                        setForm({ ...form, subject: e.target.value })
+                      }
                       className="w-full px-4 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-amber-500 bg-white"
                     >
-                      <option value="Admission & 2-Day Trial">Admission & 2-Day Trial</option>
-                      <option value="Fee Structure & Scholarship">Fee Structure & Scholarship</option>
-                      <option value="Batch Timings & Schedules">Batch Timings & Schedules</option>
-                      <option value="Faculty & Curriculum">Faculty & Curriculum</option>
+                      <option value="Admission & 2-Day Trial">
+                        Admission & 2-Day Trial
+                      </option>
+                      <option value="Fee Structure & Scholarship">
+                        Fee Structure & Scholarship
+                      </option>
+                      <option value="Batch Timings & Schedules">
+                        Batch Timings & Schedules
+                      </option>
+                      <option value="Faculty & Curriculum">
+                        Faculty & Curriculum
+                      </option>
                       <option value="General Query">General Query</option>
                     </select>
                   </div>
@@ -250,7 +298,9 @@ export const ContactPage: React.FC = () => {
                     rows={3}
                     placeholder="Tell us about the student's background or specific learning requirements..."
                     value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, message: e.target.value })
+                    }
                     className="w-full px-4 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-amber-500"
                   />
                 </div>
@@ -261,7 +311,9 @@ export const ContactPage: React.FC = () => {
                   className="w-full bg-[#0F172A] hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider py-4 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                 >
                   <Send className="w-4 h-4 text-amber-400" />
-                  <span>{submitting ? 'Sending Message...' : 'Send Message'}</span>
+                  <span>
+                    {submitting ? "Sending Message..." : "Send Message"}
+                  </span>
                 </button>
               </form>
             )}
@@ -289,8 +341,8 @@ export const ContactPage: React.FC = () => {
               </div>
 
               {/* Simulated Map Visual */}
-              <div className="rounded-2xl overflow-hidden border border-slate-200 relative aspect-[16/9] bg-slate-900">
-                <div className="rounded-2xl overflow-hidden border border-slate-200 relative aspect-[16/9] bg-slate-900">
+              <div className="rounded-2xl overflow-hidden border border-slate-200 relative aspect-video bg-slate-900">
+                <div className="rounded-2xl overflow-hidden border border-slate-200 relative aspect-video bg-slate-900">
                   <iframe
                     title="Surabhi Coaching Academy Location Map"
                     src={`https://maps.google.com/maps?q=${encodeURIComponent(siteSettings.mainCampusAddress)}&z=16&output=embed`}
@@ -306,8 +358,8 @@ export const ContactPage: React.FC = () => {
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteSettings.mainCampusAddress)}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="absolute bottom-3 right-3 inline-flex items-center gap-1 bg-white text-slate-900 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-amber-400 transition-colors shadow-md">
-
+                    className="absolute bottom-3 right-3 inline-flex items-center gap-1 bg-white text-slate-900 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-amber-400 transition-colors shadow-md"
+                  >
                     <Navigation className="w-3 h-3 text-amber-700" />
                     <span>Open in Google Maps</span>
                   </a>

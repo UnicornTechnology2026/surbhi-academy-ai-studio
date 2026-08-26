@@ -1,58 +1,53 @@
-import React, { useState } from 'react';
-import { useNavigate, useLocation, Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import {
   Lock,
   Mail,
   Eye,
   EyeOff,
-  ShieldCheck,
-  Sparkles,
   ArrowRight,
   AlertCircle,
-  Key
-} from 'lucide-react';
-import { useAdminAuth } from '../../context/AdminAuthContext';
-import { useAcademy } from '../../context/AcademyContext';
-
+  Key,
+} from "lucide-react";
+import { useAdminAuth } from "../../context/AdminAuthContext";
 
 export const AdminLoginPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { login, isAuthenticated } = useAdminAuth();
-  const { siteSettings } = useAcademy();
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // If already authenticated, redirect immediately
   React.useEffect(() => {
     if (isAuthenticated) {
-      navigate('/admin/dashboard', { replace: true });
+      navigate("/admin/dashboard", { replace: true });
     }
   }, [isAuthenticated, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setIsSubmitting(true);
 
     const res = await login(email, password, rememberMe);
     setIsSubmitting(false);
 
     if (res.success) {
-      const from = (location.state as any)?.from?.pathname || '/admin/dashboard';
+      const from =
+        (location.state as any)?.from?.pathname || "/admin/dashboard";
       navigate(from, { replace: true });
     } else {
-      setError(res.error || 'Authentication failed');
+      setError(res.error || "Authentication failed");
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-[#0F172A] to-slate-950 flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div className="min-h-screen bg-linear-to-br from-slate-900 via-[#0F172A] to-slate-950 flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -73,16 +68,16 @@ export const AdminLoginPage: React.FC = () => {
       <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10">
         {/* Academy Brand Logo */}
         <div className="text-center space-y-2">
-          <div className="w-[93px] h-[70px] bg-[#123B2A] text-slate-950 rounded-2xl flex items-center justify-center font-serif font-extrabold text-3xl mx-auto shadow-xl">
+          <div className="w-23.25 h-17.5 bg-[#123B2A] text-slate-950 rounded-2xl flex items-center justify-center font-serif font-extrabold text-3xl mx-auto shadow-xl">
             <img
-              src='../../assets/logo.png'
-              alt=''
-              className="w-[60px] h-[68px] object-cover group-hover:scale-105 transition-transform duration-500"
+              src="../../assets/logo.png"
+              alt=""
+              className="w-15 h-17 object-cover group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
             />
           </div>
           <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
-            Surabhi Admin Portal
+            Surabhi Academy Portal
           </h2>
           <p className="text-xs sm:text-sm text-slate-400">
             Sign in to manage courses, results & enquiries
@@ -123,7 +118,7 @@ export const AdminLoginPage: React.FC = () => {
               <div className="relative">
                 <Lock className="w-4 h-4 text-slate-500 absolute left-3.5 top-3.5" />
                 <input
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   required
                   placeholder="••••••••"
                   value={password}
@@ -135,7 +130,11 @@ export const AdminLoginPage: React.FC = () => {
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3.5 top-3.5 text-slate-500 hover:text-slate-300 cursor-pointer"
                 >
-                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  {showPassword ? (
+                    <EyeOff className="w-4 h-4" />
+                  ) : (
+                    <Eye className="w-4 h-4" />
+                  )}
                 </button>
               </div>
             </div>
@@ -150,7 +149,9 @@ export const AdminLoginPage: React.FC = () => {
                 />
                 <span>Remember this session</span>
               </label>
-              <span className="text-slate-500 text-[11px]">Authorized personnel only</span>
+              <span className="text-slate-500 text-[11px]">
+                Authorized personnel only
+              </span>
             </div>
 
             <button

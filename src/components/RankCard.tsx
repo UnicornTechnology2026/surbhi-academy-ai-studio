@@ -1,39 +1,49 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import { Trophy, Quote } from 'lucide-react';
-import { StudentResult } from '../types';
+import React from "react";
+import { motion } from "motion/react";
+import { Trophy } from "lucide-react";
+import { StudentResult } from "../types";
 
 interface RankCardProps {
   student: StudentResult;
   isFeatured?: boolean;
 }
 
-export const RankCard: React.FC<RankCardProps> = ({ student, isFeatured = false }) => {
+export const RankCard: React.FC<RankCardProps> = ({
+  student,
+  isFeatured = false,
+}) => {
   const getBadgeStyle = () => {
     switch (student.badgeType) {
-      case 'gold':
+      case "gold":
         return {
-          cardBorder: 'border-amber-300 ring-2 ring-amber-400/20 bg-gradient-to-b from-amber-50/40 via-white to-white',
-          rankBg: 'bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-extrabold shadow-md shadow-amber-500/20',
-          scoreBadge: 'bg-amber-100 text-amber-950 border-amber-300 font-bold'
+          cardBorder:
+            "border-amber-300 ring-2 ring-amber-400/20 bg-gradient-to-b from-amber-50/40 via-white to-white",
+          rankBg:
+            "bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-extrabold shadow-md shadow-amber-500/20",
+          scoreBadge: "bg-amber-100 text-amber-950 border-amber-300 font-bold",
         };
-      case 'silver':
+      case "silver":
         return {
-          cardBorder: 'border-slate-300 ring-1 ring-slate-400/20 bg-gradient-to-b from-slate-50/60 via-white to-white',
-          rankBg: 'bg-gradient-to-r from-slate-600 to-slate-700 text-white font-bold shadow-md shadow-slate-400/20',
-          scoreBadge: 'bg-slate-100 text-slate-900 border-slate-300 font-bold'
+          cardBorder:
+            "border-slate-300 ring-1 ring-slate-400/20 bg-gradient-to-b from-slate-50/60 via-white to-white",
+          rankBg:
+            "bg-gradient-to-r from-slate-600 to-slate-700 text-white font-bold shadow-md shadow-slate-400/20",
+          scoreBadge: "bg-slate-100 text-slate-900 border-slate-300 font-bold",
         };
-      case 'bronze':
+      case "bronze":
         return {
-          cardBorder: 'border-amber-200 ring-1 ring-amber-300/20 bg-gradient-to-b from-orange-50/30 via-white to-white',
-          rankBg: 'bg-gradient-to-r from-amber-700 to-orange-700 text-white font-bold shadow-md shadow-amber-700/20',
-          scoreBadge: 'bg-orange-100 text-amber-950 border-orange-200 font-bold'
+          cardBorder:
+            "border-amber-200 ring-1 ring-amber-300/20 bg-gradient-to-b from-orange-50/30 via-white to-white",
+          rankBg:
+            "bg-gradient-to-r from-amber-700 to-orange-700 text-white font-bold shadow-md shadow-amber-700/20",
+          scoreBadge:
+            "bg-orange-100 text-amber-950 border-orange-200 font-bold",
         };
       default:
         return {
-          cardBorder: 'border-slate-200 bg-white',
-          rankBg: 'bg-[#0F172A] text-white font-semibold',
-          scoreBadge: 'bg-slate-100 text-slate-800 border-slate-200'
+          cardBorder: "border-slate-200 bg-white",
+          rankBg: "bg-[#0F172A] text-white font-semibold",
+          scoreBadge: "bg-slate-100 text-slate-800 border-slate-200",
         };
     }
   };
@@ -41,7 +51,6 @@ export const RankCard: React.FC<RankCardProps> = ({ student, isFeatured = false 
   const badgeStyle = getBadgeStyle();
   const studentPhoto = student.photo || student.image;
   const examLabel = student.examName || student.exam;
-  const quote = student.testimonial || student.testimonialQuote;
 
   return (
     <motion.div
@@ -49,18 +58,20 @@ export const RankCard: React.FC<RankCardProps> = ({ student, isFeatured = false 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       whileHover={{ y: -6 }}
-      transition={{ duration: 0.35, ease: 'easeOut' }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
       className={`rounded-2xl border ${badgeStyle.cardBorder} p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden group`}
     >
       {/* Glow for top toppers */}
-      {student.badgeType === 'gold' && (
+      {student.badgeType === "gold" && (
         <div className="absolute top-0 right-0 w-32 h-32 bg-amber-400/15 rounded-full blur-2xl pointer-events-none -mr-10 -mt-10" />
       )}
 
       <div>
         {/* Top Rank Banner & Year */}
         <div className="flex items-center justify-between gap-2 mb-4">
-          <span className={`text-[11px] uppercase tracking-wider px-3 py-1 rounded-full flex items-center gap-1.5 ${badgeStyle.rankBg}`}>
+          <span
+            className={`text-[11px] uppercase tracking-wider px-3 py-1 rounded-full flex items-center gap-1.5 ${badgeStyle.rankBg}`}
+          >
             <Trophy className="w-3.5 h-3.5" />
             <span>{student.rankTitle || `Rank ${student.rank}`}</span>
           </span>
@@ -95,7 +106,9 @@ export const RankCard: React.FC<RankCardProps> = ({ student, isFeatured = false 
         </div>
 
         {/* Score Display Card */}
-        <div className={`p-3.5 rounded-xl border flex items-center justify-between mb-4 ${badgeStyle.scoreBadge}`}>
+        <div
+          className={`p-3.5 rounded-xl border flex items-center justify-between mb-4 ${badgeStyle.scoreBadge}`}
+        >
           <div>
             <div className="text-[10px] uppercase font-bold tracking-wider text-slate-600">
               Score Achieved

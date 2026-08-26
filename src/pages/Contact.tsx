@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Phone,
   Mail,
@@ -6,23 +6,21 @@ import {
   Clock,
   Send,
   CheckCircle2,
-  Sparkles,
   MessageSquare,
   Compass,
   ExternalLink,
   AlertCircle,
-  Building2
-} from 'lucide-react';
-import { SectionHeader } from '../components/SectionHeader';
-import { ACADEMY_INFO } from '../data/academyInfo';
+  Building2,
+} from "lucide-react";
+import { ACADEMY_INFO } from "../data/academyInfo";
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    subject: 'General Academic Inquiry',
-    message: ''
+    name: "",
+    phone: "",
+    email: "",
+    subject: "General Academic Inquiry",
+    message: "",
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -31,13 +29,14 @@ export const Contact: React.FC = () => {
 
   const validate = () => {
     const errs: Record<string, string> = {};
-    if (!formData.name.trim()) errs.name = 'Full name is required';
+    if (!formData.name.trim()) errs.name = "Full name is required";
     if (!formData.phone.trim()) {
-      errs.phone = 'Phone number is required';
-    } else if (!/^[6-9]\d{9}$/.test(formData.phone.replace(/[\s-+]/g, ''))) {
-      errs.phone = 'Please enter a valid 10-digit phone number';
+      errs.phone = "Phone number is required";
+    } else if (!/^[6-9]\d{9}$/.test(formData.phone.replace(/[\s-+]/g, ""))) {
+      errs.phone = "Please enter a valid 10-digit phone number";
     }
-    if (!formData.message.trim()) errs.message = 'Please type your inquiry message';
+    if (!formData.message.trim())
+      errs.message = "Please type your inquiry message";
     return errs;
   };
 
@@ -62,7 +61,7 @@ export const Contact: React.FC = () => {
     <div className="bg-white">
       {/* Header Banner */}
       <section className="relative bg-[#0F172A] text-white py-16 sm:py-24 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] border border-white/5 rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-137.5 h-137.5 border border-white/5 rounded-full pointer-events-none" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-amber-400 text-xs font-semibold uppercase tracking-widest mb-4">
             <MessageSquare className="w-3.5 h-3.5" />
@@ -70,10 +69,14 @@ export const Contact: React.FC = () => {
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white mb-6">
             Get in Touch with <br />
-            <span className="italic font-normal text-amber-400">Our Academic Desk</span>
+            <span className="italic font-normal text-amber-400">
+              Our Academic Desk
+            </span>
           </h1>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Have questions about upcoming batches, curriculum schedules, or merit fee scholarships? Visit our campus or connect with our senior counselors.
+            Have questions about upcoming batches, curriculum schedules, or
+            merit fee scholarships? Visit our campus or connect with our senior
+            counselors.
           </p>
         </div>
       </section>
@@ -108,12 +111,21 @@ export const Contact: React.FC = () => {
                       Admissions Helpline
                     </h4>
                     <div className="text-base font-serif font-bold text-[#0F172A] mt-0.5">
-                      <a href={`tel:${ACADEMY_INFO.contact.primaryPhone.replace(/\s+/g, '')}`} className="hover:text-amber-600 transition-colors">
+                      <a
+                        href={`tel:${ACADEMY_INFO.contact.primaryPhone.replace(/\s+/g, "")}`}
+                        className="hover:text-amber-600 transition-colors"
+                      >
                         {ACADEMY_INFO.contact.primaryPhone}
                       </a>
                     </div>
                     <div className="text-xs text-slate-500 mt-0.5">
-                      Counseling Desk: <a href={`tel:${ACADEMY_INFO.contact.secondaryPhone.replace(/\s+/g, '')}`} className="hover:text-amber-600">{ACADEMY_INFO.contact.secondaryPhone}</a>
+                      Counseling Desk:{" "}
+                      <a
+                        href={`tel:${ACADEMY_INFO.contact.secondaryPhone.replace(/\s+/g, "")}`}
+                        className="hover:text-amber-600"
+                      >
+                        {ACADEMY_INFO.contact.secondaryPhone}
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -128,12 +140,21 @@ export const Contact: React.FC = () => {
                       Official Inquiries
                     </h4>
                     <div className="text-base font-serif font-bold text-[#0F172A] mt-0.5">
-                      <a href={`mailto:${ACADEMY_INFO.contact.email}`} className="hover:text-amber-600 transition-colors">
+                      <a
+                        href={`mailto:${ACADEMY_INFO.contact.email}`}
+                        className="hover:text-amber-600 transition-colors"
+                      >
                         {ACADEMY_INFO.contact.email}
                       </a>
                     </div>
                     <div className="text-xs text-slate-500 mt-0.5">
-                      Admissions: <a href={`mailto:${ACADEMY_INFO.contact.infoEmail}`} className="hover:text-amber-600">{ACADEMY_INFO.contact.infoEmail}</a>
+                      Admissions:{" "}
+                      <a
+                        href={`mailto:${ACADEMY_INFO.contact.infoEmail}`}
+                        className="hover:text-amber-600"
+                      >
+                        {ACADEMY_INFO.contact.infoEmail}
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -169,7 +190,9 @@ export const Contact: React.FC = () => {
                     <span className="text-xs uppercase tracking-wider font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-md">
                       Main Academic Campus
                     </span>
-                    <span className="text-[11px] text-slate-400 font-semibold">Head Office</span>
+                    <span className="text-[11px] text-slate-400 font-semibold">
+                      Head Office
+                    </span>
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed mb-3">
                     {ACADEMY_INFO.contact.mainCampusAddress}
@@ -191,7 +214,9 @@ export const Contact: React.FC = () => {
                     <span className="text-xs uppercase tracking-wider font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-md">
                       West Wing Campus
                     </span>
-                    <span className="text-[11px] text-slate-400 font-semibold">Branch</span>
+                    <span className="text-[11px] text-slate-400 font-semibold">
+                      Branch
+                    </span>
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed mb-3">
                     {ACADEMY_INFO.contact.branchAddress}
@@ -233,17 +258,19 @@ export const Contact: React.FC = () => {
                     Message Sent Successfully!
                   </h4>
                   <p className="text-slate-600 text-sm max-w-md mx-auto mb-6 leading-relaxed">
-                    Thank you for reaching out to Surabhi Coaching Academy. A counselor has received your message and will get in touch with you shortly.
+                    Thank you for reaching out to Surabhi Coaching Academy. A
+                    counselor has received your message and will get in touch
+                    with you shortly.
                   </p>
                   <button
                     onClick={() => {
                       setIsSuccess(false);
                       setFormData({
-                        name: '',
-                        phone: '',
-                        email: '',
-                        subject: 'General Academic Inquiry',
-                        message: ''
+                        name: "",
+                        phone: "",
+                        email: "",
+                        subject: "General Academic Inquiry",
+                        message: "",
                       });
                     }}
                     className="bg-[#0F172A] text-white text-xs font-semibold uppercase tracking-wider px-6 py-3 rounded-full hover:bg-slate-800 transition-all"
@@ -261,10 +288,15 @@ export const Contact: React.FC = () => {
                       id="contact-name"
                       type="text"
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
                       placeholder="e.g. Ramesh Kulkarni"
-                      className={`w-full px-3 py-2.5 text-sm bg-white rounded-xl border ${errors.name ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
-                        } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
+                      className={`w-full px-3 py-2.5 text-sm bg-white rounded-xl border ${
+                        errors.name
+                          ? "border-red-400 bg-red-50/20"
+                          : "border-slate-200 focus:border-amber-500"
+                      } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
                     />
                     {errors.name && (
                       <span className="text-[11px] text-red-500 flex items-center gap-1 mt-1">
@@ -282,10 +314,15 @@ export const Contact: React.FC = () => {
                         id="contact-phone"
                         type="tel"
                         value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        onChange={(e) =>
+                          setFormData({ ...formData, phone: e.target.value })
+                        }
                         placeholder="10-digit mobile number"
-                        className={`w-full px-3 py-2.5 text-sm bg-white rounded-xl border ${errors.phone ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
-                          } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
+                        className={`w-full px-3 py-2.5 text-sm bg-white rounded-xl border ${
+                          errors.phone
+                            ? "border-red-400 bg-red-50/20"
+                            : "border-slate-200 focus:border-amber-500"
+                        } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
                       />
                       {errors.phone && (
                         <span className="text-[11px] text-red-500 flex items-center gap-1 mt-1">
@@ -302,7 +339,9 @@ export const Contact: React.FC = () => {
                         id="contact-email"
                         type="email"
                         value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        onChange={(e) =>
+                          setFormData({ ...formData, email: e.target.value })
+                        }
                         placeholder="yourname@gmail.com"
                         className="w-full px-3 py-2.5 text-sm bg-white rounded-xl border border-slate-200 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all"
                       />
@@ -316,14 +355,26 @@ export const Contact: React.FC = () => {
                     <select
                       id="contact-subject"
                       value={formData.subject}
-                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, subject: e.target.value })
+                      }
                       className="w-full px-3 py-2.5 text-sm bg-white rounded-xl border border-slate-200 focus:border-amber-500 focus:outline-none"
                     >
-                      <option value="General Academic Inquiry">General Academic Inquiry</option>
-                      <option value="Batch Timing & Schedule">Batch Timing & Schedule</option>
-                      <option value="Fee Structure & Scholarships">Fee Structure & Scholarships</option>
-                      <option value="Faculty Consultation Request">Faculty Consultation Request</option>
-                      <option value="Hostel / Transport Assistance">Hostel / Transport Assistance</option>
+                      <option value="General Academic Inquiry">
+                        General Academic Inquiry
+                      </option>
+                      <option value="Batch Timing & Schedule">
+                        Batch Timing & Schedule
+                      </option>
+                      <option value="Fee Structure & Scholarships">
+                        Fee Structure & Scholarships
+                      </option>
+                      <option value="Faculty Consultation Request">
+                        Faculty Consultation Request
+                      </option>
+                      <option value="Hostel / Transport Assistance">
+                        Hostel / Transport Assistance
+                      </option>
                     </select>
                   </div>
 
@@ -335,10 +386,15 @@ export const Contact: React.FC = () => {
                       id="contact-message"
                       rows={4}
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, message: e.target.value })
+                      }
                       placeholder="Please describe what information you need regarding batches or enrollment..."
-                      className={`w-full px-3 py-2.5 text-sm bg-white rounded-xl border ${errors.message ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
-                        } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
+                      className={`w-full px-3 py-2.5 text-sm bg-white rounded-xl border ${
+                        errors.message
+                          ? "border-red-400 bg-red-50/20"
+                          : "border-slate-200 focus:border-amber-500"
+                      } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
                     />
                     {errors.message && (
                       <span className="text-[11px] text-red-500 flex items-center gap-1 mt-1">
@@ -384,12 +440,13 @@ export const Contact: React.FC = () => {
                   Planning a Campus Visit?
                 </h4>
                 <p className="text-xs text-slate-500 mt-0.5">
-                  Our academic counselors are available Monday to Saturday (8:00 AM – 8:00 PM) for in-person parent consultations.
+                  Our academic counselors are available Monday to Saturday (8:00
+                  AM – 8:00 PM) for in-person parent consultations.
                 </p>
               </div>
             </div>
             <a
-              href={`tel:${ACADEMY_INFO.contact.primaryPhone.replace(/\s+/g, '')}`}
+              href={`tel:${ACADEMY_INFO.contact.primaryPhone.replace(/\s+/g, "")}`}
               className="bg-[#0F172A] hover:bg-slate-800 text-white text-xs font-semibold uppercase tracking-wider px-6 py-3 rounded-full transition-all shrink-0"
             >
               Call To Reserve a Slot

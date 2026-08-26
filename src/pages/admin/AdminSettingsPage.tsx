@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import {
-  Settings,
   Save,
   CheckCircle2,
   Building,
   Phone,
-  Mail,
   Clock,
   Share2,
   RotateCcw,

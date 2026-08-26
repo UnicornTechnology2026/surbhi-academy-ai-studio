@@ -1,32 +1,28 @@
-import React from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import React from "react";
+import { useParams, Link } from "react-router-dom";
 import {
   Sparkles,
   CheckCircle2,
   Clock,
   Users,
   Calendar,
-  BookOpen,
   ArrowLeft,
   Phone,
   GraduationCap,
-  Award,
   ChevronRight,
-  ShieldCheck,
-  Download,
-  HelpCircle,
-  FileText
-} from 'lucide-react';
-import { useAcademy } from '../context/AcademyContext';
-import { FacultyCard } from '../components/FacultyCard';
-import { RankCard } from '../components/RankCard';
-import { CTASection } from '../components/CTASection';
+  FileText,
+} from "lucide-react";
+import { useAcademy } from "../context/AcademyContext";
+import { FacultyCard } from "../components/FacultyCard";
+import { CTASection } from "../components/CTASection";
 
 interface CourseDetailPageProps {
   onOpenEnquiry: (courseSlug?: string) => void;
 }
 
-export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({ onOpenEnquiry }) => {
+export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({
+  onOpenEnquiry,
+}) => {
   const { slug } = useParams<{ slug: string }>();
   const { courses, faculty, achievers, siteSettings } = useAcademy();
 
@@ -35,9 +31,12 @@ export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({ onOpenEnquir
   if (!course) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-20 text-center space-y-4">
-        <h2 className="text-2xl font-serif font-bold text-slate-800">Course Not Found</h2>
+        <h2 className="text-2xl font-serif font-bold text-slate-800">
+          Course Not Found
+        </h2>
         <p className="text-slate-600 text-sm">
-          The requested course program could not be located or has been archived.
+          The requested course program could not be located or has been
+          archived.
         </p>
         <Link
           to="/courses"
@@ -52,12 +51,21 @@ export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({ onOpenEnquir
 
   // Related achievers from similar category
   const relatedAchievers = achievers
-    .filter((a) => a.status === 'active' && (a.category === course.category || course.gradeLevel.includes(a.gradeLevel)))
+    .filter(
+      (a) =>
+        a.status === "active" &&
+        (a.category === course.category ||
+          course.gradeLevel.includes(a.gradeLevel)),
+    )
     .slice(0, 3);
 
   // Relevant faculty teaching this program
   const relevantFaculty = faculty
-    .filter((f) => f.status === 'active' && f.subjectsTaught.some((cls) => course.gradeLevel.includes(cls)))
+    .filter(
+      (f) =>
+        f.status === "active" &&
+        f.subjectsTaught.some((cls) => course.gradeLevel.includes(cls)),
+    )
     .slice(0, 3);
 
   return (
@@ -65,11 +73,17 @@ export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({ onOpenEnquir
       {/* 1. Breadcrumbs */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2 text-xs text-slate-500 font-medium">
-          <Link to="/" className="hover:text-amber-700">Home</Link>
+          <Link to="/" className="hover:text-amber-700">
+            Home
+          </Link>
           <ChevronRight className="w-3.5 h-3.5" />
-          <Link to="/courses" className="hover:text-amber-700">Courses</Link>
+          <Link to="/courses" className="hover:text-amber-700">
+            Courses
+          </Link>
           <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-slate-900 font-semibold truncate">{course.title}</span>
+          <span className="text-slate-900 font-semibold truncate">
+            {course.title}
+          </span>
         </div>
       </div>
 
@@ -108,7 +122,9 @@ export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({ onOpenEnquir
                   <Clock className="w-3.5 h-3.5 text-amber-700" />
                   Duration
                 </div>
-                <div className="text-sm font-bold text-slate-900">{course.duration}</div>
+                <div className="text-sm font-bold text-slate-900">
+                  {course.duration}
+                </div>
               </div>
 
               <div className="space-y-0.5">
@@ -116,7 +132,9 @@ export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({ onOpenEnquir
                   <Users className="w-3.5 h-3.5 text-amber-700" />
                   Batch Size
                 </div>
-                <div className="text-sm font-bold text-slate-900">{course.batchSize}</div>
+                <div className="text-sm font-bold text-slate-900">
+                  {course.batchSize}
+                </div>
               </div>
 
               <div className="space-y-0.5">
@@ -124,7 +142,9 @@ export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({ onOpenEnquir
                   <Calendar className="w-3.5 h-3.5 text-amber-700" />
                   Eligibility
                 </div>
-                <div className="text-sm font-bold text-slate-900">{course.eligibility}</div>
+                <div className="text-sm font-bold text-slate-900">
+                  {course.eligibility}
+                </div>
               </div>
 
               <div className="space-y-0.5">
@@ -132,7 +152,9 @@ export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({ onOpenEnquir
                   <GraduationCap className="w-3.5 h-3.5 text-amber-700" />
                   Target Exam
                 </div>
-                <div className="text-sm font-bold text-slate-900">{course.targetExam}</div>
+                <div className="text-sm font-bold text-slate-900">
+                  {course.targetExam}
+                </div>
               </div>
             </div>
 
@@ -183,44 +205,48 @@ export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({ onOpenEnquir
             </div>
 
             {/* Detailed Curriculum Breakdown */}
-            {course.curriculumHighlights && course.curriculumHighlights.length > 0 && (
-              <div className="space-y-4 pt-4">
-                <h2 className="text-2xl font-serif font-bold text-[#0F172A]">
-                  Course Structure & Phases
-                </h2>
-                <div className="space-y-3">
-                  {course.curriculumHighlights.map((item, idx) => (
-                    <div
-                      key={idx}
-                      className="p-5 rounded-2xl bg-white border border-slate-100 shadow-xs space-y-2"
-                    >
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-base font-serif font-bold text-[#0F172A]">
-                          {item.title}
-                        </h3>
-                        {item.duration && (
-                          <span className="text-xs text-amber-700 font-bold bg-amber-50 px-2.5 py-1 rounded-md">
-                            {item.duration}
-                          </span>
+            {course.curriculumHighlights &&
+              course.curriculumHighlights.length > 0 && (
+                <div className="space-y-4 pt-4">
+                  <h2 className="text-2xl font-serif font-bold text-[#0F172A]">
+                    Course Structure & Phases
+                  </h2>
+                  <div className="space-y-3">
+                    {course.curriculumHighlights.map((item, idx) => (
+                      <div
+                        key={idx}
+                        className="p-5 rounded-2xl bg-white border border-slate-100 shadow-xs space-y-2"
+                      >
+                        <div className="flex items-center justify-between">
+                          <h3 className="text-base font-serif font-bold text-[#0F172A]">
+                            {item.title}
+                          </h3>
+                          {item.duration && (
+                            <span className="text-xs text-amber-700 font-bold bg-amber-50 px-2.5 py-1 rounded-md">
+                              {item.duration}
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                          {item.description}
+                        </p>
+                        {item.topics && (
+                          <div className="pt-2 flex flex-wrap gap-1.5">
+                            {item.topics.map((t, i) => (
+                              <span
+                                key={i}
+                                className="text-[11px] bg-slate-50 text-slate-600 px-2.5 py-1 rounded-md border border-slate-100"
+                              >
+                                • {t}
+                              </span>
+                            ))}
+                          </div>
                         )}
                       </div>
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                        {item.description}
-                      </p>
-                      {item.topics && (
-                        <div className="pt-2 flex flex-wrap gap-1.5">
-                          {item.topics.map((t, i) => (
-                            <span key={i} className="text-[11px] bg-slate-50 text-slate-600 px-2.5 py-1 rounded-md border border-slate-100">
-                              • {t}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
           </div>
 
           {/* Right Sticky Sidebar */}
@@ -264,9 +290,16 @@ export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({ onOpenEnquir
                   <span>Available Batch Timings</span>
                 </div>
                 <div className="text-slate-600 space-y-1">
-                  <div>🌅 <strong>Morning Batch:</strong> 06:45 AM – 09:30 AM</div>
-                  <div>🌆 <strong>Evening Batch:</strong> 04:30 PM – 07:45 PM</div>
-                  <div>🎯 <strong>Doubt Clinic:</strong> 07:45 PM – 08:30 PM (Daily)</div>
+                  <div>
+                    🌅 <strong>Morning Batch:</strong> 06:45 AM – 09:30 AM
+                  </div>
+                  <div>
+                    🌆 <strong>Evening Batch:</strong> 04:30 PM – 07:45 PM
+                  </div>
+                  <div>
+                    🎯 <strong>Doubt Clinic:</strong> 07:45 PM – 08:30 PM
+                    (Daily)
+                  </div>
                 </div>
               </div>
 
@@ -277,7 +310,9 @@ export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({ onOpenEnquir
                   <span>Speak With Lead Counselor</span>
                 </div>
                 <div className="text-amber-900">
-                  Call directly at <span className="font-bold">{siteSettings.primaryPhone}</span> for seat availability.
+                  Call directly at{" "}
+                  <span className="font-bold">{siteSettings.primaryPhone}</span>{" "}
+                  for seat availability.
                 </div>
               </div>
             </div>

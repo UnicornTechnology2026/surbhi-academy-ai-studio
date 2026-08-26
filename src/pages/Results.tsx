@@ -1,52 +1,43 @@
-import React, { useState } from 'react';
-import {
-  Trophy,
-  Award,
-  Star,
-  Sparkles,
-  Filter,
-  CheckCircle2,
-  TrendingUp,
-  GraduationCap
-} from 'lucide-react';
-import { SectionHeader } from '../components/SectionHeader';
-import { RankCard } from '../components/RankCard';
-import { CTASection } from '../components/CTASection';
-import { RESULTS_DATA } from '../data/results';
+import React, { useState } from "react";
+import { Trophy, Sparkles } from "lucide-react";
+import { RankCard } from "../components/RankCard";
+import { RESULTS_DATA } from "../data/results";
 
 interface ResultsProps {
   onOpenEnquiry: (courseSlug?: string) => void;
 }
 
 export const Results: React.FC<ResultsProps> = ({ onOpenEnquiry }) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [selectedYear, setSelectedYear] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [selectedYear, setSelectedYear] = useState<string>("all");
 
   const categories = [
-    { id: 'all', label: 'All Results' },
-    { id: 'class10', label: 'Class 10 Board' },
-    { id: 'class12', label: 'Class 12 Science & Commerce' },
-    { id: 'competitive', label: 'Competitive (NEET/JEE/Olympiad)' }
+    { id: "all", label: "All Results" },
+    { id: "class10", label: "Class 10 Board" },
+    { id: "class12", label: "Class 12 Science & Commerce" },
+    { id: "competitive", label: "Competitive (NEET/JEE/Olympiad)" },
   ];
 
-  const years = ['all', '2026', '2025', '2024'];
+  const years = ["all", "2026", "2025", "2024"];
 
   const filteredResults = RESULTS_DATA.filter((item) => {
     const matchesCategory =
-      selectedCategory === 'all' || item.category === selectedCategory;
-    const matchesYear = selectedYear === 'all' || item.year === selectedYear;
+      selectedCategory === "all" || item.category === selectedCategory;
+    const matchesYear = selectedYear === "all" || item.year === selectedYear;
     return matchesCategory && matchesYear;
   });
 
   // Top 3 Podium Rankers (for visual podium showcase)
-  const podiumStudents = RESULTS_DATA.filter((s) => s.rank && s.rank <= 3).slice(0, 3);
+  const podiumStudents = RESULTS_DATA.filter(
+    (s) => s.rank && s.rank <= 3,
+  ).slice(0, 3);
 
   return (
     <div className="bg-white">
       {/* Header Banner */}
       <section className="relative bg-[#0F172A] text-white py-16 sm:py-24 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-amber-500/15 rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 border border-white/5 rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-100 h-100 border border-amber-500/15 rounded-full pointer-events-none" />
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-amber-400 text-xs font-semibold uppercase tracking-widest mb-4">
@@ -55,34 +46,46 @@ export const Results: React.FC<ResultsProps> = ({ onOpenEnquiry }) => {
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white mb-6">
             Proven Results & <br />
-            <span className="italic font-normal text-amber-400">Top Rank Holders</span>
+            <span className="italic font-normal text-amber-400">
+              Top Rank Holders
+            </span>
           </h1>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Consistently producing City Rank 1s, 99%+ board toppers, and top competitive rank holders through dedicated mentorship and concept clarity.
+            Consistently producing City Rank 1s, 99%+ board toppers, and top
+            competitive rank holders through dedicated mentorship and concept
+            clarity.
           </p>
 
           {/* Quick Result Summary Bar */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10 max-w-3xl mx-auto text-left">
             <div className="bg-white/5 backdrop-blur-md p-4 rounded-xl border border-white/10">
-              <div className="text-2xl font-serif font-bold text-amber-400">99.2%</div>
+              <div className="text-2xl font-serif font-bold text-amber-400">
+                99.2%
+              </div>
               <div className="text-[10px] uppercase text-slate-400 font-semibold tracking-wider mt-0.5">
                 Highest 10th Board Score
               </div>
             </div>
             <div className="bg-white/5 backdrop-blur-md p-4 rounded-xl border border-white/10">
-              <div className="text-2xl font-serif font-bold text-amber-400">705/720</div>
+              <div className="text-2xl font-serif font-bold text-amber-400">
+                705/720
+              </div>
               <div className="text-[10px] uppercase text-slate-400 font-semibold tracking-wider mt-0.5">
                 Top NEET-UG Score
               </div>
             </div>
             <div className="bg-white/5 backdrop-blur-md p-4 rounded-xl border border-white/10">
-              <div className="text-2xl font-serif font-bold text-amber-400">98.8%</div>
+              <div className="text-2xl font-serif font-bold text-amber-400">
+                98.8%
+              </div>
               <div className="text-[10px] uppercase text-slate-400 font-semibold tracking-wider mt-0.5">
                 Highest 12th Science Score
               </div>
             </div>
             <div className="bg-white/5 backdrop-blur-md p-4 rounded-xl border border-white/10">
-              <div className="text-2xl font-serif font-bold text-amber-400">100/100</div>
+              <div className="text-2xl font-serif font-bold text-amber-400">
+                100/100
+              </div>
               <div className="text-[10px] uppercase text-slate-400 font-semibold tracking-wider mt-0.5">
                 Perfect Scores in Math/Accts
               </div>
@@ -101,10 +104,11 @@ export const Results: React.FC<ResultsProps> = ({ onOpenEnquiry }) => {
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${selectedCategory === cat.id
-                      ? 'bg-[#0F172A] text-amber-400 shadow-md'
-                      : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
-                    }`}
+                  className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
+                    selectedCategory === cat.id
+                      ? "bg-[#0F172A] text-amber-400 shadow-md"
+                      : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-100"
+                  }`}
                 >
                   {cat.label}
                 </button>
@@ -121,12 +125,13 @@ export const Results: React.FC<ResultsProps> = ({ onOpenEnquiry }) => {
                   <button
                     key={yr}
                     onClick={() => setSelectedYear(yr)}
-                    className={`px-3 py-1 text-xs font-semibold rounded-full transition-all cursor-pointer ${selectedYear === yr
-                        ? 'bg-[#0F172A] text-white shadow-xs'
-                        : 'text-slate-600 hover:text-[#0F172A]'
-                      }`}
+                    className={`px-3 py-1 text-xs font-semibold rounded-full transition-all cursor-pointer ${
+                      selectedYear === yr
+                        ? "bg-[#0F172A] text-white shadow-xs"
+                        : "text-slate-600 hover:text-[#0F172A]"
+                    }`}
                   >
-                    {yr === 'all' ? 'All Years' : yr}
+                    {yr === "all" ? "All Years" : yr}
                   </button>
                 ))}
               </div>
@@ -143,17 +148,15 @@ export const Results: React.FC<ResultsProps> = ({ onOpenEnquiry }) => {
               Top Academic Achievers ({filteredResults.length} Records)
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 mt-1">
-              Displaying meritorious students who scored top ranks in Board Exams and Competitive Entrances.
+              Displaying meritorious students who scored top ranks in Board
+              Exams and Competitive Entrances.
             </p>
           </div>
 
           {filteredResults.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredResults.map((student) => (
-                <RankCard
-                  key={student.id}
-                  student={student}
-                />
+                <RankCard key={student.id} student={student} />
               ))}
             </div>
           ) : (
@@ -167,8 +170,8 @@ export const Results: React.FC<ResultsProps> = ({ onOpenEnquiry }) => {
               </p>
               <button
                 onClick={() => {
-                  setSelectedCategory('all');
-                  setSelectedYear('all');
+                  setSelectedCategory("all");
+                  setSelectedYear("all");
                 }}
                 className="bg-[#0F172A] text-white px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider"
               >
@@ -189,7 +192,8 @@ export const Results: React.FC<ResultsProps> = ({ onOpenEnquiry }) => {
             Want to Be Our Next Top Achiever?
           </h2>
           <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed">
-            Begin your journey with our experienced mentors, structured test series, and dedicated doubt resolution clinics.
+            Begin your journey with our experienced mentors, structured test
+            series, and dedicated doubt resolution clinics.
           </p>
           <button
             onClick={() => onOpenEnquiry()}

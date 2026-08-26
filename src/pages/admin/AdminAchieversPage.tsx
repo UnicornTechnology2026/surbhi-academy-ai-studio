@@ -1,58 +1,48 @@
-import React, { useState } from 'react';
-import {
-  Plus,
-  Edit2,
-  Trash2,
-  Star,
-  Search,
-  X,
-} from 'lucide-react';
-import { useAcademy } from '../../context/AcademyContext';
-import { StudentResult, AchieverCategory } from '../../types';
-import { ConfirmModal } from '../../components/ConfirmModal';
-import { ImageUpload } from '../../components/admin/ImageUpload';
+import React, { useState } from "react";
+import { Plus, Edit2, Trash2, Star, Search, X } from "lucide-react";
+import { useAcademy } from "../../context/AcademyContext";
+import { StudentResult, AchieverCategory } from "../../types";
+import { ConfirmModal } from "../../components/ConfirmModal";
+import { ImageUpload } from "../../components/admin/ImageUpload";
 
 export const AdminAchieversPage: React.FC = () => {
-  const {
-    achievers,
-    addAchiever,
-    updateAchiever,
-    deleteAchiever,
-    toggleAchieverFeatured
-  } = useAcademy();
+  const { achievers, addAchiever, updateAchiever, deleteAchiever } =
+    useAcademy();
 
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingAchiever, setEditingAchiever] = useState<StudentResult | null>(null);
+  const [editingAchiever, setEditingAchiever] = useState<StudentResult | null>(
+    null,
+  );
 
   // Delete confirmation
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
-  const [achieverToDelete, setAchieverToDelete] = useState<StudentResult | null>(null);
+  const [achieverToDelete, setAchieverToDelete] =
+    useState<StudentResult | null>(null);
 
-  // Form State
-  // Form State
   const [form, setForm] = useState<Partial<StudentResult>>({
-    name: '',
-    rankTitle: 'City Topper (Nagpur)',
-    exam: 'CBSE Class 10 Board Exam',
-    score: '98.8%',
-    percentile: '100th Percentile',
-    year: '2025',
-    category: 'class10',
-    categoryLabel: 'Class 10 Board Toppers',
-    school: '',
-    testimonial: '',
-    image: '', // <--- Changed to blank string
-    badgeType: 'gold',
+    name: "",
+    rankTitle: "City Topper (Nagpur)",
+    exam: "CBSE Class 10 Board Exam",
+    score: "98.8%",
+    percentile: "100th Percentile",
+    year: "2025",
+    category: "class10",
+    categoryLabel: "Class 10 Board Toppers",
+    school: "",
+    testimonial: "",
+    image: "", // <--- Changed to blank string
+    badgeType: "gold",
     featured: true,
-    status: 'active'
+    status: "active",
   });
 
   const filteredAchievers = achievers.filter((a) => {
-    const matchesCategory = selectedCategory === 'all' || a.category === selectedCategory;
+    const matchesCategory =
+      selectedCategory === "all" || a.category === selectedCategory;
     const matchesSearch =
       a.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       a.exam.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -64,20 +54,20 @@ export const AdminAchieversPage: React.FC = () => {
   const handleOpenAdd = () => {
     setEditingAchiever(null);
     setForm({
-      name: '',
-      rankTitle: '',
-      exam: 'CBSE Class 10 Board Exam',
-      score: '',
-      percentile: '',
-      year: '2025',
-      category: 'class10',
-      categoryLabel: 'Class 10 Board Toppers',
-      school: '',
-      testimonial: '',
-      image: '', // <--- Changed to blank string
-      badgeType: 'gold',
+      name: "",
+      rankTitle: "",
+      exam: "CBSE Class 10 Board Exam",
+      score: "",
+      percentile: "",
+      year: "2025",
+      category: "class10",
+      categoryLabel: "Class 10 Board Toppers",
+      school: "",
+      testimonial: "",
+      image: "", // <--- Changed to blank string
+      badgeType: "gold",
       featured: true,
-      status: 'active'
+      status: "active",
     });
     setIsModalOpen(true);
   };
@@ -92,27 +82,29 @@ export const AdminAchieversPage: React.FC = () => {
     e.preventDefault();
     if (!form.name || !form.score) return;
 
-    const payload: Omit<StudentResult, 'id'> = {
+    const payload: Omit<StudentResult, "id"> = {
       name: form.name,
-      rankTitle: form.rankTitle || 'Merit Ranker',
-      exam: form.exam || 'Board Examination',
+      rankTitle: form.rankTitle || "Merit Ranker",
+      exam: form.exam || "Board Examination",
       score: form.score,
       percentile: form.percentile || undefined,
-      year: form.year || '2025',
-      category: (form.category as AchieverCategory) || 'class10',
+      year: form.year || "2025",
+      category: (form.category as AchieverCategory) || "class10",
       categoryLabel:
-        form.category === 'class10'
-          ? 'Class 10 Board Toppers'
-          : form.category === 'class12'
-            ? 'Class 12 Board Toppers'
-            : 'Competitive Olympiads',
+        form.category === "class10"
+          ? "Class 10 Board Toppers"
+          : form.category === "class12"
+            ? "Class 12 Board Toppers"
+            : "Competitive Olympiads",
       school: form.school || undefined,
       testimonial: form.testimonial || undefined,
-      image: form.image || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
-      badgeType: form.badgeType || 'gold',
+      image:
+        form.image ||
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      badgeType: form.badgeType || "gold",
       featured: form.featured ?? true,
-      status: form.status || 'active',
-      gradeLevel: ''
+      status: form.status || "active",
+      gradeLevel: "",
     };
 
     if (editingAchiever) {
@@ -161,22 +153,23 @@ export const AdminAchieversPage: React.FC = () => {
       {/* Filter and Search */}
       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
         <div className="flex flex-wrap gap-2">
-          {['all', 'class10', 'class12', 'competitive'].map((cat) => (
+          {["all", "class10", "class12", "competitive"].map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${selectedCategory === cat
-                ? 'bg-amber-500 text-slate-950 font-bold'
-                : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-                }`}
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                selectedCategory === cat
+                  ? "bg-amber-500 text-slate-950 font-bold"
+                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+              }`}
             >
-              {cat === 'all'
-                ? 'All Rankers'
-                : cat === 'class10'
-                  ? 'Class 10 Toppers'
-                  : cat === 'class12'
-                    ? 'Class 12 Toppers'
-                    : 'Olympiad Rankers'}
+              {cat === "all"
+                ? "All Rankers"
+                : cat === "class10"
+                  ? "Class 10 Toppers"
+                  : cat === "class12"
+                    ? "Class 12 Toppers"
+                    : "Olympiad Rankers"}
             </button>
           ))}
         </div>
@@ -193,14 +186,15 @@ export const AdminAchieversPage: React.FC = () => {
         </div>
       </div>
 
-
       {/* Achievers Table */}
       <div className="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-xl">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead className="bg-slate-950/80 text-[11px] text-slate-400 uppercase tracking-wider border-b border-slate-800">
               <tr>
-                <th className="py-4 px-6 font-semibold">Student Name & Photo</th>
+                <th className="py-4 px-6 font-semibold">
+                  Student Name & Photo
+                </th>
                 <th className="py-4 px-4 font-semibold">Exam & Year</th>
                 <th className="py-4 px-4 font-semibold">Score / Rank</th>
                 <th className="py-4 px-4 font-semibold">School</th>
@@ -210,7 +204,10 @@ export const AdminAchieversPage: React.FC = () => {
             </thead>
             <tbody className="divide-y divide-slate-800 text-slate-300">
               {filteredAchievers.map((a) => (
-                <tr key={a.id} className="hover:bg-slate-800/40 transition-colors">
+                <tr
+                  key={a.id}
+                  className="hover:bg-slate-800/40 transition-colors"
+                >
                   <td className="py-4 px-6">
                     <div className="flex items-center gap-3">
                       <img
@@ -219,23 +216,33 @@ export const AdminAchieversPage: React.FC = () => {
                         className="w-10 h-10 rounded-full object-cover border border-amber-500/40 shrink-0"
                       />
                       <div>
-                        <div className="font-bold text-sm text-white">{a.name}</div>
-                        <div className="text-[11px] text-amber-400 font-semibold">{a.rankTitle}</div>
+                        <div className="font-bold text-sm text-white">
+                          {a.name}
+                        </div>
+                        <div className="text-[11px] text-amber-400 font-semibold">
+                          {a.rankTitle}
+                        </div>
                       </div>
                     </div>
                   </td>
                   <td className="py-4 px-4">
                     <div className="font-semibold text-white">{a.exam}</div>
-                    <div className="text-[10px] text-slate-400">Batch of {a.year}</div>
+                    <div className="text-[10px] text-slate-400">
+                      Batch of {a.year}
+                    </div>
                   </td>
                   <td className="py-4 px-4">
-                    <div className="text-base font-serif font-bold text-amber-400">{a.score}</div>
+                    <div className="text-base font-serif font-bold text-amber-400">
+                      {a.score}
+                    </div>
                     {a.percentile && (
-                      <div className="text-[10px] text-slate-400">{a.percentile}</div>
+                      <div className="text-[10px] text-slate-400">
+                        {a.percentile}
+                      </div>
                     )}
                   </td>
-                  <td className="py-4 px-4 text-slate-300 max-w-[160px] truncate">
-                    {a.school || '—'}
+                  <td className="py-4 px-4 text-slate-300 max-w-40 truncate">
+                    {a.school || "—"}
                   </td>
                   {/* Edit & Delete in ONE single line */}
                   <td className="py-4 px-6 text-right whitespace-nowrap">
@@ -269,7 +276,9 @@ export const AdminAchieversPage: React.FC = () => {
           <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
             <div className="p-6 border-b border-slate-800 flex items-center justify-between bg-slate-950">
               <h3 className="text-lg font-serif font-bold text-white">
-                {editingAchiever ? 'Edit Achiever Profile' : 'Add New Ranker Profile'}
+                {editingAchiever
+                  ? "Edit Achiever Profile"
+                  : "Add New Ranker Profile"}
               </h3>
               <button
                 onClick={() => setIsModalOpen(false)}
@@ -279,7 +288,10 @@ export const AdminAchieversPage: React.FC = () => {
               </button>
             </div>
 
-            <form onSubmit={handleSave} className="p-6 overflow-y-auto space-y-4 flex-1 text-xs">
+            <form
+              onSubmit={handleSave}
+              className="p-6 overflow-y-auto space-y-4 flex-1 text-xs"
+            >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-slate-300 uppercase font-bold mb-1">
@@ -304,7 +316,9 @@ export const AdminAchieversPage: React.FC = () => {
                     required
                     placeholder="e.g. Nagpur City Rank 1"
                     value={form.rankTitle}
-                    onChange={(e) => setForm({ ...form, rankTitle: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, rankTitle: e.target.value })
+                    }
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
@@ -320,7 +334,9 @@ export const AdminAchieversPage: React.FC = () => {
                     required
                     placeholder="e.g. 98.8% or 695/720"
                     value={form.score}
-                    onChange={(e) => setForm({ ...form, score: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, score: e.target.value })
+                    }
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
@@ -344,7 +360,12 @@ export const AdminAchieversPage: React.FC = () => {
                   </label>
                   <select
                     value={form.category}
-                    onChange={(e) => setForm({ ...form, category: e.target.value as AchieverCategory })}
+                    onChange={(e) =>
+                      setForm({
+                        ...form,
+                        category: e.target.value as AchieverCategory,
+                      })
+                    }
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
                   >
                     <option value="class10">Class 10 Board Toppers</option>
@@ -375,8 +396,10 @@ export const AdminAchieversPage: React.FC = () => {
                   <input
                     type="text"
                     placeholder="e.g. Bhavans Vidya Mandir"
-                    value={form.school || ''}
-                    onChange={(e) => setForm({ ...form, school: e.target.value })}
+                    value={form.school || ""}
+                    onChange={(e) =>
+                      setForm({ ...form, school: e.target.value })
+                    }
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
@@ -393,7 +416,6 @@ export const AdminAchieversPage: React.FC = () => {
                 />
               </div>
 
-
               <div className="pt-4 border-t border-slate-800 flex items-center justify-end gap-3">
                 <button
                   type="button"
@@ -406,7 +428,7 @@ export const AdminAchieversPage: React.FC = () => {
                   type="submit"
                   className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-2.5 rounded-xl uppercase tracking-wider cursor-pointer shadow-md"
                 >
-                  {editingAchiever ? 'Save Changes' : 'Add Topper'}
+                  {editingAchiever ? "Save Changes" : "Add Topper"}
                 </button>
               </div>
             </form>

@@ -1,13 +1,16 @@
-import React from 'react';
-import { X, Shield, Lock, CheckCircle2 } from 'lucide-react';
-import { useAcademy } from '../context/AcademyContext';
+import React from "react";
+import { X, Shield } from "lucide-react";
+import { useAcademy } from "../context/AcademyContext";
 
 interface PrivacyModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
+export const PrivacyModal: React.FC<PrivacyModalProps> = ({
+  isOpen,
+  onClose,
+}) => {
   const { siteSettings } = useAcademy();
   if (!isOpen) return null;
 
@@ -37,7 +40,10 @@ export const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) =
 
         <div className="p-6 overflow-y-auto space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed">
           <p>
-            Welcome to <strong>{siteSettings.name}</strong>. We value the privacy of our prospective students, enrolled candidates, and their parents. This policy details how we collect, safeguard, and utilize data.
+            Welcome to <strong>{siteSettings.name}</strong>. We value the
+            privacy of our prospective students, enrolled candidates, and their
+            parents. This policy details how we collect, safeguard, and utilize
+            data.
           </p>
 
           <div className="space-y-2">
@@ -45,7 +51,10 @@ export const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) =
               1. Information We Collect
             </h4>
             <p>
-              When you submit an admission enquiry or register for a course, we gather contact details including student name, parent/guardian name, phone number, email address, current school, and academic interest.
+              When you submit an admission enquiry or register for a course, we
+              gather contact details including student name, parent/guardian
+              name, phone number, email address, current school, and academic
+              interest.
             </p>
           </div>
 
@@ -54,9 +63,18 @@ export const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) =
               2. How We Use Your Information
             </h4>
             <ul className="list-disc pl-5 space-y-1">
-              <li>To provide tailored academic counseling and schedule free 2-day trial classes.</li>
-              <li>To communicate batch timings, fee structures, and scholarship criteria.</li>
-              <li>To transmit daily attendance and test performance reports to registered parents.</li>
+              <li>
+                To provide tailored academic counseling and schedule free 2-day
+                trial classes.
+              </li>
+              <li>
+                To communicate batch timings, fee structures, and scholarship
+                criteria.
+              </li>
+              <li>
+                To transmit daily attendance and test performance reports to
+                registered parents.
+              </li>
               <li>Strictly zero commercial spam or third-party sharing.</li>
             </ul>
           </div>
@@ -66,7 +84,9 @@ export const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) =
               3. Data Security & Storage
             </h4>
             <p>
-              Student assessment records and contact data are maintained in encrypted, password-protected systems accessible only to authorized academic staff and counselors.
+              Student assessment records and contact data are maintained in
+              encrypted, password-protected systems accessible only to
+              authorized academic staff and counselors.
             </p>
           </div>
 
@@ -75,7 +95,9 @@ export const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) =
               4. Contact Us
             </h4>
             <p>
-              For queries or to update your recorded information, contact our privacy compliance officer at <strong>{siteSettings.email}</strong> or visit our main campus.
+              For queries or to update your recorded information, contact our
+              privacy compliance officer at{" "}
+              <strong>{siteSettings.email}</strong> or visit our main campus.
             </p>
           </div>
         </div>

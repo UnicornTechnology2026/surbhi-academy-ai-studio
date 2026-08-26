@@ -1,7 +1,7 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import { GraduationCap, Award, Clock } from 'lucide-react';
-import { FacultyMember } from '../types';
+import React from "react";
+import { motion } from "motion/react";
+import { GraduationCap, Award, Clock } from "lucide-react";
+import { FacultyMember } from "../types";
 
 interface FacultyCardProps {
   faculty: FacultyMember;
@@ -14,7 +14,7 @@ export const FacultyCard: React.FC<FacultyCardProps> = ({ faculty }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       whileHover={{ y: -6 }}
-      transition={{ duration: 0.35, ease: 'easeOut' }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
       className="bg-white rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group"
     >
       {/* Top Image & Department Tag */}
@@ -25,7 +25,7 @@ export const FacultyCard: React.FC<FacultyCardProps> = ({ faculty }) => {
           className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 opacity-95"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/90 via-[#0F172A]/20 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#0F172A]/90 via-[#0F172A]/20 to-transparent" />
 
         {/* Department Badge */}
         <div className="absolute top-3 left-3">
@@ -63,7 +63,10 @@ export const FacultyCard: React.FC<FacultyCardProps> = ({ faculty }) => {
           {faculty.achievements && faculty.achievements.length > 0 && (
             <div className="space-y-1.5 pt-2 border-t border-slate-100">
               {faculty.achievements.slice(0, 2).map((ach, i) => (
-                <div key={i} className="flex items-center gap-2 text-[11px] text-slate-700">
+                <div
+                  key={i}
+                  className="flex items-center gap-2 text-[11px] text-slate-700"
+                >
                   <Award className="w-3.5 h-3.5 text-amber-600 shrink-0" />
                   <span className="line-clamp-1">{ach}</span>
                 </div>

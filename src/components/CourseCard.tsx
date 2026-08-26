@@ -1,22 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'motion/react';
-import { Clock, CheckCircle2, ArrowRight, Sparkles, Users } from 'lucide-react';
-import { Course } from '../types';
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "motion/react";
+import { CheckCircle2, ArrowRight } from "lucide-react";
+import { Course } from "../types";
 
 interface CourseCardProps {
   course: Course;
   onEnquire: (courseSlug: string) => void;
 }
 
-export const CourseCard: React.FC<CourseCardProps> = ({ course, onEnquire }) => {
+export const CourseCard: React.FC<CourseCardProps> = ({
+  course,
+  onEnquire,
+}) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       whileHover={{ y: -6 }}
-      transition={{ duration: 0.35, ease: 'easeOut' }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
       className="bg-white rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-xl hover:border-amber-400/40 transition-all duration-300 flex flex-col overflow-hidden group relative"
     >
       {/* Course Image & Badge Header */}
@@ -27,14 +30,13 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onEnquire }) => 
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-95"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/90 via-[#0F172A]/30 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#0F172A]/90 via-[#0F172A]/30 to-transparent" />
 
         {/* Top Badges */}
         <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
           <span className="bg-[#0F172A]/90 backdrop-blur-md text-amber-400 text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-amber-500/30">
             {course.categoryLabel}
           </span>
-
         </div>
       </div>
 
@@ -70,7 +72,10 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onEnquire }) => 
           {/* Conversational Highlights */}
           <div className="mt-4 space-y-2">
             {course.features.slice(0, 2).map((feat, i) => (
-              <div key={i} className="flex items-center gap-2 text-xs text-slate-700 font-medium">
+              <div
+                key={i}
+                className="flex items-center gap-2 text-xs text-slate-700 font-medium"
+              >
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span className="line-clamp-1">{feat}</span>
               </div>

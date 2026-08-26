@@ -1,34 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   CheckCircle2,
   Send,
   Phone,
   Mail,
   User,
-  BookOpen,
   AlertCircle,
   Sparkles,
   Award,
-  HelpCircle,
   ChevronDown,
   ChevronUp,
-  Clock,
-  ShieldCheck
-} from 'lucide-react';
-import { SectionHeader } from '../components/SectionHeader';
-import { COURSES_DATA } from '../data/courses';
-import { ACADEMY_INFO } from '../data/academyInfo';
+  ShieldCheck,
+} from "lucide-react";
+import { SectionHeader } from "../components/SectionHeader";
+import { COURSES_DATA } from "../data/courses";
+import { ACADEMY_INFO } from "../data/academyInfo";
 
 export const Admissions: React.FC = () => {
   const [formData, setFormData] = useState({
-    studentName: '',
-    parentName: '',
-    mobileNumber: '',
-    emailAddress: '',
-    studentClass: 'Class 10',
+    studentName: "",
+    parentName: "",
+    mobileNumber: "",
+    emailAddress: "",
+    studentClass: "Class 10",
     courseInterested: COURSES_DATA[0].title,
-    branchPreference: 'Main Academic Campus (Central Ave)',
-    message: ''
+    branchPreference: "Main Academic Campus (Central Ave)",
+    message: "",
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -39,18 +36,23 @@ export const Admissions: React.FC = () => {
   const validate = () => {
     const errs: Record<string, string> = {};
     if (!formData.studentName.trim()) {
-      errs.studentName = 'Student name is required';
+      errs.studentName = "Student name is required";
     }
     if (!formData.parentName.trim()) {
-      errs.parentName = 'Parent / Guardian name is required';
+      errs.parentName = "Parent / Guardian name is required";
     }
     if (!formData.mobileNumber.trim()) {
-      errs.mobileNumber = 'Mobile number is required';
-    } else if (!/^[6-9]\d{9}$/.test(formData.mobileNumber.replace(/[\s-+]/g, ''))) {
-      errs.mobileNumber = 'Please enter a valid 10-digit mobile number';
+      errs.mobileNumber = "Mobile number is required";
+    } else if (
+      !/^[6-9]\d{9}$/.test(formData.mobileNumber.replace(/[\s-+]/g, ""))
+    ) {
+      errs.mobileNumber = "Please enter a valid 10-digit mobile number";
     }
-    if (formData.emailAddress.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.emailAddress)) {
-      errs.emailAddress = 'Please enter a valid email address';
+    if (
+      formData.emailAddress.trim() &&
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.emailAddress)
+    ) {
+      errs.emailAddress = "Please enter a valid email address";
     }
     return errs;
   };
@@ -76,7 +78,7 @@ export const Admissions: React.FC = () => {
     <div className="bg-white">
       {/* Header Banner */}
       <section className="relative bg-[#0F172A] text-white py-16 sm:py-24 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] border border-white/5 rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-137.5 h-137.5 border border-white/5 rounded-full pointer-events-none" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-amber-400 text-xs font-semibold uppercase tracking-widest mb-4">
             <Sparkles className="w-3.5 h-3.5" />
@@ -84,10 +86,13 @@ export const Admissions: React.FC = () => {
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white mb-6">
             Begin Your Journey to <br />
-            <span className="italic font-normal text-amber-400">Academic Excellence</span>
+            <span className="italic font-normal text-amber-400">
+              Academic Excellence
+            </span>
           </h1>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Simple 5-step admission process with complimentary diagnostic evaluation and merit scholarship benefits.
+            Simple 5-step admission process with complimentary diagnostic
+            evaluation and merit scholarship benefits.
           </p>
         </div>
       </section>
@@ -142,7 +147,8 @@ export const Admissions: React.FC = () => {
                   Direct Admission Enquiry Form
                 </h3>
                 <p className="text-xs text-slate-500 mt-1">
-                  Submit your details below to schedule an academic counseling appointment.
+                  Submit your details below to schedule an academic counseling
+                  appointment.
                 </p>
               </div>
 
@@ -155,20 +161,22 @@ export const Admissions: React.FC = () => {
                     Application Received!
                   </h4>
                   <p className="text-slate-600 text-sm max-w-md mx-auto mb-6 leading-relaxed">
-                    Thank you! An admissions counselor will call you shortly on <strong>{formData.mobileNumber}</strong> to confirm your batch timing, seat reservation, and diagnostic schedule.
+                    Thank you! An admissions counselor will call you shortly on{" "}
+                    <strong>{formData.mobileNumber}</strong> to confirm your
+                    batch timing, seat reservation, and diagnostic schedule.
                   </p>
                   <button
                     onClick={() => {
                       setIsSuccess(false);
                       setFormData({
-                        studentName: '',
-                        parentName: '',
-                        mobileNumber: '',
-                        emailAddress: '',
-                        studentClass: 'Class 10',
+                        studentName: "",
+                        parentName: "",
+                        mobileNumber: "",
+                        emailAddress: "",
+                        studentClass: "Class 10",
                         courseInterested: COURSES_DATA[0].title,
-                        branchPreference: 'Main Academic Campus (Central Ave)',
-                        message: ''
+                        branchPreference: "Main Academic Campus (Central Ave)",
+                        message: "",
                       });
                     }}
                     className="bg-[#0F172A] text-white text-xs font-semibold uppercase tracking-wider px-6 py-3 rounded-full hover:bg-slate-800 transition-all"
@@ -189,15 +197,24 @@ export const Admissions: React.FC = () => {
                           id="admission-student-name"
                           type="text"
                           value={formData.studentName}
-                          onChange={(e) => setFormData({ ...formData, studentName: e.target.value })}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              studentName: e.target.value,
+                            })
+                          }
                           placeholder="e.g. Priyanshu Roy"
-                          className={`w-full pl-9 pr-3 py-2.5 text-sm bg-white rounded-xl border ${errors.studentName ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
-                            } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
+                          className={`w-full pl-9 pr-3 py-2.5 text-sm bg-white rounded-xl border ${
+                            errors.studentName
+                              ? "border-red-400 bg-red-50/20"
+                              : "border-slate-200 focus:border-amber-500"
+                          } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
                         />
                       </div>
                       {errors.studentName && (
                         <span className="text-[11px] text-red-500 flex items-center gap-1 mt-1">
-                          <AlertCircle className="w-3 h-3" /> {errors.studentName}
+                          <AlertCircle className="w-3 h-3" />{" "}
+                          {errors.studentName}
                         </span>
                       )}
                     </div>
@@ -212,15 +229,24 @@ export const Admissions: React.FC = () => {
                           id="admission-parent-name"
                           type="text"
                           value={formData.parentName}
-                          onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              parentName: e.target.value,
+                            })
+                          }
                           placeholder="e.g. Sandeep Roy"
-                          className={`w-full pl-9 pr-3 py-2.5 text-sm bg-white rounded-xl border ${errors.parentName ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
-                            } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
+                          className={`w-full pl-9 pr-3 py-2.5 text-sm bg-white rounded-xl border ${
+                            errors.parentName
+                              ? "border-red-400 bg-red-50/20"
+                              : "border-slate-200 focus:border-amber-500"
+                          } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
                         />
                       </div>
                       {errors.parentName && (
                         <span className="text-[11px] text-red-500 flex items-center gap-1 mt-1">
-                          <AlertCircle className="w-3 h-3" /> {errors.parentName}
+                          <AlertCircle className="w-3 h-3" />{" "}
+                          {errors.parentName}
                         </span>
                       )}
                     </div>
@@ -237,15 +263,24 @@ export const Admissions: React.FC = () => {
                           id="admission-mobile-number"
                           type="tel"
                           value={formData.mobileNumber}
-                          onChange={(e) => setFormData({ ...formData, mobileNumber: e.target.value })}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              mobileNumber: e.target.value,
+                            })
+                          }
                           placeholder="10-digit mobile number"
-                          className={`w-full pl-9 pr-3 py-2.5 text-sm bg-white rounded-xl border ${errors.mobileNumber ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
-                            } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
+                          className={`w-full pl-9 pr-3 py-2.5 text-sm bg-white rounded-xl border ${
+                            errors.mobileNumber
+                              ? "border-red-400 bg-red-50/20"
+                              : "border-slate-200 focus:border-amber-500"
+                          } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
                         />
                       </div>
                       {errors.mobileNumber && (
                         <span className="text-[11px] text-red-500 flex items-center gap-1 mt-1">
-                          <AlertCircle className="w-3 h-3" /> {errors.mobileNumber}
+                          <AlertCircle className="w-3 h-3" />{" "}
+                          {errors.mobileNumber}
                         </span>
                       )}
                     </div>
@@ -260,10 +295,18 @@ export const Admissions: React.FC = () => {
                           id="admission-email-address"
                           type="email"
                           value={formData.emailAddress}
-                          onChange={(e) => setFormData({ ...formData, emailAddress: e.target.value })}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              emailAddress: e.target.value,
+                            })
+                          }
                           placeholder="parent@example.com"
-                          className={`w-full pl-9 pr-3 py-2.5 text-sm bg-white rounded-xl border ${errors.emailAddress ? 'border-red-400 bg-red-50/20' : 'border-slate-200 focus:border-amber-500'
-                            } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
+                          className={`w-full pl-9 pr-3 py-2.5 text-sm bg-white rounded-xl border ${
+                            errors.emailAddress
+                              ? "border-red-400 bg-red-50/20"
+                              : "border-slate-200 focus:border-amber-500"
+                          } focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all`}
                         />
                       </div>
                     </div>
@@ -277,19 +320,36 @@ export const Admissions: React.FC = () => {
                       <select
                         id="admission-student-class"
                         value={formData.studentClass}
-                        onChange={(e) => setFormData({ ...formData, studentClass: e.target.value })}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            studentClass: e.target.value,
+                          })
+                        }
                         className="w-full px-3 py-2.5 text-sm bg-white rounded-xl border border-slate-200 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
                       >
                         <option value="Class 6">Class 6</option>
                         <option value="Class 7">Class 7</option>
                         <option value="Class 8">Class 8</option>
                         <option value="Class 9">Class 9</option>
-                        <option value="Class 10">Class 10 (Board Target)</option>
-                        <option value="Class 11 Science">Class 11 Science (PCM/PCB)</option>
-                        <option value="Class 12 Science">Class 12 Science (Board + Entrance)</option>
-                        <option value="Class 11 Commerce">Class 11 Commerce</option>
-                        <option value="Class 12 Commerce">Class 12 Commerce</option>
-                        <option value="Competitive Foundation">Olympiad & NTSE Special</option>
+                        <option value="Class 10">
+                          Class 10 (Board Target)
+                        </option>
+                        <option value="Class 11 Science">
+                          Class 11 Science (PCM/PCB)
+                        </option>
+                        <option value="Class 12 Science">
+                          Class 12 Science (Board + Entrance)
+                        </option>
+                        <option value="Class 11 Commerce">
+                          Class 11 Commerce
+                        </option>
+                        <option value="Class 12 Commerce">
+                          Class 12 Commerce
+                        </option>
+                        <option value="Competitive Foundation">
+                          Olympiad & NTSE Special
+                        </option>
                       </select>
                     </div>
 
@@ -300,7 +360,12 @@ export const Admissions: React.FC = () => {
                       <select
                         id="admission-course-select"
                         value={formData.courseInterested}
-                        onChange={(e) => setFormData({ ...formData, courseInterested: e.target.value })}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            courseInterested: e.target.value,
+                          })
+                        }
                         className="w-full px-3 py-2.5 text-sm bg-white rounded-xl border border-slate-200 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500 truncate"
                       >
                         {COURSES_DATA.map((course) => (
@@ -318,11 +383,20 @@ export const Admissions: React.FC = () => {
                     </label>
                     <select
                       value={formData.branchPreference}
-                      onChange={(e) => setFormData({ ...formData, branchPreference: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          branchPreference: e.target.value,
+                        })
+                      }
                       className="w-full px-3 py-2.5 text-sm bg-white rounded-xl border border-slate-200 focus:border-amber-500 focus:outline-none"
                     >
-                      <option value="Main Academic Campus (Central Ave)">Main Academic Campus (Central Avenue Road)</option>
-                      <option value="West Wing Campus (VIP Road)">West Wing Campus (VIP Road)</option>
+                      <option value="Main Academic Campus (Central Ave)">
+                        Main Academic Campus (Central Avenue Road)
+                      </option>
+                      <option value="West Wing Campus (VIP Road)">
+                        West Wing Campus (VIP Road)
+                      </option>
                     </select>
                   </div>
 
@@ -334,7 +408,9 @@ export const Admissions: React.FC = () => {
                       id="admission-message"
                       rows={3}
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, message: e.target.value })
+                      }
                       placeholder="e.g. Inquiring about weekend batches and scholarship assessment..."
                       className="w-full px-3 py-2.5 text-sm bg-white rounded-xl border border-slate-200 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
                     />
@@ -373,20 +449,27 @@ export const Admissions: React.FC = () => {
                   Surabhi Merit Scholarship Scheme
                 </h4>
                 <p className="text-xs text-slate-300 leading-relaxed mb-4">
-                  We believe financial constraints should never stand between a bright mind and world-class education.
+                  We believe financial constraints should never stand between a
+                  bright mind and world-class education.
                 </p>
                 <div className="space-y-2 text-xs text-slate-200">
                   <div className="flex items-center justify-between p-2.5 bg-white/5 rounded-lg border border-white/10">
                     <span>95%+ in Previous Class</span>
-                    <span className="font-bold text-amber-400">Up to 50% Waiver</span>
+                    <span className="font-bold text-amber-400">
+                      Up to 50% Waiver
+                    </span>
                   </div>
                   <div className="flex items-center justify-between p-2.5 bg-white/5 rounded-lg border border-white/10">
                     <span>90%–94.9% Score</span>
-                    <span className="font-bold text-amber-400">Up to 30% Waiver</span>
+                    <span className="font-bold text-amber-400">
+                      Up to 30% Waiver
+                    </span>
                   </div>
                   <div className="flex items-center justify-between p-2.5 bg-white/5 rounded-lg border border-white/10">
                     <span>National Olympiad Rankers</span>
-                    <span className="font-bold text-amber-400">Special Fellowship</span>
+                    <span className="font-bold text-amber-400">
+                      Special Fellowship
+                    </span>
                   </div>
                 </div>
               </div>
@@ -400,7 +483,9 @@ export const Admissions: React.FC = () => {
                   </h4>
                 </div>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Parents can choose between quarterly, bi-annual, or annual installment plans with zero hidden fees. All study materials, mock test papers, and doubt clinics are included.
+                  Parents can choose between quarterly, bi-annual, or annual
+                  installment plans with zero hidden fees. All study materials,
+                  mock test papers, and doubt clinics are included.
                 </p>
               </div>
             </div>
@@ -434,7 +519,11 @@ export const Admissions: React.FC = () => {
                       {faq.question}
                     </span>
                     <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 text-slate-600">
-                      {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                      {isOpen ? (
+                        <ChevronUp className="w-4 h-4" />
+                      ) : (
+                        <ChevronDown className="w-4 h-4" />
+                      )}
                     </div>
                   </button>
 

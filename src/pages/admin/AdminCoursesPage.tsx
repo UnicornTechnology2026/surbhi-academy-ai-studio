@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 import {
-  BookOpen,
   Plus,
   Edit2,
   Trash2,
   CheckCircle2,
   XCircle,
   Search,
-  Filter,
   X,
-  Clock,
-  Users,
-  Award,
 } from "lucide-react";
 import { useAcademy } from "../../context/AcademyContext";
 import { Course, CourseCategory } from "../../types";

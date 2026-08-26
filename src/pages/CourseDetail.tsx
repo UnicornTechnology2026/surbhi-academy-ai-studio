@@ -1,31 +1,32 @@
-import React from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
-import { 
-  Clock, 
-  Users, 
-  BookOpen, 
-  CheckCircle2, 
-  Award, 
-  Sparkles, 
-  ArrowLeft, 
-  Phone, 
+import React from "react";
+import { useParams, Link, Navigate } from "react-router-dom";
+import {
+  Clock,
+  Users,
+  BookOpen,
+  CheckCircle2,
+  Award,
+  Sparkles,
+  ArrowLeft,
+  Phone,
   ShieldCheck,
-  GraduationCap,
   Calendar,
-  Layers
-} from 'lucide-react';
-import { COURSES_DATA } from '../data/courses';
-import { FACULTY_DATA } from '../data/faculty';
-import { FacultyCard } from '../components/FacultyCard';
-import { CourseCard } from '../components/CourseCard';
-import { CTASection } from '../components/CTASection';
-import { ACADEMY_INFO } from '../data/academyInfo';
+  Layers,
+} from "lucide-react";
+import { COURSES_DATA } from "../data/courses";
+import { FACULTY_DATA } from "../data/faculty";
+import { FacultyCard } from "../components/FacultyCard";
+import { CourseCard } from "../components/CourseCard";
+import { CTASection } from "../components/CTASection";
+import { ACADEMY_INFO } from "../data/academyInfo";
 
 interface CourseDetailProps {
   onOpenEnquiry: (courseSlug?: string) => void;
 }
 
-export const CourseDetail: React.FC<CourseDetailProps> = ({ onOpenEnquiry }) => {
+export const CourseDetail: React.FC<CourseDetailProps> = ({
+  onOpenEnquiry,
+}) => {
   const { slug } = useParams<{ slug: string }>();
 
   const course = COURSES_DATA.find((c) => c.slug === slug);
@@ -35,7 +36,10 @@ export const CourseDetail: React.FC<CourseDetailProps> = ({ onOpenEnquiry }) => 
   }
 
   // Related courses in the same category or overall
-  const relatedCourses = COURSES_DATA.filter((c) => c.id !== course.id).slice(0, 3);
+  const relatedCourses = COURSES_DATA.filter((c) => c.id !== course.id).slice(
+    0,
+    3,
+  );
 
   // Faculty related to the course department
   const relatedFaculty = FACULTY_DATA.slice(0, 2);
@@ -44,8 +48,8 @@ export const CourseDetail: React.FC<CourseDetailProps> = ({ onOpenEnquiry }) => 
     <div className="bg-white">
       {/* Top Breadcrumb & Hero Header */}
       <section className="relative bg-[#0F172A] text-white py-14 sm:py-18 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full pointer-events-none" />
-        
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 border border-white/5 rounded-full pointer-events-none" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <Link
             to="/courses"
@@ -89,7 +93,7 @@ export const CourseDetail: React.FC<CourseDetailProps> = ({ onOpenEnquiry }) => 
                   <span>Enquire For This Batch</span>
                 </button>
                 <a
-                  href={`tel:${ACADEMY_INFO.contact.primaryPhone.replace(/\s+/g, '')}`}
+                  href={`tel:${ACADEMY_INFO.contact.primaryPhone.replace(/\s+/g, "")}`}
                   className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-2"
                 >
                   <Phone className="w-3.5 h-3.5 text-amber-400" />
@@ -108,25 +112,34 @@ export const CourseDetail: React.FC<CourseDetailProps> = ({ onOpenEnquiry }) => 
                   <span className="text-slate-400 flex items-center gap-1.5">
                     <Clock className="w-3.5 h-3.5 text-amber-400" /> Duration:
                   </span>
-                  <span className="font-semibold text-white">{course.duration}</span>
+                  <span className="font-semibold text-white">
+                    {course.duration}
+                  </span>
                 </li>
                 <li className="flex items-center justify-between">
                   <span className="text-slate-400 flex items-center gap-1.5">
                     <Users className="w-3.5 h-3.5 text-amber-400" /> Batch Size:
                   </span>
-                  <span className="font-semibold text-white">{course.batchSize}</span>
+                  <span className="font-semibold text-white">
+                    {course.batchSize}
+                  </span>
                 </li>
                 <li className="flex items-center justify-between">
                   <span className="text-slate-400 flex items-center gap-1.5">
                     <Calendar className="w-3.5 h-3.5 text-amber-400" /> Timings:
                   </span>
-                  <span className="font-semibold text-white text-right">{course.classTiming}</span>
+                  <span className="font-semibold text-white text-right">
+                    {course.classTiming}
+                  </span>
                 </li>
                 <li className="flex items-center justify-between">
                   <span className="text-slate-400 flex items-center gap-1.5">
-                    <ShieldCheck className="w-3.5 h-3.5 text-amber-400" /> Assessment:
+                    <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />{" "}
+                    Assessment:
                   </span>
-                  <span className="font-semibold text-white">Weekly Diagnostic Tests</span>
+                  <span className="font-semibold text-white">
+                    Weekly Diagnostic Tests
+                  </span>
                 </li>
               </ul>
             </div>
@@ -165,7 +178,9 @@ export const CourseDetail: React.FC<CourseDetailProps> = ({ onOpenEnquiry }) => 
                       <div className="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-700 flex items-center justify-center font-bold text-xs">
                         {i + 1}
                       </div>
-                      <span className="text-sm font-semibold text-slate-800">{sub}</span>
+                      <span className="text-sm font-semibold text-slate-800">
+                        {sub}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -203,9 +218,14 @@ export const CourseDetail: React.FC<CourseDetailProps> = ({ onOpenEnquiry }) => 
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {course.features.map((feat, i) => (
-                    <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                    <div
+                      key={i}
+                      className="flex items-start gap-3 p-4 rounded-xl bg-slate-50 border border-slate-100"
+                    >
                       <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                      <span className="text-xs sm:text-sm text-slate-700 font-medium">{feat}</span>
+                      <span className="text-xs sm:text-sm text-slate-700 font-medium">
+                        {feat}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -218,7 +238,10 @@ export const CourseDetail: React.FC<CourseDetailProps> = ({ onOpenEnquiry }) => 
                 </h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {course.materialsIncluded.map((mat, i) => (
-                    <li key={i} className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 bg-white p-3 rounded-lg border border-slate-200">
+                    <li
+                      key={i}
+                      className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 bg-white p-3 rounded-lg border border-slate-200"
+                    >
                       <Layers className="w-4 h-4 text-amber-600 shrink-0" />
                       <span>{mat}</span>
                     </li>
@@ -271,7 +294,7 @@ export const CourseDetail: React.FC<CourseDetailProps> = ({ onOpenEnquiry }) => 
               </div>
 
               {/* Free Trial Banner */}
-              <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-6 border border-amber-200 text-slate-900">
+              <div className="bg-linear-to-br from-amber-50 to-orange-50 rounded-2xl p-6 border border-amber-200 text-slate-900">
                 <div className="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center font-bold mb-3">
                   <Award className="w-5 h-5" />
                 </div>
@@ -279,7 +302,8 @@ export const CourseDetail: React.FC<CourseDetailProps> = ({ onOpenEnquiry }) => 
                   2-Day Free Trial Pass
                 </h4>
                 <p className="text-xs text-slate-600 mb-4 leading-relaxed">
-                  Attend actual live classes with our faculty before making any enrollment commitment.
+                  Attend actual live classes with our faculty before making any
+                  enrollment commitment.
                 </p>
                 <button
                   onClick={() => onOpenEnquiry(course.slug)}
@@ -304,11 +328,7 @@ export const CourseDetail: React.FC<CourseDetailProps> = ({ onOpenEnquiry }) => 
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {relatedCourses.map((c) => (
-              <CourseCard
-                key={c.id}
-                course={c}
-                onEnquire={onOpenEnquiry}
-              />
+              <CourseCard key={c.id} course={c} onEnquire={onOpenEnquiry} />
             ))}
           </div>
         </div>

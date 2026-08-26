@@ -1,7 +1,14 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import { ArrowRight, Phone, Sparkles, CheckCircle2, ShieldCheck, HeartHandshake } from 'lucide-react';
-import { ACADEMY_INFO } from '../data/academyInfo';
+import React from "react";
+import { motion } from "motion/react";
+import {
+  ArrowRight,
+  Phone,
+  Sparkles,
+  CheckCircle2,
+  ShieldCheck,
+  HeartHandshake,
+} from "lucide-react";
+import { ACADEMY_INFO } from "../data/academyInfo";
 
 interface CTASectionProps {
   onOpenEnquiry: (courseSlug?: string) => void;
@@ -11,8 +18,8 @@ interface CTASectionProps {
 
 export const CTASection: React.FC<CTASectionProps> = ({
   onOpenEnquiry,
-  title = 'Want to see how we teach before deciding?',
-  subtitle = 'Take a free 2-day classroom trial. No fees, zero pressure — just real teaching and instant clarity.'
+  title = "Want to see how we teach before deciding?",
+  subtitle = "Take a free 2-day classroom trial. No fees, zero pressure — just real teaching and instant clarity.",
 }) => {
   return (
     <section className="relative bg-[#0F172A] text-white py-16 pb-px  overflow-hidden">
@@ -29,8 +36,6 @@ export const CTASection: React.FC<CTASectionProps> = ({
       />
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-
-
         {/* Title */}
         <motion.h2
           initial={{ opacity: 0, y: 15 }}
@@ -74,10 +79,10 @@ export const CTASection: React.FC<CTASectionProps> = ({
           <motion.a
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
-            href={`tel:${ACADEMY_INFO.contact.primaryPhone.replace(/\s+/g, '')}`}
+            href={`tel:${ACADEMY_INFO.contact.primaryPhone.replace(/\s+/g, "")}`}
             className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-4 rounded-full text-xs font-semibold uppercase tracking-wider transition-all flex items-center justify-center gap-2"
           >
-            <Phone className="w-4 h-4 text-amber-400 flex-shrink-0" />
+            <Phone className="w-4 h-4 text-amber-400 shrink-0" />
 
             <span className="flex flex-col items-center leading-relaxed">
               <span>Call Us:</span>

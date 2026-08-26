@@ -1,49 +1,50 @@
-import React, { useState } from 'react';
-import { NavLink, Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
+import React, { useState } from "react";
+import {
+  NavLink,
+  Link,
+  Outlet,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import {
   LayoutDashboard,
   BookOpen,
   Trophy,
-  Users,
   Image as ImageIcon,
-  MessageSquareQuote,
-  Bell,
   Inbox,
-  HelpCircle,
-  FileEdit,
   Settings,
   LogOut,
-  ChevronRight,
   Menu,
   X,
   ExternalLink,
-  Shield,
-  Sparkles,
-  User
-} from 'lucide-react';
-import { useAdminAuth } from '../../context/AdminAuthContext';
-import { useAcademy } from '../../context/AcademyContext';
+} from "lucide-react";
+import { useAdminAuth } from "../../context/AdminAuthContext";
+import { useAcademy } from "../../context/AcademyContext";
 
 export const AdminLayout: React.FC = () => {
   const { adminUser, logout } = useAdminAuth();
-  const { enquiries, notices } = useAcademy();
+  const { enquiries } = useAcademy();
   const navigate = useNavigate();
-  const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const newEnquiriesCount = enquiries.filter((e) => e.status === 'new').length;
+  const newEnquiriesCount = enquiries.filter((e) => e.status === "new").length;
 
   const navItems = [
-    { name: 'Dashboard', path: '/admin/dashboard', icon: LayoutDashboard },
-    { name: 'Enquiries & CRM', path: '/admin/enquiries', icon: Inbox, badge: newEnquiriesCount > 0 ? newEnquiriesCount : undefined },
-    { name: 'Course Programs', path: '/admin/courses', icon: BookOpen },
-    { name: 'Achievers & Ranks', path: '/admin/achievers', icon: Trophy },
-    { name: 'Academy Settings', path: '/admin/settings', icon: Settings }
+    { name: "Dashboard", path: "/admin/dashboard", icon: LayoutDashboard },
+    {
+      name: "Enquiries & CRM",
+      path: "/admin/enquiries",
+      icon: Inbox,
+      badge: newEnquiriesCount > 0 ? newEnquiriesCount : undefined,
+    },
+    { name: "Course Programs", path: "/admin/courses", icon: BookOpen },
+    { name: "Achievers & Ranks", path: "/admin/achievers", icon: Trophy },
+    { name: "Academy Settings", path: "/admin/settings", icon: Settings },
   ];
 
   const handleLogout = () => {
     logout();
-    navigate('/admin/login');
+    navigate("/admin/login");
   };
 
   return (
@@ -73,7 +74,11 @@ export const AdminLayout: React.FC = () => {
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="p-2 rounded-lg bg-slate-800 text-slate-200"
           >
-            {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {sidebarOpen ? (
+              <X className="w-5 h-5" />
+            ) : (
+              <Menu className="w-5 h-5" />
+            )}
           </button>
         </div>
       </div>
@@ -88,8 +93,9 @@ export const AdminLayout: React.FC = () => {
 
       {/* Main Admin Sidebar */}
       <aside
-        className={`fixed md:static inset-y-0 left-0 z-50 w-64 bg-slate-900 border-r border-slate-800 flex flex-col justify-between transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
-          }`}
+        className={`fixed md:static inset-y-0 left-0 z-50 w-64 bg-slate-900 border-r border-slate-800 flex flex-col justify-between transition-transform duration-300 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+        }`}
       >
         {/* Brand Header */}
         <div>
@@ -100,7 +106,10 @@ export const AdminLayout: React.FC = () => {
               </div>
               <div>
                 <span className="font-bold text-sm text-white uppercase tracking-wider block leading-none">
-                  SURABHI <span className="text-amber-400 font-serif lowercase italic">admin</span>
+                  SURABHI{" "}
+                  <span className="text-amber-400 font-serif lowercase italic">
+                    admin
+                  </span>
                 </span>
                 <span className="text-[10px] text-slate-400 uppercase tracking-widest font-semibold mt-0.5 block">
                   CMS Control Panel
@@ -123,9 +132,10 @@ export const AdminLayout: React.FC = () => {
                   to={item.path}
                   onClick={() => setSidebarOpen(false)}
                   className={({ isActive }) =>
-                    `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition-all ${isActive
-                      ? 'bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/10'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition-all ${
+                      isActive
+                        ? "bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/10"
+                        : "text-slate-300 hover:text-white hover:bg-slate-800"
                     }`
                   }
                 >
@@ -155,8 +165,12 @@ export const AdminLayout: React.FC = () => {
               )}
             </div> */}
             <div className="overflow-hidden flex-1">
-              <div className="text-xs font-bold text-white truncate">{adminUser?.name || 'Administrator'}</div>
-              <div className="text-[10px] text-amber-400 font-medium truncate">{adminUser?.role || 'Super Admin'}</div>
+              <div className="text-xs font-bold text-white truncate">
+                {adminUser?.name || "Administrator"}
+              </div>
+              <div className="text-[10px] text-amber-400 font-medium truncate">
+                {adminUser?.role || "Super Admin"}
+              </div>
             </div>
           </div>
 

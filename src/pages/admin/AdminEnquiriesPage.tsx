@@ -1,49 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
-  Inbox,
   Search,
-  Filter,
   Phone,
-  Mail,
-  User,
-  Clock,
-  CheckCircle2,
   Trash2,
-  Edit,
   Eye,
   Plus,
   Download,
   X,
   MessageSquare,
-  Sparkles,
-  ExternalLink
-} from 'lucide-react';
-import { useAcademy } from '../../context/AcademyContext';
-import { Enquiry } from '../../types';
-import { ConfirmModal } from '../../components/ConfirmModal';
+} from "lucide-react";
+import { useAcademy } from "../../context/AcademyContext";
+import { Enquiry } from "../../types";
+import { ConfirmModal } from "../../components/ConfirmModal";
 
 export const AdminEnquiriesPage: React.FC = () => {
-  const { enquiries, updateEnquiryStatus, addCounselorNote, deleteEnquiry, submitEnquiry } =
-    useAcademy();
+  const {
+    enquiries,
+    updateEnquiryStatus,
+    addCounselorNote,
+    deleteEnquiry,
+    submitEnquiry,
+  } = useAcademy();
 
-  const [searchQuery, setSearchQuery] = useState('');
-  const [statusFilter, setStatusFilter] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState<string>("all");
 
   // Detail Modal
   const [selectedEnquiry, setSelectedEnquiry] = useState<Enquiry | null>(null);
-  const [counselorNoteInput, setCounselorNoteInput] = useState('');
+  const [counselorNoteInput, setCounselorNoteInput] = useState("");
 
   // Add Walk-in Modal
   const [isAddWalkinOpen, setIsAddWalkinOpen] = useState(false);
   const [walkinForm, setWalkinForm] = useState({
-    studentName: '',
-    parentName: '',
-    mobileNumber: '',
-    emailAddress: '',
-    studentClass: 'Class 10',
-    courseInterested: 'Class 10 Board Excellence',
-    message: '',
-    source: 'Campus Front Desk Walk-In'
+    studentName: "",
+    parentName: "",
+    mobileNumber: "",
+    emailAddress: "",
+    studentClass: "Class 10",
+    courseInterested: "Class 10 Board Excellence",
+    message: "",
+    source: "Campus Front Desk Walk-In",
   });
 
   // Delete Confirm
@@ -51,19 +47,21 @@ export const AdminEnquiriesPage: React.FC = () => {
   const [enquiryToDelete, setEnquiryToDelete] = useState<Enquiry | null>(null);
 
   const filteredEnquiries = enquiries.filter((e) => {
-    const matchesStatus = statusFilter === 'all' || e.status === statusFilter;
+    const matchesStatus = statusFilter === "all" || e.status === statusFilter;
     const matchesSearch =
       e.studentName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (e.parentName && e.parentName.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (e.parentName &&
+        e.parentName.toLowerCase().includes(searchQuery.toLowerCase())) ||
       e.mobileNumber.includes(searchQuery) ||
       e.studentClass.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (e.courseInterested && e.courseInterested.toLowerCase().includes(searchQuery.toLowerCase()));
+      (e.courseInterested &&
+        e.courseInterested.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesStatus && matchesSearch;
   });
 
   const handleOpenDetail = (e: Enquiry) => {
     setSelectedEnquiry(e);
-    setCounselorNoteInput(e.notes || '');
+    setCounselorNoteInput(e.notes || "");
   };
 
   const handleSaveNotes = () => {
@@ -73,7 +71,9 @@ export const AdminEnquiriesPage: React.FC = () => {
     }
   };
 
-  const handleStatusChange = (newStatus: 'new' | 'contacted' | 'enrolled' | 'archived') => {
+  const handleStatusChange = (
+    newStatus: "new" | "contacted" | "enrolled" | "archived",
+  ) => {
     if (selectedEnquiry) {
       updateEnquiryStatus(selectedEnquiry.id, newStatus);
       setSelectedEnquiry({ ...selectedEnquiry, status: newStatus });
@@ -87,14 +87,14 @@ export const AdminEnquiriesPage: React.FC = () => {
     await submitEnquiry(walkinForm);
     setIsAddWalkinOpen(false);
     setWalkinForm({
-      studentName: '',
-      parentName: '',
-      mobileNumber: '',
-      emailAddress: '',
-      studentClass: 'Class 10',
-      courseInterested: 'Class 10 Board Excellence',
-      message: '',
-      source: 'Campus Front Desk Walk-In'
+      studentName: "",
+      parentName: "",
+      mobileNumber: "",
+      emailAddress: "",
+      studentClass: "Class 10",
+      courseInterested: "Class 10 Board Excellence",
+      message: "",
+      source: "Campus Front Desk Walk-In",
     });
   };
 
@@ -116,37 +116,42 @@ export const AdminEnquiriesPage: React.FC = () => {
   // CSV Export utility
   const handleExportCSV = () => {
     const headers = [
-      'Student Name',
-      'Parent Name',
-      'Phone Number',
-      'Email',
-      'Class',
-      'Course',
-      'Status',
-      'Source',
-      'Message',
-      'Counselor Notes',
-      'Date'
+      "Student Name",
+      "Parent Name",
+      "Phone Number",
+      "Email",
+      "Class",
+      "Course",
+      "Status",
+      "Source",
+      "Message",
+      "Counselor Notes",
+      "Date",
     ];
     const rows = filteredEnquiries.map((e) => [
       `"${e.studentName.replace(/"/g, '""')}"`,
-      `"${(e.parentName || '').replace(/"/g, '""')}"`,
+      `"${(e.parentName || "").replace(/"/g, '""')}"`,
       `"${e.mobileNumber}"`,
-      `"${(e.emailAddress || '').replace(/"/g, '""')}"`,
+      `"${(e.emailAddress || "").replace(/"/g, '""')}"`,
       `"${e.studentClass}"`,
-      `"${(e.courseInterested || '').replace(/"/g, '""')}"`,
+      `"${(e.courseInterested || "").replace(/"/g, '""')}"`,
       `"${e.status}"`,
-      `"${e.source || 'Website'}"`,
-      `"${(e.message || '').replace(/"/g, '""')}"`,
-      `"${(e.notes || '').replace(/"/g, '""')}"`,
-      `"${new Date(e.createdAt).toLocaleString()}"`
+      `"${e.source || "Website"}"`,
+      `"${(e.message || "").replace(/"/g, '""')}"`,
+      `"${(e.notes || "").replace(/"/g, '""')}"`,
+      `"${new Date(e.createdAt).toLocaleString()}"`,
     ]);
 
-    const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map((r) => r.join(','))].join('\n');
+    const csvContent =
+      "data:text/csv;charset=utf-8," +
+      [headers.join(","), ...rows.map((r) => r.join(","))].join("\n");
     const encodedUri = encodeURI(csvContent);
-    const link = document.createElement('a');
-    link.setAttribute('href', encodedUri);
-    link.setAttribute('download', `surabhi_leads_${new Date().toISOString().slice(0, 10)}.csv`);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute(
+      "download",
+      `surabhi_leads_${new Date().toISOString().slice(0, 10)}.csv`,
+    );
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -188,19 +193,20 @@ export const AdminEnquiriesPage: React.FC = () => {
       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
         <div className="flex flex-wrap gap-2">
           {[
-            { key: 'all', label: 'All Leads' },
-            { key: 'new', label: '🔴 New' },
-            { key: 'contacted', label: '🟡 Contacted' },
-            { key: 'enrolled', label: '🟢 Enrolled' },
-            { key: 'archived', label: '⚪ Archived' }
+            { key: "all", label: "All Leads" },
+            { key: "new", label: "🔴 New" },
+            { key: "contacted", label: "🟡 Contacted" },
+            { key: "enrolled", label: "🟢 Enrolled" },
+            { key: "archived", label: "⚪ Archived" },
           ].map((status) => (
             <button
               key={status.key}
               onClick={() => setStatusFilter(status.key)}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${statusFilter === status.key
-                ? 'bg-amber-500 text-slate-950 font-bold'
-                : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-                }`}
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                statusFilter === status.key
+                  ? "bg-amber-500 text-slate-950 font-bold"
+                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+              }`}
             >
               {status.label}
             </button>
@@ -219,7 +225,6 @@ export const AdminEnquiriesPage: React.FC = () => {
         </div>
       </div>
 
-
       {/* Leads Table */}
       <div className="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-xl">
         <div className="overflow-x-auto">
@@ -237,44 +242,57 @@ export const AdminEnquiriesPage: React.FC = () => {
             </thead>
             <tbody className="divide-y divide-slate-800 text-slate-300">
               {filteredEnquiries.map((e) => (
-                <tr key={e.id} className="hover:bg-slate-800/40 transition-colors">
+                <tr
+                  key={e.id}
+                  className="hover:bg-slate-800/40 transition-colors"
+                >
                   <td className="py-4 px-6">
-                    <div className="font-bold text-sm text-white">{e.studentName}</div>
+                    <div className="font-bold text-sm text-white">
+                      {e.studentName}
+                    </div>
                     <div className="text-[11px] text-slate-400">
-                      Parent: {e.parentName || '—'}
+                      Parent: {e.parentName || "—"}
                     </div>
                   </td>
                   <td className="py-4 px-4">
                     <div className="font-mono text-slate-200">
-                      <a href={`tel:${e.mobileNumber}`} className="hover:text-amber-400">
+                      <a
+                        href={`tel:${e.mobileNumber}`}
+                        className="hover:text-amber-400"
+                      >
                         {e.mobileNumber}
                       </a>
                     </div>
                     {e.emailAddress && (
-                      <div className="text-[10px] text-slate-500 truncate max-w-[150px]">
+                      <div className="text-[10px] text-slate-500 truncate max-w-37.5">
                         {e.emailAddress}
                       </div>
                     )}
                   </td>
                   <td className="py-4 px-4">
-                    <div className="font-semibold text-slate-200">{e.studentClass}</div>
-                    <div className="text-[10px] text-amber-400/90 truncate max-w-[180px]">
-                      {e.courseInterested || 'General Enquiry'}
+                    <div className="font-semibold text-slate-200">
+                      {e.studentClass}
+                    </div>
+                    <div className="text-[10px] text-amber-400/90 truncate max-w-45">
+                      {e.courseInterested || "General Enquiry"}
                     </div>
                   </td>
                   {/* ❌ Lead Source Table Cell <td> Removed */}
                   <td className="py-4 px-4">
                     <select
                       value={e.status}
-                      onChange={(ev) => updateEnquiryStatus(e.id, ev.target.value as any)}
-                      className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md border focus:outline-none cursor-pointer ${e.status === 'new'
-                          ? 'bg-red-950 text-red-300 border-red-800'
-                          : e.status === 'contacted'
-                            ? 'bg-amber-950 text-amber-300 border-amber-800'
-                            : e.status === 'enrolled'
-                              ? 'bg-emerald-950 text-emerald-300 border-emerald-800'
-                              : 'bg-slate-800 text-slate-400 border-slate-700'
-                        }`}
+                      onChange={(ev) =>
+                        updateEnquiryStatus(e.id, ev.target.value as any)
+                      }
+                      className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md border focus:outline-none cursor-pointer ${
+                        e.status === "new"
+                          ? "bg-red-950 text-red-300 border-red-800"
+                          : e.status === "contacted"
+                            ? "bg-amber-950 text-amber-300 border-amber-800"
+                            : e.status === "enrolled"
+                              ? "bg-emerald-950 text-emerald-300 border-emerald-800"
+                              : "bg-slate-800 text-slate-400 border-slate-700"
+                      }`}
                     >
                       <option value="new">🔴 New</option>
                       <option value="contacted">🟡 Contacted</option>
@@ -335,44 +353,59 @@ export const AdminEnquiriesPage: React.FC = () => {
               {/* Quick info grid */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800">
                 <div>
-                  <div className="text-slate-500 uppercase font-bold text-[10px]">Mobile Phone</div>
+                  <div className="text-slate-500 uppercase font-bold text-[10px]">
+                    Mobile Phone
+                  </div>
                   <div className="font-bold text-white font-mono text-sm mt-0.5">
-                    <a href={`tel:${selectedEnquiry.mobileNumber}`} className="hover:text-amber-400">
+                    <a
+                      href={`tel:${selectedEnquiry.mobileNumber}`}
+                      className="hover:text-amber-400"
+                    >
                       {selectedEnquiry.mobileNumber}
                     </a>
                   </div>
                 </div>
 
                 <div>
-                  <div className="text-slate-500 uppercase font-bold text-[10px]">Parent Name</div>
+                  <div className="text-slate-500 uppercase font-bold text-[10px]">
+                    Parent Name
+                  </div>
                   <div className="font-bold text-white mt-0.5">
-                    {selectedEnquiry.parentName || 'Not specified'}
+                    {selectedEnquiry.parentName || "Not specified"}
                   </div>
                 </div>
 
                 <div>
-                  <div className="text-slate-500 uppercase font-bold text-[10px]">Class Level</div>
+                  <div className="text-slate-500 uppercase font-bold text-[10px]">
+                    Class Level
+                  </div>
                   <div className="font-bold text-amber-400 mt-0.5">
                     {selectedEnquiry.studentClass}
                   </div>
                 </div>
 
                 <div>
-                  <div className="text-slate-500 uppercase font-bold text-[10px]">Course Interest</div>
+                  <div className="text-slate-500 uppercase font-bold text-[10px]">
+                    Course Interest
+                  </div>
                   <div className="font-bold text-white mt-0.5">
-                    {selectedEnquiry.courseInterested || 'General Enquiry'}
+                    {selectedEnquiry.courseInterested || "General Enquiry"}
                   </div>
                 </div>
 
                 <div>
-                  <div className="text-slate-500 uppercase font-bold text-[10px]">Enquiry Date</div>
+                  <div className="text-slate-500 uppercase font-bold text-[10px]">
+                    Enquiry Date
+                  </div>
                   <div className="text-slate-300 mt-0.5">
                     {new Date(selectedEnquiry.createdAt).toLocaleString()}
                   </div>
                 </div>
 
                 <div>
-                  <div className="text-slate-500 uppercase font-bold text-[10px]">Current Status</div>
+                  <div className="text-slate-500 uppercase font-bold text-[10px]">
+                    Current Status
+                  </div>
                   <div className="mt-0.5">
                     <span className="bg-amber-500/20 text-amber-400 font-bold uppercase text-[10px] px-2 py-0.5 rounded">
                       {selectedEnquiry.status}
@@ -399,19 +432,22 @@ export const AdminEnquiriesPage: React.FC = () => {
                   Change Pipeline Stage:
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {(['new', 'contacted', 'enrolled', 'archived'] as const).map((st) => (
-                    <button
-                      key={st}
-                      type="button"
-                      onClick={() => handleStatusChange(st)}
-                      className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer transition-all ${selectedEnquiry.status === st
-                        ? 'bg-amber-500 text-slate-950 font-bold'
-                        : 'bg-slate-950 border border-slate-800 text-slate-400 hover:text-white'
+                  {(["new", "contacted", "enrolled", "archived"] as const).map(
+                    (st) => (
+                      <button
+                        key={st}
+                        type="button"
+                        onClick={() => handleStatusChange(st)}
+                        className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer transition-all ${
+                          selectedEnquiry.status === st
+                            ? "bg-amber-500 text-slate-950 font-bold"
+                            : "bg-slate-950 border border-slate-800 text-slate-400 hover:text-white"
                         }`}
-                    >
-                      {st}
-                    </button>
-                  ))}
+                      >
+                        {st}
+                      </button>
+                    ),
+                  )}
                 </div>
               </div>
 
@@ -449,8 +485,8 @@ export const AdminEnquiriesPage: React.FC = () => {
                 </a>
 
                 <a
-                  href={`https://wa.me/91${selectedEnquiry.mobileNumber.replace(/\D/g, '')}?text=Hello%20${encodeURIComponent(
-                    selectedEnquiry.studentName
+                  href={`https://wa.me/91${selectedEnquiry.mobileNumber.replace(/\D/g, "")}?text=Hello%20${encodeURIComponent(
+                    selectedEnquiry.studentName,
                   )},%20greetings%20from%20Surabhi%20Coaching%20Academy.`}
                   target="_blank"
                   rel="noreferrer"
@@ -481,7 +517,10 @@ export const AdminEnquiriesPage: React.FC = () => {
               </button>
             </div>
 
-            <form onSubmit={handleCreateWalkin} className="p-6 overflow-y-auto space-y-4 flex-1 text-xs">
+            <form
+              onSubmit={handleCreateWalkin}
+              className="p-6 overflow-y-auto space-y-4 flex-1 text-xs"
+            >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-slate-300 uppercase font-bold mb-1">
@@ -492,7 +531,12 @@ export const AdminEnquiriesPage: React.FC = () => {
                     required
                     placeholder="e.g. Yash Kothari"
                     value={walkinForm.studentName}
-                    onChange={(e) => setWalkinForm({ ...walkinForm, studentName: e.target.value })}
+                    onChange={(e) =>
+                      setWalkinForm({
+                        ...walkinForm,
+                        studentName: e.target.value,
+                      })
+                    }
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
@@ -505,7 +549,12 @@ export const AdminEnquiriesPage: React.FC = () => {
                     type="text"
                     placeholder="e.g. Mr. Anil Kothari"
                     value={walkinForm.parentName}
-                    onChange={(e) => setWalkinForm({ ...walkinForm, parentName: e.target.value })}
+                    onChange={(e) =>
+                      setWalkinForm({
+                        ...walkinForm,
+                        parentName: e.target.value,
+                      })
+                    }
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
@@ -521,7 +570,12 @@ export const AdminEnquiriesPage: React.FC = () => {
                     required
                     placeholder="10-digit mobile"
                     value={walkinForm.mobileNumber}
-                    onChange={(e) => setWalkinForm({ ...walkinForm, mobileNumber: e.target.value })}
+                    onChange={(e) =>
+                      setWalkinForm({
+                        ...walkinForm,
+                        mobileNumber: e.target.value,
+                      })
+                    }
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
@@ -532,7 +586,12 @@ export const AdminEnquiriesPage: React.FC = () => {
                   </label>
                   <select
                     value={walkinForm.studentClass}
-                    onChange={(e) => setWalkinForm({ ...walkinForm, studentClass: e.target.value })}
+                    onChange={(e) =>
+                      setWalkinForm({
+                        ...walkinForm,
+                        studentClass: e.target.value,
+                      })
+                    }
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
                   >
                     <option value="Class 8">Class 8</option>
@@ -554,7 +613,9 @@ export const AdminEnquiriesPage: React.FC = () => {
                   rows={3}
                   placeholder="Discussed batch timings, interested in 2-day trial for mathematics..."
                   value={walkinForm.message}
-                  onChange={(e) => setWalkinForm({ ...walkinForm, message: e.target.value })}
+                  onChange={(e) =>
+                    setWalkinForm({ ...walkinForm, message: e.target.value })
+                  }
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
                 />
               </div>

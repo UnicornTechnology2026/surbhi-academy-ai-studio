@@ -1,21 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import {
-  Target,
-  Eye,
-  Award,
-  CheckCircle2,
-  GraduationCap,
-  Users,
-  BookOpen,
-  ShieldCheck,
-  Sparkles,
-  ArrowRight,
-  Clock
-} from 'lucide-react';
-import { SectionHeader } from '../components/SectionHeader';
-import { CTASection } from '../components/CTASection';
-import { ACADEMY_INFO } from '../data/academyInfo';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Sparkles, ArrowRight } from "lucide-react";
+import { SectionHeader } from "../components/SectionHeader";
+import { CTASection } from "../components/CTASection";
+import { ACADEMY_INFO } from "../data/academyInfo";
 
 interface AboutProps {
   onOpenEnquiry: (courseSlug?: string) => void;
@@ -26,20 +14,26 @@ export const About: React.FC<AboutProps> = ({ onOpenEnquiry }) => {
     <div className="bg-white">
       {/* Header Banner with Artistic Flair */}
       <section className="relative bg-[#0F172A] text-white py-16 sm:py-24 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] border border-white/5 rounded-full pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] border border-amber-500/15 rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-137.5 h-137.5 border border-white/5 rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-87.5 h-87.5 border border-amber-500/15 rounded-full pointer-events-none" />
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-amber-400 text-xs font-semibold uppercase tracking-widest mb-4">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Serving Academic Excellence Since {ACADEMY_INFO.foundedYear}</span>
+            <span>
+              Serving Academic Excellence Since {ACADEMY_INFO.foundedYear}
+            </span>
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
             Nurturing Young Minds with <br className="hidden sm:inline" />
-            <span className="italic font-normal text-amber-400">Knowledge, Discipline & Integrity</span>
+            <span className="italic font-normal text-amber-400">
+              Knowledge, Discipline & Integrity
+            </span>
           </h1>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Surabhi Coaching Academy is dedicated to shaping confident, high-achieving scholars through conceptual clarity and compassionate mentorship.
+            Surabhi Coaching Academy is dedicated to shaping confident,
+            high-achieving scholars through conceptual clarity and compassionate
+            mentorship.
           </p>
         </div>
       </section>
@@ -58,43 +52,67 @@ export const About: React.FC<AboutProps> = ({ onOpenEnquiry }) => {
               </div>
               <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0F172A] leading-tight">
                 Built on a Single Promise: <br />
-                <span className="italic font-normal text-amber-600">Every Student Matters</span>
+                <span className="italic font-normal text-amber-600">
+                  Every Student Matters
+                </span>
               </h2>
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                Founded over 15 years ago with just a handful of passionate educators, <strong>Surabhi Coaching Academy</strong> was created to counter the impersonal, mass-factory coaching models that leave struggling students behind.
+                Founded over 15 years ago with just a handful of passionate
+                educators, <strong>Surabhi Coaching Academy</strong> was created
+                to counter the impersonal, mass-factory coaching models that
+                leave struggling students behind.
               </p>
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                We believe that true academic excellence is not born from rote memorization or fear of failure, but from deeply understanding core principles, developing intellectual curiosity, and receiving individualized encouragement from teachers who care.
+                We believe that true academic excellence is not born from rote
+                memorization or fear of failure, but from deeply understanding
+                core principles, developing intellectual curiosity, and
+                receiving individualized encouragement from teachers who care.
               </p>
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                Today, with over 12,500+ successful alumni studying at premier engineering colleges, medical institutes, top commerce universities, and board merit lists, our commitment to small batch sizes and dedicated daily doubt clinics remains unshakable.
+                Today, with over 12,500+ successful alumni studying at premier
+                engineering colleges, medical institutes, top commerce
+                universities, and board merit lists, our commitment to small
+                batch sizes and dedicated daily doubt clinics remains
+                unshakable.
               </p>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                  <div className="text-2xl font-serif font-bold text-[#0F172A]">15+</div>
-                  <div className="text-[11px] text-slate-500 uppercase tracking-wider font-semibold">Years Experience</div>
+                  <div className="text-2xl font-serif font-bold text-[#0F172A]">
+                    15+
+                  </div>
+                  <div className="text-[11px] text-slate-500 uppercase tracking-wider font-semibold">
+                    Years Experience
+                  </div>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                  <div className="text-2xl font-serif font-bold text-[#0F172A]">25-30</div>
-                  <div className="text-[11px] text-slate-500 uppercase tracking-wider font-semibold">Max Batch Size</div>
+                  <div className="text-2xl font-serif font-bold text-[#0F172A]">
+                    25-30
+                  </div>
+                  <div className="text-[11px] text-slate-500 uppercase tracking-wider font-semibold">
+                    Max Batch Size
+                  </div>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                  <div className="text-2xl font-serif font-bold text-amber-600">98.4%</div>
-                  <div className="text-[11px] text-slate-500 uppercase tracking-wider font-semibold">Board Merit Rate</div>
+                  <div className="text-2xl font-serif font-bold text-amber-600">
+                    98.4%
+                  </div>
+                  <div className="text-[11px] text-slate-500 uppercase tracking-wider font-semibold">
+                    Board Merit Rate
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Right: Premium Academy Showcase Graphic */}
             <div className="lg:col-span-5 relative">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 aspect-[4/5] bg-slate-100">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 aspect-4/5 bg-slate-100">
                 <img
                   src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=80"
                   alt="Surabhi Coaching Academy Campus Life"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/90 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-[#0F172A]/90 via-transparent to-transparent" />
 
                 <div className="absolute bottom-6 left-6 right-6 text-white p-4 bg-[#0F172A]/80 backdrop-blur-md rounded-2xl border border-white/10">
                   <div className="flex items-center gap-3">
@@ -102,8 +120,12 @@ export const About: React.FC<AboutProps> = ({ onOpenEnquiry }) => {
                       S
                     </div>
                     <div>
-                      <h4 className="text-sm font-serif font-bold text-white">Central Academic Campus</h4>
-                      <p className="text-xs text-slate-300">Modern Smartboards • Dedicated Doubt Clinics</p>
+                      <h4 className="text-sm font-serif font-bold text-white">
+                        Central Academic Campus
+                      </h4>
+                      <p className="text-xs text-slate-300">
+                        Modern Smartboards • Dedicated Doubt Clinics
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -168,7 +190,9 @@ export const About: React.FC<AboutProps> = ({ onOpenEnquiry }) => {
                 Smart Audio-Visual Classrooms
               </div>
               <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                Air-conditioned lecture halls equipped with high-resolution interactive digital screens for 3D scientific visualization and step-by-step math proofs.
+                Air-conditioned lecture halls equipped with high-resolution
+                interactive digital screens for 3D scientific visualization and
+                step-by-step math proofs.
               </p>
             </div>
 
@@ -177,7 +201,9 @@ export const About: React.FC<AboutProps> = ({ onOpenEnquiry }) => {
                 Dedicated Reference Library
               </div>
               <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                Quiet self-study zone stocked with 3,000+ reference volumes, previous 15-year solved board compilations, and national Olympiad archives.
+                Quiet self-study zone stocked with 3,000+ reference volumes,
+                previous 15-year solved board compilations, and national
+                Olympiad archives.
               </p>
             </div>
 
@@ -186,7 +212,9 @@ export const About: React.FC<AboutProps> = ({ onOpenEnquiry }) => {
                 Daily 1-on-1 Doubt Clinics
               </div>
               <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                Designated faculty mentorship cabins where students can book personal 15-to-30 minute slots to resolve subject queries with zero hesitation.
+                Designated faculty mentorship cabins where students can book
+                personal 15-to-30 minute slots to resolve subject queries with
+                zero hesitation.
               </p>
             </div>
           </div>

@@ -4,29 +4,15 @@ import {
   Inbox,
   BookOpen,
   Trophy,
-  Users,
-  Bell,
   Sparkles,
   ArrowRight,
-  MessageSquareQuote,
-  HelpCircle,
   Settings,
   ExternalLink,
 } from "lucide-react";
 import { useAcademy } from "../../context/AcademyContext";
-import { useAdminAuth } from "../../context/AdminAuthContext";
 
 export const AdminDashboardPage: React.FC = () => {
-  const { adminUser } = useAdminAuth();
-  const {
-    enquiries,
-    courses,
-    achievers,
-    faculty,
-    notices,
-    testimonials,
-    siteSettings,
-  } = useAcademy();
+  const { enquiries, courses, achievers, siteSettings } = useAcademy();
 
   const newEnquiries = enquiries.filter((e) => e.status === "new");
 
@@ -61,7 +47,7 @@ export const AdminDashboardPage: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* 1. Welcome Header Banner */}
-      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-[#0F172A] border border-slate-700/80 rounded-3xl p-6 sm:p-8 text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl relative overflow-hidden">
+      <div className="bg-linear-to-r from-slate-900 via-slate-800 to-[#0F172A] border border-slate-700/80 rounded-3xl p-6 sm:p-8 text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="space-y-2 relative z-10">
@@ -209,7 +195,7 @@ export const AdminDashboardPage: React.FC = () => {
                         <span className="font-semibold text-slate-200">
                           {enq.studentClass}
                         </span>
-                        <div className="text-[10px] text-slate-400 truncate max-w-[140px]">
+                        <div className="text-[10px] text-slate-400 truncate max-w-35">
                           {enq.courseInterested || "General"}
                         </div>
                       </td>

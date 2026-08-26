@@ -1,8 +1,19 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Sparkles, ChevronRight, GraduationCap, Lock, User, MessageCircle, MapPin } from 'lucide-react';
-import { useAcademy } from '../context/AcademyContext';
-import { useAdminAuth } from '../context/AdminAuthContext';
+import React, { useState, useRef, useEffect } from "react";
+import { NavLink, Link, useLocation } from "react-router-dom";
+import {
+  Menu,
+  X,
+  Phone,
+  Sparkles,
+  ChevronRight,
+  GraduationCap,
+  Lock,
+  User,
+  MessageCircle,
+  MapPin,
+} from "lucide-react";
+import { useAcademy } from "../context/AcademyContext";
+import { useAdminAuth } from "../context/AdminAuthContext";
 
 interface NavbarProps {
   onOpenEnquiry: (courseSlug?: string) => void;
@@ -25,11 +36,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
   }, [location.pathname]);
 
   const navLinks: NavLinkItem[] = [
-    { name: 'Home', path: '/' },
-    { name: 'About Us', path: '/about' },
-    { name: 'Courses', path: '/courses' },
-    { name: 'Results', path: '/results' },
-    { name: 'Contact', path: '/contact' }
+    { name: "Home", path: "/" },
+    { name: "About Us", path: "/about" },
+    { name: "Courses", path: "/courses" },
+    { name: "Results", path: "/results" },
+    { name: "Contact", path: "/contact" },
   ];
 
   return (
@@ -42,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
         {/* Right Quick Links */}
         <div className="flex items-center gap-4 shrink-0 text-xs">
           <a
-            href={`tel:${siteSettings.primaryPhone.replace(/\s+/g, '')}`}
+            href={`tel:${siteSettings.primaryPhone.replace(/\s+/g, "")}`}
             className="hover:text-amber-400 transition-colors flex items-center gap-1.5 font-semibold text-white tracking-wide"
           >
             <Phone className="w-3.5 h-3.5 text-amber-400" />
@@ -71,20 +82,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
       </div>
 
       {/* Main Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[74px] flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18.5 flex items-center justify-between">
         {/* Brand Logo & Tagline */}
         <Link to="/" className="flex items-center gap-3.5 group">
-          <div className="w-[93px] h-[70px] bg-[#123B2A] flex items-center justify-center rounded-xl shadow-md group-hover:bg-slate-800 transition-colors">
+          <div className="w-23.25 h-17.5 bg-[#123B2A] flex items-center justify-center rounded-xl shadow-md group-hover:bg-slate-800 transition-colors">
             <img
-              src='../../assets/logo.png'
-              alt=''
-              className="w-[60px] h-[68px] object-cover group-hover:scale-105 transition-transform duration-500"
+              src="../../assets/logo.png"
+              alt=""
+              className="w-15 h-17 object-cover group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
             />
           </div>
           <div className="flex flex-col">
             <span className="font-bold text-lg sm:text-xl tracking-tight text-[#0F172A] uppercase leading-none flex items-center gap-1.5">
-              SURABHI <span className="font-serif italic font-normal text-amber-700 capitalize">Academy</span>
+              SURABHI{" "}
+              <span className="font-serif italic font-normal text-amber-700 capitalize">
+                Academy
+              </span>
             </span>
             <span className="text-[10px] tracking-widest text-slate-500 uppercase font-semibold mt-1">
               Teaching Beyond Examination
@@ -99,9 +113,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
               key={link.path}
               to={link.path}
               className={({ isActive }) =>
-                `text-xs font-bold uppercase tracking-wider px-3.5 py-2 rounded-xl transition-all relative ${isActive
-                  ? 'text-amber-700 bg-amber-50/90 shadow-xs'
-                  : 'text-slate-700 hover:text-[#0F172A] hover:bg-slate-100/70'
+                `text-xs font-bold uppercase tracking-wider px-3.5 py-2 rounded-xl transition-all relative ${
+                  isActive
+                    ? "text-amber-700 bg-amber-50/90 shadow-xs"
+                    : "text-slate-700 hover:text-[#0F172A] hover:bg-slate-100/70"
                 }`
               }
             >
@@ -115,13 +130,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
 
         {/* Mobile menu trigger */}
         <div className="flex items-center gap-2 xl:hidden">
-
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors"
             aria-label="Toggle navigation menu"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </button>
         </div>
       </div>
@@ -136,9 +154,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
                 to={link.path}
                 onClick={() => setMobileMenuOpen(false)}
                 className={({ isActive }) =>
-                  `px-4 py-3 rounded-xl text-sm font-semibold flex items-center justify-between transition-colors ${isActive
-                    ? 'bg-amber-50 text-amber-800 font-bold border border-amber-200'
-                    : 'text-slate-700 hover:bg-slate-50'
+                  `px-4 py-3 rounded-xl text-sm font-semibold flex items-center justify-between transition-colors ${
+                    isActive
+                      ? "bg-amber-50 text-amber-800 font-bold border border-amber-200"
+                      : "text-slate-700 hover:bg-slate-50"
                   }`
                 }
               >
@@ -161,7 +180,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
             </button>
 
             <a
-              href={`tel:${siteSettings.primaryPhone.replace(/\s+/g, '')}`}
+              href={`tel:${siteSettings.primaryPhone.replace(/\s+/g, "")}`}
               className="w-full bg-[#090E1A] text-white font-semibold text-xs uppercase tracking-wider py-3 rounded-xl transition-all flex items-center justify-center gap-2"
             >
               <Phone className="w-4 h-4 text-amber-400" />
