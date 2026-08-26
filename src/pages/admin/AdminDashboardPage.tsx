@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import {
   Inbox,
   BookOpen,
@@ -11,10 +11,10 @@ import {
   MessageSquareQuote,
   HelpCircle,
   Settings,
-  ExternalLink
-} from 'lucide-react';
-import { useAcademy } from '../../context/AcademyContext';
-import { useAdminAuth } from '../../context/AdminAuthContext';
+  ExternalLink,
+} from "lucide-react";
+import { useAcademy } from "../../context/AcademyContext";
+import { useAdminAuth } from "../../context/AdminAuthContext";
 
 export const AdminDashboardPage: React.FC = () => {
   const { adminUser } = useAdminAuth();
@@ -25,61 +25,37 @@ export const AdminDashboardPage: React.FC = () => {
     faculty,
     notices,
     testimonials,
-    siteSettings
+    siteSettings,
   } = useAcademy();
 
-  const newEnquiries = enquiries.filter((e) => e.status === 'new');
+  const newEnquiries = enquiries.filter((e) => e.status === "new");
 
   const statCards = [
     {
-      title: 'Total Enquiries',
+      title: "Total Enquiries",
       value: enquiries.length,
       subtitle: `${newEnquiries.length} new leads pending`,
       icon: Inbox,
-      color: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
-      link: '/admin/enquiries',
-      badge: newEnquiries.length > 0 ? `${newEnquiries.length} New` : null
+      color: "bg-amber-500/20 text-amber-400 border-amber-500/30",
+      link: "/admin/enquiries",
+      badge: newEnquiries.length > 0 ? `${newEnquiries.length} New` : null,
     },
     {
-      title: 'Course Batches',
+      title: "Course Batches",
       value: courses.length,
-      subtitle: 'State Board, CBSE, Foundation',
+      subtitle: "State Board, CBSE, Foundation",
       icon: BookOpen,
-      color: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
-      link: '/admin/courses'
+      color: "bg-blue-500/20 text-blue-400 border-blue-500/30",
+      link: "/admin/courses",
     },
     {
-      title: 'Hall of Fame',
+      title: "Hall of Fame",
       value: achievers.length,
-      subtitle: 'Board & Competitive Rankers',
+      subtitle: "Board & Competitive Rankers",
       icon: Trophy,
-      color: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
-      link: '/admin/achievers'
+      color: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
+      link: "/admin/achievers",
     },
-    {
-      title: 'Faculty Members',
-      value: faculty.length,
-      subtitle: 'Master mentors & educators',
-      icon: Users,
-      color: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
-      link: '/admin/faculty'
-    },
-    {
-      title: 'Student Reviews',
-      value: testimonials.length,
-      subtitle: 'Parent & student testimonials',
-      icon: MessageSquareQuote,
-      color: 'bg-rose-500/20 text-rose-400 border-rose-500/30',
-      link: '/admin/testimonials'
-    },
-    {
-      title: 'Active Notices',
-      value: notices.length,
-      subtitle: 'Alerts & marquee ticker',
-      icon: Bell,
-      color: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
-      link: '/admin/notices'
-    }
   ];
 
   return (
@@ -94,10 +70,18 @@ export const AdminDashboardPage: React.FC = () => {
             <span>Surabhi Management Dashboard</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-serif font-bold text-white">
-            Welcome back, {adminUser?.name || 'Administrator'}
+            Welcome <span className="text-amber-300">Admin</span>
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
-            Managing <strong className="text-white font-bold">{siteSettings.name}</strong>. You have <strong className="text-amber-400 font-bold">{newEnquiries.length} new student admission enquiries</strong> requiring follow-up.
+            Managing{" "}
+            <strong className="text-white font-bold">
+              {siteSettings.name}
+            </strong>
+            . You have{" "}
+            <strong className="text-amber-400 font-bold">
+              {newEnquiries.length} new student admission enquiries
+            </strong>{" "}
+            requiring follow-up.
           </p>
         </div>
 
@@ -122,7 +106,7 @@ export const AdminDashboardPage: React.FC = () => {
       </div>
 
       {/* 2. Key Metrics Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4">
         {statCards.map((card, idx) => {
           const Icon = card.icon;
           return (
@@ -132,7 +116,9 @@ export const AdminDashboardPage: React.FC = () => {
               className="bg-slate-900 border border-slate-800 hover:border-amber-500/50 p-4 rounded-2xl transition-all group shadow-md flex flex-col justify-between"
             >
               <div className="flex items-center justify-between mb-2">
-                <div className={`w-9 h-9 rounded-xl flex items-center justify-center border ${card.color}`}>
+                <div
+                  className={`w-9 h-9 rounded-xl flex items-center justify-center border ${card.color}`}
+                >
                   <Icon className="w-4 h-4" />
                 </div>
                 {card.badge && (
@@ -145,8 +131,12 @@ export const AdminDashboardPage: React.FC = () => {
                 <div className="text-xl sm:text-2xl font-serif font-extrabold text-white group-hover:text-amber-400 transition-colors">
                   {card.value}
                 </div>
-                <div className="text-xs text-slate-300 font-semibold mt-0.5">{card.title}</div>
-                <div className="text-[10px] text-slate-500 truncate mt-0.5">{card.subtitle}</div>
+                <div className="text-xs text-slate-300 font-semibold mt-0.5">
+                  {card.title}
+                </div>
+                <div className="text-[10px] text-slate-500 truncate mt-0.5">
+                  {card.subtitle}
+                </div>
               </div>
             </Link>
           );
@@ -188,28 +178,53 @@ export const AdminDashboardPage: React.FC = () => {
               </thead>
               <tbody className="divide-y divide-slate-800">
                 {enquiries.slice(0, 5).map((enq) => {
-                  let statusBadge = 'bg-blue-900/50 text-blue-300 border-blue-800';
-                  if (enq.status === 'new') statusBadge = 'bg-red-900/50 text-red-300 border-red-800';
-                  if (enq.status === 'contacted') statusBadge = 'bg-amber-900/50 text-amber-300 border-amber-800';
-                  if (enq.status === 'converted' || enq.status === 'enrolled') statusBadge = 'bg-emerald-900/50 text-emerald-300 border-emerald-800';
-                  if (enq.status === 'closed') statusBadge = 'bg-slate-800 text-slate-400 border-slate-700';
+                  let statusBadge =
+                    "bg-blue-900/50 text-blue-300 border-blue-800";
+                  if (enq.status === "new")
+                    statusBadge = "bg-red-900/50 text-red-300 border-red-800";
+                  if (enq.status === "contacted")
+                    statusBadge =
+                      "bg-amber-900/50 text-amber-300 border-amber-800";
+                  if (enq.status === "converted" || enq.status === "enrolled")
+                    statusBadge =
+                      "bg-emerald-900/50 text-emerald-300 border-emerald-800";
+                  if (enq.status === "closed")
+                    statusBadge =
+                      "bg-slate-800 text-slate-400 border-slate-700";
 
                   return (
-                    <tr key={enq.id} className="hover:bg-slate-800/40 transition-colors">
+                    <tr
+                      key={enq.id}
+                      className="hover:bg-slate-800/40 transition-colors"
+                    >
                       <td className="p-3">
-                        <div className="font-bold text-white">{enq.studentName}</div>
-                        <div className="text-[11px] text-slate-400">Parent: {enq.parentName || 'N/A'}</div>
+                        <div className="font-bold text-white">
+                          {enq.studentName}
+                        </div>
+                        <div className="text-[11px] text-slate-400">
+                          Parent: {enq.parentName || "N/A"}
+                        </div>
                       </td>
                       <td className="p-3">
-                        <span className="font-semibold text-slate-200">{enq.studentClass}</span>
-                        <div className="text-[10px] text-slate-400 truncate max-w-[140px]">{enq.courseInterested || 'General'}</div>
+                        <span className="font-semibold text-slate-200">
+                          {enq.studentClass}
+                        </span>
+                        <div className="text-[10px] text-slate-400 truncate max-w-[140px]">
+                          {enq.courseInterested || "General"}
+                        </div>
                       </td>
                       <td className="p-3">
-                        <div className="text-slate-300 font-mono">{enq.mobileNumber}</div>
-                        <div className="text-[10px] text-slate-400">{enq.emailAddress || 'No Email'}</div>
+                        <div className="text-slate-300 font-mono">
+                          {enq.mobileNumber}
+                        </div>
+                        <div className="text-[10px] text-slate-400">
+                          {enq.emailAddress || "No Email"}
+                        </div>
                       </td>
                       <td className="p-3">
-                        <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border ${statusBadge}`}>
+                        <span
+                          className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border ${statusBadge}`}
+                        >
                           {enq.status}
                         </span>
                       </td>
@@ -228,8 +243,12 @@ export const AdminDashboardPage: React.FC = () => {
 
                 {enquiries.length === 0 && (
                   <tr>
-                    <td colSpan={5} className="p-6 text-center text-slate-500 text-xs">
-                      No enquiries received yet. Form submissions will appear here in real-time.
+                    <td
+                      colSpan={5}
+                      className="p-6 text-center text-slate-500 text-xs"
+                    >
+                      No enquiries received yet. Form submissions will appear
+                      here in real-time.
                     </td>
                   </tr>
                 )}

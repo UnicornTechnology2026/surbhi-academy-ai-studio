@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Settings,
   Save,
@@ -9,10 +9,10 @@ import {
   Clock,
   Share2,
   RotateCcw,
-  AlertTriangle
-} from 'lucide-react';
-import { useAcademy } from '../../context/AcademyContext';
-import { ConfirmModal } from '../../components/ConfirmModal';
+  AlertTriangle,
+} from "lucide-react";
+import { useAcademy } from "../../context/AcademyContext";
+import { ConfirmModal } from "../../components/ConfirmModal";
 
 export const AdminSettingsPage: React.FC = () => {
   const { siteSettings, updateSiteSettings, resetToDefaultData } = useAcademy();
@@ -31,7 +31,7 @@ export const AdminSettingsPage: React.FC = () => {
     socialYoutube: siteSettings.socialYoutube,
     socialFacebook: siteSettings.socialFacebook,
     socialInstagram: siteSettings.socialInstagram,
-    socialLinkedin: siteSettings.socialLinkedin
+    socialLinkedin: siteSettings.socialLinkedin,
   });
 
   const [savedSuccess, setSavedSuccess] = useState(false);
@@ -83,7 +83,8 @@ export const AdminSettingsPage: React.FC = () => {
                 Institution Identity & Branding
               </h3>
               <p className="text-[11px] text-slate-400">
-                Official academy branding shown across navbar, footer, and inquiry slips.
+                Official academy branding shown across navbar, footer, and
+                inquiry slips.
               </p>
             </div>
           </div>
@@ -96,7 +97,9 @@ export const AdminSettingsPage: React.FC = () => {
               <input
                 type="text"
                 value={form.academyName}
-                onChange={(e) => setForm({ ...form, academyName: e.target.value })}
+                onChange={(e) =>
+                  setForm({ ...form, academyName: e.target.value })
+                }
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500 font-serif font-bold text-sm"
               />
             </div>
@@ -136,7 +139,9 @@ export const AdminSettingsPage: React.FC = () => {
               <input
                 type="text"
                 value={form.primaryPhone}
-                onChange={(e) => setForm({ ...form, primaryPhone: e.target.value })}
+                onChange={(e) =>
+                  setForm({ ...form, primaryPhone: e.target.value })
+                }
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500 font-mono"
               />
             </div>
@@ -148,7 +153,9 @@ export const AdminSettingsPage: React.FC = () => {
               <input
                 type="text"
                 value={form.secondaryPhone}
-                onChange={(e) => setForm({ ...form, secondaryPhone: e.target.value })}
+                onChange={(e) =>
+                  setForm({ ...form, secondaryPhone: e.target.value })
+                }
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500 font-mono"
               />
             </div>
@@ -160,7 +167,9 @@ export const AdminSettingsPage: React.FC = () => {
               <input
                 type="text"
                 value={form.whatsappNumber}
-                onChange={(e) => setForm({ ...form, whatsappNumber: e.target.value })}
+                onChange={(e) =>
+                  setForm({ ...form, whatsappNumber: e.target.value })
+                }
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500 font-mono"
               />
             </div>
@@ -200,7 +209,9 @@ export const AdminSettingsPage: React.FC = () => {
               <textarea
                 rows={2}
                 value={form.mainCampusAddress}
-                onChange={(e) => setForm({ ...form, mainCampusAddress: e.target.value })}
+                onChange={(e) =>
+                  setForm({ ...form, mainCampusAddress: e.target.value })
+                }
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
               />
             </div>
@@ -212,7 +223,9 @@ export const AdminSettingsPage: React.FC = () => {
               <textarea
                 rows={2}
                 value={form.secondaryCampusAddress}
-                onChange={(e) => setForm({ ...form, secondaryCampusAddress: e.target.value })}
+                onChange={(e) =>
+                  setForm({ ...form, secondaryCampusAddress: e.target.value })
+                }
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
               />
             </div>
@@ -226,7 +239,9 @@ export const AdminSettingsPage: React.FC = () => {
               <input
                 type="text"
                 value={form.workingHoursWeekdays}
-                onChange={(e) => setForm({ ...form, workingHoursWeekdays: e.target.value })}
+                onChange={(e) =>
+                  setForm({ ...form, workingHoursWeekdays: e.target.value })
+                }
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
               />
             </div>
@@ -238,7 +253,9 @@ export const AdminSettingsPage: React.FC = () => {
               <input
                 type="text"
                 value={form.workingHoursSunday}
-                onChange={(e) => setForm({ ...form, workingHoursSunday: e.target.value })}
+                onChange={(e) =>
+                  setForm({ ...form, workingHoursSunday: e.target.value })
+                }
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
               />
             </div>
@@ -260,41 +277,57 @@ export const AdminSettingsPage: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-slate-300 uppercase font-bold mb-1">YouTube</label>
+              <label className="block text-slate-300 uppercase font-bold mb-1">
+                YouTube
+              </label>
               <input
                 type="text"
                 value={form.socialYoutube}
-                onChange={(e) => setForm({ ...form, socialYoutube: e.target.value })}
+                onChange={(e) =>
+                  setForm({ ...form, socialYoutube: e.target.value })
+                }
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
               />
             </div>
 
             <div>
-              <label className="block text-slate-300 uppercase font-bold mb-1">Facebook</label>
+              <label className="block text-slate-300 uppercase font-bold mb-1">
+                Facebook
+              </label>
               <input
                 type="text"
                 value={form.socialFacebook}
-                onChange={(e) => setForm({ ...form, socialFacebook: e.target.value })}
+                onChange={(e) =>
+                  setForm({ ...form, socialFacebook: e.target.value })
+                }
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
               />
             </div>
 
             <div>
-              <label className="block text-slate-300 uppercase font-bold mb-1">Instagram</label>
+              <label className="block text-slate-300 uppercase font-bold mb-1">
+                Instagram
+              </label>
               <input
                 type="text"
                 value={form.socialInstagram}
-                onChange={(e) => setForm({ ...form, socialInstagram: e.target.value })}
+                onChange={(e) =>
+                  setForm({ ...form, socialInstagram: e.target.value })
+                }
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
               />
             </div>
 
             <div>
-              <label className="block text-slate-300 uppercase font-bold mb-1">LinkedIn</label>
+              <label className="block text-slate-300 uppercase font-bold mb-1">
+                LinkedIn
+              </label>
               <input
                 type="text"
                 value={form.socialLinkedin}
-                onChange={(e) => setForm({ ...form, socialLinkedin: e.target.value })}
+                onChange={(e) =>
+                  setForm({ ...form, socialLinkedin: e.target.value })
+                }
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
               />
             </div>
@@ -310,7 +343,8 @@ export const AdminSettingsPage: React.FC = () => {
             </h3>
           </div>
           <p className="text-slate-400 text-xs leading-relaxed">
-            Restores all default courses, faculty mentors, rankers, gallery items, and circulars back to initial seed data.
+            Restores all default courses, rankers, and circulars back to initial
+            seed data.
           </p>
           <button
             type="button"
@@ -325,7 +359,8 @@ export const AdminSettingsPage: React.FC = () => {
         {/* Save Bar */}
         <div className="sticky bottom-6 z-20 bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl border border-slate-800 flex items-center justify-between shadow-2xl">
           <span className="text-xs text-slate-400">
-            Updated configurations will instantly take effect across the entire website.
+            Updated configurations will instantly take effect across the entire
+            website.
           </span>
 
           <button
@@ -342,7 +377,7 @@ export const AdminSettingsPage: React.FC = () => {
       <ConfirmModal
         isOpen={resetConfirmOpen}
         title="Reset All Sandbox Data"
-        message="This will restore all default courses, rankers, faculty profiles, and announcements. Continue?"
+        message="This will restore all default courses, rankers. Continue?"
         confirmLabel="Reset Data"
         onConfirm={handleConfirmReset}
         onClose={() => setResetConfirmOpen(false)}

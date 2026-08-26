@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { motion } from 'motion/react';
-import { Trophy } from 'lucide-react';
-import { useAcademy } from '../context/AcademyContext';
-import { RankCard } from '../components/RankCard';
-import { CTASection } from '../components/CTASection';
+import React, { useState } from "react";
+import { motion } from "motion/react";
+import { Trophy } from "lucide-react";
+import { useAcademy } from "../context/AcademyContext";
+import { RankCard } from "../components/RankCard";
+import { CTASection } from "../components/CTASection";
 
 interface ResultsPageProps {
   onOpenEnquiry: () => void;
@@ -11,23 +11,23 @@ interface ResultsPageProps {
 
 export const ResultsPage: React.FC<ResultsPageProps> = ({ onOpenEnquiry }) => {
   const { achievers } = useAcademy();
-  const [selectedYear, setSelectedYear] = useState<string>('all');
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedYear, setSelectedYear] = useState<string>("all");
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const years = ['all', '2025', '2024', '2023'];
+  const years = ["all", "2025", "2024", "2023"];
   const categories = [
-    { key: 'all', label: 'All Streams' },
-    { key: 'Class 10', label: 'Class 10 Boards' },
-    { key: 'science', label: 'Class 12 Science' },
-    { key: 'competitive', label: 'Entrance & Olympiads' }
+    { key: "all", label: "All Streams" },
+    { key: "Class 10", label: "Class 10 Boards" },
+    { key: "science", label: "Class 12 Science" },
+    { key: "competitive", label: "Entrance & Olympiads" },
   ];
 
   const filteredAchievers = achievers.filter((student) => {
-    if (student.status !== 'active') return false;
-    const matchesYear = selectedYear === 'all' || student.year === selectedYear;
+    if (student.status !== "active") return false;
+    const matchesYear = selectedYear === "all" || student.year === selectedYear;
     const matchesCategory =
-      selectedCategory === 'all' ||
+      selectedCategory === "all" ||
       student.category === selectedCategory ||
       student.gradeLevel.includes(selectedCategory);
     const matchesSearch =
@@ -51,47 +51,13 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ onOpenEnquiry }) => {
             <span>Hall of Fame & Academic Benchmarks</span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-serif font-bold text-[#0F172A] leading-tight">
-            Meet the Rankers Who Made Nagpur Proud
+            Success Stories That Inspire
           </h1>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            Consistent city and state ranks achieved through small batches, zero rote learning, and daily 1-on-1 mentor guidance.
+            Consistent city and state ranks achieved through small batches, zero
+            rote learning, and daily 1-on-1 mentor guidance.
           </p>
         </motion.div>
-      </section>
-
-      {/* 2. Merit Statistics Summary Bar */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#0F172A] text-white rounded-3xl p-8 sm:p-10 shadow-xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-800">
-            <div className="space-y-1 pt-4 md:pt-0">
-              <div className="text-3xl sm:text-4xl font-serif font-bold text-amber-400">100%</div>
-              <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold">
-                Board Pass Rate
-              </div>
-            </div>
-
-            <div className="space-y-1 pt-4 md:pt-0">
-              <div className="text-3xl sm:text-4xl font-serif font-bold text-amber-400">84.6%</div>
-              <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold">
-                Students in Distinction (75%+)
-              </div>
-            </div>
-
-            <div className="space-y-1 pt-4 md:pt-0">
-              <div className="text-3xl sm:text-4xl font-serif font-bold text-amber-400">45+</div>
-              <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold">
-                Scored 95%+ in 2025
-              </div>
-            </div>
-
-            <div className="space-y-1 pt-4 md:pt-0">
-              <div className="text-3xl sm:text-4xl font-serif font-bold text-amber-400">14</div>
-              <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold">
-                Perfect 100/100 Scores
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* 3. Filter Toolbar */}
@@ -104,10 +70,11 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ onOpenEnquiry }) => {
                 <button
                   key={cat.key}
                   onClick={() => setSelectedCategory(cat.key)}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${selectedCategory === cat.key
-                    ? 'bg-[#0F172A] text-white shadow-sm'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                    }`}
+                  className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                    selectedCategory === cat.key
+                      ? "bg-[#0F172A] text-white shadow-sm"
+                      : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                  }`}
                 >
                   {cat.label}
                 </button>
@@ -116,7 +83,9 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ onOpenEnquiry }) => {
 
             {/* Year Selector */}
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold uppercase text-slate-600">Year:</span>
+              <span className="text-xs font-bold uppercase text-slate-600">
+                Year:
+              </span>
               <select
                 value={selectedYear}
                 onChange={(e) => setSelectedYear(e.target.value)}
@@ -124,7 +93,7 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ onOpenEnquiry }) => {
               >
                 {years.map((yr) => (
                   <option key={yr} value={yr}>
-                    {yr === 'all' ? 'All Years' : yr}
+                    {yr === "all" ? "All Years" : yr}
                   </option>
                 ))}
               </select>

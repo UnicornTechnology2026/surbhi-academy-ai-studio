@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   BookOpen,
   Plus,
@@ -11,18 +11,19 @@ import {
   X,
   Clock,
   Users,
-  Award
-} from 'lucide-react';
-import { useAcademy } from '../../context/AcademyContext';
-import { Course, CourseCategory } from '../../types';
-import { ConfirmModal } from '../../components/ConfirmModal';
-import { ImageUpload } from '../../components/admin/ImageUpload';
+  Award,
+} from "lucide-react";
+import { useAcademy } from "../../context/AcademyContext";
+import { Course, CourseCategory } from "../../types";
+import { ConfirmModal } from "../../components/ConfirmModal";
+import { ImageUpload } from "../../components/admin/ImageUpload";
 
 export const AdminCoursesPage: React.FC = () => {
-  const { courses, addCourse, updateCourse, deleteCourse, toggleCourseStatus } = useAcademy();
+  const { courses, addCourse, updateCourse, deleteCourse, toggleCourseStatus } =
+    useAcademy();
 
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,35 +35,47 @@ export const AdminCoursesPage: React.FC = () => {
 
   // Form State
   const [form, setForm] = useState<Partial<Course>>({
-    title: '',
-    slug: '',
-    category: 'science',
-    categoryLabel: 'Class 11 & 12 Science',
-    gradeLevel: 'Class 11-12',
-    duration: '1 or 2 Years Integrated',
-    badge: 'Popular',
-    shortDescription: '',
-    fullDescription: '',
-    subjects: ['Physics', 'Chemistry', 'Mathematics'],
-    features: ['Small batch size', 'Daily doubt sessions', 'Comprehensive test series'],
-    eligibility: 'Pass in previous class with min 60%',
-    classTiming: 'Mon-Sat: 4:30 PM - 7:30 PM',
-    batchSize: 'Max 25-30 Students',
-    materialsIncluded: ['Module Notes', 'Question Banks', 'Formula Sheets'],
-    curriculumHighlights: [
-      { title: 'Concept Mastery', description: 'Deep fundamentals for school & competitive exams.' }
+    title: "",
+    slug: "",
+    category: "science",
+    categoryLabel: "Class 11 & 12 Science",
+    gradeLevel: "Class 11-12",
+    duration: "1 or 2 Years Integrated",
+    badge: "Popular",
+    shortDescription: "",
+    fullDescription: "",
+    subjects: ["Physics", "Chemistry", "Mathematics"],
+    features: [
+      "Small batch size",
+      "Daily doubt sessions",
+      "Comprehensive test series",
     ],
-    targetedExams: ['CBSE Board', 'State Board', 'Olympiads'],
-    image: '',
-    feesInfo: 'Affordable installment plans available',
-    status: 'active'
+    eligibility: "Pass in previous class with min 60%",
+    classTiming: "Mon-Sat: 4:30 PM - 7:30 PM",
+    batchSize: "Max 25-30 Students",
+    materialsIncluded: ["Module Notes", "Question Banks", "Formula Sheets"],
+    curriculumHighlights: [
+      {
+        title: "Concept Mastery",
+        description: "Deep fundamentals for school & competitive exams.",
+      },
+    ],
+    targetedExams: ["CBSE Board", "State Board", "Olympiads"],
+    image: "",
+    feesInfo: "Affordable installment plans available",
+    status: "active",
   });
 
-  const [subjectsInput, setSubjectsInput] = useState('Physics, Chemistry, Mathematics');
-  const [featuresInput, setFeaturesInput] = useState('Small batch size, Daily doubt sessions, Comprehensive study material');
+  const [subjectsInput, setSubjectsInput] = useState(
+    "Physics, Chemistry, Mathematics",
+  );
+  const [featuresInput, setFeaturesInput] = useState(
+    "Small batch size, Daily doubt sessions, Comprehensive study material",
+  );
 
   const filteredCourses = courses.filter((c) => {
-    const matchesCategory = selectedCategory === 'all' || c.category === selectedCategory;
+    const matchesCategory =
+      selectedCategory === "all" || c.category === selectedCategory;
     const matchesSearch =
       c.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       c.shortDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -73,37 +86,46 @@ export const AdminCoursesPage: React.FC = () => {
   const handleOpenAddModal = () => {
     setEditingCourse(null);
     setForm({
-      title: '',
-      slug: '',
-      category: 'science',
-      categoryLabel: 'Class 11 & 12 Science',
-      gradeLevel: 'Class 11-12',
-      duration: '1 or 2 Years Integrated',
-      badge: 'New Batch',
-      shortDescription: '',
-      fullDescription: '',
-      subjects: ['Physics', 'Chemistry', 'Mathematics'],
-      features: ['Small batch size', 'Daily doubt clinics', 'Weekly chapter tests'],
-      eligibility: 'Pass in previous qualifying exam',
-      materialsIncluded: ['Theory Modules', 'Worksheets', 'Mind Maps'],
-      curriculumHighlights: [
-        { title: 'Fundamental Concepts', description: 'Building step-by-step analytical clarity.' }
+      title: "",
+      slug: "",
+      category: "science",
+      categoryLabel: CATEGORY_LABELS.science,
+      gradeLevel: "",
+      duration: "1 or 2 Years Integrated",
+      badge: "New Batch",
+      shortDescription: "",
+      fullDescription: "",
+      subjects: ["Physics", "Chemistry", "Mathematics"],
+      features: [
+        "Small batch size",
+        "Daily doubt clinics",
+        "Weekly chapter tests",
       ],
-      targetedExams: ['CBSE Board', 'State Board'],
-      image: '', // <--- Changed to blank string
-      feesInfo: 'Installment & Merit Scholarships Available',
-      status: 'active'
+      eligibility: "Pass in previous qualifying exam",
+      materialsIncluded: ["Theory Modules", "Worksheets", "Mind Maps"],
+      curriculumHighlights: [
+        {
+          title: "Fundamental Concepts",
+          description: "Building step-by-step analytical clarity.",
+        },
+      ],
+      targetedExams: ["CBSE Board", "State Board"],
+      image: "", // <--- Changed to blank string
+      feesInfo: "Installment & Merit Scholarships Available",
+      status: "active",
     });
-    setSubjectsInput('Physics, Chemistry, Mathematics');
-    setFeaturesInput('Small batch size, Daily doubt clinics, Weekly chapter tests');
+    setSubjectsInput("Physics, Chemistry, Mathematics");
+    setFeaturesInput(
+      "Small batch size, Daily doubt clinics, Weekly chapter tests",
+    );
     setIsModalOpen(true);
   };
 
   const handleOpenEditModal = (course: Course) => {
     setEditingCourse(course);
     setForm({ ...course });
-    setSubjectsInput(course.subjects.join(', '));
-    setFeaturesInput(course.features.join(', '));
+    setSubjectsInput(course.subjects.join(", "));
+    setFeaturesInput(course.features.join(", "));
     setIsModalOpen(true);
   };
 
@@ -115,42 +137,53 @@ export const AdminCoursesPage: React.FC = () => {
       form.slug ||
       form.title
         .toLowerCase()
-        .replace(/[^\w ]+/g, '')
-        .replace(/ +/g, '-');
+        .replace(/[^\w ]+/g, "")
+        .replace(/ +/g, "-");
 
     const subjectsArr = subjectsInput
-      .split(',')
+      .split(",")
       .map((s) => s.trim())
       .filter(Boolean);
 
     const featuresArr = featuresInput
-      .split(',')
+      .split(",")
       .map((f) => f.trim())
       .filter(Boolean);
 
-    const payload: Omit<Course, 'id'> = {
-      title: form.title || '',
+    const payload: Omit<Course, "id"> = {
+      title: form.title || "",
       slug,
-      category: (form.category as CourseCategory) || 'science',
-      categoryLabel: form.categoryLabel || 'Academic Course',
-      gradeLevel: form.gradeLevel || 'Class 10',
-      duration: form.duration || '1 Year',
+      category: (form.category as CourseCategory) || "science",
+      categoryLabel: form.categoryLabel || "Academic Course",
+      gradeLevel: form.gradeLevel || "Class 10",
+      duration: form.duration || "1 Year",
       badge: form.badge || undefined,
-      shortDescription: form.shortDescription || '',
-      fullDescription: form.fullDescription || form.shortDescription || '',
-      subjects: subjectsArr.length > 0 ? subjectsArr : ['General Studies'],
-      features: featuresArr.length > 0 ? featuresArr : ['Expert Faculty', 'Regular Tests'],
-      eligibility: form.eligibility || 'Standard school pass criteria',
-      classTiming: form.classTiming || 'Evening Batches',
-      batchSize: form.batchSize || 'Max 25-30 Students',
-      materialsIncluded: form.materialsIncluded || ['Printed Notes', 'Question Bank'],
-      curriculumHighlights: form.curriculumHighlights || [
-        { title: 'Core Syllabus', description: 'Comprehensive coverage with revisions.' }
+      shortDescription: form.shortDescription || "",
+      fullDescription: form.fullDescription || form.shortDescription || "",
+      subjects: subjectsArr.length > 0 ? subjectsArr : ["General Studies"],
+      features:
+        featuresArr.length > 0
+          ? featuresArr
+          : ["Expert Faculty", "Regular Tests"],
+      eligibility: form.eligibility || "Standard school pass criteria",
+      classTiming: form.classTiming || "Evening Batches",
+      batchSize: form.batchSize || "Max 25-30 Students",
+      materialsIncluded: form.materialsIncluded || [
+        "Printed Notes",
+        "Question Bank",
       ],
-      targetedExams: form.targetedExams || ['Board Exams'],
-      image: form.image || 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80',
-      feesInfo: form.feesInfo || 'Contact Admissions for details',
-      status: form.status || 'active'
+      curriculumHighlights: form.curriculumHighlights || [
+        {
+          title: "Core Syllabus",
+          description: "Comprehensive coverage with revisions.",
+        },
+      ],
+      targetedExams: form.targetedExams || ["Board Exams"],
+      image:
+        form.image ||
+        "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80",
+      feesInfo: form.feesInfo || "Contact Admissions for details",
+      status: form.status || "active",
     };
 
     if (editingCourse) {
@@ -172,6 +205,13 @@ export const AdminCoursesPage: React.FC = () => {
       deleteCourse(courseToDelete.id);
       setCourseToDelete(null);
     }
+  };
+
+  const CATEGORY_LABELS: Record<CourseCategory, string> = {
+    foundation: "Class 6–10 Foundation",
+    science: "Class 11 & 12 Science",
+    commerce: "Class 11 & 12 Commerce",
+    competitive: "Competitive Exams",
   };
 
   return (
@@ -199,18 +239,21 @@ export const AdminCoursesPage: React.FC = () => {
       {/* Filter and Search Bar */}
       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
         <div className="flex flex-wrap gap-2">
-          {['all', 'foundation', 'science', 'commerce', 'competitive'].map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${selectedCategory === cat
-                ? 'bg-amber-500 text-slate-950 font-bold'
-                : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+          {["all", "foundation", "science", "commerce", "competitive"].map(
+            (cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                  selectedCategory === cat
+                    ? "bg-amber-500 text-slate-950 font-bold"
+                    : "bg-slate-800 text-slate-300 hover:bg-slate-700"
                 }`}
-            >
-              {cat === 'all' ? 'All Programs' : cat}
-            </button>
-          ))}
+              >
+                {cat === "all" ? "All Programs" : cat}
+              </button>
+            ),
+          )}
         </div>
 
         <div className="relative w-full sm:w-64">
@@ -241,7 +284,10 @@ export const AdminCoursesPage: React.FC = () => {
             </thead>
             <tbody className="divide-y divide-slate-800 text-slate-300">
               {filteredCourses.map((c) => (
-                <tr key={c.id} className="hover:bg-slate-800/40 transition-colors">
+                <tr
+                  key={c.id}
+                  className="hover:bg-slate-800/40 transition-colors"
+                >
                   <td className="py-4 px-6">
                     <div className="flex items-center gap-3">
                       <img
@@ -252,7 +298,6 @@ export const AdminCoursesPage: React.FC = () => {
                       <div>
                         <div className="font-bold text-sm text-white flex items-center gap-2">
                           <span>{c.title}</span>
-
                         </div>
                         <div className="text-[11px] text-slate-400 line-clamp-1 mt-0.5">
                           {c.shortDescription}
@@ -261,8 +306,12 @@ export const AdminCoursesPage: React.FC = () => {
                     </div>
                   </td>
                   <td className="py-4 px-4">
-                    <div className="font-semibold text-white">{c.gradeLevel}</div>
-                    <div className="text-[10px] text-slate-400 uppercase">{c.category}</div>
+                    <div className="font-semibold text-white">
+                      {c.gradeLevel}
+                    </div>
+                    <div className="text-[10px] text-slate-400 uppercase">
+                      {c.category}
+                    </div>
                   </td>
                   <td className="py-4 px-4 max-w-xs">
                     <div className="flex flex-wrap gap-1">
@@ -284,12 +333,13 @@ export const AdminCoursesPage: React.FC = () => {
                   <td className="py-4 px-4">
                     <button
                       onClick={() => toggleCourseStatus(c.id)}
-                      className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider cursor-pointer transition-colors ${c.status === 'active'
-                        ? 'bg-emerald-950 text-emerald-400 border border-emerald-800'
-                        : 'bg-slate-800 text-slate-400 border border-slate-700'
-                        }`}
+                      className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider cursor-pointer transition-colors ${
+                        c.status === "active"
+                          ? "bg-emerald-950 text-emerald-400 border border-emerald-800"
+                          : "bg-slate-800 text-slate-400 border border-slate-700"
+                      }`}
                     >
-                      {c.status === 'active' ? (
+                      {c.status === "active" ? (
                         <>
                           <CheckCircle2 className="w-3 h-3" />
                           <span>Active</span>
@@ -334,7 +384,9 @@ export const AdminCoursesPage: React.FC = () => {
           <div className="relative w-full max-w-3xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
             <div className="p-6 border-b border-slate-800 flex items-center justify-between bg-slate-950">
               <h3 className="text-lg font-serif font-bold text-white">
-                {editingCourse ? `Edit Course: ${editingCourse.title}` : 'Add New Academic Program'}
+                {editingCourse
+                  ? `Edit Course: ${editingCourse.title}`
+                  : "Add New Academic Program"}
               </h3>
               <button
                 onClick={() => setIsModalOpen(false)}
@@ -344,7 +396,10 @@ export const AdminCoursesPage: React.FC = () => {
               </button>
             </div>
 
-            <form onSubmit={handleSaveCourse} className="p-6 overflow-y-auto space-y-5 flex-1 text-xs">
+            <form
+              onSubmit={handleSaveCourse}
+              className="p-6 overflow-y-auto space-y-5 flex-1 text-xs"
+            >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-slate-300 uppercase font-bold mb-1">
@@ -355,7 +410,9 @@ export const AdminCoursesPage: React.FC = () => {
                     required
                     placeholder="e.g. Class 10 Board Excellence & Merit Batch"
                     value={form.title}
-                    onChange={(e) => setForm({ ...form, title: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, title: e.target.value })
+                    }
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
@@ -366,7 +423,14 @@ export const AdminCoursesPage: React.FC = () => {
                   </label>
                   <select
                     value={form.category}
-                    onChange={(e) => setForm({ ...form, category: e.target.value as CourseCategory })}
+                    onChange={(e) => {
+                      const category = e.target.value as CourseCategory;
+                      setForm({
+                        ...form,
+                        category,
+                        categoryLabel: CATEGORY_LABELS[category],
+                      });
+                    }}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
                   >
                     <option value="foundation">Class 6–10 Foundation</option>
@@ -385,7 +449,9 @@ export const AdminCoursesPage: React.FC = () => {
                     type="text"
                     placeholder="e.g. Class 10"
                     value={form.gradeLevel}
-                    onChange={(e) => setForm({ ...form, gradeLevel: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, gradeLevel: e.target.value })
+                    }
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
@@ -398,7 +464,9 @@ export const AdminCoursesPage: React.FC = () => {
                     type="text"
                     placeholder="e.g. 1 Year Academic Session"
                     value={form.duration}
-                    onChange={(e) => setForm({ ...form, duration: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, duration: e.target.value })
+                    }
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
@@ -410,8 +478,10 @@ export const AdminCoursesPage: React.FC = () => {
                   <input
                     type="text"
                     placeholder="e.g. Popular, Admissions Open"
-                    value={form.badge || ''}
-                    onChange={(e) => setForm({ ...form, badge: e.target.value })}
+                    value={form.badge || ""}
+                    onChange={(e) =>
+                      setForm({ ...form, badge: e.target.value })
+                    }
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
@@ -426,7 +496,9 @@ export const AdminCoursesPage: React.FC = () => {
                   required
                   placeholder="One sentence summary for course cards..."
                   value={form.shortDescription}
-                  onChange={(e) => setForm({ ...form, shortDescription: e.target.value })}
+                  onChange={(e) =>
+                    setForm({ ...form, shortDescription: e.target.value })
+                  }
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
                 />
               </div>
@@ -439,7 +511,9 @@ export const AdminCoursesPage: React.FC = () => {
                   rows={3}
                   placeholder="In-depth explanation of syllabus coverage, methodology..."
                   value={form.fullDescription}
-                  onChange={(e) => setForm({ ...form, fullDescription: e.target.value })}
+                  onChange={(e) =>
+                    setForm({ ...form, fullDescription: e.target.value })
+                  }
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
                 />
               </div>
@@ -480,8 +554,10 @@ export const AdminCoursesPage: React.FC = () => {
                   <input
                     type="text"
                     placeholder="e.g. Installment options available / Scholarships Available"
-                    value={form.feesInfo || ''}
-                    onChange={(e) => setForm({ ...form, feesInfo: e.target.value })}
+                    value={form.feesInfo || ""}
+                    onChange={(e) =>
+                      setForm({ ...form, feesInfo: e.target.value })
+                    }
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
@@ -511,7 +587,7 @@ export const AdminCoursesPage: React.FC = () => {
                   type="submit"
                   className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-2.5 rounded-xl uppercase tracking-wider cursor-pointer shadow-md"
                 >
-                  {editingCourse ? 'Save Changes' : 'Create Course'}
+                  {editingCourse ? "Save Changes" : "Create Course"}
                 </button>
               </div>
             </form>

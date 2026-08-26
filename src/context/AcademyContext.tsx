@@ -8,6 +8,7 @@ import {
   Notice,
   FAQ,
   AdmissionEnquiryData,
+  ContactMessageData,
   HeroContent,
   AboutContent,
   SiteSettings,
@@ -20,7 +21,9 @@ import { GALLERY_DATA } from '../data/gallery';
 import { TESTIMONIALS_DATA } from '../data/testimonials';
 import { INITIAL_NOTICES } from '../data/notices';
 import { INITIAL_FAQS } from '../data/faqs';
-import { fetchTable, insertRow, updateRow, deleteRow, fetchContent, saveContent } from '../lib/supabaseData';
+import { ACADEMY_INFO } from '../data/academyInfo';
+import { supabase } from '../lib/supabaseClient';
+import { courseFromRow, courseToRow, achieverFromRow, achieverToRow, enquiryFromRow, enquiryToInsertRow } from '../lib/mappers';
 
 const DEFAULT_HERO_CONTENT: HeroContent = {
   eyebrow: '',
@@ -103,7 +106,8 @@ const DEFAULT_SITE_SETTINGS: SiteSettings = {
   }
 };
 
-const INITIAL_ENQUIRIES: AdmissionEnquiryData[] = [];
+const INITIAL_ENQUIRIES: AdmissionEnquiryData[] = [
+];
 
 export interface ToastMessage {
   id: string;
@@ -188,20 +192,104 @@ interface AcademyContextType {
 
 const AcademyContext = createContext<AcademyContextType | undefined>(undefined);
 
+const LOCAL_STORAGE_PREFIX = 'surabhi_academy_';
+
 export const AcademyProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  // Helper to load or fallback
+  const getStored = <T,>(key: string, fallback: T): T => {
+    try {
+      const item = localStorage.getItem(LOCAL_STORAGE_PREFIX + key);
+      if (item) return JSON.parse(item);
+    } catch (e) {
+      console.error(`Error reading ${key} from storage:`, e);
+    }
+    return fallback;
+  };
+
+  // Courses, achievers, enquiries, and the three content-settings tables are
+  // backed by Supabase (see supabase-schema.sql) — they're fetched below and
+  // every mutation writes straight through to the database.
   const [courses, setCourses] = useState<Course[]>([]);
   const [achievers, setAchievers] = useState<StudentResult[]>([]);
-  const [faculty, setFaculty] = useState<FacultyMember[]>([]);
-  const [gallery, setGallery] = useState<GalleryItem[]>([]);
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
-  const [notices, setNotices] = useState<Notice[]>([]);
-  const [faqs, setFaqs] = useState<FAQ[]>([]);
   const [enquiries, setEnquiries] = useState<AdmissionEnquiryData[]>([]);
   const [heroContent, setHeroContent] = useState<HeroContent>(DEFAULT_HERO_CONTENT);
   const [aboutContent, setAboutContent] = useState<AboutContent>(DEFAULT_ABOUT_CONTENT);
   const [siteSettings, setSiteSettings] = useState<SiteSettings>(DEFAULT_SITE_SETTINGS);
+
+  // Faculty, gallery, testimonials, notices and FAQs don't have Supabase
+  // tables in the current schema yet, so they still live in localStorage.
+  const [faculty, setFaculty] = useState<FacultyMember[]>(() => getStored('faculty', FACULTY_DATA));
+  const [gallery, setGallery] = useState<GalleryItem[]>(() => getStored('gallery', GALLERY_DATA));
+  const [testimonials, setTestimonials] = useState<Testimonial[]>(() => getStored('testimonials', TESTIMONIALS_DATA));
+  const [notices, setNotices] = useState<Notice[]>(() => getStored('notices', INITIAL_NOTICES));
+  const [faqs, setFaqs] = useState<FAQ[]>(() => getStored('faqs', INITIAL_FAQS));
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
-  const [loaded, setLoaded] = useState(false);
+
+  // Initial fetch from Supabase
+  useEffect(() => {
+    (async () => {
+      const [coursesRes, achieversRes, enquiriesRes, heroRes, aboutRes, settingsRes] = await Promise.all([
+        supabase.from('courses').select('*').order('display_order', { ascending: true }),
+        supabase.from('achievers').select('*').order('display_order', { ascending: true }),
+        supabase.from('enquiries').select('*').order('created_at', { ascending: false }),
+        supabase.from('hero_content').select('data').eq('id', 1).maybeSingle(),
+        supabase.from('about_content').select('data').eq('id', 1).maybeSingle(),
+        supabase.from('site_settings').select('data').eq('id', 1).maybeSingle()
+      ]);
+
+      if (coursesRes.error) console.error('Failed to load courses:', coursesRes.error);
+      else setCourses((coursesRes.data ?? []).map(courseFromRow));
+
+      if (achieversRes.error) console.error('Failed to load achievers:', achieversRes.error);
+      else setAchievers((achieversRes.data ?? []).map(achieverFromRow));
+
+      if (enquiriesRes.error) console.error('Failed to load enquiries:', enquiriesRes.error);
+      else setEnquiries((enquiriesRes.data ?? []).map(enquiryFromRow));
+
+      if (!heroRes.error && heroRes.data?.data && Object.keys(heroRes.data.data).length > 0) {
+        setHeroContent(heroRes.data.data as HeroContent);
+      }
+      if (!aboutRes.error && aboutRes.data?.data && Object.keys(aboutRes.data.data).length > 0) {
+        setAboutContent(aboutRes.data.data as AboutContent);
+      }
+      if (!settingsRes.error && settingsRes.data?.data && Object.keys(settingsRes.data.data).length > 0) {
+        setSiteSettings(settingsRes.data.data as SiteSettings);
+      }
+    })();
+  }, []);
+
+  // Sync to local storage (faculty/gallery/testimonials/notices/faqs only —
+  // courses/achievers/enquiries/content-settings sync directly to Supabase
+  // inside their own handlers instead of via a generic effect).
+  useEffect(() => {
+    try {
+      localStorage.setItem(LOCAL_STORAGE_PREFIX + 'faculty', JSON.stringify(faculty));
+    } catch (e) { console.error(e); }
+  }, [faculty]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(LOCAL_STORAGE_PREFIX + 'gallery', JSON.stringify(gallery));
+    } catch (e) { console.error(e); }
+  }, [gallery]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(LOCAL_STORAGE_PREFIX + 'testimonials', JSON.stringify(testimonials));
+    } catch (e) { console.error(e); }
+  }, [testimonials]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(LOCAL_STORAGE_PREFIX + 'notices', JSON.stringify(notices));
+    } catch (e) { console.error(e); }
+  }, [notices]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(LOCAL_STORAGE_PREFIX + 'faqs', JSON.stringify(faqs));
+    } catch (e) { console.error(e); }
+  }, [faqs]);
 
   // Toast notifications helper
   const addToast = (text: string, type: 'success' | 'error' | 'info' = 'success') => {
@@ -216,383 +304,381 @@ export const AcademyProvider: React.FC<{ children: ReactNode }> = ({ children })
     setToasts((prev) => prev.filter((t) => t.id !== id));
   };
 
-  // Initial load from Supabase (falls back to demo data if a table is empty
-  // or the request fails, so the site still renders while you set things up).
-  useEffect(() => {
-    let cancelled = false;
+  // Course handlers (Supabase-backed)
+  const addCourse = async (courseData: Omit<Course, 'id'>) => {
+    const { data, error } = await supabase
+      .from('courses')
+      .insert(courseToRow(courseData))
+      .select()
+      .single();
 
-    const loadAll = async () => {
-      const [
-        coursesData,
-        achieversData,
-        facultyData,
-        galleryData,
-        testimonialsData,
-        noticesData,
-        faqsData,
-        enquiriesData,
-        heroData,
-        aboutData,
-        settingsData
-      ] = await Promise.all([
-        fetchTable<Course>('courses', COURSES_DATA),
-        fetchTable<StudentResult>('achievers', RESULTS_DATA),
-        fetchTable<FacultyMember>('faculty', FACULTY_DATA),
-        fetchTable<GalleryItem>('gallery', GALLERY_DATA),
-        fetchTable<Testimonial>('testimonials', TESTIMONIALS_DATA),
-        fetchTable<Notice>('notices', INITIAL_NOTICES),
-        fetchTable<FAQ>('faqs', INITIAL_FAQS),
-        fetchTable<AdmissionEnquiryData>('enquiries', INITIAL_ENQUIRIES),
-        fetchContent<HeroContent>('hero_content', DEFAULT_HERO_CONTENT),
-        fetchContent<AboutContent>('about_content', DEFAULT_ABOUT_CONTENT),
-        fetchContent<SiteSettings>('site_settings', DEFAULT_SITE_SETTINGS)
-      ]);
-
-      if (cancelled) return;
-
-      setCourses(coursesData);
-      setAchievers(achieversData);
-      setFaculty(facultyData);
-      setGallery(galleryData);
-      setTestimonials(testimonialsData);
-      setNotices(noticesData);
-      setFaqs(faqsData);
-      setEnquiries(enquiriesData);
-      setHeroContent(heroData);
-      setAboutContent(aboutData);
-      setSiteSettings(settingsData);
-      setLoaded(true);
-    };
-
-    loadAll();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  // ---------------- Courses ----------------
-  const addCourse = (courseData: Omit<Course, 'id'>) => {
-    const newCourse: Course = { ...courseData, id: 'c_' + Date.now() };
+    if (error || !data) {
+      console.error('addCourse failed:', error);
+      addToast(error?.message ?? 'Failed to create course.', 'error');
+      return;
+    }
+    const newCourse = courseFromRow(data);
     setCourses((prev) => [newCourse, ...prev]);
     addToast(`Course "${newCourse.title}" created successfully.`);
-    insertRow('courses', newCourse).catch((e) => {
-      addToast(`Failed to save course to database: ${e.message}`, 'error');
-    });
   };
 
-  const updateCourse = (id: string, updated: Partial<Course>) => {
-    setCourses((prev) => prev.map((c) => (c.id === id ? { ...c, ...updated } : c)));
+  const updateCourse = async (id: string, updated: Partial<Course>) => {
+    const { data, error } = await supabase
+      .from('courses')
+      .update(courseToRow(updated))
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error || !data) {
+      console.error('updateCourse failed:', error);
+      addToast(error?.message ?? 'Failed to update course.', 'error');
+      return;
+    }
+    const savedCourse = courseFromRow(data);
+    setCourses((prev) => prev.map((c) => (c.id === id ? savedCourse : c)));
     addToast('Course details updated successfully.');
-    updateRow('courses', id, updated).catch((e) => {
-      addToast(`Failed to save course changes: ${e.message}`, 'error');
-    });
   };
 
-  const deleteCourse = (id: string) => {
+  const deleteCourse = async (id: string) => {
+    const { error } = await supabase.from('courses').delete().eq('id', id);
+    if (error) {
+      console.error('deleteCourse failed:', error);
+      addToast(error.message, 'error');
+      return;
+    }
     setCourses((prev) => prev.filter((c) => c.id !== id));
     addToast('Course removed successfully.', 'info');
-    deleteRow('courses', id).catch((e) => {
-      addToast(`Failed to delete course in database: ${e.message}`, 'error');
-    });
   };
 
-  const toggleCourseStatus = (id: string) => {
+  const toggleCourseStatus = async (id: string) => {
     const current = courses.find((c) => c.id === id);
-    const nextStatus = current?.status === 'active' ? 'inactive' : 'active';
-    setCourses((prev) => prev.map((c) => (c.id === id ? { ...c, status: nextStatus } : c)));
+    if (!current) return;
+    const nextStatus = current.status === 'active' ? 'inactive' : 'active';
+
+    const { data, error } = await supabase
+      .from('courses')
+      .update({ status: nextStatus })
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error || !data) {
+      console.error('toggleCourseStatus failed:', error);
+      addToast(error?.message ?? 'Failed to update course status.', 'error');
+      return;
+    }
+    const savedCourse = courseFromRow(data);
+    setCourses((prev) => prev.map((c) => (c.id === id ? savedCourse : c)));
     addToast('Course status updated.');
-    updateRow('courses', id, { status: nextStatus }).catch((e) => {
-      addToast(`Failed to save status change: ${e.message}`, 'error');
-    });
   };
 
-  // ---------------- Achievers ----------------
-  const addAchiever = (achieverData: Omit<StudentResult, 'id'>) => {
-    const newAchiever: StudentResult = { ...achieverData, id: 'r_' + Date.now(), status: 'active' };
+  // Achievers handlers (Supabase-backed)
+  const addAchiever = async (achieverData: Omit<StudentResult, 'id'>) => {
+    const { data, error } = await supabase
+      .from('achievers')
+      .insert(achieverToRow({ ...achieverData, status: 'active' }))
+      .select()
+      .single();
+
+    if (error || !data) {
+      console.error('addAchiever failed:', error);
+      addToast(error?.message ?? 'Failed to add achiever.', 'error');
+      return;
+    }
+    const newAchiever = achieverFromRow(data);
     setAchievers((prev) => [newAchiever, ...prev]);
     addToast(`Student achiever "${newAchiever.name}" added successfully.`);
-    insertRow('achievers', newAchiever).catch((e) => {
-      addToast(`Failed to save achiever to database: ${e.message}`, 'error');
-    });
   };
 
-  const updateAchiever = (id: string, updated: Partial<StudentResult>) => {
-    setAchievers((prev) => prev.map((a) => (a.id === id ? { ...a, ...updated } : a)));
+  const updateAchiever = async (id: string, updated: Partial<StudentResult>) => {
+    const { data, error } = await supabase
+      .from('achievers')
+      .update(achieverToRow(updated))
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error || !data) {
+      console.error('updateAchiever failed:', error);
+      addToast(error?.message ?? 'Failed to update achiever.', 'error');
+      return;
+    }
+    const savedAchiever = achieverFromRow(data);
+    setAchievers((prev) => prev.map((a) => (a.id === id ? savedAchiever : a)));
     addToast('Student achiever record updated.');
-    updateRow('achievers', id, updated).catch((e) => {
-      addToast(`Failed to save achiever changes: ${e.message}`, 'error');
-    });
   };
 
-  const deleteAchiever = (id: string) => {
+  const deleteAchiever = async (id: string) => {
+    const { error } = await supabase.from('achievers').delete().eq('id', id);
+    if (error) {
+      console.error('deleteAchiever failed:', error);
+      addToast(error.message, 'error');
+      return;
+    }
     setAchievers((prev) => prev.filter((a) => a.id !== id));
     addToast('Student record deleted.', 'info');
-    deleteRow('achievers', id).catch((e) => {
-      addToast(`Failed to delete achiever in database: ${e.message}`, 'error');
-    });
   };
 
-  const toggleAchieverFeatured = (id: string) => {
+  const toggleAchieverFeatured = async (id: string) => {
     const current = achievers.find((a) => a.id === id);
-    const nextFeatured = !current?.featured;
-    setAchievers((prev) => prev.map((a) => (a.id === id ? { ...a, featured: nextFeatured } : a)));
+    if (!current) return;
+
+    const { data, error } = await supabase
+      .from('achievers')
+      .update({ featured: !current.featured })
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error || !data) {
+      console.error('toggleAchieverFeatured failed:', error);
+      addToast(error?.message ?? 'Failed to update featured status.', 'error');
+      return;
+    }
+    const savedAchiever = achieverFromRow(data);
+    setAchievers((prev) => prev.map((a) => (a.id === id ? savedAchiever : a)));
     addToast('Achiever featured status changed.');
-    updateRow('achievers', id, { featured: nextFeatured }).catch((e) => {
-      addToast(`Failed to save featured status: ${e.message}`, 'error');
-    });
   };
 
-  // ---------------- Faculty ----------------
+  // Faculty handlers
   const addFaculty = (memberData: Omit<FacultyMember, 'id'>) => {
-    const newMember: FacultyMember = { ...memberData, id: 'f_' + Date.now(), status: 'active' };
+    const newMember: FacultyMember = {
+      ...memberData,
+      id: 'f_' + Date.now(),
+      status: 'active'
+    };
     setFaculty((prev) => [...prev, newMember]);
     addToast(`Faculty member "${newMember.name}" added.`);
-    insertRow('faculty', newMember).catch((e) => {
-      addToast(`Failed to save faculty to database: ${e.message}`, 'error');
-    });
   };
 
   const updateFaculty = (id: string, updated: Partial<FacultyMember>) => {
-    setFaculty((prev) => prev.map((f) => (f.id === id ? { ...f, ...updated } : f)));
+    setFaculty((prev) =>
+      prev.map((f) => (f.id === id ? { ...f, ...updated } : f))
+    );
     addToast('Faculty profile updated.');
-    updateRow('faculty', id, updated).catch((e) => {
-      addToast(`Failed to save faculty changes: ${e.message}`, 'error');
-    });
   };
 
   const deleteFaculty = (id: string) => {
     setFaculty((prev) => prev.filter((f) => f.id !== id));
     addToast('Faculty record removed.', 'info');
-    deleteRow('faculty', id).catch((e) => {
-      addToast(`Failed to delete faculty in database: ${e.message}`, 'error');
-    });
   };
 
-  // ---------------- Gallery ----------------
+  // Gallery handlers
   const addGalleryItem = (itemData: Omit<GalleryItem, 'id'>) => {
-    const newItem: GalleryItem = { ...itemData, id: 'g_' + Date.now(), status: 'active' };
+    const newItem: GalleryItem = {
+      ...itemData,
+      id: 'g_' + Date.now(),
+      status: 'active'
+    };
     setGallery((prev) => [newItem, ...prev]);
     addToast('Gallery photo added.');
-    insertRow('gallery', newItem).catch((e) => {
-      addToast(`Failed to save gallery item to database: ${e.message}`, 'error');
-    });
   };
 
   const updateGalleryItem = (id: string, updated: Partial<GalleryItem>) => {
-    setGallery((prev) => prev.map((g) => (g.id === id ? { ...g, ...updated } : g)));
+    setGallery((prev) =>
+      prev.map((g) => (g.id === id ? { ...g, ...updated } : g))
+    );
     addToast('Gallery item updated.');
-    updateRow('gallery', id, updated).catch((e) => {
-      addToast(`Failed to save gallery changes: ${e.message}`, 'error');
-    });
   };
 
   const deleteGalleryItem = (id: string) => {
     setGallery((prev) => prev.filter((g) => g.id !== id));
     addToast('Gallery item deleted.', 'info');
-    deleteRow('gallery', id).catch((e) => {
-      addToast(`Failed to delete gallery item in database: ${e.message}`, 'error');
-    });
   };
 
-  // ---------------- Testimonials ----------------
+  // Testimonials handlers
   const addTestimonial = (testData: Omit<Testimonial, 'id'>) => {
-    const newTest: Testimonial = { ...testData, id: 't_' + Date.now(), status: 'active' };
+    const newTest: Testimonial = {
+      ...testData,
+      id: 't_' + Date.now(),
+      status: 'active'
+    };
     setTestimonials((prev) => [newTest, ...prev]);
     addToast('Testimonial added.');
-    insertRow('testimonials', newTest).catch((e) => {
-      addToast(`Failed to save testimonial to database: ${e.message}`, 'error');
-    });
   };
 
   const updateTestimonial = (id: string, updated: Partial<Testimonial>) => {
-    setTestimonials((prev) => prev.map((t) => (t.id === id ? { ...t, ...updated } : t)));
+    setTestimonials((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, ...updated } : t))
+    );
     addToast('Testimonial updated.');
-    updateRow('testimonials', id, updated).catch((e) => {
-      addToast(`Failed to save testimonial changes: ${e.message}`, 'error');
-    });
   };
 
   const deleteTestimonial = (id: string) => {
     setTestimonials((prev) => prev.filter((t) => t.id !== id));
     addToast('Testimonial removed.', 'info');
-    deleteRow('testimonials', id).catch((e) => {
-      addToast(`Failed to delete testimonial in database: ${e.message}`, 'error');
-    });
   };
 
   const toggleTestimonialStatus = (id: string) => {
-    const current = testimonials.find((t) => t.id === id);
-    const nextStatus = current?.status === 'active' ? 'inactive' : 'active';
-    setTestimonials((prev) => prev.map((t) => (t.id === id ? { ...t, status: nextStatus } : t)));
+    setTestimonials((prev) =>
+      prev.map((t) =>
+        t.id === id ? { ...t, status: t.status === 'active' ? 'inactive' : 'active' } : t
+      )
+    );
     addToast('Testimonial status updated.');
-    updateRow('testimonials', id, { status: nextStatus }).catch((e) => {
-      addToast(`Failed to save status change: ${e.message}`, 'error');
-    });
   };
 
-  // ---------------- Notices ----------------
+  // Notices handlers
   const addNotice = (noticeData: Omit<Notice, 'id'>) => {
-    const newNotice: Notice = { ...noticeData, id: 'n_' + Date.now(), isNew: true };
+    const newNotice: Notice = {
+      ...noticeData,
+      id: 'n_' + Date.now(),
+      isNew: true
+    };
     setNotices((prev) => [newNotice, ...prev]);
     addToast('New announcement posted.');
-    insertRow('notices', newNotice).catch((e) => {
-      addToast(`Failed to save announcement to database: ${e.message}`, 'error');
-    });
   };
 
   const updateNotice = (id: string, updated: Partial<Notice>) => {
-    setNotices((prev) => prev.map((n) => (n.id === id ? { ...n, ...updated } : n)));
+    setNotices((prev) =>
+      prev.map((n) => (n.id === id ? { ...n, ...updated } : n))
+    );
     addToast('Announcement updated.');
-    updateRow('notices', id, updated).catch((e) => {
-      addToast(`Failed to save announcement changes: ${e.message}`, 'error');
-    });
   };
 
   const deleteNotice = (id: string) => {
     setNotices((prev) => prev.filter((n) => n.id !== id));
     addToast('Announcement deleted.', 'info');
-    deleteRow('notices', id).catch((e) => {
-      addToast(`Failed to delete announcement in database: ${e.message}`, 'error');
-    });
   };
 
   const toggleNoticeStatus = (id: string) => {
-    const current = notices.find((n) => n.id === id);
-    const nextStatus = current?.status === 'published' ? 'draft' : 'published';
-    setNotices((prev) => prev.map((n) => (n.id === id ? { ...n, status: nextStatus } : n)));
+    setNotices((prev) =>
+      prev.map((n) =>
+        n.id === id ? { ...n, status: n.status === 'published' ? 'draft' : 'published' } : n
+      )
+    );
     addToast('Notice publication status changed.');
-    updateRow('notices', id, { status: nextStatus }).catch((e) => {
-      addToast(`Failed to save status change: ${e.message}`, 'error');
-    });
   };
 
-  // ---------------- FAQs ----------------
+  // FAQ handlers
   const addFAQ = (faqData: Omit<FAQ, 'id'>) => {
-    const newFaq: FAQ = { ...faqData, id: 'faq_' + Date.now(), status: 'active' };
+    const newFaq: FAQ = {
+      ...faqData,
+      id: 'faq_' + Date.now(),
+      status: 'active'
+    };
     setFaqs((prev) => [...prev, newFaq]);
     addToast('FAQ question added.');
-    insertRow('faqs', newFaq).catch((e) => {
-      addToast(`Failed to save FAQ to database: ${e.message}`, 'error');
-    });
   };
 
   const updateFAQ = (id: string, updated: Partial<FAQ>) => {
-    setFaqs((prev) => prev.map((f) => (f.id === id ? { ...f, ...updated } : f)));
+    setFaqs((prev) =>
+      prev.map((f) => (f.id === id ? { ...f, ...updated } : f))
+    );
     addToast('FAQ updated.');
-    updateRow('faqs', id, updated).catch((e) => {
-      addToast(`Failed to save FAQ changes: ${e.message}`, 'error');
-    });
   };
 
   const deleteFAQ = (id: string) => {
     setFaqs((prev) => prev.filter((f) => f.id !== id));
     addToast('FAQ deleted.', 'info');
-    deleteRow('faqs', id).catch((e) => {
-      addToast(`Failed to delete FAQ in database: ${e.message}`, 'error');
-    });
   };
 
-  // ---------------- Enquiries ----------------
-  const submitEnquiry = async (
-    data: Omit<AdmissionEnquiryData, 'id' | 'status' | 'createdAt'>
-  ): Promise<boolean> => {
-    try {
-      const newEnquiry: AdmissionEnquiryData = {
-        ...data,
-        id: 'enq_' + Date.now(),
-        status: 'new',
-        adminNotes: '',
-        createdAt: new Date().toISOString()
-      };
-      const saved = await insertRow<AdmissionEnquiryData>('enquiries', newEnquiry);
-      setEnquiries((prev) => [saved, ...prev]);
-      addToast('Your admission enquiry has been submitted successfully! Our counselor will call you within 24 hours.', 'success');
-      return true;
-    } catch (e) {
+  // Enquiry handlers (Supabase-backed)
+  const submitEnquiry = async (data: Omit<AdmissionEnquiryData, 'id' | 'status' | 'createdAt'>): Promise<boolean> => {
+    const { data: row, error } = await supabase
+      .from('enquiries')
+      .insert(enquiryToInsertRow(data))
+      .select()
+      .single();
+
+    if (error || !row) {
+      console.error('submitEnquiry failed:', error);
       addToast('Failed to submit enquiry. Please call us directly.', 'error');
       return false;
     }
+    setEnquiries((prev) => [enquiryFromRow(row), ...prev]);
+    addToast('Your admission enquiry has been submitted successfully! Our counselor will call you within 24 hours.', 'success');
+    return true;
   };
 
-  const updateEnquiryStatus = (id: string, status: EnquiryStatus) => {
+  const updateEnquiryStatus = async (id: string, status: EnquiryStatus) => {
+    const { error } = await supabase.from('enquiries').update({ status }).eq('id', id);
+    if (error) {
+      console.error('updateEnquiryStatus failed:', error);
+      addToast(error.message, 'error');
+      return;
+    }
     setEnquiries((prev) => prev.map((e) => (e.id === id ? { ...e, status } : e)));
     addToast(`Enquiry marked as ${status}.`);
-    updateRow('enquiries', id, { status }).catch((e) => {
-      addToast(`Failed to save status change: ${e.message}`, 'error');
-    });
   };
 
-  const updateEnquiryNotes = (id: string, notes: string) => {
+  const updateEnquiryNotes = async (id: string, notes: string) => {
+    const { error } = await supabase.from('enquiries').update({ admin_notes: notes }).eq('id', id);
+    if (error) {
+      console.error('updateEnquiryNotes failed:', error);
+      addToast(error.message, 'error');
+      return;
+    }
     setEnquiries((prev) => prev.map((e) => (e.id === id ? { ...e, adminNotes: notes } : e)));
     addToast('Internal counselor notes saved.');
-    updateRow('enquiries', id, { adminNotes: notes }).catch((e) => {
-      addToast(`Failed to save notes: ${e.message}`, 'error');
-    });
   };
 
-  const deleteEnquiry = (id: string) => {
+  const deleteEnquiry = async (id: string) => {
+    const { error } = await supabase.from('enquiries').delete().eq('id', id);
+    if (error) {
+      console.error('deleteEnquiry failed:', error);
+      addToast(error.message, 'error');
+      return;
+    }
     setEnquiries((prev) => prev.filter((e) => e.id !== id));
     addToast('Enquiry record deleted.', 'info');
-    deleteRow('enquiries', id).catch((e) => {
-      addToast(`Failed to delete enquiry in database: ${e.message}`, 'error');
-    });
   };
 
-  // ---------------- Content & Settings ----------------
-  const updateHeroContent = (content: Partial<HeroContent>) => {
-    setHeroContent((prev) => {
-      const next = { ...prev, ...content };
-      saveContent('hero_content', next).catch((e) => {
-        addToast(`Failed to save hero content: ${e.message}`, 'error');
-      });
-      return next;
-    });
+  // Content & Settings handlers (Supabase-backed: single-row jsonb tables)
+  const updateHeroContent = async (content: Partial<HeroContent>) => {
+    const next = { ...heroContent, ...content };
+    const { error } = await supabase.from('hero_content').upsert({ id: 1, data: next });
+    if (error) {
+      console.error('updateHeroContent failed:', error);
+      addToast(error.message, 'error');
+      return;
+    }
+    setHeroContent(next);
     addToast('Homepage hero content updated successfully.');
   };
 
-  const updateAboutContent = (content: Partial<AboutContent>) => {
-    setAboutContent((prev) => {
-      const next = { ...prev, ...content };
-      saveContent('about_content', next).catch((e) => {
-        addToast(`Failed to save about content: ${e.message}`, 'error');
-      });
-      return next;
-    });
+  const updateAboutContent = async (content: Partial<AboutContent>) => {
+    const next = { ...aboutContent, ...content };
+    const { error } = await supabase.from('about_content').upsert({ id: 1, data: next });
+    if (error) {
+      console.error('updateAboutContent failed:', error);
+      addToast(error.message, 'error');
+      return;
+    }
+    setAboutContent(next);
     addToast('About page content updated.');
   };
 
-  const updateSiteSettings = (settings: Partial<SiteSettings>) => {
-    setSiteSettings((prev) => {
-      const next = { ...prev, ...settings };
-      saveContent('site_settings', next).catch((e) => {
-        addToast(`Failed to save site settings: ${e.message}`, 'error');
-      });
-      return next;
-    });
+  const updateSiteSettings = async (settings: Partial<SiteSettings>) => {
+    const next = { ...siteSettings, ...settings };
+    const { error } = await supabase.from('site_settings').upsert({ id: 1, data: next });
+    if (error) {
+      console.error('updateSiteSettings failed:', error);
+      addToast(error.message, 'error');
+      return;
+    }
+    setSiteSettings(next);
     addToast('Academy settings and contact details saved.');
   };
 
   const resetToDefaultData = () => {
-    setCourses(COURSES_DATA);
-    setAchievers(RESULTS_DATA);
+    // Only resets the tables that are still localStorage-backed. Courses,
+    // achievers, enquiries, and site content/settings live in Supabase now,
+    // so resetting them here would silently wipe real production data —
+    // do that from the database directly if you actually need to.
     setFaculty(FACULTY_DATA);
     setGallery(GALLERY_DATA);
     setTestimonials(TESTIMONIALS_DATA);
     setNotices(INITIAL_NOTICES);
     setFaqs(INITIAL_FAQS);
-    setEnquiries(INITIAL_ENQUIRIES);
-    setHeroContent(DEFAULT_HERO_CONTENT);
-    setAboutContent(DEFAULT_ABOUT_CONTENT);
-    setSiteSettings(DEFAULT_SITE_SETTINGS);
-    addToast(
-      'Local view reset to factory defaults. This does not delete anything from your Supabase database.',
-      'info'
-    );
-  };
 
-  if (!loaded) {
-    return null;
-  }
+    ['faculty', 'gallery', 'testimonials', 'notices', 'faqs'].forEach((k) => {
+      localStorage.removeItem(LOCAL_STORAGE_PREFIX + k);
+    });
+
+    addToast('Local demo data (faculty, gallery, testimonials, notices, FAQs) reset to factory defaults.', 'info');
+  };
 
   return (
     <AcademyContext.Provider

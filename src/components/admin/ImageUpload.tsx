@@ -56,25 +56,25 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
         setIsProcessing(true);
 
         try {
-            const extension = file.name.split('.').pop() || 'jpg';
-            const path = `${crypto.randomUUID()}.${extension}`;
+            const ext = file.name.split('.').pop() || 'jpg';
+            const path = `${crypto.randomUUID()}.${ext}`;
 
             const { error: uploadError } = await supabase.storage
                 .from(STORAGE_BUCKET)
                 .upload(path, file, { cacheControl: '3600', upsert: false });
 
             if (uploadError) {
-                throw uploadError;
+                // Most likely cause: no authenticated admin session, so the
+                // storage RLS policy (auth.role() = 'authenticated') rejects it.
+                setError(`Upload failed: ${uploadError.message}`);
+                setIsProcessing(false);
+                return;
             }
 
-            const { data } = supabase.storage.from(STORAGE_BUCKET).getPublicUrl(path);
-            onChange(data.publicUrl);
+            const { data: publicUrlData } = supabase.storage.from(STORAGE_BUCKET).getPublicUrl(path);
+            onChange(publicUrlData.publicUrl);
         } catch (err) {
-            setError(
-                err instanceof Error
-                    ? `Upload failed: ${err.message}`
-                    : 'Failed to upload image. Please try again.'
-            );
+            setError('Failed to upload image. Please try again.');
         } finally {
             setIsProcessing(false);
         }
