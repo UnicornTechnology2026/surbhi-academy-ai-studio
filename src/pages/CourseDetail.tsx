@@ -14,8 +14,6 @@ import {
   Layers,
 } from "lucide-react";
 import { COURSES_DATA } from "../data/courses";
-import { FACULTY_DATA } from "../data/faculty";
-import { FacultyCard } from "../components/FacultyCard";
 import { CourseCard } from "../components/CourseCard";
 import { CTASection } from "../components/CTASection";
 import { ACADEMY_INFO } from "../data/academyInfo";
@@ -40,9 +38,6 @@ export const CourseDetail: React.FC<CourseDetailProps> = ({
     0,
     3,
   );
-
-  // Faculty related to the course department
-  const relatedFaculty = FACULTY_DATA.slice(0, 2);
 
   return (
     <div className="bg-white">

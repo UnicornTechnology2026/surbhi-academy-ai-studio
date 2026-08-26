@@ -13,7 +13,6 @@ import {
   FileText,
 } from "lucide-react";
 import { useAcademy } from "../context/AcademyContext";
-import { FacultyCard } from "../components/FacultyCard";
 import { CTASection } from "../components/CTASection";
 
 interface CourseDetailPageProps {
@@ -24,7 +23,7 @@ export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({
   onOpenEnquiry,
 }) => {
   const { slug } = useParams<{ slug: string }>();
-  const { courses, faculty, achievers, siteSettings } = useAcademy();
+  const { courses, achievers, siteSettings } = useAcademy();
 
   const course = courses.find((c) => c.slug === slug);
 
@@ -56,15 +55,6 @@ export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({
         a.status === "active" &&
         (a.category === course.category ||
           course.gradeLevel.includes(a.gradeLevel)),
-    )
-    .slice(0, 3);
-
-  // Relevant faculty teaching this program
-  const relevantFaculty = faculty
-    .filter(
-      (f) =>
-        f.status === "active" &&
-        f.subjectsTaught.some((cls) => course.gradeLevel.includes(cls)),
     )
     .slice(0, 3);
 
@@ -319,26 +309,6 @@ export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({
           </div>
         </div>
       </section>
-
-      {/* 3. Related Faculty */}
-      {relevantFaculty.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-          <div className="mb-8">
-            <div className="text-xs uppercase tracking-widest text-amber-700 font-bold mb-1">
-              Mentorship Team
-            </div>
-            <h2 className="text-3xl font-serif font-bold text-[#0F172A]">
-              Faculty Mentors for this Program
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {relevantFaculty.map((f) => (
-              <FacultyCard key={f.id} faculty={f} />
-            ))}
-          </div>
-        </section>
-      )}
 
       {/* 4. CTA */}
       <CTASection

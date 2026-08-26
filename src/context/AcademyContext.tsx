@@ -19,10 +19,8 @@ import {
   SiteSettings,
   EnquiryStatus,
 } from "../types";
-import { FACULTY_DATA } from "../data/faculty";
 import { GALLERY_DATA } from "../data/gallery";
 import { INITIAL_NOTICES } from "../data/notices";
-import { INITIAL_FAQS } from "../data/faqs";
 import { supabase } from "../lib/supabaseClient";
 import {
   courseFromRow,
@@ -146,12 +144,6 @@ interface AcademyContextType {
   deleteAchiever: (id: string) => void;
   toggleAchieverFeatured: (id: string) => void;
 
-  // Faculty
-  faculty: FacultyMember[];
-  addFaculty: (member: Omit<FacultyMember, "id">) => void;
-  updateFaculty: (id: string, updated: Partial<FacultyMember>) => void;
-  deleteFaculty: (id: string) => void;
-
   // Gallery
   gallery: GalleryItem[];
   addGalleryItem: (item: Omit<GalleryItem, "id">) => void;
@@ -164,15 +156,6 @@ interface AcademyContextType {
   updateNotice: (id: string, updated: Partial<Notice>) => void;
   deleteNotice: (id: string) => void;
   toggleNoticeStatus: (id: string) => void;
-
-  // FAQs
-  faqs: FAQ[];
-  addFAQ: (faq: Omit<FAQ, "id">) => void;
-  updateFAQ: (id: string, updated: Partial<FAQ>) => void;
-  deleteFAQ: (id: string) => void;
-  addFaq: (faq: Omit<FAQ, "id">) => void;
-  updateFaq: (id: string, updated: Partial<FAQ>) => void;
-  deleteFaq: (id: string) => void;
 
   // Enquiries
   enquiries: AdmissionEnquiryData[];
@@ -236,17 +219,12 @@ export const AcademyProvider: React.FC<{ children: ReactNode }> = ({
 
   // Faculty, gallery, testimonials, notices and FAQs don't have Supabase
   // tables in the current schema yet, so they still live in localStorage.
-  const [faculty, setFaculty] = useState<FacultyMember[]>(() =>
-    getStored("faculty", FACULTY_DATA),
-  );
+
   const [gallery, setGallery] = useState<GalleryItem[]>(() =>
     getStored("gallery", GALLERY_DATA),
   );
   const [notices, setNotices] = useState<Notice[]>(() =>
     getStored("notices", INITIAL_NOTICES),
-  );
-  const [faqs, setFaqs] = useState<FAQ[]>(() =>
-    getStored("faqs", INITIAL_FAQS),
   );
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
 
@@ -317,16 +295,6 @@ export const AcademyProvider: React.FC<{ children: ReactNode }> = ({
   // Sync to local storage (faculty/gallery/testimonials/notices/faqs only —
   // courses/achievers/enquiries/content-settings sync directly to Supabase
   // inside their own handlers instead of via a generic effect).
-  useEffect(() => {
-    try {
-      localStorage.setItem(
-        LOCAL_STORAGE_PREFIX + "faculty",
-        JSON.stringify(faculty),
-      );
-    } catch (e) {
-      console.error(e);
-    }
-  }, [faculty]);
 
   useEffect(() => {
     try {
@@ -349,14 +317,6 @@ export const AcademyProvider: React.FC<{ children: ReactNode }> = ({
       console.error(e);
     }
   }, [notices]);
-
-  useEffect(() => {
-    try {
-      localStorage.setItem(LOCAL_STORAGE_PREFIX + "faqs", JSON.stringify(faqs));
-    } catch (e) {
-      console.error(e);
-    }
-  }, [faqs]);
 
   // Toast notifications helper
   const addToast = (
@@ -515,29 +475,6 @@ export const AcademyProvider: React.FC<{ children: ReactNode }> = ({
     addToast("Achiever featured status changed.");
   };
 
-  // Faculty handlers
-  const addFaculty = (memberData: Omit<FacultyMember, "id">) => {
-    const newMember: FacultyMember = {
-      ...memberData,
-      id: "f_" + Date.now(),
-      status: "active",
-    };
-    setFaculty((prev) => [...prev, newMember]);
-    addToast(`Faculty member "${newMember.name}" added.`);
-  };
-
-  const updateFaculty = (id: string, updated: Partial<FacultyMember>) => {
-    setFaculty((prev) =>
-      prev.map((f) => (f.id === id ? { ...f, ...updated } : f)),
-    );
-    addToast("Faculty profile updated.");
-  };
-
-  const deleteFaculty = (id: string) => {
-    setFaculty((prev) => prev.filter((f) => f.id !== id));
-    addToast("Faculty record removed.", "info");
-  };
-
   // Gallery handlers
   const addGalleryItem = (itemData: Omit<GalleryItem, "id">) => {
     const newItem: GalleryItem = {
@@ -593,29 +530,6 @@ export const AcademyProvider: React.FC<{ children: ReactNode }> = ({
       ),
     );
     addToast("Notice publication status changed.");
-  };
-
-  // FAQ handlers
-  const addFAQ = (faqData: Omit<FAQ, "id">) => {
-    const newFaq: FAQ = {
-      ...faqData,
-      id: "faq_" + Date.now(),
-      status: "active",
-    };
-    setFaqs((prev) => [...prev, newFaq]);
-    addToast("FAQ question added.");
-  };
-
-  const updateFAQ = (id: string, updated: Partial<FAQ>) => {
-    setFaqs((prev) =>
-      prev.map((f) => (f.id === id ? { ...f, ...updated } : f)),
-    );
-    addToast("FAQ updated.");
-  };
-
-  const deleteFAQ = (id: string) => {
-    setFaqs((prev) => prev.filter((f) => f.id !== id));
-    addToast("FAQ deleted.", "info");
   };
 
   // Enquiry handlers (Supabase-backed)
@@ -732,17 +646,15 @@ export const AcademyProvider: React.FC<{ children: ReactNode }> = ({
     // achievers, enquiries, and site content/settings live in Supabase now,
     // so resetting them here would silently wipe real production data —
     // do that from the database directly if you actually need to.
-    setFaculty(FACULTY_DATA);
     setGallery(GALLERY_DATA);
     setNotices(INITIAL_NOTICES);
-    setFaqs(INITIAL_FAQS);
 
-    ["faculty", "gallery", "testimonials", "notices", "faqs"].forEach((k) => {
+    [, "gallery", "notices", "faqs"].forEach((k) => {
       localStorage.removeItem(LOCAL_STORAGE_PREFIX + k);
     });
 
     addToast(
-      "Local demo data (faculty, gallery, testimonials, notices, FAQs) reset to factory defaults.",
+      "Local demo data ( gallery, notices, FAQs) reset to factory defaults.",
       "info",
     );
   };
@@ -762,11 +674,6 @@ export const AcademyProvider: React.FC<{ children: ReactNode }> = ({
         deleteAchiever,
         toggleAchieverFeatured,
 
-        faculty,
-        addFaculty,
-        updateFaculty,
-        deleteFaculty,
-
         gallery,
         addGalleryItem,
         updateGalleryItem,
@@ -777,14 +684,6 @@ export const AcademyProvider: React.FC<{ children: ReactNode }> = ({
         updateNotice,
         deleteNotice,
         toggleNoticeStatus,
-
-        faqs,
-        addFAQ,
-        updateFAQ,
-        deleteFAQ,
-        addFaq: addFAQ,
-        updateFaq: updateFAQ,
-        deleteFaq: deleteFAQ,
 
         enquiries,
         submitEnquiry,
