@@ -12,6 +12,7 @@ import {
   MessageCircle,
   MapPin,
 } from "lucide-react";
+import { motion } from "motion/react";
 import { useAcademy } from "../context/AcademyContext";
 import { useAdminAuth } from "../context/AdminAuthContext";
 
@@ -28,7 +29,7 @@ interface NavLinkItem {
 export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const { siteSettings, notices } = useAcademy();
+  const { siteSettings } = useAcademy();
   const { isAuthenticated, adminUser } = useAdminAuth();
 
   useEffect(() => {
@@ -44,7 +45,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-xs transition-all">
+    <motion.header
+      initial={{ y: -18, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-xs transition-all"
+    >
       {/* Top Announcement Bar */}
       <div className="bg-[#090E1A] text-slate-300 text-[11px] py-2 px-4 sm:px-8 border-b border-slate-800 flex items-center justify-between">
         {/* Left marquee / notification */}
@@ -146,7 +152,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-2xl max-h-[85vh] overflow-y-auto">
+        <motion.div
+          initial={{ opacity: 0, height: 0, y: -8 }}
+          animate={{ opacity: 1, height: "auto", y: 0 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className="xl:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-2xl max-h-[85vh] overflow-y-auto"
+        >
           <div className="grid grid-cols-1 gap-1">
             {navLinks.map((link) => (
               <NavLink
@@ -209,8 +220,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
               )}
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
-    </header>
+    </motion.header>
   );
 };

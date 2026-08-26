@@ -29,6 +29,49 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  overflow-x: hidden;
+}
+
+/* Quiet motion language used across the public site. */
+.hero-highlight {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+
+.hero-highlight::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -0.12em;
+  right: -0.12em;
+  bottom: 0.04em;
+  height: 0.28em;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.2);
+  transform: rotate(-2deg);
+  transform-origin: left center;
+  animation: underlineBreath 3.6s ease-in-out infinite;
+}
+
+.hero-orbit {
+  mask-image: linear-gradient(to bottom, black, transparent 80%);
+}
+
+.hero-orbit--inner {
+  mask-image: linear-gradient(to top, black, transparent 78%);
+}
+
+.interactive-lift {
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.interactive-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.13);
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -89,4 +132,29 @@ html {
 
 .pulse-glow {
   animation: pulseGlow 3s infinite ease-in-out;
+}
+
+@keyframes underlineBreath {
+  0%, 100% {
+    opacity: 0.45;
+    transform: rotate(-2deg) scaleX(0.88);
+  }
+  50% {
+    opacity: 0.9;
+    transform: rotate(-2deg) scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

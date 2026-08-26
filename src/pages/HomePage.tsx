@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "motion/react";
-import { Sparkles, ArrowRight, Trophy, X as CloseIcon } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import {
+  Sparkles,
+  ArrowRight,
+  Trophy,
+  CheckCircle2,
+  Clock3,
+  Users,
+} from "lucide-react";
 import { useAcademy } from "../context/AcademyContext";
 import { CourseCard } from "../components/CourseCard";
 import { RankCard } from "../components/RankCard";
-import { TestimonialCard } from "../components/TestimonialCard";
 import { CTASection } from "../components/CTASection";
 import { SectionHeader } from "../components/SectionHeader";
 import { CourseCategory } from "../types";
@@ -14,21 +20,30 @@ interface HomePageProps {
   onOpenEnquiry: (courseSlug?: string) => void;
 }
 
+const staggerChildren = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const revealItem = {
+  hidden: { opacity: 0, y: 22 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  },
+};
+
 export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
-  const { courses, achievers, submitEnquiry } = useAcademy();
+  const { courses, achievers } = useAcademy();
   const [activeCourseCategory, setActiveCourseCategory] = useState<
     "all" | CourseCategory
   >("all");
-  const [selectedGradeTab, setSelectedGradeTab] = useState<
-    "10" | "11" | "12" | "8-9"
-  >("10");
-
-  // Quick trial form state
-  const [quickForm, setQuickForm] = useState({
-    studentName: "",
-    mobileNumber: "",
-    grade: "Class 10",
-  });
 
   // Filter active courses
   const filteredCourses = courses
@@ -59,32 +74,53 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
           transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
           className="absolute bottom-0 left-0 w-137.5 h-137.5 bg-blue-600/20 rounded-full blur-3xl pointer-events-none -ml-20"
         />
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 35, ease: "linear" }}
+          className="hero-orbit absolute -right-32 top-24 h-96 w-96 rounded-full border border-amber-400/20 pointer-events-none"
+        />
+        <motion.div
+          animate={{ rotate: -360 }}
+          transition={{ repeat: Infinity, duration: 24, ease: "linear" }}
+          className="hero-orbit hero-orbit--inner absolute -right-20 top-36 h-72 w-72 rounded-full border border-blue-400/15 pointer-events-none"
+        />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
             {/* Left Column: Headline, Social Proof & CTAs */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              variants={staggerChildren}
+              initial="hidden"
+              animate="visible"
               className="lg:col-span-7 space-y-6 text-center lg:text-left"
             >
               {/* Main Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-serif font-bold text-[#0F172A] leading-[1.12] tracking-tight">
+              <motion.h1
+                variants={revealItem}
+                className="text-4xl sm:text-5xl lg:text-[3.5rem] font-serif font-bold text-[#0F172A] leading-[1.12] tracking-tight"
+              >
                 Where concepts{" "}
-                <span className="text-amber-600 italic">finally click</span> and
-                top ranks happen.
-              </h1>
+                <span className="hero-highlight text-amber-600 italic">
+                  finally click
+                </span>{" "}
+                and top ranks happen.
+              </motion.h1>
 
               {/* Persuasive Subtitle */}
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <motion.p
+                variants={revealItem}
+                className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0"
+              >
                 Our focused batches, experienced faculty, and personalized
                 guidance help every student build strong concepts, gain
                 confidence, and achieve better results.
-              </p>
+              </motion.p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+              <motion.div
+                variants={revealItem}
+                className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2"
+              >
                 <motion.button
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
@@ -107,7 +143,25 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 </motion.div>
-              </div>
+              </motion.div>
+
+              <motion.div
+                variants={revealItem}
+                className="flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 pt-1 text-xs font-semibold text-slate-500"
+              >
+                <span className="inline-flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  Concept-first teaching
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Users className="w-4 h-4 text-amber-600" />
+                  Small focused batches
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Clock3 className="w-4 h-4 text-blue-600" />
+                  Daily doubt support
+                </span>
+              </motion.div>
             </motion.div>
 
             {/* Right Column: Hero Visual with Interactive Trial Card & Badges */}
@@ -118,14 +172,37 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
               className="lg:col-span-5 relative"
             >
               <div className="relative mx-auto max-w-md lg:max-w-none">
+                <motion.div
+                  animate={{ scale: [1, 1.04, 1], opacity: [0.35, 0.6, 0.35] }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 4,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute -inset-3 rounded-[2rem] bg-linear-to-br from-amber-400/40 via-transparent to-blue-500/25 blur-xl pointer-events-none"
+                />
                 {/* Classroom Image with Badges */}
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900 aspect-4/5 group">
+                <motion.div
+                  whileHover={{ y: -8, rotate: 0.5 }}
+                  transition={{ type: "spring", stiffness: 180, damping: 18 }}
+                  className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900 aspect-4/5 group"
+                >
                   <img
                     src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80"
                     alt="Surabhi Coaching Academy Classroom & Toppers"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-[#0F172A] via-[#0F172A]/30 to-transparent" />
+                  <motion.div
+                    animate={{ x: ["-130%", "130%"] }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 5.5,
+                      repeatDelay: 3,
+                      ease: "easeInOut",
+                    }}
+                    className="absolute inset-y-0 -left-1/2 w-1/3 skew-x-[-18deg] bg-linear-to-r from-transparent via-white/25 to-transparent pointer-events-none"
+                  />
 
                   {/* Bottom Text Inside Image */}
                   <div className="absolute bottom-6 left-6 right-6 text-white space-y-2">
@@ -138,7 +215,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
                       subject."
                     </h3>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Floating Animated Speech Bubble 1 */}
                 <motion.div
@@ -172,7 +249,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
                     ease: "easeInOut",
                   }}
                   className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-2xl border border-slate-100 hidden sm:flex items-center gap-3.5 max-w-xs z-20"
-                ></motion.div>
+                >
+                  <div className="w-11 h-11 rounded-xl bg-slate-900 flex items-center justify-center text-amber-400 shrink-0">
+                    <Trophy className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-slate-900">
+                      99%+ board scores
+                    </div>
+                    <div className="text-[11px] text-slate-500 font-medium">
+                      Consistency compounds
+                    </div>
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
           </div>
@@ -181,8 +270,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
 
       {/* 6. FEATURED ACADEMIC PROGRAMS GRID */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-          <div>
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.55, ease: "easeOut" }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10"
+        >
+          <div className="relative">
             <div className="text-xs uppercase tracking-widest text-amber-700 font-bold mb-1">
               Explore Our Batches
             </div>
@@ -197,49 +292,53 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
 
           {/* Stream Filter Pills */}
           <div className="flex flex-wrap gap-2">
-            <button
-              onClick={() => setActiveCourseCategory("all")}
-              className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                activeCourseCategory === "all"
-                  ? "bg-[#0F172A] text-white shadow-md"
-                  : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-              }`}
-            >
-              All Batches
-            </button>
-            <button
-              onClick={() => setActiveCourseCategory("foundation")}
-              className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                activeCourseCategory === "foundation"
-                  ? "bg-[#0F172A] text-white shadow-md"
-                  : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-              }`}
-            >
-              Class 8–10 Foundation
-            </button>
-            <button
-              onClick={() => setActiveCourseCategory("science")}
-              className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                activeCourseCategory === "science"
-                  ? "bg-[#0F172A] text-white shadow-md"
-                  : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-              }`}
-            >
-              11–12 Science
-            </button>
+            {[
+              { id: "all" as const, label: "All Batches" },
+              { id: "foundation" as const, label: "Class 8–10 Foundation" },
+              { id: "science" as const, label: "11–12 Science" },
+            ].map((filter) => (
+              <motion.button
+                key={filter.id}
+                whileTap={{ scale: 0.96 }}
+                onClick={() => setActiveCourseCategory(filter.id)}
+                className={`relative px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                  activeCourseCategory === filter.id
+                    ? "bg-[#0F172A] text-white shadow-md"
+                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                }`}
+              >
+                {activeCourseCategory === filter.id && (
+                  <motion.span
+                    layoutId="course-filter-highlight"
+                    className="absolute inset-0 rounded-full bg-[#0F172A]"
+                    transition={{ type: "spring", stiffness: 420, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{filter.label}</span>
+              </motion.button>
+            ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Course Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredCourses.slice(0, 6).map((course) => (
-            <CourseCard
-              key={course.id}
-              course={course}
-              onEnquire={(slug) => onOpenEnquiry(slug)}
-            />
-          ))}
-        </div>
+        <AnimatePresence mode="popLayout" initial={false}>
+          <motion.div
+            key={activeCourseCategory}
+            variants={staggerChildren}
+            initial="hidden"
+            animate="visible"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {filteredCourses.slice(0, 6).map((course) => (
+              <motion.div key={course.id} variants={revealItem} layout>
+                <CourseCard
+                  course={course}
+                  onEnquire={(slug) => onOpenEnquiry(slug)}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
 
         <div className="text-center mt-10">
           <Link
@@ -261,11 +360,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiry }) => {
             subtitle="Meet our top rankers who turned their effort into city and state board distinction."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+          <motion.div
+            variants={staggerChildren}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-70px" }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10"
+          >
             {featuredAchievers.map((student) => (
-              <RankCard key={student.id} student={student} isFeatured={true} />
+              <motion.div key={student.id} variants={revealItem}>
+                <RankCard student={student} isFeatured={true} />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           <div className="mt-10 text-center">
             <Link
