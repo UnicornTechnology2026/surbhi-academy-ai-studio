@@ -21,8 +21,8 @@ export const AdminLoginPage: React.FC = () => {
   const { login, isAuthenticated } = useAdminAuth();
   const { siteSettings } = useAcademy();
 
-  const [email, setEmail] = useState('admin@surabhicoaching.edu');
-  const [password, setPassword] = useState('admin123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
   const [error, setError] = useState('');
@@ -49,17 +49,6 @@ export const AdminLoginPage: React.FC = () => {
     } else {
       setError(res.error || 'Authentication failed');
     }
-  };
-
-  const handleFillDemo = (role: 'admin' | 'director') => {
-    if (role === 'admin') {
-      setEmail('admin@surabhicoaching.edu');
-      setPassword('admin123');
-    } else {
-      setEmail('director@surabhi.edu');
-      setPassword('director123');
-    }
-    setError('');
   };
 
   return (
@@ -179,23 +168,6 @@ export const AdminLoginPage: React.FC = () => {
               )}
             </button>
           </form>
-
-          {/* Quick Demo Credentials Panel */}
-          <div className="mt-6 pt-5 border-t border-slate-800 space-y-2">
-            <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider text-center">
-              Quick One-Click Demo Credentials:
-            </div>
-            <div className="grid grid-cols-1 gap-1">
-              <button
-                type="button"
-                onClick={() => handleFillDemo('admin')}
-                className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium text-center transition-colors cursor-pointer border border-slate-700"
-              >
-                <div className="font-bold text-amber-400">Super Admin</div>
-                <div className="text-[10px] text-slate-400">admin@surabhicoaching.edu</div>
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </div>

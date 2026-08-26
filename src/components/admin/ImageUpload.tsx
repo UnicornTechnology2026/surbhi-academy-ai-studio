@@ -1,5 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { UploadCloud, X, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { supabase } from '../../lib/supabaseClient';
+
+const STORAGE_BUCKET = 'academy-images';
 
 interface ImageUploadProps {
     label?: string;
@@ -36,7 +39,7 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
         video: 'aspect-video'
     }[aspectRatio];
 
-    const handleFileProcess = (file: File) => {
+    const handleFileProcess = async (file: File) => {
         setError('');
 
         if (!file.type.startsWith('image/')) {
@@ -51,22 +54,30 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
         }
 
         setIsProcessing(true);
-        const reader = new FileReader();
 
-        reader.onload = (e) => {
-            const result = e.target?.result as string;
-            if (result) {
-                onChange(result);
+        try {
+            const extension = file.name.split('.').pop() || 'jpg';
+            const path = `${crypto.randomUUID()}.${extension}`;
+
+            const { error: uploadError } = await supabase.storage
+                .from(STORAGE_BUCKET)
+                .upload(path, file, { cacheControl: '3600', upsert: false });
+
+            if (uploadError) {
+                throw uploadError;
             }
-            setIsProcessing(false);
-        };
 
-        reader.onerror = () => {
-            setError('Failed to read image file. Please try another image.');
+            const { data } = supabase.storage.from(STORAGE_BUCKET).getPublicUrl(path);
+            onChange(data.publicUrl);
+        } catch (err) {
+            setError(
+                err instanceof Error
+                    ? `Upload failed: ${err.message}`
+                    : 'Failed to upload image. Please try again.'
+            );
+        } finally {
             setIsProcessing(false);
-        };
-
-        reader.readAsDataURL(file);
+        }
     };
 
     const handleDragOver = (e: React.DragEvent) => {

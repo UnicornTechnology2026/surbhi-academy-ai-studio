@@ -269,50 +269,6 @@ export const AdminDashboardPage: React.FC = () => {
               </Link>
 
               <Link
-                to="/admin/faculty"
-                className="w-full flex items-center justify-between p-3 rounded-xl bg-slate-800/70 hover:bg-slate-800 text-xs font-semibold text-slate-200 transition-colors border border-slate-700/50"
-              >
-                <div className="flex items-center gap-2.5">
-                  <Users className="w-4 h-4 text-purple-400" />
-                  <span>Faculty & Mentors</span>
-                </div>
-                <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
-              </Link>
-
-              <Link
-                to="/admin/testimonials"
-                className="w-full flex items-center justify-between p-3 rounded-xl bg-slate-800/70 hover:bg-slate-800 text-xs font-semibold text-slate-200 transition-colors border border-slate-700/50"
-              >
-                <div className="flex items-center gap-2.5">
-                  <MessageSquareQuote className="w-4 h-4 text-rose-400" />
-                  <span>Testimonials & Reviews</span>
-                </div>
-                <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
-              </Link>
-
-              <Link
-                to="/admin/faqs"
-                className="w-full flex items-center justify-between p-3 rounded-xl bg-slate-800/70 hover:bg-slate-800 text-xs font-semibold text-slate-200 transition-colors border border-slate-700/50"
-              >
-                <div className="flex items-center gap-2.5">
-                  <HelpCircle className="w-4 h-4 text-emerald-400" />
-                  <span>Frequently Asked Questions</span>
-                </div>
-                <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
-              </Link>
-
-              <Link
-                to="/admin/notices"
-                className="w-full flex items-center justify-between p-3 rounded-xl bg-slate-800/70 hover:bg-slate-800 text-xs font-semibold text-slate-200 transition-colors border border-slate-700/50"
-              >
-                <div className="flex items-center gap-2.5">
-                  <Bell className="w-4 h-4 text-yellow-400" />
-                  <span>Notices & Admission Ticker</span>
-                </div>
-                <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
-              </Link>
-
-              <Link
                 to="/admin/settings"
                 className="w-full flex items-center justify-between p-3 rounded-xl bg-slate-800/70 hover:bg-slate-800 text-xs font-semibold text-slate-200 transition-colors border border-slate-700/50"
               >
