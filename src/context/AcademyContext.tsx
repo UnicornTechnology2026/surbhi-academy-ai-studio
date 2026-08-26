@@ -105,62 +105,6 @@ const DEFAULT_SITE_SETTINGS: SiteSettings = {
 };
 
 const INITIAL_ENQUIRIES: AdmissionEnquiryData[] = [
-  {
-    id: 'enq-101',
-    studentName: 'Aarav Mehta',
-    parentName: 'Mr. Rajesh Mehta',
-    mobileNumber: '+91 98234 56789',
-    emailAddress: 'rajesh.mehta@example.com',
-    studentClass: 'Class 10',
-    courseInterested: 'Class 10 Board Excellence & Merit Batch',
-    message: 'Seeking admission for Class 10 CBSE 2026-27 session. Would like to know batch timings and weekend doubt sessions.',
-    status: 'new',
-    adminNotes: 'Called once, requested follow-up call on Saturday morning.',
-    createdAt: '2026-03-08T10:30:00Z',
-    source: 'Website Modal'
-  },
-  {
-    id: 'enq-102',
-    studentName: 'Sanya Khurana',
-    parentName: 'Mrs. Deepa Khurana',
-    mobileNumber: '+91 97123 45678',
-    emailAddress: 'deepa.khurana@example.com',
-    studentClass: 'Class 11',
-    courseInterested: 'Class 11 & 12 Science (PCM / PCB / PCMB)',
-    message: 'Looking for integrated Science batch with JEE foundation. Can we schedule a 2-day trial class?',
-    status: 'contacted',
-    adminNotes: 'Sent 2-day trial pass on WhatsApp. Trial scheduled for Tuesday 4:30 PM.',
-    createdAt: '2026-03-07T14:15:00Z',
-    source: 'Contact Page'
-  },
-  {
-    id: 'enq-103',
-    studentName: 'Kunal Deshmukh',
-    parentName: 'Mr. Vivek Deshmukh',
-    mobileNumber: '+91 98555 12345',
-    emailAddress: 'kunal.d@example.com',
-    studentClass: 'Class 12',
-    courseInterested: 'Class 11 & 12 Commerce Pro & CA Foundation',
-    message: 'Interested in Commerce Pro batch for Accountancy and Economics board preparation.',
-    status: 'interested',
-    adminNotes: 'Counseling completed at Main Campus. Student confirmed admission for next week.',
-    createdAt: '2026-03-05T16:45:00Z',
-    source: 'Admissions Page'
-  },
-  {
-    id: 'enq-104',
-    studentName: 'Ishaan R. Patil',
-    parentName: 'Dr. R. K. Patil',
-    mobileNumber: '+91 99600 78901',
-    emailAddress: 'dr.patil@example.com',
-    studentClass: 'Class 8',
-    courseInterested: 'Class 6–8 Junior Foundation Program',
-    message: 'Want to enroll for Olympiad & Science Foundation weekend program.',
-    status: 'converted',
-    adminNotes: 'Admission confirmed. Fees paid and study kit handed over.',
-    createdAt: '2026-03-02T11:00:00Z',
-    source: 'Hero CTA'
-  }
 ];
 
 export interface ToastMessage {
